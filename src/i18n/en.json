@@ -1,0 +1,54 @@
+{
+    "translation": {
+        "app": {
+            "title": "Financial System Map",
+            "subtitle": "Comprehensive Financial Knowledge Network"
+        },
+        "nav": {
+            "home": "Home",
+            "markets": "Markets",
+            "institutions": "Institutions",
+            "instruments": "Instruments",
+            "macro": "Macro",
+            "search": "Search..."
+        },
+        "domains": {
+            "markets": "Financial Markets",
+            "institutions": "Financial Institutions",
+            "instruments": "Financial Instruments",
+            "macro": "Macroeconomics"
+        },
+        "actions": {
+            "explore": "Explore",
+            "back": "Back",
+            "viewDetails": "View Details",
+            "showAll": "Show All",
+            "hideAll": "Hide All",
+            "zoomIn": "Zoom In",
+            "zoomOut": "Zoom Out",
+            "reset": "Reset",
+            "filter": "Filter"
+        },
+        "labels": {
+            "relatedEntities": "Related Entities",
+            "relationships": "Relationships",
+            "description": "Description",
+            "category": "Category",
+            "noResults": "No results found",
+            "loading": "Loading..."
+        },
+        "relationships": {
+            "regulates": "regulates",
+            "issues": "issues",
+            "trades": "trades",
+            "invests": "invests",
+            "influences": "influences",
+            "depends_on": "depends on",
+            "derives_from": "derives from",
+            "competes_with": "competes with",
+            "cooperates_with": "cooperates with",
+            "provides": "provides",
+            "uses": "uses"
+        }
+    }
+}

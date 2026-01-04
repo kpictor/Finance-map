@@ -1,0 +1,54 @@
+{
+    "translation": {
+        "app": {
+            "title": "金融体系图谱",
+            "subtitle": "全面的金融知识网络"
+        },
+        "nav": {
+            "home": "首页",
+            "markets": "金融市场",
+            "institutions": "金融机构",
+            "instruments": "金融工具",
+            "macro": "宏观经济",
+            "search": "搜索..."
+        },
+        "domains": {
+            "markets": "金融市场",
+            "institutions": "金融机构",
+            "instruments": "金融工具",
+            "macro": "宏观经济"
+        },
+        "actions": {
+            "explore": "探索",
+            "back": "返回",
+            "viewDetails": "查看详情",
+            "showAll": "显示全部",
+            "hideAll": "隐藏全部",
+            "zoomIn": "放大",
+            "zoomOut": "缩小",
+            "reset": "重置",
+            "filter": "筛选"
+        },
+        "labels": {
+            "relatedEntities": "相关实体",
+            "relationships": "关联关系",
+            "description": "描述",
+            "category": "分类",
+            "noResults": "未找到结果",
+            "loading": "加载中..."
+        },
+        "relationships": {
+            "regulates": "监管",
+            "issues": "发行",
+            "trades": "交易",
+            "invests": "投资",
+            "influences": "影响",
+            "depends_on": "依赖",
+            "derives_from": "衍生自",
+            "competes_with": "竞争",
+            "cooperates_with": "合作",
+            "provides": "提供",
+            "uses": "使用"
+        }
+    }
+}
