@@ -1,5 +1,5 @@
 import type { Entity, Language, Relationship } from '../../types';
-import { DomainConfig, RelationTypeNames } from '../../types';
+import { DomainConfig, RelationTypeNames, RiskLevelConfig } from '../../types';
 import { useTranslation } from 'react-i18next';
 import './EntityPanel.css';
 
@@ -70,6 +70,22 @@ export const EntityPanel: React.FC<EntityPanelProps> = ({
                                 <span key={tag} className="tag">{tag}</span>
                             ))}
                         </div>
+                    </section>
+                )}
+
+                {entity.riskLevel && (
+                    <section className="panel-section">
+                        <h3>{t('labels.riskLevel', '风险等级')}</h3>
+                        <div
+                            className="risk-level-badge"
+                            style={{ background: RiskLevelConfig[entity.riskLevel].color }}
+                        >
+                            <span className="risk-icon">{RiskLevelConfig[entity.riskLevel].icon}</span>
+                            <span className="risk-name">{RiskLevelConfig[entity.riskLevel].name[language]}</span>
+                        </div>
+                        <p className="risk-description">
+                            {RiskLevelConfig[entity.riskLevel].description[language]}
+                        </p>
                     </section>
                 )}
 
