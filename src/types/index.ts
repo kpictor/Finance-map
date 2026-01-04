@@ -57,7 +57,7 @@ export const RiskLevelConfig: Record<RiskLevel, {
       zh: '低风险产品，追求本金安全和稳定收益，适合风险厨恶型投资者',
       en: 'Low risk products, seeking capital preservation and stable returns, suitable for risk-averse investors'
     },
-    color: '#22c55e',  // green
+    color: '#059669',  // emerald-600 - 深绿色
     icon: '🛡️'
   },
   L2: {
@@ -66,7 +66,7 @@ export const RiskLevelConfig: Record<RiskLevel, {
       zh: '中低风险产品，平衡风险与收益，可接受一定波动',
       en: 'Medium-low risk products, balancing risk and return, accepting moderate volatility'
     },
-    color: '#3b82f6',  // blue
+    color: '#2563eb',  // blue-600 - 深蓝色
     icon: '⚖️'
   },
   L3: {
@@ -75,7 +75,7 @@ export const RiskLevelConfig: Record<RiskLevel, {
       zh: '中高风险产品，追求资本增值，可能损失部分本金',
       en: 'Medium-high risk products, pursuing capital appreciation, potential partial principal loss'
     },
-    color: '#f59e0b',  // amber
+    color: '#9333ea',  // purple-600 - 紫色 (完全避开黄色)
     icon: '📈'
   },
   L4: {
@@ -84,7 +84,7 @@ export const RiskLevelConfig: Record<RiskLevel, {
       zh: '高风险产品，可能损失全部本金甚至更多，仅适合专业投资者',
       en: 'High risk products, potential loss of entire principal or more, only for professional investors'
     },
-    color: '#ef4444',  // red
+    color: '#dc2626',  // red-600 - 深红色
     icon: '⚠️'
   }
 };

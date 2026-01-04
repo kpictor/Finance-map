@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import type { Entity, Relationship, GraphNode, GraphLink, Language } from '../../types';
-import { DomainConfig } from '../../types';
+import { DomainConfig, RiskLevelConfig } from '../../types';
 import './ForceGraph.css';
 
 interface ForceGraphProps {
@@ -153,6 +153,8 @@ export const ForceGraph: React.FC<ForceGraphProps> = ({
             .attr('r', 30)
             .attr('fill', d => DomainConfig[d.domain].color)
             .attr('class', 'node-circle')
+            .attr('stroke', d => d.riskLevel ? RiskLevelConfig[d.riskLevel].color : 'transparent')
+            .attr('stroke-width', d => d.riskLevel ? 5 : 0)
             .on('click', (event, d) => {
                 event.stopPropagation();
                 onEntityClick(d);
