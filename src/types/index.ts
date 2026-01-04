@@ -41,6 +41,54 @@ export const DomainConfig: Record<Domain, {
   }
 };
 
+// 风险等级 (IBKR样式4级分类)
+export type RiskLevel = 'L1' | 'L2' | 'L3' | 'L4';
+
+// 风险等级配置
+export const RiskLevelConfig: Record<RiskLevel, {
+  name: LocalizedText;
+  description: LocalizedText;
+  color: string;
+  icon: string;
+}> = {
+  L1: {
+    name: { zh: '保守型', en: 'Conservative' },
+    description: {
+      zh: '低风险产品，追求本金安全和稳定收益，适合风险厨恶型投资者',
+      en: 'Low risk products, seeking capital preservation and stable returns, suitable for risk-averse investors'
+    },
+    color: '#22c55e',  // green
+    icon: '🛡️'
+  },
+  L2: {
+    name: { zh: '稳健型', en: 'Moderate' },
+    description: {
+      zh: '中低风险产品，平衡风险与收益，可接受一定波动',
+      en: 'Medium-low risk products, balancing risk and return, accepting moderate volatility'
+    },
+    color: '#3b82f6',  // blue
+    icon: '⚖️'
+  },
+  L3: {
+    name: { zh: '成长型', en: 'Aggressive' },
+    description: {
+      zh: '中高风险产品，追求资本增值，可能损失部分本金',
+      en: 'Medium-high risk products, pursuing capital appreciation, potential partial principal loss'
+    },
+    color: '#f59e0b',  // amber
+    icon: '📈'
+  },
+  L4: {
+    name: { zh: '投机型', en: 'Speculative' },
+    description: {
+      zh: '高风险产品，可能损失全部本金甚至更多，仅适合专业投资者',
+      en: 'High risk products, potential loss of entire principal or more, only for professional investors'
+    },
+    color: '#ef4444',  // red
+    icon: '⚠️'
+  }
+};
+
 // 基础实体
 export interface Entity {
   id: string;
@@ -52,6 +100,7 @@ export interface Entity {
   icon?: string;
   tags?: string[];
   details?: LocalizedText;
+  riskLevel?: RiskLevel;  // 风险等级 (L1-L4)
 }
 
 // 关系类型

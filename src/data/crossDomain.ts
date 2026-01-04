@@ -298,5 +298,56 @@ export const crossDomainRelationships: Relationship[] = [
             zh: '证监会监管结构化产品的销售适当性、信息披露和投资者准入门槛',
             en: 'Securities regulators oversee suitability, disclosure, and investor qualification requirements for structured products'
         }
+    },
+
+    // === IBKR相关产品跨域关系 ===
+    {
+        id: 'cd-72', source: 'market-forex', target: 'instr-forex', type: 'trades', strength: 3, bidirectional: true,
+        explanation: {
+            zh: '外汇市场提供货币对的即期、远期和期权交易平台',
+            en: 'Forex markets provide platforms for spot, forward, and options trading on currency pairs'
+        }
+    },
+    {
+        id: 'cd-73', source: 'market-futures', target: 'instr-vix-futures', type: 'trades', strength: 3, bidirectional: true,
+        explanation: {
+            zh: '期货交易所（如CBOE）提供VIX期货合约的标准化交易',
+            en: 'Futures exchanges (e.g., CBOE) provide standardized trading of VIX futures contracts'
+        }
+    },
+    {
+        id: 'cd-74', source: 'market-options', target: 'instr-equity-options', type: 'trades', strength: 3, bidirectional: true,
+        explanation: {
+            zh: '期权交易所提供股票期权的集中交易和清算服务',
+            en: 'Options exchanges provide centralized trading and clearing services for equity options'
+        }
+    },
+    {
+        id: 'cd-75', source: 'market-commodities', target: 'instr-commodity', type: 'trades', strength: 3, bidirectional: true,
+        explanation: {
+            zh: '商品交易所提供贵金属、能源和农产品的期货和现货交易',
+            en: 'Commodity exchanges provide futures and spot trading for precious metals, energy, and agricultural products'
+        }
+    },
+    {
+        id: 'cd-76', source: 'market-crypto', target: 'instr-crypto', type: 'trades', strength: 3, bidirectional: true,
+        explanation: {
+            zh: '加密货币交易所提供数字资产的现货和衍生品交易',
+            en: 'Cryptocurrency exchanges provide spot and derivatives trading for digital assets'
+        }
+    },
+    {
+        id: 'cd-77', source: 'inst-fund', target: 'instr-mutual-fund', type: 'provides', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '基金公司创建和管理共同基金产品，为投资者提供专业化资产管理',
+            en: 'Fund companies create and manage mutual funds, providing professional asset management for investors'
+        }
+    },
+    {
+        id: 'cd-78', source: 'inst-commercial-bank', target: 'instr-cd', type: 'issues', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '商业银行发行大额存单作为吸收存款和提供投资收益的工具',
+            en: 'Commercial banks issue certificates of deposit to attract deposits and provide investment returns'
+        }
     }
 ];
