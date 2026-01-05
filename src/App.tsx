@@ -5,8 +5,8 @@ import { Header } from './components/Layout';
 import { ForceGraph } from './components/Visualization';
 import { EntityPanel } from './components/EntityPanel';
 import { sampleData } from './data/sampleData';
-import type { Entity, Domain, Language } from './types';
-import { DomainConfig } from './types';
+import type { Entity, Domain, Language, RiskLevel } from './types';
+import { DomainConfig, RiskLevelConfig } from './types';
 import './App.css';
 
 function App() {
@@ -111,6 +111,17 @@ function App() {
             <span>{language === 'zh' ? '实体' : 'Entities'}: {stats.total}</span>
             <span>{language === 'zh' ? '关系' : 'Relations'}: {stats.relationships}</span>
           </div>
+
+          {/* 风险等级图例 */}
+          <div className="legend-divider" />
+          <h4>{language === 'zh' ? '风险等级' : 'Risk Levels'}</h4>
+          {(Object.entries(RiskLevelConfig) as [RiskLevel, typeof RiskLevelConfig[RiskLevel]][]).map(([level, config]) => (
+            <div key={level} className="legend-item risk-legend-item">
+              <span className="legend-dot" style={{ background: config.color }} />
+              <span className="legend-icon">{config.icon}</span>
+              <span>{config.name[language]}</span>
+            </div>
+          ))}
         </div>
 
         {/* 力导向图 */}

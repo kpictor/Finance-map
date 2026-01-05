@@ -205,6 +205,71 @@ export const institutionEntities: Entity[] = [
         description: { zh: '技术驱动的金融服务', en: 'Technology-driven financial services' },
         domain: 'institutions', category: 'emerging', icon: '💻',
         tags: ['fintech', 'digital']
+    },
+
+    // === 主要交易所 ===
+    {
+        id: 'inst-nyse',
+        name: { zh: '纽约证券交易所', en: 'NYSE' },
+        description: { zh: '全球最大的证券交易所，按上市公司市值计', en: 'World\'s largest stock exchange by market capitalization' },
+        domain: 'institutions', category: 'exchange', icon: '🇺🇸',
+        tags: ['nyse', 'usa', 'equity']
+    },
+    {
+        id: 'inst-nasdaq',
+        name: { zh: '纳斯达克', en: 'NASDAQ' },
+        description: { zh: '全球首个电子证券交易所，科技股集中地', en: 'First electronic stock exchange, home to tech giants' },
+        domain: 'institutions', category: 'exchange', icon: '💻',
+        tags: ['nasdaq', 'tech', 'usa']
+    },
+    {
+        id: 'inst-sse',
+        name: { zh: '上海证券交易所', en: 'Shanghai Stock Exchange' },
+        description: { zh: '中国大陆最大证券交易所', en: 'Largest stock exchange in mainland China' },
+        domain: 'institutions', category: 'exchange', icon: '🇨🇳',
+        tags: ['sse', 'china', 'a-share']
+    },
+    {
+        id: 'inst-szse',
+        name: { zh: '深圳证券交易所', en: 'Shenzhen Stock Exchange' },
+        description: { zh: '中国第二大证券交易所，创业板所在地', en: 'Second largest in China, home to ChiNext' },
+        domain: 'institutions', category: 'exchange', icon: '🇨🇳',
+        tags: ['szse', 'china', 'chinext']
+    },
+    {
+        id: 'inst-hkex',
+        name: { zh: '香港交易所', en: 'HKEX' },
+        description: { zh: '亚洲领先的交易所，连接中国与国际市场', en: 'Asia\'s leading exchange connecting China with global markets' },
+        domain: 'institutions', category: 'exchange', icon: '🇭🇰',
+        tags: ['hkex', 'hong-kong', 'stock-connect']
+    },
+    {
+        id: 'inst-tse',
+        name: { zh: '东京证券交易所', en: 'Tokyo Stock Exchange' },
+        description: { zh: '日本最大证券交易所，亚洲第二大', en: 'Japan\'s largest stock exchange, second in Asia' },
+        domain: 'institutions', category: 'exchange', icon: '🇯🇵',
+        tags: ['tse', 'japan', 'nikkei']
+    },
+    {
+        id: 'inst-lse',
+        name: { zh: '伦敦证券交易所', en: 'London Stock Exchange' },
+        description: { zh: '欧洲最大证券交易所之一，全球金融中心', en: 'One of Europe\'s largest exchanges, global financial hub' },
+        domain: 'institutions', category: 'exchange', icon: '🇬🇧',
+        tags: ['lse', 'uk', 'ftse']
+    },
+    {
+        id: 'inst-cme',
+        name: { zh: '芝加哥商业交易所', en: 'CME Group' },
+        description: { zh: '全球最大的衍生品交易所，期货期权交易中心', en: 'World\'s largest derivatives exchange for futures and options' },
+        domain: 'institutions', category: 'exchange', icon: '📊',
+        tags: ['cme', 'futures', 'derivatives', 'usa']
+    },
+    {
+        id: 'inst-ice',
+        name: { zh: '洲际交易所', en: 'ICE' },
+        description: { zh: '运营商品、金融和股权期货交易所', en: 'Operates commodity, financial, and equity futures exchanges' },
+        domain: 'institutions', category: 'exchange', icon: '🌐',
+        tags: ['ice', 'commodities', 'nyse-parent']
     }
 ];
 
@@ -243,5 +308,26 @@ export const institutionRelationships: Relationship[] = [
     // 业务竞争与合作
     { id: 'ir-21', source: 'inst-commercial-bank', target: 'inst-investment-bank', type: 'competes_with', strength: 2, bidirectional: true },
     { id: 'ir-22', source: 'inst-securities', target: 'inst-fund', type: 'cooperates_with', strength: 2, bidirectional: true },
-    { id: 'ir-23', source: 'inst-fintech', target: 'inst-commercial-bank', type: 'competes_with', strength: 2, bidirectional: true }
+    { id: 'ir-23', source: 'inst-fintech', target: 'inst-commercial-bank', type: 'competes_with', strength: 2, bidirectional: true },
+
+    // 交易所层级
+    { id: 'ir-24', source: 'inst-exchange', target: 'inst-nyse', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-25', source: 'inst-exchange', target: 'inst-nasdaq', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-26', source: 'inst-exchange', target: 'inst-sse', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-27', source: 'inst-exchange', target: 'inst-szse', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-28', source: 'inst-exchange', target: 'inst-hkex', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-29', source: 'inst-exchange', target: 'inst-tse', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-30', source: 'inst-exchange', target: 'inst-lse', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-31', source: 'inst-exchange', target: 'inst-cme', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-32', source: 'inst-exchange', target: 'inst-ice', type: 'provides', strength: 3, bidirectional: false },
+
+    // 交易所竞争关系
+    { id: 'ir-33', source: 'inst-nyse', target: 'inst-nasdaq', type: 'competes_with', strength: 3, bidirectional: true },
+    { id: 'ir-34', source: 'inst-sse', target: 'inst-szse', type: 'competes_with', strength: 2, bidirectional: true },
+    { id: 'ir-35', source: 'inst-cme', target: 'inst-ice', type: 'competes_with', strength: 3, bidirectional: true },
+
+    // 跨境合作（港股通、沪伦通）
+    { id: 'ir-36', source: 'inst-hkex', target: 'inst-sse', type: 'cooperates_with', strength: 3, bidirectional: true },
+    { id: 'ir-37', source: 'inst-hkex', target: 'inst-szse', type: 'cooperates_with', strength: 3, bidirectional: true },
+    { id: 'ir-38', source: 'inst-lse', target: 'inst-sse', type: 'cooperates_with', strength: 2, bidirectional: true }
 ];

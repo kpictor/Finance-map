@@ -349,5 +349,86 @@ export const crossDomainRelationships: Relationship[] = [
             zh: '商业银行发行大额存单作为吸收存款和提供投资收益的工具',
             en: 'Commercial banks issue certificates of deposit to attract deposits and provide investment returns'
         }
+    },
+
+    // === 宏观经济到指数的传导 ===
+    {
+        id: 'cd-80', source: 'macro-interest-rate', target: 'market-index-sp500', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '利率上升提高企业融资成本和折现率，压制股票估值；降息则有利于股市上涨',
+            en: 'Rising rates increase borrowing costs and discount rates, suppressing valuations; rate cuts favor equity rallies'
+        }
+    },
+    {
+        id: 'cd-81', source: 'macro-cpi', target: 'market-index-sp500', type: 'influences', strength: 2, bidirectional: false,
+        explanation: {
+            zh: '高通胀侵蚀企业利润和消费者购买力，影响股市表现；温和通胀则有利于企业提价',
+            en: 'High inflation erodes profits and consumer purchasing power; moderate inflation allows pricing power'
+        }
+    },
+    {
+        id: 'cd-82', source: 'macro-employment', target: 'market-index-sp500', type: 'influences', strength: 2, bidirectional: false,
+        explanation: {
+            zh: '就业数据反映经济健康程度，强劲就业推动消费和企业盈利，利好股市',
+            en: 'Employment data reflects economic health; strong jobs boost consumption and earnings, benefiting stocks'
+        }
+    },
+    {
+        id: 'cd-83', source: 'macro-crisis', target: 'market-index-vix', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '金融危机期间市场恐慌情绪急剧上升，VIX指数飙升反映投资者避险需求',
+            en: 'VIX spikes during crises as market panic rises, reflecting investor flight to safety'
+        }
+    },
+    {
+        id: 'cd-84', source: 'macro-recession', target: 'market-index-sp500', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '经济衰退导致企业盈利下滑，股市通常提前3-6个月反映衰退预期',
+            en: 'Recessions hurt corporate earnings; markets typically price in recession 3-6 months ahead'
+        }
+    },
+    {
+        id: 'cd-85', source: 'macro-qe', target: 'market-index-sp500', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '量化宽松向市场注入流动性，推动风险资产价格上涨，利好股市',
+            en: 'QE injects liquidity into markets, pushing up risk asset prices and benefiting equities'
+        }
+    },
+    {
+        id: 'cd-86', source: 'macro-interest-rate', target: 'market-index-csi300', type: 'influences', strength: 2, bidirectional: false,
+        explanation: {
+            zh: '中国央行利率政策影响A股流动性和估值水平，降息通常利好股市',
+            en: 'PBOC rate policy affects A-share liquidity and valuations; rate cuts typically boost stocks'
+        }
+    },
+
+    // === 交易所与市场/指数关联 ===
+    {
+        id: 'cd-87', source: 'inst-nyse', target: 'market-index-djia', type: 'provides', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '道琼斯工业指数成分股主要在纽约证交所上市交易',
+            en: 'Dow Jones Industrial Average components are primarily listed and traded on NYSE'
+        }
+    },
+    {
+        id: 'cd-88', source: 'inst-nasdaq', target: 'market-index-nasdaq', type: 'provides', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '纳斯达克综合指数反映纳斯达克交易所全部上市公司的整体表现',
+            en: 'NASDAQ Composite reflects overall performance of all NASDAQ-listed companies'
+        }
+    },
+    {
+        id: 'cd-89', source: 'inst-sse', target: 'market-index-csi300', type: 'provides', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '沪深300指数包含上海证交所大部分大盘股，是A股核心基准',
+            en: 'CSI 300 includes most SSE large-caps, serving as core A-share benchmark'
+        }
+    },
+    {
+        id: 'cd-90', source: 'inst-hkex', target: 'market-index-hsi', type: 'provides', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '恒生指数由香港交易所设计和维护，反映港股核心表现',
+            en: 'Hang Seng Index is designed and maintained by HKEX, reflecting core HK stock performance'
+        }
     }
 ];

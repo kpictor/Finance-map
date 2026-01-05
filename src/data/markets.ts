@@ -196,6 +196,71 @@ export const marketEntities: Entity[] = [
         description: { zh: '去中心化金融协议', en: 'Decentralized finance protocols' },
         domain: 'markets', category: 'crypto', icon: '🔗',
         tags: ['defi', 'dex', 'yield']
+    },
+
+    // === 主要股票指数 ===
+    {
+        id: 'market-index-sp500',
+        name: { zh: '标普500', en: 'S&P 500' },
+        description: { zh: '美国500家大型上市公司指数，全球最重要的股市基准', en: 'Index of 500 large US companies, most important global equity benchmark' },
+        domain: 'markets', category: 'index', icon: '🇺🇸',
+        tags: ['sp500', 'usa', 'benchmark']
+    },
+    {
+        id: 'market-index-djia',
+        name: { zh: '道琼斯工业指数', en: 'Dow Jones Industrial Average' },
+        description: { zh: '美国30家蓝筹股价格加权指数', en: 'Price-weighted index of 30 US blue-chip stocks' },
+        domain: 'markets', category: 'index', icon: '🏭',
+        tags: ['djia', 'dow', 'blue-chip']
+    },
+    {
+        id: 'market-index-nasdaq',
+        name: { zh: '纳斯达克综合指数', en: 'NASDAQ Composite' },
+        description: { zh: '纳斯达克交易所全部上市公司综合指数', en: 'Index of all NASDAQ listed companies' },
+        domain: 'markets', category: 'index', icon: '💻',
+        tags: ['nasdaq', 'tech', 'composite']
+    },
+    {
+        id: 'market-index-csi300',
+        name: { zh: '沪深300', en: 'CSI 300' },
+        description: { zh: '沪深两市300只大盘股指数，A股核心基准', en: 'Index of 300 large-cap A-shares, core China equity benchmark' },
+        domain: 'markets', category: 'index', icon: '🇨🇳',
+        tags: ['csi300', 'china', 'a-share']
+    },
+    {
+        id: 'market-index-csi500',
+        name: { zh: '中证500', en: 'CSI 500' },
+        description: { zh: '沪深两市500只中盘股指数', en: 'Index of 500 mid-cap A-shares' },
+        domain: 'markets', category: 'index', icon: '🇨🇳',
+        tags: ['csi500', 'china', 'mid-cap']
+    },
+    {
+        id: 'market-index-hsi',
+        name: { zh: '恒生指数', en: 'Hang Seng Index' },
+        description: { zh: '香港50只大型股票指数', en: 'Index of 50 largest Hong Kong stocks' },
+        domain: 'markets', category: 'index', icon: '🇭🇰',
+        tags: ['hsi', 'hong-kong', 'blue-chip']
+    },
+    {
+        id: 'market-index-nikkei',
+        name: { zh: '日经225', en: 'Nikkei 225' },
+        description: { zh: '东京证交所225只大型股票指数', en: 'Index of 225 largest Tokyo Stock Exchange stocks' },
+        domain: 'markets', category: 'index', icon: '🇯🇵',
+        tags: ['nikkei', 'japan', 'tse']
+    },
+    {
+        id: 'market-index-ftse100',
+        name: { zh: '富时100', en: 'FTSE 100' },
+        description: { zh: '伦敦证交所100只大型股票指数', en: 'Index of 100 largest London Stock Exchange stocks' },
+        domain: 'markets', category: 'index', icon: '🇬🇧',
+        tags: ['ftse', 'uk', 'lse']
+    },
+    {
+        id: 'market-index-vix',
+        name: { zh: 'VIX恐慌指数', en: 'VIX Volatility Index' },
+        description: { zh: '标普500期权隐含波动率指数，衡量市场恐慌程度', en: 'S&P 500 implied volatility index, measures market fear' },
+        domain: 'markets', category: 'index', icon: '📉',
+        tags: ['vix', 'volatility', 'fear-index']
     }
 ];
 
@@ -239,5 +304,21 @@ export const marketRelationships: Relationship[] = [
     { id: 'mr-18', source: 'market-futures', target: 'market-commodities', type: 'derives_from', strength: 3, bidirectional: false },
     { id: 'mr-19', source: 'market-options', target: 'market-equity', type: 'derives_from', strength: 3, bidirectional: false },
     { id: 'mr-20', source: 'market-swaps', target: 'market-bond', type: 'derives_from', strength: 2, bidirectional: false },
-    { id: 'mr-21', source: 'market-forex-forward', target: 'market-derivatives', type: 'depends_on', strength: 2, bidirectional: false }
+    { id: 'mr-21', source: 'market-forex-forward', target: 'market-derivatives', type: 'depends_on', strength: 2, bidirectional: false },
+
+    // 指数与市场关系
+    { id: 'mr-24', source: 'market-equity', target: 'market-index-sp500', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'mr-25', source: 'market-equity', target: 'market-index-djia', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'mr-26', source: 'market-equity', target: 'market-index-nasdaq', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'mr-27', source: 'market-equity', target: 'market-index-csi300', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'mr-28', source: 'market-equity', target: 'market-index-csi500', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'mr-29', source: 'market-equity', target: 'market-index-hsi', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'mr-30', source: 'market-equity', target: 'market-index-nikkei', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'mr-31', source: 'market-equity', target: 'market-index-ftse100', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'mr-32', source: 'market-derivatives', target: 'market-index-vix', type: 'provides', strength: 3, bidirectional: false },
+
+    // 指数间影响关系
+    { id: 'mr-33', source: 'market-index-sp500', target: 'market-index-csi300', type: 'influences', strength: 2, bidirectional: false },
+    { id: 'mr-34', source: 'market-index-sp500', target: 'market-index-hsi', type: 'influences', strength: 2, bidirectional: false },
+    { id: 'mr-35', source: 'market-index-sp500', target: 'market-index-nikkei', type: 'influences', strength: 2, bidirectional: false }
 ];

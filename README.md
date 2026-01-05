@@ -17,11 +17,22 @@ An interactive financial system knowledge graph to help understand complex relat
 
 | 领域 | Domain | 实体数 | Entities |
 |------|--------|--------|----------|
-| 金融市场 | Financial Markets | 25 | Stock, Bond, Forex, Derivatives, etc. |
-| 金融机构 | Financial Institutions | 27 | Banks, Funds, Insurance, Regulators |
-| 金融工具 | Financial Instruments | 22 | Stocks, Bonds, Options, ETFs |
-| 宏观经济 | Macroeconomics | 23 | Monetary Policy, Indicators, Cycles |
-| **总计** | **Total** | **97** | **143 relationships** |
+| 金融市场 | Financial Markets | 26 | Stock, Bond, Forex, Derivatives, Commodities, Crypto |
+| 金融机构 | Financial Institutions | 27 | Central Banks, Commercial Banks, Funds, Insurance, Regulators |
+| 金融工具 | Financial Instruments | 56 | Stocks, Bonds, Options, Futures, ETFs, Structured Products |
+| 宏观经济 | Macroeconomics | 23 | Monetary Policy, Fiscal Policy, Indicators, Cycles |
+| **总计** | **Total** | **132** | **200+ relationships** |
+
+## 🎯 风险等级 / Risk Levels
+
+金融工具按照 IBKR 风格分为4个风险等级：
+
+| 等级 | Level | 颜色 | 描述 |
+|------|-------|------|------|
+| 🟢 L1 | Conservative | 深绿 | 低风险，追求本金安全（国债、货币基金） |
+| 🔵 L2 | Moderate | 深蓝 | 中低风险，平衡风险收益（ETF、企业债） |
+| 🟣 L3 | Aggressive | 紫色 | 中高风险，追求增值（股票、期货） |
+| 🔴 L4 | Speculative | 红色 | 高风险，可能损失本金（权证、雪球期权） |
 
 ## 🛠️ 技术栈 / Tech Stack
 
