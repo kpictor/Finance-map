@@ -63,6 +63,15 @@ export const EntityPanel: React.FC<EntityPanelProps> = ({
                     <p>{entity.description[language]}</p>
                 </section>
 
+                {entity.details && (
+                    <section className="panel-section">
+                        <h3>{t('labels.details', '详细介绍')}</h3>
+                        <div className="entity-details">
+                            {entity.details[language]}
+                        </div>
+                    </section>
+                )}
+
                 {entity.tags && entity.tags.length > 0 && (
                     <section className="panel-section">
                         <div className="entity-tags">

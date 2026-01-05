@@ -7,6 +7,10 @@ export const instrumentEntities: Entity[] = [
         id: 'instr-stock',
         name: { zh: '股票', en: 'Stocks' },
         description: { zh: '公司所有权份额证券', en: 'Equity ownership securities' },
+        details: {
+            zh: '股票是股份公司发行的所有权凭证，代表股东对公司资产和收益的剩余索取权。持有股票的投资者成为公司股东，享有分红权、投票权和剩余财产分配权。股票价格受公司基本面、市场情绪、宏观经济等多种因素影响，波动较大。投资股票需要关注公司财务报表、行业前景、估值水平等因素。股票是长期财富增值的重要工具，但短期波动风险较高，适合具有一定风险承受能力的投资者。',
+            en: 'Stocks are ownership certificates issued by corporations, representing shareholders\' residual claims on company assets and earnings. Stock investors become shareholders with rights to dividends, voting, and residual asset distribution. Stock prices are influenced by company fundamentals, market sentiment, macroeconomic conditions, and other factors, leading to significant volatility. Stock investing requires attention to financial statements, industry outlook, and valuation levels. Stocks are important tools for long-term wealth accumulation but carry high short-term volatility risk, suitable for investors with adequate risk tolerance.'
+        },
         domain: 'instruments', category: 'equity', icon: '📈',
         tags: ['stock', 'equity'],
         riskLevel: 'L3'
@@ -49,6 +53,10 @@ export const instrumentEntities: Entity[] = [
         id: 'instr-bond',
         name: { zh: '债券', en: 'Bonds' },
         description: { zh: '固定收益债务证券', en: 'Fixed-income debt securities' },
+        details: {
+            zh: '债券是发行人（政府、企业等）向投资者借款的凭证，承诺按约定利率支付利息并在到期日偿还本金。债券投资者是发行人的债权人，享有优先于股东的受偿权。债券价格与利率呈反向关系，利率上升时债券价格下跌。投资债券需要关注信用评级、久期、收益率曲线等因素。债券通常比股票风险更低，收益更稳定，是资产配置中的重要组成部分，适合追求稳定收益的投资者。',
+            en: 'Bonds are debt instruments issued by governments, corporations, and other entities to borrow money from investors, promising to pay interest at agreed rates and repay principal at maturity. Bondholders are creditors with priority claims over shareholders. Bond prices move inversely to interest rates - when rates rise, bond prices fall. Bond investing requires attention to credit ratings, duration, and yield curves. Bonds typically carry lower risk than stocks with more stable returns, forming an essential part of asset allocation for investors seeking steady income.'
+        },
         domain: 'instruments', category: 'fixed-income', icon: '📜',
         tags: ['bond', 'debt'],
         riskLevel: 'L2'
@@ -382,6 +390,10 @@ export const instrumentEntities: Entity[] = [
         id: 'instr-closed-end-fund',
         name: { zh: '封闭式基金', en: 'Closed-End Funds' },
         description: { zh: '固定份额、可在交易所交易的投资基金，不接受申购赎回', en: 'Fixed-share investment funds tradable on exchanges, no subscriptions or redemptions' },
+        details: {
+            zh: '封闭式基金是指基金份额在发行时就已确定，在封闭期内不接受新的申购或赎回，但可以在交易所二级市场买卖的基金。由于不需应对日常赎回，基金经理可以更专注于长期投资策略。封闭式基金的交易价格可能高于或低于其净资产价值(NAV)，这种差异称为溢价或折价。封闭式基金适合能够承受流动性较低、希望利用折价机会的投资者。',
+            en: 'Closed-end funds are investment funds with a fixed number of shares determined at issuance, which do not accept new subscriptions or redemptions during the closed period but can be traded on secondary markets. Since managers don\'t need to handle daily redemptions, they can focus more on long-term investment strategies. Closed-end fund prices may trade above or below their Net Asset Value (NAV), creating premiums or discounts. They are suitable for investors who can tolerate lower liquidity and wish to capitalize on discount opportunities.'
+        },
         domain: 'instruments', category: 'fund', icon: '🔒',
         tags: ['closed-end', 'listed', 'cef'],
         riskLevel: 'L2'
@@ -390,6 +402,10 @@ export const instrumentEntities: Entity[] = [
         id: 'instr-open-end-fund',
         name: { zh: '开放式基金', en: 'Open-End Funds' },
         description: { zh: '可随时申购赎回的投资基金，份额随资金流动变化', en: 'Investment funds allowing subscriptions and redemptions at any time' },
+        details: {
+            zh: '开放式基金是指基金份额不固定，投资者可以随时按净值申购或赎回的基金。这是目前最常见的基金形式，流动性好、门槛低、操作便捷。申购和赎回价格基于基金净值(NAV)计算，通常T+1确认。开放式基金包括股票型、债券型、混合型、货币型等多种类型，适合不同风险偏好的投资者。需注意的是申购费、赎回费和管理费等成本。',
+            en: 'Open-end funds are investment funds with variable shares that investors can subscribe to or redeem at NAV at any time. This is the most common fund type, offering good liquidity, low thresholds, and convenient operation. Subscription and redemption prices are based on Net Asset Value (NAV), typically confirmed T+1. Open-end funds include equity, bond, balanced, and money market types, suitable for investors with different risk preferences. Important costs to consider include subscription fees, redemption fees, and management fees.'
+        },
         domain: 'instruments', category: 'fund', icon: '🔓',
         tags: ['open-end', 'redemption'],
         riskLevel: 'L2'
@@ -406,6 +422,10 @@ export const instrumentEntities: Entity[] = [
         id: 'instr-fof',
         name: { zh: 'FOF基金', en: 'Fund of Funds' },
         description: { zh: '投资于其他基金的基金，通过分散投资降低风险', en: 'Funds that invest in other funds, reducing risk through diversification' },
+        details: {
+            zh: 'FOF(基金中基金)是指专门投资于其他基金的基金，通过一笔投资即可实现跨策略、跨资产类别的分散配置。FOF由专业管理人负责筛选和配置底层基金，降低了投资者自行选基的难度。常见的FOF类型包括养老目标日期基金、全天候策略基金等。FOF的缺点是可能存在双重收费（母基金和子基金都收取管理费），但对于缺乏时间或专业皓力的投资者是很好的一站式解决方案。',
+            en: 'FOF (Fund of Funds) invests in other funds, achieving cross-strategy and cross-asset diversification through a single investment. FOF managers are responsible for selecting and allocating underlying funds, reducing the difficulty of fund selection for investors. Common FOF types include target-date retirement funds and all-weather strategy funds. The downside of FOF is potential double-layer fees (both parent and underlying funds charge management fees), but it\'s an excellent one-stop solution for investors lacking time or expertise.'
+        },
         domain: 'instruments', category: 'fund', icon: '🎯',
         tags: ['fof', 'multi-manager', 'diversified'],
         riskLevel: 'L2'

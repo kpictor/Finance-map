@@ -33,6 +33,7 @@
             "relatedEntities": "相关实体",
             "relationships": "关联关系",
             "description": "描述",
+            "details": "详细介绍",
             "category": "分类",
             "noResults": "未找到结果",
             "loading": "加载中..."

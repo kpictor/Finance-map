@@ -33,6 +33,7 @@
             "relatedEntities": "Related Entities",
             "relationships": "Relationships",
             "description": "Description",
+            "details": "Details",
             "category": "Category",
             "noResults": "No results found",
             "loading": "Loading..."

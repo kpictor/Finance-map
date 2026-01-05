@@ -219,6 +219,10 @@ export const institutionEntities: Entity[] = [
         id: 'inst-bloomberg',
         name: { zh: '彭博', en: 'Bloomberg' },
         description: { zh: '全球领先的金融数据和分析终端提供商，彭博终端是金融行业标准', en: 'Leading global financial data and analytics terminal provider, Bloomberg Terminal is the industry standard' },
+        details: {
+            zh: '彭博(Bloomberg)由迈克尔·布隆伯格于1981年创立，是全球最大的金融信息服务公司之一。其核心产品彭博终端(Bloomberg Terminal)被全球超迃35万名金融专业人士使用，提供实时市场数据、新闻、分析工具和交易功能。彭博还运营彭博新闻社、彭博电视等媒体业务。终端年订阅费约为2万美元，是投资银行、对冲基金、资产管理公司等机构的标配工具。',
+            en: 'Bloomberg was founded by Michael Bloomberg in 1981 and is one of the world\'s largest financial information services companies. Its core product, the Bloomberg Terminal, is used by over 350,000 financial professionals globally, providing real-time market data, news, analytics tools, and trading capabilities. Bloomberg also operates Bloomberg News and Bloomberg TV. The terminal subscription costs approximately $20,000 per year and is a standard tool for investment banks, hedge funds, and asset management firms.'
+        },
         domain: 'institutions', category: 'data-provider', icon: '📊',
         tags: ['bloomberg', 'terminal', 'data']
     },
@@ -233,6 +237,10 @@ export const institutionEntities: Entity[] = [
         id: 'inst-wind',
         name: { zh: '万得', en: 'Wind Information' },
         description: { zh: '中国领先的金融数据服务商，覆盖A股及全球市场', en: 'China\'s leading financial data provider covering A-shares and global markets' },
+        details: {
+            zh: '万得信息(Wind)是中国大陆领先的金融数据服务商，成立于1994年，是中国金融行业的标配终端。万得提供全面的中国A股、债券、基金、宏观经济等数据，同时覆盖港股、美股等全球市场。其特色包括Excel插件、量化研究工具、行业数据库等。万得是中国券商、基金公司、研究机构的主流工具，在中国市场的地位类似于彭博在全球市场的位置。',
+            en: 'Wind Information is mainland China\'s leading financial data provider, founded in 1994, and the standard terminal for China\'s financial industry. Wind provides comprehensive data on China A-shares, bonds, funds, and macroeconomics, while also covering Hong Kong stocks, US stocks, and other global markets. Features include Excel plugins, quantitative research tools, and industry databases. Wind is the mainstream tool for Chinese securities firms, fund companies, and research institutions, holding a position in the Chinese market similar to Bloomberg\'s global status.'
+        },
         domain: 'institutions', category: 'data-provider', icon: '🇨🇳',
         tags: ['wind', 'china', 'data']
     },
