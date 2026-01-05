@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import type { Entity, Relationship, GraphNode, GraphLink, Language } from '../../types';
 import { DomainConfig, RiskLevelConfig } from '../../types';
+import { useDimensions } from '../../hooks';
 import './ForceGraph.css';
 
 interface ForceGraphProps {
@@ -23,31 +24,9 @@ export const ForceGraph: React.FC<ForceGraphProps> = ({
 }) => {
     const svgRef = useRef<SVGSVGElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
-    const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
 
-    // 处理窗口大小变化
-    useEffect(() => {
-        const handleResize = () => {
-            if (containerRef.current) {
-                const rect = containerRef.current.getBoundingClientRect();
-                // 确保有最小尺寸
-                const width = Math.max(rect.width, 800);
-                const height = Math.max(rect.height, 500);
-                if (width > 0 && height > 0) {
-                    setDimensions({ width, height });
-                }
-            }
-        };
-
-        // 初始化时延迟调用以确保 DOM 已渲染
-        const timer = setTimeout(handleResize, 100);
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            clearTimeout(timer);
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+    // 使用 useDimensions hook 处理尺寸监听
+    const dimensions = useDimensions(containerRef, { minWidth: 800, minHeight: 500 });
 
     // 创建和更新力导向图
     useEffect(() => {

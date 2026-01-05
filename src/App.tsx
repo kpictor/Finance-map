@@ -1,92 +1,35 @@
-import { useState, useMemo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
 import './i18n';
+import { AppProvider, useAppContext } from './context/AppContext';
 import { Header } from './components/Layout';
 import { ForceGraph } from './components/Visualization';
 import { EntityPanel } from './components/EntityPanel';
-import { sampleData } from './data/sampleData';
-import type { Entity, Domain, Language, RiskLevel } from './types';
+import { ErrorBoundary } from './components/ErrorBoundary';
+import type { Domain, RiskLevel } from './types';
 import { DomainConfig, RiskLevelConfig } from './types';
 import './App.css';
 
-function App() {
-  const { i18n } = useTranslation();
-
-  // 应用状态
-  const [language, setLanguage] = useState<Language>(
-    (i18n.language?.startsWith('zh') ? 'zh' : 'en') as Language
-  );
-  const [selectedDomain, setSelectedDomain] = useState<Domain | null>(null);
-  const [selectedEntity, setSelectedEntity] = useState<Entity | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [hoveredEntity, setHoveredEntity] = useState<Entity | null>(null);
-
-  // 切换语言
-  const handleLanguageChange = useCallback((lang: Language) => {
-    setLanguage(lang);
-    i18n.changeLanguage(lang);
-  }, [i18n]);
-
-  // 过滤实体
-  const filteredEntities = useMemo(() => {
-    let entities = sampleData.entities;
-
-    // 按领域过滤
-    if (selectedDomain) {
-      entities = entities.filter(e => e.domain === selectedDomain);
-    }
-
-    // 按搜索词过滤
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase();
-      entities = entities.filter(e =>
-        e.name.zh.toLowerCase().includes(query) ||
-        e.name.en.toLowerCase().includes(query) ||
-        e.tags?.some(tag => tag.toLowerCase().includes(query))
-      );
-    }
-
-    return entities;
-  }, [selectedDomain, searchQuery]);
-
-  // 过滤关系
-  const filteredRelationships = useMemo(() => {
-    const entityIds = new Set(filteredEntities.map(e => e.id));
-    return sampleData.relationships.filter(
-      r => entityIds.has(r.source) && entityIds.has(r.target)
-    );
-  }, [filteredEntities]);
-
-  // 处理实体点击
-  const handleEntityClick = useCallback((entity: Entity | null) => {
-    setSelectedEntity(entity);
-  }, []);
-
-  // 处理实体悬停
-  const handleEntityHover = useCallback((entity: Entity | null) => {
-    setHoveredEntity(entity);
-  }, []);
-
-  // 获取统计信息
-  const stats = useMemo(() => ({
-    total: sampleData.entities.length,
-    markets: sampleData.entities.filter(e => e.domain === 'markets').length,
-    institutions: sampleData.entities.filter(e => e.domain === 'institutions').length,
-    instruments: sampleData.entities.filter(e => e.domain === 'instruments').length,
-    macro: sampleData.entities.filter(e => e.domain === 'macro').length,
-    relationships: sampleData.relationships.length
-  }), []);
+// 主应用内容组件
+function AppContent() {
+  const {
+    language,
+    selectedDomain,
+    selectedEntity,
+    hoveredEntity,
+    filteredEntities,
+    filteredRelationships,
+    entities,
+    relationships,
+    stats,
+    setSelectedDomain,
+    setSearchQuery,
+    setSelectedEntity,
+    setHoveredEntity,
+    resetFilters
+  } = useAppContext();
 
   return (
     <div className="app">
-      <Header
-        language={language}
-        onLanguageChange={handleLanguageChange}
-        selectedDomain={selectedDomain}
-        onDomainChange={setSelectedDomain}
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-      />
+      <Header />
 
       <main className="app-main">
         {/* 图例 */}
@@ -102,7 +45,7 @@ function App() {
               <span className="legend-icon">{config.icon}</span>
               <span>{config.name[language]}</span>
               <span className="legend-count">
-                {sampleData.entities.filter(e => e.domain === key).length}
+                {entities.filter(e => e.domain === key).length}
               </span>
             </div>
           ))}
@@ -130,8 +73,8 @@ function App() {
           relationships={filteredRelationships}
           language={language}
           selectedEntity={selectedEntity}
-          onEntityClick={handleEntityClick}
-          onEntityHover={handleEntityHover}
+          onEntityClick={setSelectedEntity}
+          onEntityHover={setHoveredEntity}
         />
 
         {/* 悬停提示 */}
@@ -151,10 +94,10 @@ function App() {
         <EntityPanel
           entity={selectedEntity}
           language={language}
-          relationships={sampleData.relationships}
-          entities={sampleData.entities}
+          relationships={relationships}
+          entities={entities}
           onClose={() => setSelectedEntity(null)}
-          onEntitySelect={handleEntityClick}
+          onEntitySelect={setSelectedEntity}
         />
 
         {/* 控制按钮 */}
@@ -162,17 +105,24 @@ function App() {
           <button title={language === 'zh' ? '重置视图' : 'Reset View'}>↺</button>
           <button
             title={language === 'zh' ? '显示全部' : 'Show All'}
-            onClick={() => {
-              setSelectedDomain(null);
-              setSearchQuery('');
-              setSelectedEntity(null);
-            }}
+            onClick={resetFilters}
           >
             ⊕
           </button>
         </div>
       </main>
     </div>
+  );
+}
+
+// 应用入口 - 包装 Provider 和 ErrorBoundary
+function App() {
+  return (
+    <ErrorBoundary>
+      <AppProvider>
+        <AppContent />
+      </AppProvider>
+    </ErrorBoundary>
   );
 }
 

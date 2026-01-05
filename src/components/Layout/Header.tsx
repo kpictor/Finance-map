@@ -1,33 +1,26 @@
 import { useTranslation } from 'react-i18next';
-import type { Domain, Language } from '../../types';
+import { useAppContext } from '../../context/AppContext';
+import type { Domain } from '../../types';
 import { DomainConfig } from '../../types';
 import './Header.css';
 
-interface HeaderProps {
-    language: Language;
-    onLanguageChange: (lang: Language) => void;
-    selectedDomain: Domain | null;
-    onDomainChange: (domain: Domain | null) => void;
-    searchQuery: string;
-    onSearchChange: (query: string) => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({
-    language,
-    onLanguageChange,
-    selectedDomain,
-    onDomainChange,
-    searchQuery,
-    onSearchChange
-}) => {
+export const Header: React.FC = () => {
     const { t } = useTranslation();
+    const {
+        language,
+        selectedDomain,
+        searchQuery,
+        setLanguage,
+        setSelectedDomain,
+        setSearchQuery
+    } = useAppContext();
 
     const domains: Domain[] = ['markets', 'institutions', 'instruments', 'macro'];
 
     return (
         <header className="app-header">
             <div className="header-left">
-                <div className="logo" onClick={() => onDomainChange(null)}>
+                <div className="logo" onClick={() => setSelectedDomain(null)}>
                     <span className="logo-icon">🌐</span>
                     <div className="logo-text">
                         <h1>{t('app.title')}</h1>
@@ -39,7 +32,7 @@ export const Header: React.FC<HeaderProps> = ({
             <nav className="header-nav">
                 <button
                     className={`nav-btn ${selectedDomain === null ? 'active' : ''}`}
-                    onClick={() => onDomainChange(null)}
+                    onClick={() => setSelectedDomain(null)}
                 >
                     {t('nav.home')}
                 </button>
@@ -50,7 +43,7 @@ export const Header: React.FC<HeaderProps> = ({
                         style={{
                             '--domain-color': DomainConfig[domain].color
                         } as React.CSSProperties}
-                        onClick={() => onDomainChange(domain)}
+                        onClick={() => setSelectedDomain(domain)}
                     >
                         <span className="nav-icon">{DomainConfig[domain].icon}</span>
                         {DomainConfig[domain].name[language]}
@@ -65,12 +58,12 @@ export const Header: React.FC<HeaderProps> = ({
                         type="text"
                         placeholder={t('nav.search')}
                         value={searchQuery}
-                        onChange={(e) => onSearchChange(e.target.value)}
+                        onChange={(e) => setSearchQuery(e.target.value)}
                     />
                     {searchQuery && (
                         <button
                             className="clear-search"
-                            onClick={() => onSearchChange('')}
+                            onClick={() => setSearchQuery('')}
                         >
                             ×
                         </button>
@@ -80,13 +73,13 @@ export const Header: React.FC<HeaderProps> = ({
                 <div className="language-toggle">
                     <button
                         className={language === 'zh' ? 'active' : ''}
-                        onClick={() => onLanguageChange('zh')}
+                        onClick={() => setLanguage('zh')}
                     >
                         中
                     </button>
                     <button
                         className={language === 'en' ? 'active' : ''}
-                        onClick={() => onLanguageChange('en')}
+                        onClick={() => setLanguage('en')}
                     >
                         EN
                     </button>
