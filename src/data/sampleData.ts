@@ -23,8 +23,10 @@ export const sampleData: GraphData = {
     ]
 };
 
-// 统计信息
-console.log(`Financial System Map Data:
+// 开发环境统计信息
+// Development environment statistics
+if (import.meta.env.DEV) {
+    console.info(`📊 Financial System Map Data:
   - Total Entities: ${sampleData.entities.length}
   - Total Relationships: ${sampleData.relationships.length}
   - Markets: ${marketEntities.length} entities
@@ -32,5 +34,7 @@ console.log(`Financial System Map Data:
   - Instruments: ${instrumentEntities.length} entities  
   - Macro: ${macroEntities.length} entities
 `);
+}
 
 export default sampleData;
+

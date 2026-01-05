@@ -207,6 +207,43 @@ export const institutionEntities: Entity[] = [
         tags: ['fintech', 'digital']
     },
 
+    // === 金融数据服务商 ===
+    {
+        id: 'inst-data-provider',
+        name: { zh: '金融数据服务商', en: 'Financial Data Providers' },
+        description: { zh: '提供金融市场数据、分析和信息服务', en: 'Providers of financial market data, analytics and information services' },
+        domain: 'institutions', category: 'service', icon: '📡',
+        tags: ['data', 'information', 'analytics']
+    },
+    {
+        id: 'inst-bloomberg',
+        name: { zh: '彭博', en: 'Bloomberg' },
+        description: { zh: '全球领先的金融数据和分析终端提供商，彭博终端是金融行业标准', en: 'Leading global financial data and analytics terminal provider, Bloomberg Terminal is the industry standard' },
+        domain: 'institutions', category: 'data-provider', icon: '📊',
+        tags: ['bloomberg', 'terminal', 'data']
+    },
+    {
+        id: 'inst-reuters',
+        name: { zh: '路透/Refinitiv', en: 'Reuters/Refinitiv' },
+        description: { zh: '全球金融信息服务提供商，现为伦敦证交所集团旗下', en: 'Global financial information provider, now part of LSEG' },
+        domain: 'institutions', category: 'data-provider', icon: '📰',
+        tags: ['reuters', 'refinitiv', 'lseg']
+    },
+    {
+        id: 'inst-wind',
+        name: { zh: '万得', en: 'Wind Information' },
+        description: { zh: '中国领先的金融数据服务商，覆盖A股及全球市场', en: 'China\'s leading financial data provider covering A-shares and global markets' },
+        domain: 'institutions', category: 'data-provider', icon: '🇨🇳',
+        tags: ['wind', 'china', 'data']
+    },
+    {
+        id: 'inst-fitch',
+        name: { zh: '惠誉', en: 'Fitch Ratings' },
+        description: { zh: '全球三大信用评级机构之一', en: 'One of the Big Three global credit rating agencies' },
+        domain: 'institutions', category: 'rating', icon: '📋',
+        tags: ['fitch', 'rating', 'credit']
+    },
+
     // === 主要交易所 ===
     {
         id: 'inst-nyse',
@@ -270,6 +307,155 @@ export const institutionEntities: Entity[] = [
         description: { zh: '运营商品、金融和股权期货交易所', en: 'Operates commodity, financial, and equity futures exchanges' },
         domain: 'institutions', category: 'exchange', icon: '🌐',
         tags: ['ice', 'commodities', 'nyse-parent']
+    },
+
+    // === 全球知名金融机构 ===
+    {
+        id: 'inst-goldman',
+        name: { zh: '高盛集团', en: 'Goldman Sachs' },
+        description: { zh: '全球领先的投资银行和金融服务公司', en: 'Leading global investment bank and financial services company' },
+        domain: 'institutions', category: 'investment-bank', icon: '🏢',
+        tags: ['goldman', 'investment-bank', 'usa']
+    },
+    {
+        id: 'inst-jpmorgan',
+        name: { zh: '摩根大通', en: 'JPMorgan Chase' },
+        description: { zh: '全球最大的综合金融服务机构之一', en: 'One of the world\'s largest universal banks' },
+        domain: 'institutions', category: 'universal-bank', icon: '🏛️',
+        tags: ['jpmorgan', 'usa', 'universal']
+    },
+    {
+        id: 'inst-morgan-stanley',
+        name: { zh: '摩根士丹利', en: 'Morgan Stanley' },
+        description: { zh: '全球领先的投资银行和财富管理公司', en: 'Leading investment bank and wealth management firm' },
+        domain: 'institutions', category: 'investment-bank', icon: '🏢',
+        tags: ['morgan-stanley', 'usa', 'wealth']
+    },
+    {
+        id: 'inst-blackrock',
+        name: { zh: '贝莱德', en: 'BlackRock' },
+        description: { zh: '全球最大的资产管理公司，管理超过10万亿美元', en: 'World\'s largest asset manager with over $10 trillion AUM' },
+        domain: 'institutions', category: 'asset-manager', icon: '💰',
+        tags: ['blackrock', 'etf', 'ishares']
+    },
+    {
+        id: 'inst-vanguard',
+        name: { zh: '先锋集团', en: 'Vanguard' },
+        description: { zh: '全球第二大资产管理公司，低成本指数基金先驱', en: 'Second largest asset manager, pioneer of low-cost index funds' },
+        domain: 'institutions', category: 'asset-manager', icon: '📊',
+        tags: ['vanguard', 'index-fund', 'passive']
+    },
+    {
+        id: 'inst-fidelity',
+        name: { zh: '富达投资', en: 'Fidelity Investments' },
+        description: { zh: '全球最大的共同基金公司之一', en: 'One of the largest mutual fund companies globally' },
+        domain: 'institutions', category: 'asset-manager', icon: '💼',
+        tags: ['fidelity', 'mutual-fund', 'retirement']
+    },
+    {
+        id: 'inst-berkshire',
+        name: { zh: '伯克希尔·哈撒韦', en: 'Berkshire Hathaway' },
+        description: { zh: '沃伦·巴菲特领导的多元化控股公司', en: 'Warren Buffett\'s diversified holding company' },
+        domain: 'institutions', category: 'investment', icon: '🎩',
+        tags: ['berkshire', 'buffett', 'value-investing']
+    },
+    {
+        id: 'inst-icbc',
+        name: { zh: '工商银行', en: 'ICBC' },
+        description: { zh: '全球资产规模最大的银行', en: 'World\'s largest bank by total assets' },
+        domain: 'institutions', category: 'commercial-bank', icon: '🇨🇳',
+        tags: ['icbc', 'china', 'big-four']
+    },
+    {
+        id: 'inst-citic',
+        name: { zh: '中信证券', en: 'CITIC Securities' },
+        description: { zh: '中国最大的证券公司', en: 'China\'s largest securities firm' },
+        domain: 'institutions', category: 'securities', icon: '🇨🇳',
+        tags: ['citic', 'china', 'securities']
+    },
+    {
+        id: 'inst-citadel',
+        name: { zh: '城堡投资', en: 'Citadel' },
+        description: { zh: '全球顶级对冲基金和做市商', en: 'Top global hedge fund and market maker' },
+        domain: 'institutions', category: 'hedge-fund', icon: '🏰',
+        tags: ['citadel', 'hedge-fund', 'market-maker']
+    },
+    {
+        id: 'inst-bridgewater',
+        name: { zh: '桥水基金', en: 'Bridgewater Associates' },
+        description: { zh: '全球最大的对冲基金，以全天候策略著称', en: 'World\'s largest hedge fund, known for All Weather strategy' },
+        domain: 'institutions', category: 'hedge-fund', icon: '🌉',
+        tags: ['bridgewater', 'hedge-fund', 'macro']
+    },
+    {
+        id: 'inst-two-sigma',
+        name: { zh: '两西格马', en: 'Two Sigma' },
+        description: { zh: '顶级量化对冲基金，使用机器学习和大数据', en: 'Top quant hedge fund using ML and big data' },
+        domain: 'institutions', category: 'hedge-fund', icon: '🤖',
+        tags: ['two-sigma', 'quant', 'ai']
+    },
+    {
+        id: 'inst-renaissance',
+        name: { zh: '文艺复兴科技', en: 'Renaissance Technologies' },
+        description: { zh: '传奇量化基金，大奖章基金年化收益超66%', en: 'Legendary quant fund, Medallion fund returns over 66% annually' },
+        domain: 'institutions', category: 'hedge-fund', icon: '🎯',
+        tags: ['renaissance', 'medallion', 'quant']
+    },
+    {
+        id: 'inst-moodys',
+        name: { zh: '穆迪', en: 'Moody\'s' },
+        description: { zh: '全球三大信用评级机构之一', en: 'One of the Big Three credit rating agencies' },
+        domain: 'institutions', category: 'rating', icon: '📋',
+        tags: ['moodys', 'rating', 'credit']
+    },
+    {
+        id: 'inst-sp',
+        name: { zh: '标普全球', en: 'S&P Global' },
+        description: { zh: '全球领先的评级和指数提供商', en: 'Leading global ratings and index provider' },
+        domain: 'institutions', category: 'rating', icon: '📊',
+        tags: ['sp', 'rating', 'index']
+    },
+    {
+        id: 'inst-cboe',
+        name: { zh: '芝加哥期权交易所', en: 'CBOE' },
+        description: { zh: '全球最大的期权交易所，VIX指数发布者', en: 'World\'s largest options exchange, VIX publisher' },
+        domain: 'institutions', category: 'exchange', icon: '🎯',
+        tags: ['cboe', 'options', 'vix']
+    },
+    {
+        id: 'inst-dtcc',
+        name: { zh: 'DTCC', en: 'DTCC' },
+        description: { zh: '全球最大的证券清算和结算机构', en: 'World\'s largest securities clearing and settlement organization' },
+        domain: 'institutions', category: 'clearing', icon: '⚙️',
+        tags: ['dtcc', 'clearing', 'settlement']
+    },
+    {
+        id: 'inst-pimco',
+        name: { zh: '太平洋投资管理', en: 'PIMCO' },
+        description: { zh: '全球最大的债券基金管理公司之一，以固定收益投资著称', en: 'One of the world\'s largest bond fund managers, known for fixed income investing' },
+        domain: 'institutions', category: 'asset-manager', icon: '📜',
+        tags: ['pimco', 'bonds', 'fixed-income']
+    },
+    {
+        id: 'inst-state-street',
+        name: { zh: '道富银行', en: 'State Street' },
+        description: { zh: '全球最大托管银行之一，SPDR ETF发行商', en: 'One of the largest custodian banks globally, issuer of SPDR ETFs' },
+        domain: 'institutions', category: 'asset-manager', icon: '🏦',
+        tags: ['state-street', 'spdr', 'etf', 'custody']
+    },
+    {
+        id: 'inst-franklin',
+        name: { zh: '富兰克林邓普顿', en: 'Franklin Templeton' },
+        description: { zh: '全球知名资产管理公司，多元化投资产品', en: 'Global asset management firm with diversified investment products' },
+        domain: 'institutions', category: 'asset-manager', icon: '🌐',
+        tags: ['franklin', 'templeton', 'mutual-fund']
+    },
+    {
+        id: 'inst-bain',
+        name: { zh: '贝恩资本', en: 'Bain Capital' },
+        description: { zh: '全球知名私募股权投资公司', en: 'Leading global private equity investment firm' },
+        domain: 'institutions', category: 'private-equity', icon: '💼',
+        tags: ['bain', 'private-equity', 'buyout']
     }
 ];
 
@@ -329,5 +515,67 @@ export const institutionRelationships: Relationship[] = [
     // 跨境合作（港股通、沪伦通）
     { id: 'ir-36', source: 'inst-hkex', target: 'inst-sse', type: 'cooperates_with', strength: 3, bidirectional: true },
     { id: 'ir-37', source: 'inst-hkex', target: 'inst-szse', type: 'cooperates_with', strength: 3, bidirectional: true },
-    { id: 'ir-38', source: 'inst-lse', target: 'inst-sse', type: 'cooperates_with', strength: 2, bidirectional: true }
+    { id: 'ir-38', source: 'inst-lse', target: 'inst-sse', type: 'cooperates_with', strength: 2, bidirectional: true },
+
+    // === 新增机构关系 ===
+    // 投资银行层级
+    { id: 'ir-39', source: 'inst-investment-bank', target: 'inst-goldman', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-40', source: 'inst-investment-bank', target: 'inst-morgan-stanley', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-41', source: 'inst-commercial-bank', target: 'inst-jpmorgan', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-42', source: 'inst-state-bank', target: 'inst-icbc', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-43', source: 'inst-securities', target: 'inst-citic', type: 'provides', strength: 3, bidirectional: false },
+
+    // 资产管理公司层级
+    { id: 'ir-44', source: 'inst-fund', target: 'inst-blackrock', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-45', source: 'inst-fund', target: 'inst-vanguard', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-46', source: 'inst-fund', target: 'inst-fidelity', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-47', source: 'inst-private-fund', target: 'inst-bridgewater', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-48', source: 'inst-private-fund', target: 'inst-citadel', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-49', source: 'inst-private-fund', target: 'inst-two-sigma', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-50', source: 'inst-private-fund', target: 'inst-renaissance', type: 'provides', strength: 3, bidirectional: false },
+
+    // 评级机构
+    { id: 'ir-51', source: 'inst-rating', target: 'inst-moodys', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-52', source: 'inst-rating', target: 'inst-sp', type: 'provides', strength: 3, bidirectional: false },
+
+    // 交易所补充
+    { id: 'ir-53', source: 'inst-exchange', target: 'inst-cboe', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-54', source: 'inst-clearing', target: 'inst-dtcc', type: 'provides', strength: 3, bidirectional: false },
+
+    // 竞争关系
+    { id: 'ir-55', source: 'inst-goldman', target: 'inst-morgan-stanley', type: 'competes_with', strength: 3, bidirectional: true },
+    { id: 'ir-56', source: 'inst-blackrock', target: 'inst-vanguard', type: 'competes_with', strength: 3, bidirectional: true },
+    { id: 'ir-57', source: 'inst-blackrock', target: 'inst-fidelity', type: 'competes_with', strength: 2, bidirectional: true },
+    { id: 'ir-58', source: 'inst-bridgewater', target: 'inst-citadel', type: 'competes_with', strength: 2, bidirectional: true },
+    { id: 'ir-59', source: 'inst-two-sigma', target: 'inst-renaissance', type: 'competes_with', strength: 3, bidirectional: true },
+    { id: 'ir-60', source: 'inst-moodys', target: 'inst-sp', type: 'competes_with', strength: 3, bidirectional: true },
+    { id: 'ir-61', source: 'inst-cme', target: 'inst-cboe', type: 'competes_with', strength: 2, bidirectional: true },
+
+    // 业务合作关系
+    { id: 'ir-62', source: 'inst-goldman', target: 'inst-nyse', type: 'trades', strength: 3, bidirectional: true },
+    { id: 'ir-63', source: 'inst-jpmorgan', target: 'inst-cme', type: 'trades', strength: 3, bidirectional: true },
+    { id: 'ir-64', source: 'inst-citadel', target: 'inst-nasdaq', type: 'trades', strength: 3, bidirectional: true },
+    { id: 'ir-65', source: 'inst-blackrock', target: 'inst-nyse', type: 'trades', strength: 3, bidirectional: true },
+    { id: 'ir-66', source: 'inst-icbc', target: 'inst-sse', type: 'trades', strength: 3, bidirectional: true },
+    { id: 'ir-67', source: 'inst-citic', target: 'inst-sse', type: 'trades', strength: 3, bidirectional: true },
+    { id: 'ir-68', source: 'inst-dtcc', target: 'inst-nyse', type: 'cooperates_with', strength: 3, bidirectional: true },
+    { id: 'ir-69', source: 'inst-dtcc', target: 'inst-nasdaq', type: 'cooperates_with', strength: 3, bidirectional: true },
+
+    // 数据服务商层级
+    { id: 'ir-70', source: 'inst-data-provider', target: 'inst-bloomberg', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-71', source: 'inst-data-provider', target: 'inst-reuters', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-72', source: 'inst-data-provider', target: 'inst-wind', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-73', source: 'inst-bloomberg', target: 'inst-reuters', type: 'competes_with', strength: 3, bidirectional: true },
+    { id: 'ir-74', source: 'inst-rating', target: 'inst-fitch', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-75', source: 'inst-fitch', target: 'inst-moodys', type: 'competes_with', strength: 3, bidirectional: true },
+    { id: 'ir-76', source: 'inst-fitch', target: 'inst-sp', type: 'competes_with', strength: 3, bidirectional: true },
+
+    // 新增资产管理公司层级
+    { id: 'ir-77', source: 'inst-fund', target: 'inst-pimco', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-78', source: 'inst-fund', target: 'inst-state-street', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-79', source: 'inst-fund', target: 'inst-franklin', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-80', source: 'inst-private-fund', target: 'inst-bain', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-81', source: 'inst-pimco', target: 'inst-blackrock', type: 'competes_with', strength: 2, bidirectional: true },
+    { id: 'ir-82', source: 'inst-state-street', target: 'inst-blackrock', type: 'competes_with', strength: 3, bidirectional: true },
+    { id: 'ir-83', source: 'inst-state-street', target: 'inst-vanguard', type: 'competes_with', strength: 3, bidirectional: true }
 ];

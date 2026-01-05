@@ -366,7 +366,6 @@ export const instrumentEntities: Entity[] = [
     {
         id: 'instr-bond-fund',
         name: { zh: '债券基金', en: 'Bond Funds' },
-        description: { zh: '专注于固定收益证券的基金', en: 'Funds focused on fixed income securities' },
         domain: 'instruments', category: 'fund', icon: '📜',
         tags: ['bond-fund', 'fixed-income'],
         riskLevel: 'L2'
@@ -378,6 +377,38 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'fund', icon: '🏭',
         tags: ['sector', 'thematic'],
         riskLevel: 'L3'
+    },
+    {
+        id: 'instr-closed-end-fund',
+        name: { zh: '封闭式基金', en: 'Closed-End Funds' },
+        description: { zh: '固定份额、可在交易所交易的投资基金，不接受申购赎回', en: 'Fixed-share investment funds tradable on exchanges, no subscriptions or redemptions' },
+        domain: 'instruments', category: 'fund', icon: '🔒',
+        tags: ['closed-end', 'listed', 'cef'],
+        riskLevel: 'L2'
+    },
+    {
+        id: 'instr-open-end-fund',
+        name: { zh: '开放式基金', en: 'Open-End Funds' },
+        description: { zh: '可随时申购赎回的投资基金，份额随资金流动变化', en: 'Investment funds allowing subscriptions and redemptions at any time' },
+        domain: 'instruments', category: 'fund', icon: '🔓',
+        tags: ['open-end', 'redemption'],
+        riskLevel: 'L2'
+    },
+    {
+        id: 'instr-lof',
+        name: { zh: 'LOF基金', en: 'Listed Open-End Funds' },
+        description: { zh: '可在交易所上市交易的开放式基金，兼具申购赎回和二级市场交易功能', en: 'Open-end funds listed on exchanges, combining subscription/redemption with secondary market trading' },
+        domain: 'instruments', category: 'fund', icon: '📊',
+        tags: ['lof', 'listed', 'open-end'],
+        riskLevel: 'L2'
+    },
+    {
+        id: 'instr-fof',
+        name: { zh: 'FOF基金', en: 'Fund of Funds' },
+        description: { zh: '投资于其他基金的基金，通过分散投资降低风险', en: 'Funds that invest in other funds, reducing risk through diversification' },
+        domain: 'instruments', category: 'fund', icon: '🎯',
+        tags: ['fof', 'multi-manager', 'diversified'],
+        riskLevel: 'L2'
     },
 
     // === 结构化产品 ===
@@ -563,5 +594,14 @@ export const instrumentRelationships: Relationship[] = [
     { id: 'inr-53', source: 'instr-mutual-fund', target: 'instr-stock', type: 'invests', strength: 3, bidirectional: false },
     { id: 'inr-54', source: 'instr-mutual-fund', target: 'instr-bond', type: 'invests', strength: 3, bidirectional: false },
     { id: 'inr-55', source: 'instr-bond-fund', target: 'instr-bond', type: 'invests', strength: 3, bidirectional: false },
-    { id: 'inr-56', source: 'instr-sector-fund', target: 'instr-stock', type: 'invests', strength: 3, bidirectional: false }
+    { id: 'inr-56', source: 'instr-sector-fund', target: 'instr-stock', type: 'invests', strength: 3, bidirectional: false },
+
+    // 新增基金类型层级
+    { id: 'inr-57', source: 'instr-mutual-fund', target: 'instr-closed-end-fund', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'inr-58', source: 'instr-mutual-fund', target: 'instr-open-end-fund', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'inr-59', source: 'instr-open-end-fund', target: 'instr-lof', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'inr-60', source: 'instr-mutual-fund', target: 'instr-fof', type: 'provides', strength: 2, bidirectional: false },
+    { id: 'inr-61', source: 'instr-fof', target: 'instr-mutual-fund', type: 'invests', strength: 3, bidirectional: false },
+    { id: 'inr-62', source: 'instr-closed-end-fund', target: 'instr-stock', type: 'invests', strength: 3, bidirectional: false },
+    { id: 'inr-63', source: 'instr-closed-end-fund', target: 'instr-bond', type: 'invests', strength: 2, bidirectional: false }
 ];

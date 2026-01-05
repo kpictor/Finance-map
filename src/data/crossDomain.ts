@@ -430,5 +430,163 @@ export const crossDomainRelationships: Relationship[] = [
             zh: '恒生指数由香港交易所设计和维护，反映港股核心表现',
             en: 'Hang Seng Index is designed and maintained by HKEX, reflecting core HK stock performance'
         }
+    },
+
+    // === 新增跨域关系 ===
+    // 资产管理公司与金融工具
+    {
+        id: 'cd-91', source: 'inst-blackrock', target: 'instr-etf', type: 'issues', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '贝莱德旗下iShares是全球最大的ETF发行商，管理数千只ETF产品',
+            en: 'BlackRock\'s iShares is the world\'s largest ETF issuer, managing thousands of ETF products'
+        }
+    },
+    {
+        id: 'cd-92', source: 'inst-vanguard', target: 'instr-index-fund', type: 'issues', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '先锋集团是指数基金的先驱，提供低成本被动投资产品',
+            en: 'Vanguard pioneered index funds, offering low-cost passive investment products'
+        }
+    },
+    {
+        id: 'cd-93', source: 'inst-bridgewater', target: 'macro-cycles', type: 'influences', strength: 2, bidirectional: false,
+        explanation: {
+            zh: '桥水的全天候策略基于对经济周期的深入研究，影响宏观投资理念',
+            en: 'Bridgewater\'s All Weather strategy is based on deep economic cycle research, influencing macro investing'
+        }
+    },
+    {
+        id: 'cd-94', source: 'inst-renaissance', target: 'market-equity', type: 'trades', strength: 3, bidirectional: true,
+        explanation: {
+            zh: '文艺复兴科技通过量化策略在股票市场进行高频交易',
+            en: 'Renaissance Technologies trades equities using quantitative strategies at high frequency'
+        }
+    },
+    {
+        id: 'cd-95', source: 'inst-citadel', target: 'market-equity', type: 'trades', strength: 3, bidirectional: true,
+        explanation: {
+            zh: '城堡证券是美国最大的股票做市商之一，为市场提供流动性',
+            en: 'Citadel Securities is one of the largest US equity market makers, providing liquidity'
+        }
+    },
+    {
+        id: 'cd-96', source: 'inst-goldman', target: 'instr-stock', type: 'issues', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '高盛是全球顶级IPO承销商，帮助企业在资本市场筹集资金',
+            en: 'Goldman Sachs is a top IPO underwriter, helping companies raise capital'
+        }
+    },
+    {
+        id: 'cd-97', source: 'inst-jpmorgan', target: 'market-bond', type: 'trades', strength: 3, bidirectional: true,
+        explanation: {
+            zh: '摩根大通是全球最大的债券交易商之一，提供一级和二级市场服务',
+            en: 'JPMorgan is a top global bond dealer, providing primary and secondary market services'
+        }
+    },
+    {
+        id: 'cd-98', source: 'inst-moodys', target: 'instr-bond', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '穆迪评级直接影响债券定价，评级下调会导致债券价格下跌',
+            en: 'Moody\'s ratings directly affect bond pricing; downgrades cause price declines'
+        }
+    },
+    {
+        id: 'cd-99', source: 'inst-sp', target: 'market-index-sp500', type: 'provides', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '标普全球是标普500指数的创建者和维护者',
+            en: 'S&P Global is the creator and maintainer of the S&P 500 Index'
+        }
+    },
+    {
+        id: 'cd-100', source: 'inst-cboe', target: 'market-index-vix', type: 'provides', strength: 3, bidirectional: false,
+        explanation: {
+            zh: 'CBOE创建并计算VIX恐慌指数，是市场波动率的核心指标',
+            en: 'CBOE created and calculates the VIX, the core measure of market volatility'
+        }
+    },
+    {
+        id: 'cd-101', source: 'inst-cboe', target: 'market-options', type: 'provides', strength: 3, bidirectional: false,
+        explanation: {
+            zh: 'CBOE是全球最大的期权交易所，提供股票期权和指数期权交易',
+            en: 'CBOE is the world\'s largest options exchange, offering equity and index options'
+        }
+    },
+    {
+        id: 'cd-102', source: 'inst-berkshire', target: 'instr-stock', type: 'invests', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '伯克希尔是全球最成功的价值投资公司，持有大量蓝筹股',
+            en: 'Berkshire is one of the most successful value investors, holding major blue-chip stocks'
+        }
+    },
+    {
+        id: 'cd-103', source: 'inst-berkshire', target: 'inst-insurance', type: 'invests', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '伯克希尔通过保险业务获得浮存金，是其投资模式的核心',
+            en: 'Berkshire acquires float through insurance operations, core to its investment model'
+        }
+    },
+    {
+        id: 'cd-104', source: 'inst-icbc', target: 'instr-gov-bond', type: 'invests', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '工商银行是中国国债市场最大的持有者之一',
+            en: 'ICBC is one of the largest holders in China\'s government bond market'
+        }
+    },
+    {
+        id: 'cd-105', source: 'inst-dtcc', target: 'market-equity', type: 'provides', strength: 3, bidirectional: false,
+        explanation: {
+            zh: 'DTCC为美国股票市场提供清算和结算基础设施',
+            en: 'DTCC provides clearing and settlement infrastructure for US equity markets'
+        }
+    },
+    {
+        id: 'cd-106', source: 'inst-fidelity', target: 'instr-mutual-fund', type: 'issues', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '富达是全球最大的主动管理共同基金提供商之一',
+            en: 'Fidelity is one of the largest active mutual fund providers globally'
+        }
+    },
+    {
+        id: 'cd-107', source: 'inst-two-sigma', target: 'market-derivatives', type: 'trades', strength: 3, bidirectional: true,
+        explanation: {
+            zh: '两西格马使用AI和大数据在衍生品市场进行量化交易',
+            en: 'Two Sigma uses AI and big data for quantitative trading in derivatives markets'
+        }
+    },
+    {
+        id: 'cd-108', source: 'inst-citic', target: 'instr-structured', type: 'issues', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '中信证券是中国结构化产品的主要发行商，包括雪球期权',
+            en: 'CITIC Securities is a major issuer of structured products in China, including snowball options'
+        }
+    },
+    {
+        id: 'cd-109', source: 'inst-morgan-stanley', target: 'market-forex', type: 'trades', strength: 3, bidirectional: true,
+        explanation: {
+            zh: '摩根士丹利是全球顶级外汇交易商，为机构客户提供流动性',
+            en: 'Morgan Stanley is a top global FX dealer, providing liquidity to institutional clients'
+        }
+    },
+    {
+        id: 'cd-110', source: 'inst-cme', target: 'instr-futures', type: 'trades', strength: 3, bidirectional: true,
+        explanation: {
+            zh: 'CME是全球最大的期货交易所，交易股指、利率、商品等期货',
+            en: 'CME is the world\'s largest futures exchange, trading equity, rate, and commodity futures'
+        }
+    },
+    {
+        id: 'cd-111', source: 'macro-interest-rate', target: 'inst-jpmorgan', type: 'influences', strength: 2, bidirectional: false,
+        explanation: {
+            zh: '利率变动直接影响银行的净息差和盈利能力',
+            en: 'Interest rate changes directly affect bank net interest margins and profitability'
+        }
+    },
+    {
+        id: 'cd-112', source: 'macro-crisis', target: 'inst-goldman', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '金融危机时投资银行面临交易损失、流动性风险和信誉危机',
+            en: 'Investment banks face trading losses, liquidity risks, and reputational damage during crises'
+        }
     }
 ];
+

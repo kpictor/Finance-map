@@ -21,7 +21,6 @@ function AppContent() {
     relationships,
     stats,
     setSelectedDomain,
-    setSearchQuery,
     setSelectedEntity,
     setHoveredEntity,
     resetFilters
@@ -102,7 +101,12 @@ function AppContent() {
 
         {/* 控制按钮 */}
         <div className="graph-controls">
-          <button title={language === 'zh' ? '重置视图' : 'Reset View'}>↺</button>
+          <button
+            title={language === 'zh' ? '重置视图' : 'Reset View'}
+            onClick={() => window.dispatchEvent(new CustomEvent('finance-map-reset-zoom'))}
+          >
+            ↺
+          </button>
           <button
             title={language === 'zh' ? '显示全部' : 'Show All'}
             onClick={resetFilters}
