@@ -96,7 +96,7 @@ function AppContent() {
           {/* 操作说明 */}
           <div className="legend-divider" />
           <div className="legend-instructions">
-            <span>{language === 'zh' ? '🖱️ 滚轮缩放 · 拖拽平移 · 点击居中' : '🖱️ Scroll zoom · Drag pan · Click center'}</span>
+            <span>{language === 'zh' ? '🖱️ 滚轮缩放 · 拖拽平移' : '🖱️ Scroll zoom · Drag pan'}</span>
           </div>
         </div>
 

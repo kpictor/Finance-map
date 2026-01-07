@@ -268,20 +268,6 @@ export const ForceGraph: React.FC<ForceGraphProps> = ({
 
                 // 单击选中节点
                 onEntityClickRef.current(d);
-
-                // 居中到被点击的节点
-                if (d.x !== undefined && d.y !== undefined) {
-                    const scale = 1.2; // 略微放大以突出显示
-                    svg.transition()
-                        .duration(500)
-                        .call(
-                            zoom.transform,
-                            d3.zoomIdentity
-                                .translate(width / 2, height / 2)
-                                .scale(scale)
-                                .translate(-d.x, -d.y)
-                        );
-                }
             })
             .on('mouseenter', (_event: MouseEvent, d: GraphNode) => {
                 onEntityHoverRef.current(d);
@@ -321,48 +307,6 @@ export const ForceGraph: React.FC<ForceGraphProps> = ({
                 .attr('y2', d => (d.target as GraphNode).y || 0);
 
             node.attr('transform', (d: GraphNode) => `translate(${d.x || 0}, ${d.y || 0})`);
-        });
-
-        // simulation结束后自动适配视图让所有节点可见
-        simulation.on('end', () => {
-            // 计算所有节点的边界框
-            let minX = Infinity, maxX = -Infinity;
-            let minY = Infinity, maxY = -Infinity;
-
-            nodes.forEach(n => {
-                const r = getNodeRadius(n.level) + 50; // 增加节点标签空间
-                if (n.x !== undefined && n.y !== undefined) {
-                    minX = Math.min(minX, n.x - r);
-                    maxX = Math.max(maxX, n.x + r);
-                    minY = Math.min(minY, n.y - r);
-                    maxY = Math.max(maxY, n.y + r);
-                }
-            });
-
-            if (minX === Infinity) return; // 没有节点
-
-            // 计算需要的缩放和平移
-            const padding = 100; // 更大边距避免被UI遮挡
-            const boxWidth = maxX - minX + padding * 2;
-            const boxHeight = maxY - minY + padding * 2;
-            const centerX = (minX + maxX) / 2;
-            const centerY = (minY + maxY) / 2;
-
-            // 计算适合的缩放比例，限制在0.5-1.2之间
-            const scaleX = width / boxWidth;
-            const scaleY = height / boxHeight;
-            const scale = Math.max(0.5, Math.min(scaleX, scaleY, 1.2));
-
-            // 应用变换
-            svg.transition()
-                .duration(600)
-                .call(
-                    zoom.transform,
-                    d3.zoomIdentity
-                        .translate(width / 2, height / 2)
-                        .scale(scale)
-                        .translate(-centerX, -centerY)
-                );
         });
 
         // 点击背景取消选择
