@@ -67,7 +67,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '存贷款和支付结算服务', en: 'Deposit, lending, payment services' },
         domain: 'institutions', category: 'depository', icon: '🏦',
         tags: ['bank', 'deposit', 'lending'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '商业银行通过存贷利差(NIM)赚取收入。全球最大银行按资产:工行($6T)、建行、农行、中行、JPM',
+            en: 'Commercial banks earn via Net Interest Margin (NIM). Largest by assets: ICBC ($6T), CCB, ABC, BOC, JPM'
+        }
     },
     {
         id: 'inst-state-bank',
@@ -75,7 +79,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '国有控股的大型商业银行', en: 'Large state-owned commercial banks' },
         domain: 'institutions', category: 'commercial-bank', icon: '🏛️',
         tags: ['state-owned', 'big-four'],
-        level: 2, parentId: 'inst-commercial-bank'
+        level: 2, parentId: 'inst-commercial-bank',
+        details: {
+            zh: '中国四大行(工建农中)+交行/邮储。美国国有银行概念不强，但JPM/BoA规模类似',
+            en: 'China Big 4 (ICBC/CCB/ABC/BOC) + BoCom/PSBC. US has no explicit "state-owned" but JPM/BoA similar scale'
+        }
     },
     {
         id: 'inst-joint-bank',
@@ -83,7 +91,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '股份制商业银行', en: 'Joint-stock commercial banks' },
         domain: 'institutions', category: 'commercial-bank', icon: '🏢',
         tags: ['joint-stock'],
-        level: 2, parentId: 'inst-commercial-bank'
+        level: 2, parentId: 'inst-commercial-bank',
+        details: {
+            zh: '招行/兴业/浦发/中信/光大/民生/平安等。零售业务较国有行更灵活，招行零售行业第一',
+            en: 'CMB/CIB/SPDB/CITIC/CEB/CMBC/PAB, etc. More retail-flexible than state banks; CMB is #1 retail bank'
+        }
     },
     {
         id: 'inst-city-bank',
@@ -91,7 +103,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '地方性城市商业银行', en: 'Regional city commercial banks' },
         domain: 'institutions', category: 'commercial-bank', icon: '🏙️',
         tags: ['city-bank', 'regional'],
-        level: 2, parentId: 'inst-commercial-bank'
+        level: 2, parentId: 'inst-commercial-bank',
+        details: {
+            zh: '北京银行/上海银行/宁波银行/南京银行等。地方政府背景，业务集中于本地',
+            en: 'Bank of Beijing/Shanghai/Ningbo/Nanjing, etc. Local government backing, business concentrated in home regions'
+        }
     },
 
     // === 投资银行 ===
@@ -235,7 +251,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '提供风险保障服务', en: 'Risk protection services' },
         domain: 'institutions', category: 'insurance', icon: '🛡️',
         tags: ['insurance', 'risk'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '全球最大保险公司:平安/安联(Allianz)/友邦(AIG)/保诚(Prudential)。保险资金是长期投资的重要来源',
+            en: 'Largest insurers: Ping An/Allianz/AIG/Prudential. Insurance funds are major long-term investment sources'
+        }
     },
     {
         id: 'inst-life-insurance',
@@ -243,7 +263,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '人寿和健康保险', en: 'Life and health insurance' },
         domain: 'institutions', category: 'insurance', icon: '❤️',
         tags: ['life', 'health'],
-        level: 2, parentId: 'inst-insurance'
+        level: 2, parentId: 'inst-insurance',
+        details: {
+            zh: '中国国寿/平安寿险/新华保险。寿险备付金是最大的机构投资者之一，偶好长久期債券',
+            en: 'China Life/Ping An Life/New China Life. Life insurance reserves are among largest institutional investors, favor long-term bonds'
+        }
     },
     {
         id: 'inst-property-insurance',
@@ -251,7 +275,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '财产和意外保险', en: 'Property and casualty insurance' },
         domain: 'institutions', category: 'insurance', icon: '🏠',
         tags: ['property', 'casualty'],
-        level: 2, parentId: 'inst-insurance'
+        level: 2, parentId: 'inst-insurance',
+        details: {
+            zh: '人保财险/平安产险/太保产险。财险以车险为主，赔付率(Combined Ratio)是核心指标',
+            en: 'PICC/Ping An P&C/CPIC. Auto insurance dominant. Combined Ratio is key metric (<100% = underwriting profit)'
+        }
     },
     {
         id: 'inst-reinsurance',
@@ -259,7 +287,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '保险公司的保险', en: 'Insurance for insurers' },
         domain: 'institutions', category: 'insurance', icon: '♻️',
         tags: ['reinsurance'],
-        level: 2, parentId: 'inst-insurance'
+        level: 2, parentId: 'inst-insurance',
+        details: {
+            zh: '全球Top再保险:慕尼黑再保(Munich Re)/瑞士再保(Swiss Re)/汉诺威再保。转移巨灾风险',
+            en: 'Top reinsurers: Munich Re/Swiss Re/Hannover Re. Transfer catastrophe risks from primary insurers'
+        }
     },
 
     // === 监管机构 ===
@@ -277,7 +309,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '证券市场监管机构', en: 'Securities market regulator' },
         domain: 'institutions', category: 'regulator', icon: '📋',
         tags: ['csrc', 'sec'],
-        level: 2, parentId: 'inst-regulator'
+        level: 2, parentId: 'inst-regulator',
+        details: {
+            zh: '证监会监管股票发行、基金、期货。注册制改革后，IPO审核权下放到交易所',
+            en: 'CSRC oversees stock issuance, funds, futures. After registration reform, IPO review shifted to exchanges'
+        }
     },
     {
         // 华尔街说明: 2023年中国金融监管体制改革，银保监会撤销，设立国家金融监管总局
@@ -289,7 +325,11 @@ export const institutionEntities: Entity[] = [
         },
         domain: 'institutions', category: 'regulator', icon: '🏛️',
         tags: ['nfra', 'banking', 'insurance', 'fhc'],
-        level: 2, parentId: 'inst-regulator'
+        level: 2, parentId: 'inst-regulator',
+        details: {
+            zh: '2023年机构改革:原银保监会+人行金融消费保护职能合并。金融控股公司纳入监管',
+            en: '2023 reform: merged CBIRC + PBOC consumer protection. Financial holding companies now regulated'
+        }
     },
     {
         // 华尔街说明: SEC是全球最具影响力的证券监管机构
@@ -301,7 +341,11 @@ export const institutionEntities: Entity[] = [
         },
         domain: 'institutions', category: 'regulator', icon: '🇺🇸',
         tags: ['sec', 'usa', 'securities'],
-        level: 2, parentId: 'inst-regulator'
+        level: 2, parentId: 'inst-regulator',
+        details: {
+            zh: 'SEC主席Gary Gensler推动加密监管和气候披露。Regulation S-K/NMS是全球证券监管标杆',
+            en: 'SEC Chair Gary Gensler pushed crypto regulation and climate disclosure. Reg S-K/NMS are global benchmarks'
+        }
     },
 
     // === 金融基础设施 ===
@@ -311,7 +355,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '证券和衍生品交易平台', en: 'Securities and derivatives trading venues' },
         domain: 'institutions', category: 'infrastructure', icon: '🏛️',
         tags: ['exchange', 'trading-venue'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '全球最大证券交易所:纽交所($27T市值)。期货交易所:CME集团。交易所企业化后追求利润',
+            en: 'Largest stock exchange: NYSE ($27T market cap). Futures: CME Group. Demutualized exchanges now profit-seeking'
+        }
     },
     {
         id: 'inst-clearing',
@@ -319,7 +367,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '交易清算和结算服务', en: 'Trade clearing and settlement' },
         domain: 'institutions', category: 'infrastructure', icon: '⚙️',
         tags: ['clearing', 'settlement', 'ccp'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '中央对手方(CCP)降低违约风险。中国中证登/中结算，美国DTCC/CME Clearing',
+            en: 'Central Counterparty (CCP) reduces default risk. China: CSDCC/Shanghai Clearing, US: DTCC/CME Clearing'
+        }
     },
 
     // === 主要交易所 ===
@@ -329,7 +381,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '全球最大的证券交易所，按上市公司市值计', en: 'World\'s largest stock exchange by market capitalization' },
         domain: 'institutions', category: 'exchange', icon: '🇺🇸',
         tags: ['nyse', 'usa', 'equity'],
-        level: 2, parentId: 'inst-exchange'
+        level: 2, parentId: 'inst-exchange',
+        details: {
+            zh: '开盘钟声、收盘铃声是全球金融标志。ICE旗下。市值约$27万亿',
+            en: 'Opening bell, closing bell are global icons. Owned by ICE. ~$27T market cap'
+        }
     },
     {
         id: 'inst-nasdaq',
@@ -337,7 +393,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '全球首个电子证券交易所，科技股集中地', en: 'First electronic stock exchange, home to tech giants' },
         domain: 'institutions', category: 'exchange', icon: '💻',
         tags: ['nasdaq', 'tech', 'usa'],
-        level: 2, parentId: 'inst-exchange'
+        level: 2, parentId: 'inst-exchange',
+        details: {
+            zh: 'Apple/Microsoft/Amazon/Google/Meta等科技巨头主要上市地。QQQ跟踪NASDAQ-100',
+            en: 'Home to Apple/Microsoft/Amazon/Google/Meta. QQQ tracks NASDAQ-100'
+        }
     },
     {
         id: 'inst-sse',
@@ -345,7 +405,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '中国大陆最大证券交易所', en: 'Largest stock exchange in mainland China' },
         domain: 'institutions', category: 'exchange', icon: '🇨🇳',
         tags: ['sse', 'china', 'a-share'],
-        level: 2, parentId: 'inst-exchange'
+        level: 2, parentId: 'inst-exchange',
+        details: {
+            zh: '科创板2019年设立，采用注册制。沪深港通连接境内外资金',
+            en: 'STAR Market 2019, registration system. Stock Connect links domestic/foreign capital'
+        }
     },
     {
         id: 'inst-szse',

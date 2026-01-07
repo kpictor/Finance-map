@@ -66,7 +66,7 @@ export const EntityPanel: React.FC<EntityPanelProps> = ({
                 {/* 显示详细说明（华尔街深度解析） */}
                 {entity.details && (
                     <section className="panel-section details-section">
-                        <h3>💡 {language === 'zh' ? '深度解析' : 'Deep Dive'}</h3>
+                        <h3>💡 {language === 'zh' ? '批注' : 'Notes'}</h3>
                         <p className="details-text">{entity.details[language]}</p>
                     </section>
                 )}
