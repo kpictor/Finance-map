@@ -199,6 +199,14 @@ body {
   color: var(--color-text-muted);
 }
 
+/* 操作说明（图例底部） */
+.legend-instructions {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  padding: var(--spacing-xs) 0;
+  line-height: 1.4;
+}
+
 /* 控制按钮 */
 .graph-controls {
   position: absolute;

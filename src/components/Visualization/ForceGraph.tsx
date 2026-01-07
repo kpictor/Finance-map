@@ -431,11 +431,6 @@ export const ForceGraph: React.FC<ForceGraphProps> = ({
                     {language === 'zh' ? '全部' : 'All'}
                 </button>
             </div>
-
-            {/* 操作说明 */}
-            <div className="graph-instructions">
-                <span>{language === 'zh' ? '🖱️ 滚轮缩放 | 拖拽平移 | 点击节点居中' : '🖱️ Scroll to zoom | Drag to pan | Click to center'}</span>
-            </div>
         </div>
     );
 };

@@ -174,26 +174,4 @@
   color: #fff;
 }
 
-/* 操作说明 */
-.graph-instructions {
-  position: absolute;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(8px);
-  border-radius: 8px;
-  padding: 8px 20px;
-  color: #94a3b8;
-  font-size: 12px;
-  white-space: nowrap;
-  z-index: 100;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* 平板和手机上隐藏操作说明 */
-@media (max-width: 1024px) {
-  .graph-instructions {
-    display: none;
-  }
-}
+/* 操作说明 - 已移至图例面板内 */

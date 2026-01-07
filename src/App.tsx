@@ -93,8 +93,11 @@ function AppContent() {
             <span>{language === 'zh' ? '点线 = 影响关系' : 'Dotted = Influences'}</span>
           </div>
 
-
-          {/* 展开/收缩说明 - 已移除，默认全部展开 */}
+          {/* 操作说明 */}
+          <div className="legend-divider" />
+          <div className="legend-instructions">
+            <span>{language === 'zh' ? '🖱️ 滚轮缩放 · 拖拽平移 · 点击居中' : '🖱️ Scroll zoom · Drag pan · Click center'}</span>
+          </div>
         </div>
 
         {/* 力导向图 */}
