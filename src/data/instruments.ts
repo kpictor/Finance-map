@@ -700,40 +700,68 @@ export const instrumentEntities: Entity[] = [
     {
         id: 'instr-mutual-fund',
         name: { zh: '共同基金', en: 'Mutual Funds' },
-        description: { zh: '由专业管理人管理的集合投资工具', en: 'Pooled investment vehicles managed by professional managers' },
+        description: { zh: '由专业管理人管理的集合投资工具，通常按日确定净值', en: 'Pooled investment vehicles managed by professionals, typically NAV-priced daily' },
         domain: 'instruments', category: 'fund', icon: '💼',
         tags: ['mutual-fund', 'active', 'managed'],
         riskLevel: 'L2',
-        level: 2, parentId: 'instr-etf'
+        level: 2, parentId: 'instr-etf',
+        tradingVenue: 'otc',
+        liquidity: 'medium',
+        investorType: 'retail',
+        details: {
+            zh: '与ETF的核心差异：每日收盘后按净值申赎，不像股票那样实时交易。美国总规模超20万亿美元',
+            en: 'Key difference from ETF: subscribed/redeemed at end-of-day NAV, not traded in real-time like stocks. US total AUM exceeds $20T'
+        }
     },
     {
         id: 'instr-bond-fund',
         name: { zh: '债券基金', en: 'Bond Funds' },
         description: { zh: '专注于固定收益证券的基金', en: 'Funds focused on fixed income securities' },
         domain: 'instruments', category: 'fund', icon: '📜',
-        tags: ['bond-fund', 'fixed-income'],
+        tags: ['bond-fund', 'fixed-income', 'pimco'],
         riskLevel: 'L2',
-        level: 2, parentId: 'instr-etf'
+        level: 2, parentId: 'instr-etf',
+        tradingVenue: 'otc',
+        liquidity: 'medium',
+        investorType: 'retail',
+        details: {
+            zh: '债券基金按久期分为短期/中期/长期，久期越长利率敏感度越高。PIMCO和BlackRock是全球最大的债券基金管理人',
+            en: 'Bond funds categorized by duration: short/intermediate/long-term. Longer duration = higher rate sensitivity. PIMCO and BlackRock are largest managers'
+        }
     },
     {
         id: 'instr-sector-fund',
         name: { zh: '行业基金', en: 'Sector Funds' },
-        description: { zh: '专注于特定行业或领域的基金', en: 'Funds focused on specific sectors or industries' },
+        description: { zh: '专注于特定行业或主题的基金', en: 'Funds focused on specific sectors or themes' },
         domain: 'instruments', category: 'fund', icon: '🏭',
-        tags: ['sector', 'thematic'],
+        tags: ['sector', 'thematic', 'tech', 'healthcare'],
         riskLevel: 'L3',
-        level: 2, parentId: 'instr-etf'
+        level: 2, parentId: 'instr-etf',
+        tradingVenue: 'exchange',
+        liquidity: 'high',
+        investorType: 'retail',
+        details: {
+            zh: '主要赛道：科技(XLK)、医疗(XLV)、金融(XLF)、能源(XLE)。ARKK是主题型ETF的代表，专注破坏性创新',
+            en: 'Major sectors: Tech (XLK), Healthcare (XLV), Financials (XLF), Energy (XLE). ARKK represents thematic ETFs, focusing on disruptive innovation'
+        }
     },
 
     // === 结构化产品 ===
     {
         id: 'instr-structured',
         name: { zh: '结构化产品', en: 'Structured Products' },
-        description: { zh: '基于衍生品构建的复合金融产品，通常由固定收益与期权组合而成', en: 'Complex financial products built on derivatives, typically combining fixed income with options' },
+        description: { zh: '基于衍生品构建的复合金融产品，雪球是中国最流行的结构化产品', en: 'Complex financial products built on derivatives; Snowball is the most popular in China' },
         domain: 'instruments', category: 'structured', icon: '🧩',
-        tags: ['structured', 'hybrid', 'derivatives'],
+        tags: ['structured', 'hybrid', 'derivatives', 'snowball'],
         riskLevel: 'L4',
-        level: 1
+        level: 1,
+        tradingVenue: 'otc',
+        liquidity: 'low',
+        investorType: 'qualified',
+        details: {
+            zh: '雪球结构：向下敲入(Knock-In)损失本金，向上敲出(Knock-Out)提前结束获得固定收益。拥挒期权的本质=卖出看跌期权',
+            en: 'Snowball structure: Knock-In causes principal loss, Knock-Out ends early with fixed return. Essentially = selling put options'
+        }
     },
     {
         id: 'instr-exotic-options',
@@ -803,29 +831,50 @@ export const instrumentEntities: Entity[] = [
     {
         id: 'instr-pe',
         name: { zh: '私募股权', en: 'Private Equity' },
-        description: { zh: '非上市公司股权投资', en: 'Investment in private companies' },
+        description: { zh: '非上市公司股权投资，Blackstone和KKR是全球最大的PE机构', en: 'Investment in private companies; Blackstone and KKR are the largest PE firms globally' },
         domain: 'instruments', category: 'alternatives', icon: '💰',
-        tags: ['pe', 'buyout'],
+        tags: ['pe', 'buyout', 'blackstone', 'kkr', 'carlyle'],
         riskLevel: 'L4',
-        level: 1
+        level: 1,
+        tradingVenue: 'otc',
+        liquidity: 'low',
+        investorType: 'qualified',
+        details: {
+            zh: 'PE策略：杠杆收购(LBO)、成长型投资、困境投资。典型持有期5-7年。IRR(内部收益率)是核心评价指标',
+            en: 'PE strategies: Leveraged Buyout (LBO), Growth Equity, Distressed. Typical holding period 5-7 years. IRR is the key performance metric'
+        }
     },
     {
         id: 'instr-vc',
         name: { zh: '风险投资', en: 'Venture Capital' },
-        description: { zh: '早期创业公司投资', en: 'Early-stage company investment' },
+        description: { zh: '早期创业公司投资，硅谷VC如a16z、红杉资本是行业标杆', en: 'Early-stage startup investment; Silicon Valley VCs like a16z and Sequoia are industry leaders' },
         domain: 'instruments', category: 'alternatives', icon: '🚀',
-        tags: ['vc', 'startup'],
+        tags: ['vc', 'startup', 'a16z', 'sequoia'],
         riskLevel: 'L4',
-        level: 1
+        level: 1,
+        tradingVenue: 'otc',
+        liquidity: 'low',
+        investorType: 'qualified',
+        details: {
+            zh: 'VC阶段：种子轮→A/B/C轮→Pre-IPO。回报遵循幂律分布：少数项目贡献大部分收益',
+            en: 'VC stages: Seed → Series A/B/C → Pre-IPO. Returns follow power law: few deals generate most returns'
+        }
     },
     {
         id: 'instr-hedge-fund',
         name: { zh: '对冲基金策略', en: 'Hedge Fund Strategies' },
-        description: { zh: '多元化对冲策略', en: 'Diversified hedging strategies' },
+        description: { zh: '多元化对冲策略，Bridgewater和Renaissance是全球顶级对冲基金', en: 'Diversified hedging strategies; Bridgewater and Renaissance are top global hedge funds' },
         domain: 'instruments', category: 'alternatives', icon: '🎲',
-        tags: ['hedge', 'alpha'],
+        tags: ['hedge', 'alpha', 'bridgewater', 'renaissance', 'citadel'],
         riskLevel: 'L4',
-        level: 1
+        level: 1,
+        tradingVenue: 'otc',
+        liquidity: 'low',
+        investorType: 'qualified',
+        details: {
+            zh: '主要策略：多空股票、全球宏观(Bridgewater)、量化(Renaissance Medallion年化66%)、事件驱动。"2/20"费率结构',
+            en: 'Key strategies: Long/Short Equity, Global Macro (Bridgewater), Quant (Renaissance Medallion 66% annual), Event-Driven. "2 and 20" fee structure'
+        }
     }
 ];
 
