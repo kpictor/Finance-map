@@ -190,3 +190,10 @@
   z-index: 100;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+
+/* 平板和手机上隐藏操作说明 */
+@media (max-width: 1024px) {
+  .graph-instructions {
+    display: none;
+  }
+}
