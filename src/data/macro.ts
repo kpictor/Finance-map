@@ -217,7 +217,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '失业率和就业数据', en: 'Unemployment and job data' },
         domain: 'macro', category: 'indicators', icon: '👷',
         tags: ['employment', 'jobs', 'nfp'],
-        level: 2, parentId: 'macro-indicators'
+        level: 2, parentId: 'macro-indicators',
+        details: {
+            zh: '美国非农(NFP)每月第一周五发布，是最重要的经济数据之一。失业率是滞后指标',
+            en: 'US Non-Farm Payrolls (NFP) released 1st Friday monthly, one of most important data. Unemployment is lagging'
+        }
     },
 
     // === 经济周期 ===
@@ -227,7 +231,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '经济活动周期性波动', en: 'Cyclical economic fluctuations' },
         domain: 'macro', category: 'theory', icon: '🔄',
         tags: ['cycle', 'business-cycle'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '库兹涅茨周期(3-5年)/朱格拉周期(7-11年)/康波周期(50-60年)',
+            en: 'Kitchin (3-5yr), Juglar (7-11yr), Kondratieff (50-60yr) cycles'
+        }
     },
     {
         id: 'macro-recession',
@@ -235,7 +243,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '经济活动收缩期', en: 'Economic contraction period' },
         domain: 'macro', category: 'cycle', icon: '📉',
         tags: ['recession', 'downturn'],
-        level: 2, parentId: 'macro-cycles'
+        level: 2, parentId: 'macro-cycles',
+        details: {
+            zh: 'NBER定义:连续两季度GDP负增长。美国历史上衰退平均持续11个月',
+            en: 'NBER definition: two consecutive quarters of negative GDP. US recessions average 11 months'
+        }
     },
     {
         id: 'macro-expansion',
@@ -243,7 +255,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '经济活动增长期', en: 'Economic growth period' },
         domain: 'macro', category: 'cycle', icon: '📈',
         tags: ['expansion', 'growth'],
-        level: 2, parentId: 'macro-cycles'
+        level: 2, parentId: 'macro-cycles',
+        details: {
+            zh: '美国历史上最长扩张期:2009-2020(128个月)，被疫情打断',
+            en: 'Longest US expansion: 2009-2020 (128 months), ended by pandemic'
+        }
     },
 
     // === 国际金融 ===
@@ -253,7 +269,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '跨境金融关系', en: 'Cross-border financial relations' },
         domain: 'macro', category: 'international', icon: '🌍',
         tags: ['international', 'global'],
-        level: 1
+        level: 1,
+        details: {
+            zh: 'IMF/世界银行/BIS是三大国际金融机构。美元仍是全球储备货币(~58%)',
+            en: 'IMF/World Bank/BIS are major international financial institutions. USD remains global reserve (~58%)'
+        }
     },
     {
         id: 'macro-fx-regime',
@@ -261,7 +281,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '货币汇率政策安排', en: 'Currency exchange rate arrangements' },
         domain: 'macro', category: 'international', icon: '💱',
         tags: ['fx', 'exchange-rate'],
-        level: 2, parentId: 'macro-international'
+        level: 2, parentId: 'macro-international',
+        details: {
+            zh: '浮动汇率(美元/欧元)/有管理浮动(人民币)/固定汇率(港币)。不可能三角:资本自由/固定汇率/独立货币政策',
+            en: 'Floating (USD/EUR), managed float (CNY), fixed (HKD). Impossible Trinity: capital mobility/fixed rate/independent policy'
+        }
     },
     {
         id: 'macro-capital-flows',
@@ -269,7 +293,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '跨境资本流动', en: 'Cross-border capital movements' },
         domain: 'macro', category: 'international', icon: '🌊',
         tags: ['capital', 'flows', 'fdi'],
-        level: 2, parentId: 'macro-international'
+        level: 2, parentId: 'macro-international',
+        details: {
+            zh: 'FDI(外国直接投资)是实体经济投资。热钱进出影响新兴市场汇率稳定',
+            en: 'FDI is real economy investment. Hot money flows affect EM currency stability'
+        }
     },
     {
         id: 'macro-bop',
@@ -277,7 +305,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '国家对外经济交易记录', en: 'Record of external transactions' },
         domain: 'macro', category: 'international', icon: '⚖️',
         tags: ['bop', 'current-account'],
-        level: 2, parentId: 'macro-international'
+        level: 2, parentId: 'macro-international',
+        details: {
+            zh: '经常账户+资本和金融账户=0。美国常年贸易逆差，中国顺差',
+            en: 'Current + Capital/Financial account = 0. US has persistent trade deficit, China surplus'
+        }
     },
 
     // === 金融风险 ===
@@ -287,7 +319,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '金融系统整体风险', en: 'Financial system-wide risk' },
         domain: 'macro', category: 'risk', icon: '⚠️',
         tags: ['systemic', 'financial-stability'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '系统性风险引发连锁反应。TBTF(大而不能倒)机构的倒闭可能导致整个金融系统崩溃',
+            en: 'Systemic risk triggers chain reactions. Collapse of TBTF (Too Big to Fail) institutions could bring down entire system'
+        }
     },
     {
         id: 'macro-crisis',
@@ -295,7 +331,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '金融市场严重动荡', en: 'Severe financial market turmoil' },
         domain: 'macro', category: 'risk', icon: '💥',
         tags: ['crisis', 'contagion'],
-        level: 2, parentId: 'macro-risk'
+        level: 2, parentId: 'macro-risk',
+        details: {
+            zh: '重大危机:1929大萧条/1997亚洲/2008次贷/2020疫情。每次危机后监管加强',
+            en: 'Major crises: 1929 Depression, 1997 Asian, 2008 Subprime, 2020 COVID. Regulation strengthens post-crisis'
+        }
     },
 
     // === 五大风险类型 (P0新增) ===

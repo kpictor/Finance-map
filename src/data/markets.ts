@@ -273,7 +273,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '证券回购协议市场', en: 'Repurchase agreement market' },
         domain: 'markets', category: 'money', icon: '🔄',
         tags: ['repo', 'reverse-repo'],
-        level: 2, parentId: 'market-money'
+        level: 2, parentId: 'market-money',
+        details: {
+            zh: '回购是以证券为抵押的短期借贷。2019年美国回购市场危机导致美联储紧急注资',
+            en: 'Repo is short-term borrowing with securities as collateral. 2019 US repo crisis led to Fed emergency intervention'
+        }
     },
 
     // === 衍生品市场 ===
@@ -461,7 +465,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '沪深两市500只中盘股指数', en: 'Index of 500 mid-cap A-shares' },
         domain: 'markets', category: 'index', icon: '🇨🇳',
         tags: ['csi500', 'china', 'mid-cap'],
-        level: 2, parentId: 'market-equity'
+        level: 2, parentId: 'market-equity',
+        details: {
+            zh: '剥离沪深300后的中定股，成长性较强但波动也大',
+            en: 'Mid-caps after excluding CSI300, higher growth but more volatile'
+        }
     },
     {
         // 华尔街说明: 中证1000是雪球产品最常挂钩的标的之一，小盘股波动大，票息高
@@ -481,7 +489,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '香港50只大型股票指数', en: 'Index of 50 largest Hong Kong stocks' },
         domain: 'markets', category: 'index', icon: '🇭🇰',
         tags: ['hsi', 'hong-kong', 'blue-chip'],
-        level: 2, parentId: 'market-equity'
+        level: 2, parentId: 'market-equity',
+        details: {
+            zh: '恒生科技指数包含中概科技股。北水南下通过港股通流入',
+            en: 'Hang Seng Tech includes Chinese tech. Northbound flows via Stock Connect'
+        }
     },
     {
         id: 'market-index-nikkei',
@@ -489,7 +501,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '东京证交所225只大型股票指数', en: 'Index of 225 largest Tokyo Stock Exchange stocks' },
         domain: 'markets', category: 'index', icon: '🇯🇵',
         tags: ['nikkei', 'japan', 'tse'],
-        level: 2, parentId: 'market-equity'
+        level: 2, parentId: 'market-equity',
+        details: {
+            zh: '日经在1989年达到历史高点38915点，"失开的三十年"后2024年终于突破',
+            en: 'Nikkei hit all-time high 38915 in 1989. Finally broke through in 2024 after "lost 30 years"'
+        }
     },
     {
         id: 'market-index-ftse100',
@@ -497,7 +513,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '伦敦证交所100只大型股票指数', en: 'Index of 100 largest London Stock Exchange stocks' },
         domain: 'markets', category: 'index', icon: '🇬🇧',
         tags: ['ftse', 'uk', 'lse'],
-        level: 2, parentId: 'market-equity'
+        level: 2, parentId: 'market-equity',
+        details: {
+            zh: '"富时"读作"Footsie"。能源/金融/健康行业权重较高',
+            en: '"Footsie" pronunciation. Energy/financials/healthcare have high weightings'
+        }
     },
     {
         id: 'market-index-vix',
@@ -505,7 +525,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '标普500期权隐含波动率指数，衡量市场恐慌程度', en: 'S&P 500 implied volatility index, measures market fear' },
         domain: 'markets', category: 'index', icon: '📉',
         tags: ['vix', 'volatility', 'fear-index'],
-        level: 2, parentId: 'market-derivatives'
+        level: 2, parentId: 'market-derivatives',
+        details: {
+            zh: 'VIX<20表示市场平静，>30表示恐慌。可通过VXX/UVXY等交易，但长期腐蚀严重',
+            en: 'VIX<20 = calm, >30 = fear. Tradable via VXX/UVXY, but severe long-term decay'
+        }
     }
 ];
 
