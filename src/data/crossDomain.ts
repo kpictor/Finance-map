@@ -286,10 +286,11 @@ export const crossDomainRelationships: Relationship[] = [
         }
     },
     {
-        id: 'cd-70', source: 'macro-volatility', target: 'instr-snowball', type: 'influences', strength: 3, bidirectional: false,
+        // 修复: macro-volatility不存在，用VIX恐慌指数代表市场波动率
+        id: 'cd-70', source: 'market-index-vix', target: 'instr-snowball', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
-            zh: '市场波动率是结构化产品定价的核心因子，高波动率环境下雪球票息更高但风险也更大',
-            en: 'Market volatility is the core pricing factor for structured products; higher volatility means higher coupons but greater risk'
+            zh: 'VIX恐慌指数反映市场波动率预期，高VIX环境下雪球票息更高但敲入风险也更大',
+            en: 'VIX measures expected market volatility; higher VIX means higher snowball coupons but greater knock-in risk'
         }
     },
     {
@@ -429,6 +430,96 @@ export const crossDomainRelationships: Relationship[] = [
         explanation: {
             zh: '恒生指数由香港交易所设计和维护，反映港股核心表现',
             en: 'Hang Seng Index is designed and maintained by HKEX, reflecting core HK stock performance'
+        }
+    },
+
+    // === 美林投资时钟与资产配置 ===
+    {
+        id: 'cd-merrill-1', source: 'macro-merrill-clock', target: 'market-equity', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '美林时钟-复苏期(高增长低通胀)：股票是表现最好的资产类别',
+            en: 'Merrill Clock - Recovery (High Growth, Low Inflation): Stocks are the best performing asset class'
+        }
+    },
+    {
+        id: 'cd-merrill-2', source: 'macro-merrill-clock', target: 'market-commodities', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '美林时钟-过热期(高增长高通胀)：大宗商品是最佳抗通胀资产',
+            en: 'Merrill Clock - Overheat (High Growth, High Inflation): Commodities are the best inflation hedge'
+        }
+    },
+    {
+        id: 'cd-merrill-3', source: 'macro-merrill-clock', target: 'market-money', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '美林时钟-滞涨期(低增长高通胀)：现金为王，防守型资产占优',
+            en: 'Merrill Clock - Stagflation (Low Growth, High Inflation): Cash is king, defensive assets prevail'
+        }
+    },
+    {
+        id: 'cd-merrill-4', source: 'macro-merrill-clock', target: 'market-bond', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '美林时钟-衰退期(低增长低通胀)：债券受益于降息预期，表现最优',
+            en: 'Merrill Clock - Recession (Low Growth, Low Inflation): Bonds outperform due to rate cut expectations'
+        }
+    },
+
+    // === 美联储全球影响 ===
+    {
+        id: 'cd-fed-global-1', source: 'inst-fed', target: 'macro-capital-flows', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '美联储加息会导致全球资本回流美国，引发新兴市场资本外流风险',
+            en: 'Fed rate hikes drive global capital back to the US, risking capital flight from emerging markets'
+        }
+    },
+    {
+        id: 'cd-fed-global-2', source: 'inst-fed', target: 'market-forex', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '美元是全球储备货币，美联储政策直接决定美元强弱，进而冲击全球汇市',
+            en: 'USD is the global reserve currency; Fed policy dictates dollar strength, impacting global forex markets'
+        }
+    },
+
+    // === 审查补充：缺失的监管关系 ===
+    {
+        id: 'cd-sec-nyse', source: 'inst-sec', target: 'inst-nyse', type: 'regulates', strength: 3, bidirectional: false,
+        explanation: {
+            zh: 'SEC作为美国证券监管机构，对纽约证券交易所行使监管职责，确保市场公平透明',
+            en: 'SEC as US securities regulator oversees NYSE operations, ensuring market fairness and transparency'
+        }
+    },
+    {
+        id: 'cd-csrc-sse', source: 'inst-csrc', target: 'inst-sse', type: 'regulates', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '中国证监会监管上海证券交易所的交易规则制定、上市审核和市场秩序维护',
+            en: 'CSRC regulates SSE trading rules, listing approvals, and market order maintenance'
+        }
+    },
+    {
+        id: 'cd-csrc-szse', source: 'inst-csrc', target: 'inst-szse', type: 'regulates', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '中国证监会监管深圳证券交易所，包括创业板的发行审核和持续监管',
+            en: 'CSRC regulates SZSE including ChiNext listing reviews and ongoing supervision'
+        }
+    },
+    {
+        id: 'cd-cboe-vix', source: 'inst-cboe', target: 'market-index-vix', type: 'provides', strength: 3, bidirectional: false,
+        explanation: {
+            zh: 'CBOE(芝加哥期权交易所)是VIX恐慌指数的发布方和计算维护者',
+            en: 'CBOE publishes and maintains the VIX volatility index calculation methodology'
+        }
+    },
+    {
+        id: 'cd-csi1000-snowball', source: 'market-index-csi1000', target: 'instr-snowball', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '中证1000是雪球产品最常挂钩的标的指数之一，其波动直接影响雪球的敲入敲出和票息',
+            en: 'CSI 1000 is a common underlying for snowball products; its volatility directly affects knock-in/out triggers and coupons'
+        }
+    },
+    {
+        id: 'cd-yield-recession', source: 'macro-yield-curve', target: 'macro-recession', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '收益率曲线倒挂(短期利率高于长期)是历史上最可靠的衰退预警信号，领先时间6-18个月',
+            en: 'Yield curve inversion (short rates > long rates) is the most reliable recession predictor, leading by 6-18 months'
         }
     }
 ];

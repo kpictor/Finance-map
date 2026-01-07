@@ -89,6 +89,152 @@ export const RiskLevelConfig: Record<RiskLevel, {
   }
 };
 
+// ========================================
+// 交易场所分类 (Trading Venue)
+// 华尔街说明: 场内(Exchange)产品受交易所监管，标准化、透明度高；
+// 场外(OTC)产品定制化程度高但对手方风险大。
+// 这是2008年金融危机后多德-弗兰克法案监管改革的核心区分。
+// ========================================
+export type TradingVenue = 'exchange' | 'otc' | 'hybrid';
+
+export const TradingVenueConfig: Record<TradingVenue, {
+  name: LocalizedText;
+  description: LocalizedText;
+  icon: string;
+  color: string;
+}> = {
+  exchange: {
+    name: { zh: '场内交易', en: 'Exchange-traded' },
+    description: {
+      zh: '在交易所集中撮合、清算，标准化合约，透明度高，受严格监管',
+      en: 'Centralized matching and clearing on exchanges, standardized contracts, high transparency, strictly regulated'
+    },
+    icon: '🏛️',
+    color: '#3b82f6'  // blue
+  },
+  otc: {
+    name: { zh: '场外交易', en: 'Over-the-Counter' },
+    description: {
+      zh: '双边协商、定制化合约，灵活性高但存在对手方风险',
+      en: 'Bilateral negotiation, customized contracts, flexible but with counterparty risk'
+    },
+    icon: '🤝',
+    color: '#f59e0b'  // amber
+  },
+  hybrid: {
+    name: { zh: '混合交易', en: 'Hybrid' },
+    description: {
+      zh: '场内场外均可交易，如部分债券和外汇产品',
+      en: 'Tradable on both exchange and OTC, such as some bonds and forex products'
+    },
+    icon: '🔄',
+    color: '#8b5cf6'  // purple
+  }
+};
+
+// ========================================
+// 流动性分级 (Liquidity Level)
+// 华尔街说明: 流动性决定了"能否卖得出去"。
+// 2020年3月疫情恐慌期间，即使美国国债(最高流动性)也出现流动性枯竭，
+// 低流动性资产将被迫以大幅折价抛售。流动性溢价是重要的风险补偿。
+// ========================================
+export type LiquidityLevel = 'high' | 'medium' | 'low';
+
+export const LiquidityLevelConfig: Record<LiquidityLevel, {
+  name: LocalizedText;
+  description: LocalizedText;
+  examples: LocalizedText;
+  icon: string;
+  color: string;
+}> = {
+  high: {
+    name: { zh: '高流动性', en: 'High Liquidity' },
+    description: {
+      zh: 'T+0/T+1可变现，买卖价差小，大额交易对价格影响小',
+      en: 'T+0/T+1 settlement, narrow bid-ask spread, large trades have minimal price impact'
+    },
+    examples: { zh: '大盘股、国债、主流ETF', en: 'Large-cap stocks, Treasuries, mainstream ETFs' },
+    icon: '💧',
+    color: '#3b82f6'  // blue
+  },
+  medium: {
+    name: { zh: '中等流动性', en: 'Medium Liquidity' },
+    description: {
+      zh: '数日至数周变现，可能有一定价格冲击',
+      en: 'Days to weeks to liquidate, may have some price impact'
+    },
+    examples: { zh: '企业债、小盘股、非主流ETF', en: 'Corporate bonds, small caps, non-mainstream ETFs' },
+    icon: '💦',
+    color: '#f59e0b'  // amber
+  },
+  low: {
+    name: { zh: '低流动性', en: 'Low Liquidity' },
+    description: {
+      zh: '数月至数年变现，可能大幅折价，存在流动性陷阱风险',
+      en: 'Months to years to liquidate, potential significant discount, liquidity trap risk'
+    },
+    examples: { zh: 'PE/VC、房产、收藏品、非上市股权', en: 'PE/VC, real estate, collectibles, unlisted equity' },
+    icon: '🧊',
+    color: '#ef4444'  // red
+  }
+};
+
+// ========================================
+// 投资者适当性分类 (Investor Suitability)
+// 华尔街说明: 中国《证券期货投资者适当性管理办法》、
+// 美国SEC "Accredited Investor" 规则的映射。
+// 雪球等结构化产品仅限合格投资者，监管红线不可逾越。
+// ========================================
+export type InvestorType = 'retail' | 'professional' | 'qualified';
+
+export const InvestorTypeConfig: Record<InvestorType, {
+  name: LocalizedText;
+  description: LocalizedText;
+  requirements: LocalizedText;
+  icon: string;
+  color: string;
+}> = {
+  retail: {
+    name: { zh: '普通投资者', en: 'Retail Investor' },
+    description: {
+      zh: '可投资公开市场产品，如股票、公募基金、场内ETF',
+      en: 'Can invest in public market products like stocks, mutual funds, exchange-traded ETFs'
+    },
+    requirements: { zh: '无特殊要求', en: 'No special requirements' },
+    icon: '👤',
+    color: '#10b981'  // green
+  },
+  professional: {
+    name: { zh: '专业投资者', en: 'Professional Investor' },
+    description: {
+      zh: '可投资部分复杂产品，如场外期权、收益凭证',
+      en: 'Can invest in some complex products like OTC options, income certificates'
+    },
+    requirements: {
+      zh: '金融资产≥300万或最近3年年收入≥50万',
+      en: 'Financial assets ≥3M CNY or annual income ≥500K for last 3 years'
+    },
+    icon: '👔',
+    color: '#3b82f6'  // blue
+  },
+  qualified: {
+    name: { zh: '合格投资者', en: 'Qualified/Accredited Investor' },
+    description: {
+      zh: '可投资私募基金、对冲基金、雪球等高风险产品',
+      en: 'Can invest in private funds, hedge funds, snowball and other high-risk products'
+    },
+    requirements: {
+      zh: '金融资产≥500万或最近3年年收入≥50万且金融资产≥300万',
+      en: 'Financial assets ≥5M CNY or combination of income and assets requirements'
+    },
+    icon: '🎩',
+    color: '#8b5cf6'  // purple
+  }
+};
+
+// 层级深度
+export type EntityLevel = 1 | 2 | 3;
+
 // 基础实体
 export interface Entity {
   id: string;
@@ -100,7 +246,13 @@ export interface Entity {
   icon?: string;
   tags?: string[];
   details?: LocalizedText;
-  riskLevel?: RiskLevel;  // 风险等级 (L1-L4)
+  riskLevel?: RiskLevel;        // 风险等级 (L1-L4)
+  level?: EntityLevel;          // 层级深度: 1=顶级概念, 2=二级, 3=三级
+  parentId?: string;            // 父节点ID，用于层级收缩
+  // === 新增架构级分类 ===
+  tradingVenue?: TradingVenue;  // 交易场所: 场内/场外/混合
+  liquidity?: LiquidityLevel;   // 流动性: 高/中/低
+  investorType?: InvestorType;  // 投资者适当性: 零售/专业/合格
 }
 
 // 关系类型
@@ -117,20 +269,85 @@ export type RelationType =
   | 'provides'         // 提供
   | 'uses';            // 使用
 
-// 关系类型中文映射
-export const RelationTypeNames: Record<RelationType, LocalizedText> = {
-  regulates: { zh: '监管', en: 'regulates' },
-  issues: { zh: '发行', en: 'issues' },
-  trades: { zh: '交易', en: 'trades' },
-  invests: { zh: '投资', en: 'invests' },
-  influences: { zh: '影响', en: 'influences' },
-  depends_on: { zh: '依赖', en: 'depends on' },
-  derives_from: { zh: '衍生自', en: 'derives from' },
-  competes_with: { zh: '竞争', en: 'competes with' },
-  cooperates_with: { zh: '合作', en: 'cooperates with' },
-  provides: { zh: '提供', en: 'provides' },
-  uses: { zh: '使用', en: 'uses' }
+// 关系类型配置（含颜色和图标）
+export const RelationTypeConfig: Record<RelationType, {
+  name: LocalizedText;
+  color: string;
+  icon: string;
+  description: LocalizedText;
+}> = {
+  regulates: {
+    name: { zh: '监管', en: 'Regulates' },
+    color: '#dc2626',  // red
+    icon: '🏛️',
+    description: { zh: '监管机构对金融活动的管理', en: 'Regulatory oversight of financial activities' }
+  },
+  issues: {
+    name: { zh: '发行', en: 'Issues' },
+    color: '#16a34a',  // green
+    icon: '📤',
+    description: { zh: '机构发行金融产品', en: 'Institution issues financial products' }
+  },
+  trades: {
+    name: { zh: '交易', en: 'Trades' },
+    color: '#2563eb',  // blue
+    icon: '🔄',
+    description: { zh: '在市场中进行买卖活动', en: 'Trading activities in markets' }
+  },
+  invests: {
+    name: { zh: '投资', en: 'Invests' },
+    color: '#ca8a04',  // yellow
+    icon: '💰',
+    description: { zh: '资金投入获取收益', en: 'Capital allocation for returns' }
+  },
+  influences: {
+    name: { zh: '影响', en: 'Influences' },
+    color: '#9333ea',  // purple
+    icon: '📊',
+    description: { zh: '间接作用或影响', en: 'Indirect impact or effect' }
+  },
+  depends_on: {
+    name: { zh: '依赖', en: 'Depends on' },
+    color: '#64748b',  // slate
+    icon: '🔗',
+    description: { zh: '需要其他要素支持', en: 'Requires support from other elements' }
+  },
+  derives_from: {
+    name: { zh: '衍生自', en: 'Derives from' },
+    color: '#f97316',  // orange
+    icon: '🔀',
+    description: { zh: '基于基础资产创建', en: 'Created based on underlying assets' }
+  },
+  competes_with: {
+    name: { zh: '竞争', en: 'Competes' },
+    color: '#ef4444',  // red light
+    icon: '⚔️',
+    description: { zh: '争夺市场份额', en: 'Competing for market share' }
+  },
+  cooperates_with: {
+    name: { zh: '合作', en: 'Cooperates' },
+    color: '#06b6d4',  // cyan
+    icon: '🤝',
+    description: { zh: '共同开展业务', en: 'Working together on business' }
+  },
+  provides: {
+    name: { zh: '包含', en: 'Includes' },
+    color: '#94a3b8',  // gray
+    icon: '📁',
+    description: { zh: '层级包含关系', en: 'Hierarchical containment' }
+  },
+  uses: {
+    name: { zh: '使用', en: 'Uses' },
+    color: '#78716c',  // stone
+    icon: '🔧',
+    description: { zh: '作为工具或服务使用', en: 'Used as tool or service' }
+  }
 };
+
+// 关系类型名称映射（简化版，向后兼容）
+export const RelationTypeNames: Record<RelationType, LocalizedText> = Object.fromEntries(
+  Object.entries(RelationTypeConfig).map(([key, config]) => [key, config.name])
+) as Record<RelationType, LocalizedText>;
 
 // 关系
 export interface Relationship {

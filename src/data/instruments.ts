@@ -6,52 +6,81 @@ export const instrumentEntities: Entity[] = [
     {
         id: 'instr-stock',
         name: { zh: '股票', en: 'Stocks' },
-        description: { zh: '公司所有权份额证券', en: 'Equity ownership securities' },
+        description: { zh: '公司所有权份额证券，股东享有分红权和投票权', en: 'Equity ownership securities, shareholders have dividend and voting rights' },
         domain: 'instruments', category: 'equity', icon: '📈',
         tags: ['stock', 'equity'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 1,
+        tradingVenue: 'exchange',
+        liquidity: 'high',
+        investorType: 'retail'
     },
     {
         id: 'instr-common-stock',
         name: { zh: '普通股', en: 'Common Stock' },
-        description: { zh: '具有投票权的标准股票', en: 'Standard shares with voting rights' },
+        description: { zh: '具有投票权的标准股票，在破产清算时索偿顺序最后', en: 'Standard shares with voting rights, last in liquidation priority' },
         domain: 'instruments', category: 'equity', icon: '📊',
         tags: ['common', 'voting'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 2, parentId: 'instr-stock',
+        tradingVenue: 'exchange',
+        liquidity: 'high',
+        investorType: 'retail'
     },
     {
         id: 'instr-preferred-stock',
         name: { zh: '优先股', en: 'Preferred Stock' },
-        description: { zh: '优先分红的混合证券', en: 'Hybrid securities with dividend priority' },
+        description: { zh: '优先分红的混合证券，具有固定股息，清算顺序优于普通股', en: 'Hybrid securities with dividend priority, fixed dividends, senior to common stock' },
         domain: 'instruments', category: 'equity', icon: '⭐',
         tags: ['preferred', 'dividend'],
-        riskLevel: 'L2'
+        riskLevel: 'L2',
+        level: 2, parentId: 'instr-stock',
+        tradingVenue: 'exchange',
+        liquidity: 'medium',
+        investorType: 'retail'
     },
     {
         id: 'instr-adr',
         name: { zh: '存托凭证', en: 'ADR/GDR' },
-        description: { zh: '代表外国股票的本地证券', en: 'Local securities representing foreign stocks' },
+        description: { zh: '代表外国股票的本地证券，如阿里巴巴、京东在美上市的ADR', en: 'Local securities representing foreign stocks, like Alibaba and JD ADRs in US' },
         domain: 'instruments', category: 'equity', icon: '🌐',
         tags: ['adr', 'gdr', 'cross-border'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 2, parentId: 'instr-stock',
+        tradingVenue: 'exchange',
+        liquidity: 'high',
+        investorType: 'retail'
     },
     {
         id: 'instr-warrant',
         name: { zh: '权证', en: 'Warrants' },
-        description: { zh: '由发行人发行的认购或认沽权利证书，可在交易所交易', en: 'Issuer-issued rights to buy or sell underlying assets, tradable on exchanges' },
+        description: { zh: '由发行人发行的认购或认沽权利证书，具有杆杆效应，到期无价值则归零', en: 'Issuer-issued rights with leverage, may expire worthless' },
         domain: 'instruments', category: 'equity', icon: '📝',
         tags: ['warrant', 'call-warrant', 'put-warrant'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-stock',
+        tradingVenue: 'exchange',
+        liquidity: 'medium',
+        investorType: 'professional'
     },
 
     // === 固定收益类 ===
     {
+        // 华尔街说明: 债券是发行人向投资者的借条，承诺定期付息(coupon)、到期还本(principal)
         id: 'instr-bond',
         name: { zh: '债券', en: 'Bonds' },
-        description: { zh: '固定收益债务证券', en: 'Fixed-income debt securities' },
+        description: {
+            zh: '债务型固定收益证券，发行人承诺定期支付票息(Coupon)并在到期日偿还本金。收益率与价格呈反向关系',
+            en: 'Debt securities where issuer pays periodic coupons and repays principal at maturity. Yield and price move inversely'
+        },
         domain: 'instruments', category: 'fixed-income', icon: '📜',
-        tags: ['bond', 'debt'],
-        riskLevel: 'L2'
+        tags: ['bond', 'debt', 'coupon', 'yield'],
+        riskLevel: 'L2',
+        level: 1,
+        details: {
+            zh: '关键概念：久期(Duration)衡量价格对利率的敏感度，凸性(Convexity)修正久期的误差。信用利差反映违约风险',
+            en: 'Key concepts: Duration measures price sensitivity to rates, Convexity adjusts duration errors. Credit spread reflects default risk'
+        }
     },
     {
         id: 'instr-gov-bond',
@@ -59,7 +88,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '政府发行的债券', en: 'Bonds issued by governments' },
         domain: 'instruments', category: 'fixed-income', icon: '🏛️',
         tags: ['treasury', 'sovereign'],
-        riskLevel: 'L1'
+        riskLevel: 'L1',
+        level: 2, parentId: 'instr-bond'
     },
     {
         id: 'instr-corp-bond',
@@ -67,7 +97,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '企业发行的债券', en: 'Bonds issued by corporations' },
         domain: 'instruments', category: 'fixed-income', icon: '🏭',
         tags: ['corporate', 'credit'],
-        riskLevel: 'L2'
+        riskLevel: 'L2',
+        level: 2, parentId: 'instr-bond'
     },
     {
         id: 'instr-convertible',
@@ -75,7 +106,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '可转换为股票的债券', en: 'Bonds convertible to equity' },
         domain: 'instruments', category: 'fixed-income', icon: '🔄',
         tags: ['convertible', 'hybrid'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 2, parentId: 'instr-bond'
     },
     {
         id: 'instr-mbs',
@@ -83,7 +115,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '资产支持证券', en: 'Asset-backed securities' },
         domain: 'instruments', category: 'structured', icon: '🏠',
         tags: ['mbs', 'abs', 'securitization'],
-        riskLevel: 'L2'
+        riskLevel: 'L2',
+        level: 2, parentId: 'instr-bond'
     },
     {
         id: 'instr-tbill',
@@ -91,7 +124,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '短期政府债务工具，通常期限在一年以内', en: 'Short-term government debt instruments, typically maturing within one year' },
         domain: 'instruments', category: 'fixed-income', icon: '💴',
         tags: ['treasury', 'short-term', 'money-market'],
-        riskLevel: 'L1'
+        riskLevel: 'L1',
+        level: 2, parentId: 'instr-bond'
     },
     {
         id: 'instr-muni-bond',
@@ -99,7 +133,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '地方政府发行的债券，通常享有税收优惠', en: 'Bonds issued by local governments, often with tax advantages' },
         domain: 'instruments', category: 'fixed-income', icon: '🏛️',
         tags: ['municipal', 'tax-exempt'],
-        riskLevel: 'L1'
+        riskLevel: 'L1',
+        level: 2, parentId: 'instr-bond'
     },
     {
         id: 'instr-cd',
@@ -107,17 +142,30 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '银行发行的定期存款凭证，可在二级市场交易', en: 'Bank-issued time deposit certificates, tradable in secondary markets' },
         domain: 'instruments', category: 'fixed-income', icon: '🏦',
         tags: ['cd', 'deposit', 'bank'],
-        riskLevel: 'L1'
+        riskLevel: 'L1',
+        level: 2, parentId: 'instr-bond'
     },
 
     // === 衍生品 ===
     {
+        // 华尔街说明: 期货是衍生品核心，保证金制度带来高杠杆，逐日盯市(Mark-to-Market)是关键机制
         id: 'instr-futures',
         name: { zh: '期货', en: 'Futures' },
-        description: { zh: '标准化远期合约', en: 'Standardized forward contracts' },
+        description: {
+            zh: '交易所标准化远期合约，采用保证金交易(Margin)和逐日盯市(Mark-to-Market)制度，到期可实物或现金交割',
+            en: 'Exchange-traded standardized contracts with margin trading and daily mark-to-market settlement, physical or cash delivery at expiry'
+        },
         domain: 'instruments', category: 'derivatives', icon: '📊',
-        tags: ['futures'],
-        riskLevel: 'L3'
+        tags: ['futures', 'margin', 'mark-to-market'],
+        riskLevel: 'L3',
+        level: 1,
+        tradingVenue: 'exchange',
+        liquidity: 'high',
+        investorType: 'professional',
+        details: {
+            zh: '保证金通常为合约价值的5-15%，杠杆可达10-20倍。多头承担价格上涨收益/下跌损失，空头相反',
+            en: 'Margin typically 5-15% of contract value, leverage up to 10-20x. Longs gain from price rises, shorts from falls'
+        }
     },
     {
         id: 'instr-index-futures',
@@ -125,7 +173,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '股票指数期货合约', en: 'Stock index futures' },
         domain: 'instruments', category: 'derivatives', icon: '📈',
         tags: ['index', 'equity-futures'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 2, parentId: 'instr-futures'
     },
     {
         id: 'instr-commodity-futures',
@@ -133,39 +182,127 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '大宗商品期货合约', en: 'Commodity futures contracts' },
         domain: 'instruments', category: 'derivatives', icon: '🛢️',
         tags: ['commodity', 'physical'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 2, parentId: 'instr-futures'
     },
     {
+        // 华尔街说明: 期权是非线性资产，买方权利有限亏损无限收益，卖方相反。希腊字母(Greeks)是风控核心
         id: 'instr-options',
         name: { zh: '期权', en: 'Options' },
-        description: { zh: '买卖权利合约', en: 'Rights to buy or sell' },
+        description: {
+            zh: '赋予买方在约定日期以约定价格(行权价)买入(看涨Call)或卖出(看跌Put)标的资产的权利。买方支付权利金，风险有限收益无限',
+            en: 'Contracts giving buyer the right to buy (Call) or sell (Put) underlying at strike price. Buyer pays premium with limited risk, unlimited upside'
+        },
         domain: 'instruments', category: 'derivatives', icon: '🎯',
-        tags: ['options', 'call', 'put'],
-        riskLevel: 'L3'
+        tags: ['options', 'call', 'put', 'greeks', 'volatility'],
+        riskLevel: 'L3',
+        level: 1,
+        tradingVenue: 'exchange',
+        liquidity: 'high',
+        investorType: 'retail',
+        details: {
+            zh: '希腊字母：Delta(方向敏感度)、Gamma(Delta变化率)、Theta(时间衰减)、Vega(波动率敏感度)、Rho(利率敏感度)',
+            en: 'Greeks: Delta (directional sensitivity), Gamma (Delta change rate), Theta (time decay), Vega (volatility sensitivity), Rho (rate sensitivity)'
+        }
     },
     {
         id: 'instr-swaps',
         name: { zh: '互换', en: 'Swaps' },
-        description: { zh: '现金流交换合约', en: 'Cash flow exchange contracts' },
+        description: { zh: '现金流交换合约，是全球最大的场外衍生品市场', en: 'Cash flow exchange contracts, the largest OTC derivatives market globally' },
         domain: 'instruments', category: 'derivatives', icon: '🔀',
         tags: ['swaps', 'irs', 'cds'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 1,
+        tradingVenue: 'otc',
+        liquidity: 'medium',
+        investorType: 'qualified'
+    },
+    {
+        // 华尔街说明: IRS是名义本金规模最大的衍生品，全球超过400万亿美元
+        // 银行用于管理利率风险敞口，企业用于锁定融资成本
+        id: 'instr-irs',
+        name: { zh: '利率互换', en: 'Interest Rate Swaps (IRS)' },
+        description: {
+            zh: '交换固定利率与浮动利率现金流的合约，全球名义本金超400万亿美元，是最大的衍生品市场',
+            en: 'Contracts exchanging fixed and floating interest payments, over $400T notional globally, largest derivatives market'
+        },
+        domain: 'instruments', category: 'derivatives', icon: '📊',
+        tags: ['irs', 'interest-rate', 'libor', 'sofr'],
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-swaps',
+        tradingVenue: 'otc',
+        liquidity: 'medium',
+        investorType: 'qualified',
+        details: {
+            zh: '典型结构：一方支付固定利率，另一方支付LIBOR/SOFR浮动利率。用于对冲利率风险或投机利率走势',
+            en: 'Typical structure: one party pays fixed rate, other pays LIBOR/SOFR floating rate. Used to hedge interest rate risk or speculate on rate movements'
+        }
+    },
+    {
+        // 华尔街说明: CDS是2008年金融危机的放大器，导致AIG政府救助
+        // 买方支付保费获取信用保护，卖方承担违约风险
+        id: 'instr-cds',
+        name: { zh: '信用违约互换', en: 'Credit Default Swaps (CDS)' },
+        description: {
+            zh: '转移信用风险的合约，买方支付保费获取违约保护，2008年金融危机的关键放大器',
+            en: 'Contracts transferring credit risk, buyer pays premium for default protection, key amplifier in 2008 financial crisis'
+        },
+        domain: 'instruments', category: 'derivatives', icon: '🛡️',
+        tags: ['cds', 'credit', 'default', 'protection'],
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-swaps',
+        tradingVenue: 'otc',
+        liquidity: 'low',
+        investorType: 'qualified',
+        details: {
+            zh: '如参考实体（如某公司债）发生违约，CDS卖方须向买方赔付损失。AIG因出售大量CDS而在2008年被政府救助',
+            en: 'If reference entity defaults, CDS seller compensates buyer for losses. AIG was bailed out in 2008 due to massive CDS exposure'
+        }
+    },
+    {
+        // 华尔街说明: TRS是Archegos爆仓事件的核心工具
+        // 可用于获得杠杆敞口而不实际持有资产
+        id: 'instr-trs',
+        name: { zh: '总收益互换', en: 'Total Return Swaps (TRS)' },
+        description: {
+            zh: '交换资产总收益（包括价格变动和收入）的合约，Archegos爆仓事件的核心工具',
+            en: 'Contracts exchanging total return of an asset (price change + income), central to Archegos collapse'
+        },
+        domain: 'instruments', category: 'derivatives', icon: '💱',
+        tags: ['trs', 'total-return', 'leverage'],
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-swaps',
+        tradingVenue: 'otc',
+        liquidity: 'low',
+        investorType: 'qualified',
+        details: {
+            zh: '投资者可通过TRS获得股票敞口而无需实际持股，规避信息披露要求。2021年Archegos因TRS杠杆过高爆仓导致多家投行巨亏',
+            en: 'Investors gain equity exposure without actual ownership, avoiding disclosure requirements. Archegos collapsed in 2021 due to excessive TRS leverage'
+        }
     },
     {
         id: 'instr-forwards',
         name: { zh: '远期', en: 'Forwards' },
-        description: { zh: '非标准化远期合约', en: 'Customized forward contracts' },
+        description: { zh: '非标准化远期合约，场外双边协商定制', en: 'Customized forward contracts, bilateral OTC negotiation' },
         domain: 'instruments', category: 'derivatives', icon: '📅',
         tags: ['forwards', 'otc'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 1,
+        tradingVenue: 'otc',
+        liquidity: 'low',
+        investorType: 'professional'
     },
     {
         id: 'instr-options-futures',
         name: { zh: '期货期权', en: 'Options on Futures' },
-        description: { zh: '以期货合约为标的的期权', en: 'Options with futures contracts as underlying' },
+        description: { zh: '以期货合约为标的的期权，双重杠杆效应', en: 'Options with futures as underlying, double leverage effect' },
         domain: 'instruments', category: 'derivatives', icon: '🎯',
         tags: ['options', 'futures', 'fop'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-options',
+        tradingVenue: 'exchange',
+        liquidity: 'medium',
+        investorType: 'professional'
     },
     {
         id: 'instr-equity-options',
@@ -173,7 +310,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '以个股为标的的期权合约', en: 'Options on individual stocks' },
         domain: 'instruments', category: 'derivatives', icon: '📊',
         tags: ['options', 'stock-options', 'equity'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 2, parentId: 'instr-options'
     },
     {
         id: 'instr-index-options',
@@ -181,7 +319,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '以股票指数为标的的期权合约', en: 'Options on stock indices' },
         domain: 'instruments', category: 'derivatives', icon: '📈',
         tags: ['options', 'index', 'spx'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 2, parentId: 'instr-options'
     },
     {
         id: 'instr-cfd',
@@ -189,7 +328,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '无需持有标的资产即可交易价格变动的合约', en: 'Contracts for difference, trading price movements without owning the underlying' },
         domain: 'instruments', category: 'derivatives', icon: '📉',
         tags: ['cfd', 'leverage', 'margin'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-futures'
     },
     {
         id: 'instr-single-stock-futures',
@@ -197,7 +337,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '以单一股票为标的的期货合约', en: 'Futures contracts on individual stocks' },
         domain: 'instruments', category: 'derivatives', icon: '📊',
         tags: ['ssf', 'equity-futures'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 2, parentId: 'instr-futures'
     },
 
     // === 外汇工具 ===
@@ -207,7 +348,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '货币对交易工具', en: 'Currency pair trading instruments' },
         domain: 'instruments', category: 'forex', icon: '💱',
         tags: ['forex', 'fx', 'currency'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 1
     },
     {
         id: 'instr-spot-fx',
@@ -215,7 +357,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: 'T+2交割的现货外汇交易', en: 'Spot forex with T+2 settlement' },
         domain: 'instruments', category: 'forex', icon: '⚡',
         tags: ['spot', 'immediate', 'fx'],
-        riskLevel: 'L2'
+        riskLevel: 'L2',
+        level: 2, parentId: 'instr-forex'
     },
     {
         id: 'instr-fx-forwards',
@@ -223,7 +366,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '约定未来日期和汇率的外汇交易', en: 'Forex transactions with future settlement dates and rates' },
         domain: 'instruments', category: 'forex', icon: '📅',
         tags: ['forward', 'fx', 'hedge'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 2, parentId: 'instr-forex'
     },
     {
         id: 'instr-fx-options',
@@ -231,7 +375,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '以货币对为标的的期权合约', en: 'Options on currency pairs' },
         domain: 'instruments', category: 'forex', icon: '🎯',
         tags: ['options', 'fx', 'currency'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-forex'
     },
 
     // === 波动率产品 ===
@@ -241,7 +386,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '基于市场波动率的交易产品', en: 'Trading products based on market volatility' },
         domain: 'instruments', category: 'derivatives', icon: '📊',
         tags: ['volatility', 'vix', 'variance'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 1
     },
     {
         id: 'instr-vix-futures',
@@ -249,7 +395,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '基于CBOE波动率指数的期货合约', en: 'Futures on CBOE Volatility Index' },
         domain: 'instruments', category: 'derivatives', icon: '📈',
         tags: ['vix', 'futures', 'volatility'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-volatility'
     },
     {
         id: 'instr-vix-options',
@@ -257,7 +404,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '基于CBOE波动率指数的期权合约', en: 'Options on CBOE Volatility Index' },
         domain: 'instruments', category: 'derivatives', icon: '🎯',
         tags: ['vix', 'options', 'volatility'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-volatility'
     },
 
     // === 商品 ===
@@ -267,7 +415,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '可交易的实物商品或商品合约', en: 'Tradable physical commodities or commodity contracts' },
         domain: 'instruments', category: 'commodities', icon: '🛢️',
         tags: ['commodity', 'physical'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 1
     },
     {
         id: 'instr-precious-metals',
@@ -275,7 +424,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '黄金、白银、铂金等贵金属投资', en: 'Gold, silver, platinum investment' },
         domain: 'instruments', category: 'commodities', icon: '🥇',
         tags: ['gold', 'silver', 'platinum'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 2, parentId: 'instr-commodity'
     },
     {
         id: 'instr-energy',
@@ -283,7 +433,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '原油、天然气等能源商品', en: 'Crude oil, natural gas and other energy commodities' },
         domain: 'instruments', category: 'commodities', icon: '⛽',
         tags: ['oil', 'natural-gas', 'energy'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 2, parentId: 'instr-commodity'
     },
     {
         id: 'instr-agriculture',
@@ -291,7 +442,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '谷物、大豆、咖啡等农产品期货', en: 'Grains, soybeans, coffee and other agricultural futures' },
         domain: 'instruments', category: 'commodities', icon: '🌾',
         tags: ['agriculture', 'grains', 'softs'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 2, parentId: 'instr-commodity'
     },
 
     // === 预测市场 ===
@@ -301,7 +453,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '基于政治、经济、气候等事件的预测市场合约', en: 'Prediction market contracts on political, economic, and climate events' },
         domain: 'instruments', category: 'alternatives', icon: '🔮',
         tags: ['forecast', 'prediction', 'events'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-crypto'
     },
 
     // === 加密货币 ===
@@ -311,7 +464,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '比特币、以太坊等数字资产', en: 'Bitcoin, Ethereum and other digital assets' },
         domain: 'instruments', category: 'crypto', icon: '₿',
         tags: ['crypto', 'bitcoin', 'ethereum'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 1
     },
     {
         id: 'instr-crypto-futures',
@@ -319,7 +473,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '以加密货币为标的的期货合约', en: 'Futures contracts on cryptocurrencies' },
         domain: 'instruments', category: 'crypto', icon: '📊',
         tags: ['crypto', 'futures', 'btc'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-crypto'
     },
 
     // === 基金产品 ===
@@ -329,7 +484,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '交易所交易基金', en: 'Exchange-Traded Funds' },
         domain: 'instruments', category: 'fund', icon: '📦',
         tags: ['etf', 'passive'],
-        riskLevel: 'L2'
+        riskLevel: 'L2',
+        level: 1
     },
     {
         id: 'instr-index-fund',
@@ -337,7 +493,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '跟踪指数的被动基金', en: 'Passive funds tracking indices' },
         domain: 'instruments', category: 'fund', icon: '📊',
         tags: ['index', 'passive'],
-        riskLevel: 'L2'
+        riskLevel: 'L2',
+        level: 2, parentId: 'instr-etf'
     },
     {
         id: 'instr-money-fund',
@@ -345,7 +502,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '投资短期债务的基金', en: 'Funds investing in short-term debt' },
         domain: 'instruments', category: 'fund', icon: '💵',
         tags: ['money-market', 'cash'],
-        riskLevel: 'L1'
+        riskLevel: 'L1',
+        level: 2, parentId: 'instr-etf'
     },
     {
         id: 'instr-reit',
@@ -353,7 +511,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '房地产投资信托', en: 'Real Estate Investment Trusts' },
         domain: 'instruments', category: 'alternatives', icon: '🏢',
         tags: ['reit', 'real-estate'],
-        riskLevel: 'L2'
+        riskLevel: 'L2',
+        level: 2, parentId: 'instr-etf'
     },
     {
         id: 'instr-mutual-fund',
@@ -361,7 +520,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '由专业管理人管理的集合投资工具', en: 'Pooled investment vehicles managed by professional managers' },
         domain: 'instruments', category: 'fund', icon: '💼',
         tags: ['mutual-fund', 'active', 'managed'],
-        riskLevel: 'L2'
+        riskLevel: 'L2',
+        level: 2, parentId: 'instr-etf'
     },
     {
         id: 'instr-bond-fund',
@@ -369,7 +529,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '专注于固定收益证券的基金', en: 'Funds focused on fixed income securities' },
         domain: 'instruments', category: 'fund', icon: '📜',
         tags: ['bond-fund', 'fixed-income'],
-        riskLevel: 'L2'
+        riskLevel: 'L2',
+        level: 2, parentId: 'instr-etf'
     },
     {
         id: 'instr-sector-fund',
@@ -377,7 +538,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '专注于特定行业或领域的基金', en: 'Funds focused on specific sectors or industries' },
         domain: 'instruments', category: 'fund', icon: '🏭',
         tags: ['sector', 'thematic'],
-        riskLevel: 'L3'
+        riskLevel: 'L3',
+        level: 2, parentId: 'instr-etf'
     },
 
     // === 结构化产品 ===
@@ -387,7 +549,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '基于衍生品构建的复合金融产品，通常由固定收益与期权组合而成', en: 'Complex financial products built on derivatives, typically combining fixed income with options' },
         domain: 'instruments', category: 'structured', icon: '🧩',
         tags: ['structured', 'hybrid', 'derivatives'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 1
     },
     {
         id: 'instr-exotic-options',
@@ -395,7 +558,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '具有复杂收益结构的非标准期权，如障碍期权、亚式期权等', en: 'Non-standard options with complex payoff structures, such as barrier options and Asian options' },
         domain: 'instruments', category: 'derivatives', icon: '🎰',
         tags: ['exotic', 'barrier', 'asian', 'options'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-structured'
     },
     {
         id: 'instr-snowball',
@@ -403,7 +567,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '自动敲入敲出结构产品，投资者卖出看跌期权获取票息，具有路径依赖特性', en: 'Autocallable barrier products where investors sell put options for coupon income, with path-dependent payoffs' },
         domain: 'instruments', category: 'structured', icon: '❄️',
         tags: ['snowball', 'autocallable', 'barrier', 'knock-in', 'knock-out'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-structured'
     },
     {
         id: 'instr-phoenix',
@@ -411,7 +576,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '带有定期派息和敲入敲出机制的结构化产品，比雪球更频繁派发票息', en: 'Structured products with periodic coupon payments and knock-in/out mechanisms, more frequent payouts than snowball' },
         domain: 'instruments', category: 'structured', icon: '🦅',
         tags: ['phoenix', 'autocallable', 'coupon'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-structured'
     },
     {
         id: 'instr-sharkfin',
@@ -419,7 +585,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '收益上限封顶的障碍期权，标的涨至障碍价时收益被锁定', en: 'Barrier options with capped returns, payoff is locked when underlying hits barrier price' },
         domain: 'instruments', category: 'structured', icon: '🦈',
         tags: ['sharkfin', 'barrier', 'capped'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-structured'
     },
     {
         id: 'instr-income-cert',
@@ -427,7 +594,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '券商发行的本金保障型或浮动收益型产品，通常挂钩标的资产表现', en: 'Securities firm-issued products with principal protection or floating returns, typically linked to underlying assets' },
         domain: 'instruments', category: 'structured', icon: '📋',
         tags: ['certificate', 'securities', 'linked'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-structured'
     },
     {
         id: 'instr-fcn',
@@ -435,7 +603,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '提供固定票息的挂钩型票据，到期收益取决于标的资产价格', en: 'Linked notes providing fixed coupons, maturity payoff depends on underlying asset price' },
         domain: 'instruments', category: 'structured', icon: '💳',
         tags: ['fcn', 'coupon', 'linked-note'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-structured'
     },
     {
         id: 'instr-dcn',
@@ -443,7 +612,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '以折扣价格购买、收益封顶的结构化产品，类似卖出看涨期权', en: 'Structured products bought at discount with capped upside, similar to selling covered calls' },
         domain: 'instruments', category: 'structured', icon: '🏷️',
         tags: ['dcn', 'discount', 'capped'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-structured'
     },
 
     // === 另类投资 ===
@@ -453,7 +623,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '非上市公司股权投资', en: 'Investment in private companies' },
         domain: 'instruments', category: 'alternatives', icon: '💰',
         tags: ['pe', 'buyout'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 1
     },
     {
         id: 'instr-vc',
@@ -461,7 +632,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '早期创业公司投资', en: 'Early-stage company investment' },
         domain: 'instruments', category: 'alternatives', icon: '🚀',
         tags: ['vc', 'startup'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 1
     },
     {
         id: 'instr-hedge-fund',
@@ -469,7 +641,8 @@ export const instrumentEntities: Entity[] = [
         description: { zh: '多元化对冲策略', en: 'Diversified hedging strategies' },
         domain: 'instruments', category: 'alternatives', icon: '🎲',
         tags: ['hedge', 'alpha'],
-        riskLevel: 'L4'
+        riskLevel: 'L4',
+        level: 1
     }
 ];
 
@@ -563,5 +736,29 @@ export const instrumentRelationships: Relationship[] = [
     { id: 'inr-53', source: 'instr-mutual-fund', target: 'instr-stock', type: 'invests', strength: 3, bidirectional: false },
     { id: 'inr-54', source: 'instr-mutual-fund', target: 'instr-bond', type: 'invests', strength: 3, bidirectional: false },
     { id: 'inr-55', source: 'instr-bond-fund', target: 'instr-bond', type: 'invests', strength: 3, bidirectional: false },
-    { id: 'inr-56', source: 'instr-sector-fund', target: 'instr-stock', type: 'invests', strength: 3, bidirectional: false }
+    { id: 'inr-56', source: 'instr-sector-fund', target: 'instr-stock', type: 'invests', strength: 3, bidirectional: false },
+
+    // === 新增互换层级关系 ===
+    { id: 'inr-57', source: 'instr-swaps', target: 'instr-irs', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'inr-58', source: 'instr-swaps', target: 'instr-cds', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'inr-59', source: 'instr-swaps', target: 'instr-trs', type: 'provides', strength: 3, bidirectional: false },
+
+    // IRS与利率市场衍生关系
+    { id: 'inr-60', source: 'instr-irs', target: 'instr-gov-bond', type: 'derives_from', strength: 3, bidirectional: false },
+
+    // CDS与信用市场衍生关系
+    { id: 'inr-61', source: 'instr-cds', target: 'instr-corp-bond', type: 'derives_from', strength: 3, bidirectional: false },
+
+    // === 深度审查修复：孤立节点层级关系 ===
+    // 远期合约与期货有衍生关系(都是远期交易)
+    { id: 'inr-62', source: 'instr-futures', target: 'instr-forwards', type: 'derives_from', strength: 3, bidirectional: false },
+    // 预测合约属于加密货币生态
+    { id: 'inr-63', source: 'instr-crypto', target: 'instr-forecast', type: 'provides', strength: 3, bidirectional: false },
+    // PE与ETF都是基金类产品，PE投资于股票
+    { id: 'inr-64', source: 'instr-pe', target: 'instr-stock', type: 'invests', strength: 3, bidirectional: false },
+    // VC与PE相关，都投资股权
+    { id: 'inr-65', source: 'instr-vc', target: 'instr-common-stock', type: 'invests', strength: 3, bidirectional: false },
+    // 对冲基金使用多种策略
+    { id: 'inr-66', source: 'instr-hedge-fund', target: 'instr-options', type: 'uses', strength: 3, bidirectional: false },
+    { id: 'inr-67', source: 'instr-hedge-fund', target: 'instr-futures', type: 'uses', strength: 3, bidirectional: false }
 ];

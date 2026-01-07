@@ -17,11 +17,11 @@ An interactive financial system knowledge graph to help understand complex relat
 
 | 领域 | Domain | 实体数 | Entities |
 |------|--------|--------|----------|
-| 金融市场 | Financial Markets | 26 | Stock, Bond, Forex, Derivatives, Commodities, Crypto |
-| 金融机构 | Financial Institutions | 27 | Central Banks, Commercial Banks, Funds, Insurance, Regulators |
-| 金融工具 | Financial Instruments | 56 | Stocks, Bonds, Options, Futures, ETFs, Structured Products |
-| 宏观经济 | Macroeconomics | 23 | Monetary Policy, Fiscal Policy, Indicators, Cycles |
-| **总计** | **Total** | **132** | **200+ relationships** |
+| 金融市场 | Financial Markets | 41 | Stock Markets, Bond Markets, Forex, Derivatives, Commodities, Crypto, Major Indices |
+| 金融机构 | Financial Institutions | 41 | Central Banks, Commercial Banks, Investment Banks, Funds, Insurance, Exchanges, Regulators |
+| 金融工具 | Financial Instruments | 59 | Stocks, Bonds, Options, Futures, Swaps (IRS/CDS/TRS), ETFs, Structured Products (Snowball/Phoenix) |
+| 宏观经济 | Macroeconomics | 26 | Monetary Policy, Fiscal Policy, Indicators, Cycles, Merrill Clock, Yield Curve |
+| **总计** | **Total** | **167** | **229+ relationships** |
 
 ## 🎯 风险等级 / Risk Levels
 

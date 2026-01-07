@@ -135,6 +135,42 @@ body {
   flex-shrink: 0;
 }
 
+.legend-line {
+  width: 20px;
+  height: 3px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legend-line-solid {
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.legend-line-dashed {
+  width: 20px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg,
+      #fff 0px,
+      #fff 4px,
+      transparent 4px,
+      transparent 8px);
+  flex-shrink: 0;
+}
+
+.legend-line-dotted {
+  width: 20px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg,
+      #fff 0px,
+      #fff 2px,
+      transparent 2px,
+      transparent 4px);
+  flex-shrink: 0;
+}
+
 .legend-icon {
   font-size: 14px;
   width: 20px;
