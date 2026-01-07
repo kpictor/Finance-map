@@ -93,65 +93,114 @@ export const instrumentEntities: Entity[] = [
     {
         id: 'instr-gov-bond',
         name: { zh: '国债', en: 'Government Bonds' },
-        description: { zh: '政府发行的债券', en: 'Bonds issued by governments' },
+        description: { zh: '政府发行的债券，被视为无风险资产', en: 'Bonds issued by governments, considered risk-free assets' },
         domain: 'instruments', category: 'fixed-income', icon: '🏛️',
-        tags: ['treasury', 'sovereign'],
+        tags: ['treasury', 'sovereign', 'risk-free'],
         riskLevel: 'L1',
-        level: 2, parentId: 'instr-bond'
+        level: 2, parentId: 'instr-bond',
+        tradingVenue: 'hybrid',
+        liquidity: 'high',
+        investorType: 'retail',
+        details: {
+            zh: '美国国债被视为全球无风险基准，10年期国债收益率是最重要的定价基准。中国国债主要在银行间市场交易',
+            en: 'US Treasuries are the global risk-free benchmark; 10-year yield is the key pricing reference. China gov bonds trade mainly in interbank market'
+        }
     },
     {
         id: 'instr-corp-bond',
         name: { zh: '企业债', en: 'Corporate Bonds' },
-        description: { zh: '企业发行的债券', en: 'Bonds issued by corporations' },
+        description: { zh: '企业发行的债券，信用风险高于国债', en: 'Bonds issued by corporations, higher credit risk than treasuries' },
         domain: 'instruments', category: 'fixed-income', icon: '🏭',
-        tags: ['corporate', 'credit'],
+        tags: ['corporate', 'credit', 'spread'],
         riskLevel: 'L2',
-        level: 2, parentId: 'instr-bond'
+        level: 2, parentId: 'instr-bond',
+        tradingVenue: 'otc',
+        liquidity: 'medium',
+        investorType: 'retail',
+        details: {
+            zh: '企业债按评级分为投资级(BBB-以上)和高收益级(BB+以下)。信用利差=企业债收益率-国债收益率',
+            en: 'Corporate bonds divided into Investment Grade (BBB- and above) and High Yield (BB+ and below). Credit spread = Corp yield - Treasury yield'
+        }
     },
     {
         id: 'instr-convertible',
         name: { zh: '可转债', en: 'Convertible Bonds' },
-        description: { zh: '可转换为股票的债券', en: 'Bonds convertible to equity' },
+        description: { zh: '可转换为股票的混合型债券', en: 'Hybrid bonds convertible to equity' },
         domain: 'instruments', category: 'fixed-income', icon: '🔄',
-        tags: ['convertible', 'hybrid'],
+        tags: ['convertible', 'hybrid', 'equity-linked'],
         riskLevel: 'L3',
-        level: 2, parentId: 'instr-bond'
+        level: 2, parentId: 'instr-bond',
+        tradingVenue: 'exchange',
+        liquidity: 'medium',
+        investorType: 'retail',
+        details: {
+            zh: '可转债=纯债价值+转股期权价值。转股溢价率、纯债到期收益率(YTM)是关键指标。中国可转债市场全球最活跃',
+            en: 'Convertible = pure bond value + conversion option. Key metrics: conversion premium, YTM. China has the most active convertible market globally'
+        }
     },
     {
         id: 'instr-mbs',
         name: { zh: 'MBS/ABS', en: 'MBS/ABS' },
-        description: { zh: '资产支持证券', en: 'Asset-backed securities' },
+        description: { zh: '资产支持证券，将贷款打包证券化', en: 'Asset-backed securities, securitized loan pools' },
         domain: 'instruments', category: 'structured', icon: '🏠',
-        tags: ['mbs', 'abs', 'securitization'],
+        tags: ['mbs', 'abs', 'securitization', 'mortgage'],
         riskLevel: 'L2',
-        level: 2, parentId: 'instr-bond'
+        level: 2, parentId: 'instr-bond',
+        tradingVenue: 'otc',
+        liquidity: 'medium',
+        investorType: 'professional',
+        details: {
+            zh: 'MBS(住房抵押)和ABS(非房贷资产)。提前还款风险是MBS核心风险。美国MBS主要由两房(Fannie/Freddie)担保',
+            en: 'MBS (mortgage) and ABS (non-mortgage assets). Prepayment risk is core MBS risk. US MBS mainly guaranteed by GSEs (Fannie/Freddie)'
+        }
     },
     {
         id: 'instr-tbill',
         name: { zh: '国库券', en: 'Treasury Bills' },
-        description: { zh: '短期政府债务工具，通常期限在一年以内', en: 'Short-term government debt instruments, typically maturing within one year' },
+        description: { zh: '短期政府债务工具，期限通常在一年以内', en: 'Short-term government debt, typically maturing within one year' },
         domain: 'instruments', category: 'fixed-income', icon: '💴',
-        tags: ['treasury', 'short-term', 'money-market'],
+        tags: ['treasury', 'short-term', 'money-market', 'risk-free'],
         riskLevel: 'L1',
-        level: 2, parentId: 'instr-bond'
+        level: 2, parentId: 'instr-bond',
+        tradingVenue: 'exchange',
+        liquidity: 'high',
+        investorType: 'retail',
+        details: {
+            zh: '国库券是最安全的短期投资工具。贴现发行，到期按面值偿还。常用于货币基金底层资产',
+            en: 'T-Bills are the safest short-term investment. Issued at discount, redeemed at face value. Commonly used as money fund underlying assets'
+        }
     },
     {
         id: 'instr-muni-bond',
         name: { zh: '市政债券', en: 'Municipal Bonds' },
         description: { zh: '地方政府发行的债券，通常享有税收优惠', en: 'Bonds issued by local governments, often with tax advantages' },
         domain: 'instruments', category: 'fixed-income', icon: '🏛️',
-        tags: ['municipal', 'tax-exempt'],
+        tags: ['municipal', 'tax-exempt', 'local-gov'],
         riskLevel: 'L1',
-        level: 2, parentId: 'instr-bond'
+        level: 2, parentId: 'instr-bond',
+        tradingVenue: 'otc',
+        liquidity: 'medium',
+        investorType: 'retail',
+        details: {
+            zh: '美国市政债还本付息免联邦税，对高税率投资者极具吸引力。中国地方政府债是财政部代发，信用接近国债',
+            en: 'US munis are often federal tax-exempt, attractive to high-bracket investors. China local gov bonds are issued via MoF, near-sovereign credit'
+        }
     },
     {
         id: 'instr-cd',
         name: { zh: '大额存单', en: 'Certificates of Deposit' },
         description: { zh: '银行发行的定期存款凭证，可在二级市场交易', en: 'Bank-issued time deposit certificates, tradable in secondary markets' },
         domain: 'instruments', category: 'fixed-income', icon: '🏦',
-        tags: ['cd', 'deposit', 'bank'],
+        tags: ['cd', 'deposit', 'bank', 'money-market'],
         riskLevel: 'L1',
-        level: 2, parentId: 'instr-bond'
+        level: 2, parentId: 'instr-bond',
+        tradingVenue: 'otc',
+        liquidity: 'high',
+        investorType: 'retail',
+        details: {
+            zh: '大额存单收益率通常高于活期。中国同业存单(NCD)是重要货币市场工具，型号为“大额存单AAA”',
+            en: 'CDs offer higher rates than demand deposits. China NCDs are key money market instruments. FDIC insures US CDs up to $250K'
+        }
     },
     {
         // 华尔街说明: 高收益债又称"垃圾债"，评级BB+及以下，收益率高但违约风险大
@@ -258,20 +307,34 @@ export const instrumentEntities: Entity[] = [
     {
         id: 'instr-index-futures',
         name: { zh: '股指期货', en: 'Index Futures' },
-        description: { zh: '股票指数期货合约', en: 'Stock index futures' },
+        description: { zh: '股票指数期货合约，用于对冲或投机', en: 'Stock index futures for hedging or speculation' },
         domain: 'instruments', category: 'derivatives', icon: '📈',
-        tags: ['index', 'equity-futures'],
+        tags: ['index', 'equity-futures', 'sp500', 'csi300'],
         riskLevel: 'L3',
-        level: 2, parentId: 'instr-futures'
+        level: 2, parentId: 'instr-futures',
+        tradingVenue: 'exchange',
+        liquidity: 'high',
+        investorType: 'professional',
+        details: {
+            zh: '全球最活跃的股指期货：E-mini S&P 500(ES)、沪深300期货(IF)。雪球等结构化产品的对冲工具',
+            en: 'Most active index futures: E-mini S&P 500 (ES), CSI 300 (IF). Used by dealers to hedge snowball and other structured products'
+        }
     },
     {
         id: 'instr-commodity-futures',
         name: { zh: '商品期货', en: 'Commodity Futures' },
-        description: { zh: '大宗商品期货合约', en: 'Commodity futures contracts' },
+        description: { zh: '大宗商品期货合约，包括能源、金属、农产品', en: 'Commodity futures including energy, metals, and agricultural products' },
         domain: 'instruments', category: 'derivatives', icon: '🛢️',
-        tags: ['commodity', 'physical'],
+        tags: ['commodity', 'physical', 'wti', 'gold'],
         riskLevel: 'L3',
-        level: 2, parentId: 'instr-futures'
+        level: 2, parentId: 'instr-futures',
+        tradingVenue: 'exchange',
+        liquidity: 'high',
+        investorType: 'professional',
+        details: {
+            zh: '主要合约：WTI原油(CL)、布伦特原油、黄金(GC)、铜(HG)。期现基差(Basis)=现货价-期货价',
+            en: 'Major contracts: WTI crude (CL), Brent, Gold (GC), Copper (HG). Basis = Spot price - Futures price'
+        }
     },
     {
         // 华尔街说明: 期权是非线性资产，买方权利有限亏损无限收益，卖方相反。希腊字母(Greeks)是风控核心
