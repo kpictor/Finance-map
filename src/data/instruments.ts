@@ -81,7 +81,11 @@ export const instrumentEntities: Entity[] = [
         level: 2, parentId: 'instr-stock',
         tradingVenue: 'exchange',
         liquidity: 'medium',
-        investorType: 'professional'
+        investorType: 'professional',
+        details: {
+            zh: '权证与期权类似但由发行人而非交易所发行。港股牛熊证(CBBC)是派生权证',
+            en: 'Warrants similar to options but issuer-issued. HK Callable Bull/Bear Contracts (CBBC) are warrant derivatives'
+        }
     },
 
     // === 固定收益类 ===
