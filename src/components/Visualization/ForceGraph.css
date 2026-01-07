@@ -177,12 +177,13 @@
 /* 操作说明 */
 .graph-instructions {
   position: absolute;
-  top: 16px;
-  left: 16px;
-  background: rgba(15, 23, 42, 0.9);
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(8px);
   border-radius: 8px;
-  padding: 8px 16px;
+  padding: 8px 20px;
   color: #94a3b8;
   font-size: 12px;
   white-space: nowrap;
