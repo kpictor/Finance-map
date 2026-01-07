@@ -107,7 +107,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '大型成熟企业上市交易的市场', en: 'Market for large established companies' },
         domain: 'markets', category: 'equity', icon: '🏢',
         tags: ['main-board', 'blue-chip'],
-        level: 3, parentId: 'market-equity'
+        level: 3, parentId: 'market-equity',
+        details: {
+            zh: '上市门槛最高，要求盈利历史/规模/治理。A股主板包括沪主板+深主板',
+            en: 'Highest listing bar, requires profitability/scale/governance. A-share main board includes SSE and SZSE main boards'
+        }
     },
     {
         id: 'market-equity-gem',
@@ -115,7 +119,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '成长型企业上市的市场', en: 'Market for growth enterprises' },
         domain: 'markets', category: 'equity', icon: '🚀',
         tags: ['gem', 'growth'],
-        level: 3, parentId: 'market-equity'
+        level: 3, parentId: 'market-equity',
+        details: {
+            zh: '深交所创业板2009年设立，注册制改革后门槛降低。宁德时代等明星企业这里起步',
+            en: 'SZSE Growth Enterprise Market launched 2009. Listing bar lowered after registration reform. CATL and other stars started here'
+        }
     },
     {
         id: 'market-equity-star',
@@ -123,7 +131,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '科技创新企业的资本市场', en: 'Market for tech innovation companies' },
         domain: 'markets', category: 'equity', icon: '⭐',
         tags: ['star', 'tech', 'innovation'],
-        level: 3, parentId: 'market-equity'
+        level: 3, parentId: 'market-equity',
+        details: {
+            zh: '2019年设立，中国注册制试点。允许未盈利企业上市。中芯国际等半导体企业标杆',
+            en: '2019 launch, China\'s registration system pilot. Allows pre-profit companies. SMIC and semiconductor firms are flagship'
+        }
     },
     {
         id: 'market-otc',
@@ -131,7 +143,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '非交易所的分散交易市场', en: 'Over-the-counter decentralized markets' },
         domain: 'markets', category: 'equity', icon: '🔗',
         tags: ['otc', 'off-exchange'],
-        level: 3, parentId: 'market-equity'
+        level: 3, parentId: 'market-equity',
+        details: {
+            zh: '美国OTC Markets分三层:OTCQX(最优)/OTCQB(创业)/Pink(风险)。中国新三板即北交所前身',
+            en: 'US OTC Markets 3 tiers: OTCQX (best)/OTCQB (venture)/Pink (risky). China\'s New Third Board reformed into BSE'
+        }
     },
 
     // === 债券市场 (属于二级市场) ===
@@ -157,7 +173,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '政府债券交易市场', en: 'Market for government debt securities' },
         domain: 'markets', category: 'bond', icon: '🏛️',
         tags: ['treasury', 'sovereign'],
-        level: 3, parentId: 'market-bond'
+        level: 3, parentId: 'market-bond',
+        details: {
+            zh: '美国国债市场是全球最大单一债券市场($25T+)。中国国债主要在银行间市场交易',
+            en: 'US Treasury market is largest single bond market ($25T+). China gov bonds trade mainly in interbank market'
+        }
     },
     {
         id: 'market-bond-corp',
@@ -165,7 +185,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '企业债券交易市场', en: 'Market for corporate debt' },
         domain: 'markets', category: 'bond', icon: '🏭',
         tags: ['corporate', 'credit'],
-        level: 3, parentId: 'market-bond'
+        level: 3, parentId: 'market-bond',
+        details: {
+            zh: '企业债由证监会监管，公司债由交易所审核。美国企业债以OTC交易为主',
+            en: 'Enterprise bonds regulated by CSRC, corporate bonds by exchanges. US corporate bonds trade mainly OTC'
+        }
     },
     {
         id: 'market-bond-muni',
@@ -173,7 +197,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '地方政府债券市场', en: 'Market for municipal bonds' },
         domain: 'markets', category: 'bond', icon: '🏙️',
         tags: ['municipal', 'local-gov'],
-        level: 3, parentId: 'market-bond'
+        level: 3, parentId: 'market-bond',
+        details: {
+            zh: '中国地方政府债2015年后大规模发行，置换城投债。美国市政债享有税收优惠',
+            en: 'China local gov bonds surged after 2015, replacing LGFV debt. US munis enjoy tax advantages'
+        }
     },
 
     // === 外汇市场 ===
@@ -183,7 +211,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '全球货币兑换市场', en: 'Global currency exchange market' },
         domain: 'markets', category: 'primary', icon: '💱',
         tags: ['forex', 'fx', 'currency'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '全球最大金融市场，日交易量$7.5万亿。主要货币对:EUR/USD、USD/JPY、GBP/USD',
+            en: 'World\'s largest market, $7.5T daily volume. Major pairs: EUR/USD, USD/JPY, GBP/USD'
+        }
     },
     {
         id: 'market-forex-spot',
@@ -191,7 +223,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '即时交割的外汇交易', en: 'Immediate delivery forex transactions' },
         domain: 'markets', category: 'forex', icon: '⚡',
         tags: ['spot', 'immediate'],
-        level: 2, parentId: 'market-forex'
+        level: 2, parentId: 'market-forex',
+        details: {
+            zh: 'T+2交割。即期汇率反映市场对两种货币的即时估值',
+            en: 'T+2 settlement. Spot rate reflects market\'s immediate valuation of two currencies'
+        }
     },
     {
         id: 'market-forex-forward',
@@ -199,7 +235,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '约定未来交割的外汇交易', en: 'Future delivery forex contracts' },
         domain: 'markets', category: 'forex', icon: '📅',
         tags: ['forward', 'future'],
-        level: 2, parentId: 'market-forex'
+        level: 2, parentId: 'market-forex',
+        details: {
+            zh: '用于对冲汇率风险。历史最有名梦幻交易:1992年索罗斯狙击英镑',
+            en: 'Used to hedge FX risk. Most famous trade: Soros shorting GBP in 1992'
+        }
     },
 
     // === 货币市场 ===
@@ -209,7 +249,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '短期资金借贷市场', en: 'Short-term lending markets' },
         domain: 'markets', category: 'primary', icon: '💵',
         tags: ['money-market', 'short-term'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '期限通常不超过1年。主要工具:国库券、商业票据(CP)、大额存单(CD)',
+            en: 'Maturities typically under 1 year. Main instruments: T-bills, Commercial Paper (CP), Certificates of Deposit (CD)'
+        }
     },
     {
         id: 'market-interbank',
@@ -217,7 +261,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '银行间短期资金借贷', en: 'Bank-to-bank short-term lending' },
         domain: 'markets', category: 'money', icon: '🏦',
         tags: ['interbank', 'libor', 'shibor'],
-        level: 2, parentId: 'market-money'
+        level: 2, parentId: 'market-money',
+        details: {
+            zh: 'LIBOR因操纵丑闻被废弃，改用SOFR。中国SHIBOR是市场短期利率基准',
+            en: 'LIBOR replaced by SOFR after manipulation scandal. China uses SHIBOR as short-term rate benchmark'
+        }
     },
     {
         id: 'market-repo',
