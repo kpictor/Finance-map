@@ -283,7 +283,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '金融衍生工具交易市场', en: 'Markets for derivative instruments' },
         domain: 'markets', category: 'primary', icon: '🎯',
         tags: ['derivatives'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '全球衍生品名义本金超$600万亿。交易所交易+OTC交易，OTC规模更大',
+            en: 'Global derivatives notional exceeds $600 trillion. Exchange-traded + OTC, OTC is larger segment'
+        }
     },
     {
         id: 'market-futures',
@@ -291,7 +295,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '标准化期货合约交易', en: 'Standardized futures trading' },
         domain: 'markets', category: 'derivatives', icon: '📊',
         tags: ['futures', 'commodities'],
-        level: 2, parentId: 'market-derivatives'
+        level: 2, parentId: 'market-derivatives',
+        details: {
+            zh: '中国四大期货交易所:上期所/大商所/郑商所/中金所。美国CME全球最大',
+            en: 'China\'s 4 futures exchanges: SHFE/DCE/ZCE/CFFEX. US CME is world largest'
+        }
     },
     {
         id: 'market-options',
@@ -299,7 +307,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '期权合约交易市场', en: 'Options contracts trading' },
         domain: 'markets', category: 'derivatives', icon: '🎲',
         tags: ['options', 'calls', 'puts'],
-        level: 2, parentId: 'market-derivatives'
+        level: 2, parentId: 'market-derivatives',
+        details: {
+            zh: 'CBOE是期权发源地(1973)。中地在A股期权开放后快速成长，50ETF/300ETF期权最活跃',
+            en: 'CBOE is options birthplace (1973). China options grew rapidly after opening; 50ETF/300ETF options most active'
+        }
     },
     {
         id: 'market-swaps',
@@ -307,7 +319,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '利率、货币互换交易', en: 'Interest rate and currency swaps' },
         domain: 'markets', category: 'derivatives', icon: '🔀',
         tags: ['swaps', 'irs', 'cds'],
-        level: 2, parentId: 'market-derivatives'
+        level: 2, parentId: 'market-derivatives',
+        details: {
+            zh: '利率互换(IRS)名义本金$400万亿+，是规模最大的衍生品。CDS是2008危机导火索',
+            en: 'Interest Rate Swaps (IRS) $400T+ notional, largest derivatives. CDS was 2008 crisis trigger'
+        }
     },
     {
         id: 'market-structured',
@@ -315,7 +331,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '结构化衍生品和收益凭证的发行与交易市场', en: 'Market for structured derivatives and income certificates' },
         domain: 'markets', category: 'derivatives', icon: '🧩',
         tags: ['structured', 'autocallable', 'certificates'],
-        level: 2, parentId: 'market-derivatives'
+        level: 2, parentId: 'market-derivatives',
+        details: {
+            zh: '中国雪球产品规模曾达万亿，2022年集中敲入事件引发关注',
+            en: 'China snowball products peaked at $1T+, 2022 knock-in events raised concerns'
+        }
     },
     {
         id: 'market-otc-derivatives',
@@ -323,7 +343,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '非交易所的定制化衍生品交易市场', en: 'Over-the-counter customized derivatives trading' },
         domain: 'markets', category: 'derivatives', icon: '🤝',
         tags: ['otc', 'bespoke', 'bilateral'],
-        level: 2, parentId: 'market-derivatives'
+        level: 2, parentId: 'market-derivatives',
+        details: {
+            zh: 'OTC衍生品规模远超交易所，但违约风险更高。后危机时代强制集中清算',
+            en: 'OTC derivatives dwarf exchange-traded but higher default risk. Post-crisis regulations mandate central clearing'
+        }
     },
 
     // === 商品市场 ===
@@ -333,7 +357,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '实物商品交易市场', en: 'Physical commodities trading' },
         domain: 'markets', category: 'primary', icon: '🛢️',
         tags: ['commodities'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '大宗商品分为能源/金属/农产品三大类。石油是最重要的大宗商品',
+            en: 'Commodities: energy/metals/agriculture. Oil is the most important commodity'
+        }
     },
     {
         id: 'market-precious-metals',
@@ -341,7 +369,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '黄金、白银等贵金属交易', en: 'Gold, silver trading' },
         domain: 'markets', category: 'commodities', icon: '🥇',
         tags: ['gold', 'silver', 'platinum'],
-        level: 2, parentId: 'market-commodities'
+        level: 2, parentId: 'market-commodities',
+        details: {
+            zh: '黄金是“避险资产”，COMEX黄金期货是全球基准。中国上海黄金交易所是亚洲最大',
+            en: 'Gold is "safe haven asset". COMEX gold futures are global benchmark. Shanghai Gold Exchange is Asia\'s largest'
+        }
     },
     {
         id: 'market-energy',
@@ -349,7 +381,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '石油、天然气等能源交易', en: 'Oil, natural gas trading' },
         domain: 'markets', category: 'commodities', icon: '⛽',
         tags: ['oil', 'natural-gas', 'energy'],
-        level: 2, parentId: 'market-commodities'
+        level: 2, parentId: 'market-commodities',
+        details: {
+            zh: 'WTI(美国)和布伦特(欧洲)是两大原油基准。上海原油期货(人民币计价)2018年上市',
+            en: 'WTI (US) and Brent (Europe) are two major crude benchmarks. Shanghai oil futures (RMB-priced) launched 2018'
+        }
     },
 
     // === 加密货币市场 ===
@@ -359,7 +395,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '数字资产交易市场', en: 'Digital asset trading' },
         domain: 'markets', category: 'emerging', icon: '₿',
         tags: ['crypto', 'bitcoin', 'blockchain'],
-        level: 1
+        level: 1,
+        details: {
+            zh: 'BTC市值最高达$1.3万亿。2024年现货BTC ETF获批，加密货币主流化重要一步',
+            en: 'BTC market cap peaked at $1.3T. 2024 spot BTC ETF approval was major mainstreaming step'
+        }
     },
     {
         id: 'market-defi',
@@ -367,7 +407,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '去中心化金融协议', en: 'Decentralized finance protocols' },
         domain: 'markets', category: 'crypto', icon: '🔗',
         tags: ['defi', 'dex', 'yield'],
-        level: 2, parentId: 'market-crypto'
+        level: 2, parentId: 'market-crypto',
+        details: {
+            zh: 'DeFi总锁定价值(TVL)最高达$180B。主要协议:Uniswap/Aave/Compound/MakerDAO',
+            en: 'DeFi TVL peaked at $180B. Key protocols: Uniswap/Aave/Compound/MakerDAO'
+        }
     },
 
     // === 主要股票指数 ===
@@ -377,7 +421,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '美国500家大型上市公司指数，全球最重要的股市基准', en: 'Index of 500 large US companies, most important global equity benchmark' },
         domain: 'markets', category: 'index', icon: '🇺🇸',
         tags: ['sp500', 'usa', 'benchmark'],
-        level: 2, parentId: 'market-equity'
+        level: 2, parentId: 'market-equity',
+        details: {
+            zh: 'SPY是全球最大ETF($500B+)。标普500医疗/金融/IT占比最高',
+            en: 'SPY is world\'s largest ETF ($500B+). S&P 500 healthcare/financials/IT have highest weightings'
+        }
     },
     {
         id: 'market-index-djia',
@@ -385,7 +433,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '美国30家蓝筹股价格加权指数', en: 'Price-weighted index of 30 US blue-chip stocks' },
         domain: 'markets', category: 'index', icon: '🏭',
         tags: ['djia', 'dow', 'blue-chip'],
-        level: 2, parentId: 'market-equity'
+        level: 2, parentId: 'market-equity',
+        details: {
+            zh: '1896年创建，历史最悠久的股指。价格加权而非市值加权，主流度不如标普500',
+            en: 'Created 1896, oldest major stock index. Price-weighted not cap-weighted, less mainstream than S&P 500'
+        }
     },
     {
         id: 'market-index-nasdaq',
