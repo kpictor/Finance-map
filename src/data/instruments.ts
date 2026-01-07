@@ -641,6 +641,9 @@ export const instrumentEntities: Entity[] = [
         tags: ['etf', 'passive', 'spy', 'qqq', 'vanguard', 'ishares'],
         riskLevel: 'L2',
         level: 1,
+        tradingVenue: 'exchange',
+        liquidity: 'high',
+        investorType: 'retail',
         details: {
             zh: 'Top ETF：SPY(标普500)、QQQ(纳斯达克100)、IWM(罗素2000)、VOO(Vanguard标普500)。费率竞争已降至0.03%以下',
             en: 'Top ETFs: SPY (S&P 500), QQQ (Nasdaq 100), IWM (Russell 2000), VOO (Vanguard S&P 500). Fee competition has driven costs below 0.03%'
@@ -649,29 +652,50 @@ export const instrumentEntities: Entity[] = [
     {
         id: 'instr-index-fund',
         name: { zh: '指数基金', en: 'Index Funds' },
-        description: { zh: '跟踪指数的被动基金', en: 'Passive funds tracking indices' },
+        description: { zh: '被动跟踪指数的基金，费率低于主动管理基金', en: 'Passive funds tracking indices, lower fees than active funds' },
         domain: 'instruments', category: 'fund', icon: '📊',
-        tags: ['index', 'passive'],
+        tags: ['index', 'passive', 'vanguard'],
         riskLevel: 'L2',
-        level: 2, parentId: 'instr-etf'
+        level: 2, parentId: 'instr-etf',
+        tradingVenue: 'exchange',
+        liquidity: 'high',
+        investorType: 'retail',
+        details: {
+            zh: 'John Bogle 1976年创立第一只指数基金，被动投资革命。平均费率已从1990s的1%降至0.03%',
+            en: 'John Bogle created the first index fund in 1976, starting the passive revolution. Avg fees dropped from 1% in 1990s to 0.03%'
+        }
     },
     {
         id: 'instr-money-fund',
         name: { zh: '货币基金', en: 'Money Market Funds' },
-        description: { zh: '投资短期债务的基金', en: 'Funds investing in short-term debt' },
+        description: { zh: '投资短期债务工具的低风险基金', en: 'Low-risk funds investing in short-term debt instruments' },
         domain: 'instruments', category: 'fund', icon: '💵',
-        tags: ['money-market', 'cash'],
+        tags: ['money-market', 'cash', 'yu-e-bao'],
         riskLevel: 'L1',
-        level: 2, parentId: 'instr-etf'
+        level: 2, parentId: 'instr-etf',
+        tradingVenue: 'otc',
+        liquidity: 'high',
+        investorType: 'retail',
+        details: {
+            zh: '中国余额宝曾是全球最大货币基金。美国货基等7天流动性要求。不破净值(Break the Buck)=亏损',
+            en: 'China\'s Yu\'e Bao was once world\'s largest money fund. US money funds have 7-day liquidity requirements. Breaking the buck = losses'
+        }
     },
     {
         id: 'instr-reit',
         name: { zh: 'REITs', en: 'REITs' },
-        description: { zh: '房地产投资信托', en: 'Real Estate Investment Trusts' },
+        description: { zh: '房地产投资信托，必须将90%以上收入分红', en: 'Real Estate Investment Trusts, must distribute 90%+ of income as dividends' },
         domain: 'instruments', category: 'alternatives', icon: '🏢',
-        tags: ['reit', 'real-estate'],
+        tags: ['reit', 'real-estate', 'dividend'],
         riskLevel: 'L2',
-        level: 2, parentId: 'instr-etf'
+        level: 2, parentId: 'instr-etf',
+        tradingVenue: 'exchange',
+        liquidity: 'high',
+        investorType: 'retail',
+        details: {
+            zh: '美国REITs被要求分配90%以上应税收入，税收透明。中国公募REITs于2021年试点启动，底层资产为基础设施',
+            en: 'US REITs must distribute 90%+ taxable income, pass-through taxation. China public REITs launched pilot in 2021, underlying assets are infrastructure'
+        }
     },
     {
         id: 'instr-mutual-fund',
