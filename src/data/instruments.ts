@@ -33,7 +33,11 @@ export const instrumentEntities: Entity[] = [
         level: 2, parentId: 'instr-stock',
         tradingVenue: 'exchange',
         liquidity: 'high',
-        investorType: 'retail'
+        investorType: 'retail',
+        details: {
+            zh: '普通股=拜托经营权+剩余求偿权。股东是真正的所有者，享受公司增长红利',
+            en: 'Common stock = entrustment + residual claim. Shareholders are true owners, share in company growth'
+        }
     },
     {
         id: 'instr-preferred-stock',
@@ -45,7 +49,11 @@ export const instrumentEntities: Entity[] = [
         level: 2, parentId: 'instr-stock',
         tradingVenue: 'exchange',
         liquidity: 'medium',
-        investorType: 'retail'
+        investorType: 'retail',
+        details: {
+            zh: '优先股=股債混合体，固定股息但无投票权。美国银行常用作资本工具',
+            en: 'Preferred = stock-bond hybrid, fixed dividends but no voting. US banks use as capital instrument'
+        }
     },
     {
         id: 'instr-adr',
@@ -57,7 +65,11 @@ export const instrumentEntities: Entity[] = [
         level: 2, parentId: 'instr-stock',
         tradingVenue: 'exchange',
         liquidity: 'high',
-        investorType: 'retail'
+        investorType: 'retail',
+        details: {
+            zh: 'ADR由托管银行发行，对应海外存放的基础股票。中概股ADR面临SEC/PCAOB审计挑战',
+            en: 'ADRs issued by custodian banks, backed by overseas deposited shares. Chinese ADRs face SEC/PCAOB audit challenges'
+        }
     },
     {
         id: 'instr-warrant',

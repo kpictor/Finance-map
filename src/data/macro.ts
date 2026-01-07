@@ -119,7 +119,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '政府税收和支出政策', en: 'Government tax and spending policy' },
         domain: 'macro', category: 'policy', icon: '🏛️',
         tags: ['fiscal', 'government'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '美国政府债务约$34万亿(超过GDP)，利息支出成为负担。中国地方政府债务+隐性债务关注度高',
+            en: 'US gov debt ~$34T (exceeds GDP), interest a burden. China local + hidden debt is concern'
+        }
     },
     {
         id: 'macro-tax',
@@ -127,7 +131,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '税率和税制调整', en: 'Tax rate and system adjustments' },
         domain: 'macro', category: 'fiscal', icon: '📋',
         tags: ['tax', 'revenue'],
-        level: 2, parentId: 'macro-fiscal'
+        level: 2, parentId: 'macro-fiscal',
+        details: {
+            zh: '美国联邦企业所得税21%，个人最高边37%。中国企业税25%，个税最高45%',
+            en: 'US federal corporate tax 21%, individual top 37%. China corporate 25%, individual top 45%'
+        }
     },
     {
         id: 'macro-spending',
@@ -135,7 +143,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '财政支出和投资', en: 'Fiscal expenditure and investment' },
         domain: 'macro', category: 'fiscal', icon: '💸',
         tags: ['spending', 'investment'],
-        level: 2, parentId: 'macro-fiscal'
+        level: 2, parentId: 'macro-fiscal',
+        details: {
+            zh: '美国必要支出(mandatory):Medicare/SS/利息大头。中国基建投资是经济别动器',
+            en: 'US mandatory: Medicare/SS/Interest dominate. China infrastructure investment is economic stimulus tool'
+        }
     },
     {
         id: 'macro-deficit',
@@ -143,7 +155,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '政府收支差额', en: 'Government budget balance' },
         domain: 'macro', category: 'fiscal', icon: '📉',
         tags: ['deficit', 'budget'],
-        level: 2, parentId: 'macro-fiscal'
+        level: 2, parentId: 'macro-fiscal',
+        details: {
+            zh: '赤字率=财政赤字/GDP。欧盟标准<3%，但疫后各国普遍突破',
+            en: 'Deficit ratio = Deficit/GDP. EU target <3%, but most countries breached post-pandemic'
+        }
     },
 
     // === 经济指标 ===
@@ -153,7 +169,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '衡量经济健康的数据', en: 'Data measuring economic health' },
         domain: 'macro', category: 'data', icon: '📊',
         tags: ['indicators', 'data'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '领先指标(PMI)、同步指标(GDP)、滞后指标(失业率)。经济日历是重要事件',
+            en: 'Leading (PMI), coincident (GDP), lagging (unemployment). Economic calendar is key for events'
+        }
     },
     {
         id: 'macro-gdp',
@@ -161,7 +181,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '国内生产总值', en: 'Gross Domestic Product' },
         domain: 'macro', category: 'indicators', icon: '📈',
         tags: ['gdp', 'growth'],
-        level: 2, parentId: 'macro-indicators'
+        level: 2, parentId: 'macro-indicators',
+        details: {
+            zh: 'GDP=C+I+G+NX。美国GDP$27万亿全球第一，中国$18万亿第二',
+            en: 'GDP = C+I+G+NX. US GDP $27T (#1), China $18T (#2)'
+        }
     },
     {
         id: 'macro-cpi',
@@ -169,7 +193,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '消费者物价指数', en: 'Consumer Price Index' },
         domain: 'macro', category: 'indicators', icon: '🔥',
         tags: ['cpi', 'inflation'],
-        level: 2, parentId: 'macro-indicators'
+        level: 2, parentId: 'macro-indicators',
+        details: {
+            zh: '美联储目标通胀2%。2022年美国CPI最高9.1%创40年新高，引发激进加息',
+            en: 'Fed targets 2% inflation. 2022 US CPI hit 9.1% (40-year high), triggering aggressive hikes'
+        }
     },
     {
         id: 'macro-pmi',
@@ -177,7 +205,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '采购经理人指数', en: 'Purchasing Managers Index' },
         domain: 'macro', category: 'indicators', icon: '🏭',
         tags: ['pmi', 'manufacturing'],
-        level: 2, parentId: 'macro-indicators'
+        level: 2, parentId: 'macro-indicators',
+        details: {
+            zh: 'PMI>50表示扩张，<50表示收缩。财新PMI和官方PMI口径不同',
+            en: 'PMI>50 = expansion, <50 = contraction. Caixin and official PMI have different scopes'
+        }
     },
     {
         id: 'macro-employment',
