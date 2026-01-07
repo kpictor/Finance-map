@@ -244,6 +244,88 @@ export const macroEntities: Entity[] = [
         domain: 'macro', category: 'risk', icon: '💥',
         tags: ['crisis', 'contagion'],
         level: 2, parentId: 'macro-risk'
+    },
+
+    // === 五大风险类型 (P0新增) ===
+    {
+        // 华尔街说明: 市场风险是投资损失的主要来源，VaR(在险价值)是标准度量方法
+        id: 'macro-market-risk',
+        name: { zh: '市场风险', en: 'Market Risk' },
+        description: {
+            zh: '因市场价格波动（股价、利率、汇率、商品价格）导致投资损失的风险，VaR和ES是标准度量方法',
+            en: 'Risk of losses due to market price movements (equities, rates, FX, commodities); VaR and ES are standard measures'
+        },
+        domain: 'macro', category: 'risk', icon: '📉',
+        tags: ['market-risk', 'var', 'volatility', 'price-risk'],
+        level: 2, parentId: 'macro-risk',
+        details: {
+            zh: 'VaR(Value at Risk)表示在给定置信水平下的最大预期损失。如"95% VaR为100万"意味着95%概率下损失不超过100万',
+            en: 'VaR represents maximum expected loss at a given confidence level. E.g., "95% VaR of $1M" means 95% probability loss won\'t exceed $1M'
+        }
+    },
+    {
+        // 华尔街说明: 信用风险是银行的核心风险，次贷危机的根源是对信用风险的低估
+        id: 'macro-credit-risk',
+        name: { zh: '信用风险', en: 'Credit Risk' },
+        description: {
+            zh: '债务人无法按时偿还本金利息的风险，通过违约概率(PD)和违约损失率(LGD)度量',
+            en: 'Risk of borrower failing to repay principal or interest; measured by Probability of Default (PD) and Loss Given Default (LGD)'
+        },
+        domain: 'macro', category: 'risk', icon: '💳',
+        tags: ['credit-risk', 'default', 'pd', 'lgd', 'credit-spread'],
+        level: 2, parentId: 'macro-risk',
+        details: {
+            zh: '预期损失 = PD × LGD × EAD(违约暴露额)。信用利差扩大反映市场对违约风险的担忧上升',
+            en: 'Expected Loss = PD × LGD × EAD (Exposure at Default). Credit spread widening reflects rising default concerns'
+        }
+    },
+    {
+        // 华尔街说明: 流动性风险在2020年3月疫情恐慌期间暴露无遗，连美国国债都一度卖不出去
+        id: 'macro-liquidity-risk',
+        name: { zh: '流动性风险', en: 'Liquidity Risk' },
+        description: {
+            zh: '无法以合理价格及时买卖资产的风险，或无法满足现金流需求的风险',
+            en: 'Risk of inability to buy/sell assets at reasonable prices timely, or meet cash flow obligations'
+        },
+        domain: 'macro', category: 'risk', icon: '💧',
+        tags: ['liquidity-risk', 'bid-ask', 'funding', 'cash-flow'],
+        level: 2, parentId: 'macro-risk',
+        details: {
+            zh: '市场流动性风险(买卖价差扩大)和融资流动性风险(无法续借)可相互强化，形成流动性螺旋',
+            en: 'Market liquidity (bid-ask widening) and funding liquidity (inability to roll debt) can reinforce each other in liquidity spirals'
+        }
+    },
+    {
+        // 华尔街说明: 操作风险是巴塞尔协议三大支柱之一，包括"胖手指"失误、系统故障、内部欺诈等
+        id: 'macro-operational-risk',
+        name: { zh: '操作风险', en: 'Operational Risk' },
+        description: {
+            zh: '因内部流程、人员、系统故障或外部事件导致损失的风险，巴塞尔协议三大风险支柱之一',
+            en: 'Risk of losses from inadequate internal processes, people, systems, or external events; one of Basel III pillars'
+        },
+        domain: 'macro', category: 'risk', icon: '⚙️',
+        tags: ['operational-risk', 'basel', 'fraud', 'compliance', 'cyber'],
+        level: 2, parentId: 'macro-risk',
+        details: {
+            zh: '典型案例：2012年Knight Capital因软件故障45分钟内亏损4.4亿美元；2011年瑞银交易员Adoboli因未授权交易损失23亿美元',
+            en: 'Examples: Knight Capital lost $440M in 45 mins due to software glitch in 2012; UBS lost $2.3B from Adoboli\'s unauthorized trades in 2011'
+        }
+    },
+    {
+        // 华尔街说明: 交易对手风险是AIG和Archegos事件的核心，场外衍生品的最大隐患
+        id: 'macro-counterparty-risk',
+        name: { zh: '交易对手风险', en: 'Counterparty Risk' },
+        description: {
+            zh: '交易对手无法履行合约义务的风险，场外衍生品的核心风险，AIG和Archegos事件的根源',
+            en: 'Risk of counterparty failing to meet contractual obligations; core OTC derivatives risk, root cause of AIG and Archegos events'
+        },
+        domain: 'macro', category: 'risk', icon: '🤝',
+        tags: ['counterparty-risk', 'cva', 'netting', 'collateral', 'cds'],
+        level: 2, parentId: 'macro-risk',
+        details: {
+            zh: 'CVA(信用估值调整)量化交易对手违约造成的预期损失。2008年后监管强制要求场外衍生品向中央对手方(CCP)清算以降低对手方风险',
+            en: 'CVA (Credit Valuation Adjustment) quantifies expected loss from counterparty default. Post-2008 regulations mandate CCP clearing for OTC derivatives'
+        }
     }
 ];
 
@@ -283,5 +365,22 @@ export const macroRelationships: Relationship[] = [
     { id: 'mcr-17', source: 'macro-interest-rate', target: 'macro-cpi', type: 'influences', strength: 3, bidirectional: false },
     { id: 'mcr-18', source: 'macro-fiscal', target: 'macro-gdp', type: 'influences', strength: 2, bidirectional: false },
     { id: 'mcr-19', source: 'macro-cycles', target: 'macro-crisis', type: 'influences', strength: 2, bidirectional: false },
-    { id: 'mcr-20', source: 'macro-risk', target: 'macro-crisis', type: 'influences', strength: 3, bidirectional: false }
+    { id: 'mcr-20', source: 'macro-risk', target: 'macro-crisis', type: 'influences', strength: 3, bidirectional: false },
+
+    // === 五大风险类型层级关系 (P0新增) ===
+    { id: 'mcr-23', source: 'macro-risk', target: 'macro-market-risk', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'mcr-24', source: 'macro-risk', target: 'macro-credit-risk', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'mcr-25', source: 'macro-risk', target: 'macro-liquidity-risk', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'mcr-26', source: 'macro-risk', target: 'macro-operational-risk', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'mcr-27', source: 'macro-risk', target: 'macro-counterparty-risk', type: 'provides', strength: 3, bidirectional: false },
+
+    // 风险之间的交叉影响（危机传导路径）
+    // 市场风险→流动性风险（价格暴跌导致流动性枯竭）
+    { id: 'mcr-28', source: 'macro-market-risk', target: 'macro-liquidity-risk', type: 'influences', strength: 3, bidirectional: false },
+    // 信用风险→交易对手风险（债务人违约导致对手方无法履约）
+    { id: 'mcr-29', source: 'macro-credit-risk', target: 'macro-counterparty-risk', type: 'influences', strength: 3, bidirectional: false },
+    // 流动性风险→市场风险（流动性危机导致恐慌性抛售）
+    { id: 'mcr-30', source: 'macro-liquidity-risk', target: 'macro-market-risk', type: 'influences', strength: 3, bidirectional: false },
+    // 交易对手风险→危机传染
+    { id: 'mcr-31', source: 'macro-counterparty-risk', target: 'macro-crisis', type: 'influences', strength: 3, bidirectional: false }
 ];

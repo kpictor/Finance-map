@@ -160,6 +160,59 @@
     line-height: 1.5;
 }
 
+/* 深度解析区块 */
+.details-section {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    margin-top: 8px;
+}
+
+.details-section h3 {
+    color: #93c5fd;
+    margin-bottom: 10px;
+}
+
+.details-text {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #e2e8f0;
+}
+
+/* 交易属性区块 */
+.trading-attributes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.attribute-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(30, 41, 59, 0.6);
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.attribute-icon {
+    font-size: 16px;
+    width: 24px;
+    text-align: center;
+}
+
+.attribute-label {
+    color: #94a3b8;
+    min-width: 70px;
+}
+
+.attribute-value {
+    color: #e2e8f0;
+    font-weight: 500;
+}
+
 .related-list {
     list-style: none;
     padding: 0;

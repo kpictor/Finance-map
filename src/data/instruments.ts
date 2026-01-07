@@ -4,16 +4,24 @@ import type { Entity, Relationship } from '../types';
 export const instrumentEntities: Entity[] = [
     // === 权益类工具 ===
     {
+        // 华尔街说明: 股票是最基础的权益工具，按市值分为大盘/中盘/小盘
         id: 'instr-stock',
         name: { zh: '股票', en: 'Stocks' },
-        description: { zh: '公司所有权份额证券，股东享有分红权和投票权', en: 'Equity ownership securities, shareholders have dividend and voting rights' },
+        description: {
+            zh: '代表公司所有权的证券，股东享有分红权和投票权。全球市值最大公司苹果约3万亿美元',
+            en: 'Securities representing company ownership with dividend and voting rights. Apple, the largest by market cap, is worth ~$3 trillion'
+        },
         domain: 'instruments', category: 'equity', icon: '📈',
-        tags: ['stock', 'equity'],
+        tags: ['stock', 'equity', 'aapl', 'msft', 'nvda'],
         riskLevel: 'L3',
         level: 1,
         tradingVenue: 'exchange',
         liquidity: 'high',
-        investorType: 'retail'
+        investorType: 'retail',
+        details: {
+            zh: '按市值分类：大盘股(>$10B)、中盘股($2-10B)、小盘股(<$2B)。核心指标：P/E市盈率、P/B市净率、股息率。全球Top3：Apple、Microsoft、NVIDIA',
+            en: 'By market cap: Large-cap(>$10B), Mid-cap($2-10B), Small-cap(<$2B). Key metrics: P/E, P/B, Dividend Yield. Global Top 3: Apple, Microsoft, NVIDIA'
+        }
     },
     {
         id: 'instr-common-stock',
@@ -144,6 +152,86 @@ export const instrumentEntities: Entity[] = [
         tags: ['cd', 'deposit', 'bank'],
         riskLevel: 'L1',
         level: 2, parentId: 'instr-bond'
+    },
+    {
+        // 华尔街说明: 高收益债又称"垃圾债"，评级BB+及以下，收益率高但违约风险大
+        id: 'instr-high-yield',
+        name: { zh: '高收益债', en: 'High-Yield Bonds (Junk Bonds)' },
+        description: {
+            zh: '信用评级BB+及以下的债券，收益率高于投资级债券，但违约风险也显著更高',
+            en: 'Bonds rated BB+ or below, offering higher yields than investment grade but with significantly higher default risk'
+        },
+        domain: 'instruments', category: 'fixed-income', icon: '💰',
+        tags: ['high-yield', 'junk-bond', 'sub-investment-grade', 'credit'],
+        riskLevel: 'L3',
+        level: 2, parentId: 'instr-corp-bond',
+        tradingVenue: 'otc',
+        liquidity: 'medium',
+        investorType: 'professional',
+        details: {
+            zh: '高收益债利差(相对国债)是信用周期的重要指标。利差扩大反映市场对违约风险担忧上升，经济衰退时利差可能急剧飙升',
+            en: 'HY spreads (vs. Treasuries) are key credit cycle indicators. Spread widening reflects rising default concerns; spreads can spike in recessions'
+        }
+    },
+    {
+        // 华尔街说明: TIPS是对冲通胀的最直接工具，本金随CPI指数调整
+        id: 'instr-tips',
+        name: { zh: '通胀保护债券', en: 'Treasury Inflation-Protected Securities (TIPS)' },
+        description: {
+            zh: '本金随CPI通胀指数调整的政府债券，提供实际利率(剔除通胀后的收益)',
+            en: 'Government bonds with principal adjusted by CPI; provides real yield (return after inflation)'
+        },
+        domain: 'instruments', category: 'fixed-income', icon: '🛡️',
+        tags: ['tips', 'inflation', 'real-rate', 'treasury'],
+        riskLevel: 'L1',
+        level: 2, parentId: 'instr-gov-bond',
+        tradingVenue: 'exchange',
+        liquidity: 'high',
+        investorType: 'retail',
+        details: {
+            zh: 'TIPS收益率 = 名义国债收益率 - 隐含盈亏平衡通胀率。10年盈亏平衡通胀率是市场通胀预期的重要指标',
+            en: 'TIPS yield = Nominal Treasury yield - Implied breakeven inflation. 10-year breakeven is a key market inflation expectations indicator'
+        }
+    },
+    {
+        // 华尔街说明: 永续债没有到期日，是银行补充资本的重要工具
+        id: 'instr-perpetual',
+        name: { zh: '永续债', en: 'Perpetual Bonds' },
+        description: {
+            zh: '无固定到期日的债券，发行人有赎回权但无义务，常用于银行补充AT1资本',
+            en: 'Bonds with no maturity date; issuer has call option but no obligation; often used by banks for AT1 capital'
+        },
+        domain: 'instruments', category: 'fixed-income', icon: '♾️',
+        tags: ['perpetual', 'at1', 'coco-bond', 'bank-capital'],
+        riskLevel: 'L3',
+        level: 2, parentId: 'instr-corp-bond',
+        tradingVenue: 'otc',
+        liquidity: 'low',
+        investorType: 'professional',
+        details: {
+            zh: '2023年瑞信AT1永续债减记事件导致170亿美元债券归零，引发对永续债风险的重新审视',
+            en: 'Credit Suisse AT1 write-down in 2023 zeroed $17B bonds, prompting reassessment of perpetual bond risks'
+        }
+    },
+    {
+        // 华尔街说明: CLO/CDO是2008年次贷危机的核心放大器
+        id: 'instr-clo',
+        name: { zh: 'CLO/CDO', en: 'CLO/CDO' },
+        description: {
+            zh: '将贷款(CLO)或债券(CDO)资产池打包分层证券化，不同层级承担不同风险收益，2008年次贷危机的核心放大器',
+            en: 'Securities pooling loans (CLO) or bonds (CDO) into tranches with different risk/return profiles; core 2008 crisis amplifier'
+        },
+        domain: 'instruments', category: 'structured', icon: '📦',
+        tags: ['clo', 'cdo', 'securitization', 'tranche', 'subprime'],
+        riskLevel: 'L4',
+        level: 2, parentId: 'instr-mbs',
+        tradingVenue: 'otc',
+        liquidity: 'low',
+        investorType: 'qualified',
+        details: {
+            zh: '分层结构：优先级(AAA)→夹层(BBB)→股权层(无评级)。次贷危机中评级机构对CDO评级过于乐观导致风险被严重低估',
+            en: 'Tranche structure: Senior (AAA) → Mezzanine (BBB) → Equity (unrated). Rating agencies\' overly optimistic CDO ratings masked risks in 2008'
+        }
     },
 
     // === 衍生品 ===
@@ -479,13 +567,21 @@ export const instrumentEntities: Entity[] = [
 
     // === 基金产品 ===
     {
+        // 华尔街说明: 2024年被动基金规模历史性超越主动基金，SPY是全球最大ETF
         id: 'instr-etf',
         name: { zh: 'ETF', en: 'ETFs' },
-        description: { zh: '交易所交易基金', en: 'Exchange-Traded Funds' },
+        description: {
+            zh: '在交易所像股票一样交易的基金，2024年被动基金规模历史性超过主动基金，SPY是全球最大ETF(规模超5000亿美元)',
+            en: 'Funds traded like stocks on exchanges; in 2024, passive funds historically exceeded active funds. SPY is the largest ETF ($500B+)'
+        },
         domain: 'instruments', category: 'fund', icon: '📦',
-        tags: ['etf', 'passive'],
+        tags: ['etf', 'passive', 'spy', 'qqq', 'vanguard', 'ishares'],
         riskLevel: 'L2',
-        level: 1
+        level: 1,
+        details: {
+            zh: 'Top ETF：SPY(标普500)、QQQ(纳斯达克100)、IWM(罗素2000)、VOO(Vanguard标普500)。费率竞争已降至0.03%以下',
+            en: 'Top ETFs: SPY (S&P 500), QQQ (Nasdaq 100), IWM (Russell 2000), VOO (Vanguard S&P 500). Fee competition has driven costs below 0.03%'
+        }
     },
     {
         id: 'instr-index-fund',
@@ -760,5 +856,17 @@ export const instrumentRelationships: Relationship[] = [
     { id: 'inr-65', source: 'instr-vc', target: 'instr-common-stock', type: 'invests', strength: 3, bidirectional: false },
     // 对冲基金使用多种策略
     { id: 'inr-66', source: 'instr-hedge-fund', target: 'instr-options', type: 'uses', strength: 3, bidirectional: false },
-    { id: 'inr-67', source: 'instr-hedge-fund', target: 'instr-futures', type: 'uses', strength: 3, bidirectional: false }
+    { id: 'inr-67', source: 'instr-hedge-fund', target: 'instr-futures', type: 'uses', strength: 3, bidirectional: false },
+
+    // === P0新增：固定收益工具关系 ===
+    // 高收益债属于企业债子类
+    { id: 'inr-68', source: 'instr-corp-bond', target: 'instr-high-yield', type: 'provides', strength: 3, bidirectional: false },
+    // TIPS属于国债子类
+    { id: 'inr-69', source: 'instr-gov-bond', target: 'instr-tips', type: 'provides', strength: 3, bidirectional: false },
+    // 永续债属于企业债子类
+    { id: 'inr-70', source: 'instr-corp-bond', target: 'instr-perpetual', type: 'provides', strength: 3, bidirectional: false },
+    // CLO/CDO由MBS/ABS衍生
+    { id: 'inr-71', source: 'instr-mbs', target: 'instr-clo', type: 'provides', strength: 3, bidirectional: false },
+    // CDS为CDO提供信用保护
+    { id: 'inr-72', source: 'instr-cds', target: 'instr-clo', type: 'derives_from', strength: 3, bidirectional: false }
 ];

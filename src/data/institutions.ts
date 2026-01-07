@@ -96,72 +96,136 @@ export const institutionEntities: Entity[] = [
 
     // === 投资银行 ===
     {
+        // 华尔街说明: 华尔街五大投行曾为高盛、摩根士丹利、美林、雷曼、贝尔斯登，2008危机后仅存两家独立投行
         id: 'inst-investment-bank',
         name: { zh: '投资银行', en: 'Investment Banks' },
-        description: { zh: '证券承销、并购咨询服务', en: 'Underwriting, M&A advisory' },
+        description: {
+            zh: '提供证券承销、并购咨询、资产管理等服务的专业金融机构，高盛和摩根士丹利是仅存的两家独立大型投行',
+            en: 'Financial institutions providing underwriting, M&A advisory, asset management; Goldman Sachs and Morgan Stanley are the last two major independent banks'
+        },
         domain: 'institutions', category: 'investment', icon: '🏢',
-        tags: ['investment-bank', 'ipo', 'ma'],
-        level: 1
+        tags: ['investment-bank', 'ipo', 'ma', 'goldman', 'morgan-stanley', 'jpmorgan'],
+        level: 1,
+        details: {
+            zh: '全球顶级投行(Bulge Bracket)：Goldman Sachs、JP Morgan、Morgan Stanley、BoA证券。2008年危机中雷曼破产、美林/贝尔斯登被收购',
+            en: 'Bulge Bracket: Goldman Sachs, JP Morgan, Morgan Stanley, BoA Securities. Lehman collapsed in 2008; Merrill/Bear Stearns acquired'
+        }
     },
 
     // === 证券机构 ===
     {
+        // 华尔街说明: 中国券商与美国的broker-dealer有所不同，兼具经纪、自营、资管、投行多项业务
         id: 'inst-securities',
         name: { zh: '证券公司', en: 'Securities Firms' },
-        description: { zh: '证券经纪和自营业务', en: 'Brokerage and proprietary trading' },
+        description: {
+            zh: '综合性证券机构，提供经纪、自营、资管、投行等全方位服务，中信证券是中国最大券商',
+            en: 'Comprehensive securities institutions providing brokerage, proprietary trading, asset management, and investment banking'
+        },
         domain: 'institutions', category: 'investment', icon: '📊',
-        tags: ['securities', 'broker'],
-        level: 1
+        tags: ['securities', 'broker', 'citic', 'haitong'],
+        level: 1,
+        details: {
+            zh: '中国Top券商：中信证券、海通证券、华泰证券、国泰君安。美国证券公司模式不同，主要分为全服务券商和折扣券商',
+            en: 'China Top: CITIC Securities, Haitong, Huatai, Guotai Junan. US model differs: full-service vs discount brokers'
+        }
     },
     {
+        // 华尔街说明: IBKR是专业交易者首选，提供全球市场接入和最低交易成本
         id: 'inst-broker',
         name: { zh: '经纪商', en: 'Brokers' },
-        description: { zh: '为客户执行交易的中介', en: 'Intermediaries executing trades' },
+        description: {
+            zh: '为客户执行证券交易的中介机构，IBKR(盈透证券)以超低佣金和全球市场接入著称',
+            en: 'Intermediaries executing trades for clients; Interactive Brokers (IBKR) known for ultra-low commissions and global market access'
+        },
         domain: 'institutions', category: 'securities', icon: '👔',
-        tags: ['broker', 'execution'],
-        level: 2, parentId: 'inst-securities'
+        tags: ['broker', 'execution', 'ibkr', 'schwab', 'fidelity', 'robinhood'],
+        level: 2, parentId: 'inst-securities',
+        details: {
+            zh: '主要经纪商：IBKR(专业交易者)、Charles Schwab & TD Ameritrade(合并后最大)、Fidelity、E*TRADE(被Morgan Stanley收购)、Robinhood(零佣金先驱)',
+            en: 'Major brokers: IBKR (professionals), Schwab/TD Ameritrade (largest after merger), Fidelity, E*TRADE (Morgan Stanley), Robinhood (zero-commission pioneer)'
+        }
     },
 
     // === 资产管理 ===
     {
+        // 华尔街说明: 全球最大资管公司BlackRock管理超过10万亿美元资产
         id: 'inst-fund',
         name: { zh: '基金公司', en: 'Fund Companies' },
-        description: { zh: '管理各类投资基金', en: 'Managing investment funds' },
+        description: {
+            zh: '管理各类投资基金的专业机构，全球最大资管公司BlackRock管理资产超过10万亿美元',
+            en: 'Professional institutions managing investment funds; BlackRock, the largest, manages over $10 trillion'
+        },
         domain: 'institutions', category: 'investment', icon: '💼',
-        tags: ['fund', 'asset-management'],
-        level: 1
+        tags: ['fund', 'asset-management', 'blackrock', 'vanguard', 'fidelity'],
+        level: 1,
+        details: {
+            zh: '全球Top5资管公司：BlackRock($10T+)、Vanguard($8T+)、UBS($4T+)、State Street($4T+)、Fidelity($4T+)',
+            en: 'Global Top 5 Asset Managers: BlackRock($10T+), Vanguard($8T+), UBS($4T+), State Street($4T+), Fidelity($4T+)'
+        }
     },
     {
+        // 华尔街说明: Vanguard创始人John Bogle发明了指数基金，改变了整个行业
         id: 'inst-mutual-fund',
         name: { zh: '公募基金', en: 'Mutual Funds' },
-        description: { zh: '公开募集的集合投资', en: 'Publicly offered investment funds' },
+        description: {
+            zh: '面向公众开放认购的集合投资工具，Vanguard创始人John Bogle 1976年推出首只指数基金',
+            en: 'Publicly offered collective investments; Vanguard founder John Bogle launched the first index fund in 1976'
+        },
         domain: 'institutions', category: 'fund', icon: '📈',
-        tags: ['mutual-fund', 'public'],
-        level: 2, parentId: 'inst-fund'
+        tags: ['mutual-fund', 'public', 'vanguard', 'index-fund'],
+        level: 2, parentId: 'inst-fund',
+        details: {
+            zh: '代表机构：Vanguard(指数基金先驱)、Fidelity(主动管理)、易方达/华夏(中国)。费率竞争激烈，被动基金费率可低至0.03%',
+            en: 'Key players: Vanguard (index pioneer), Fidelity (active management). Fee competition intense, passive fees as low as 0.03%'
+        }
     },
     {
+        // 华尔街说明: Bridgewater是全球最大对冲基金，Renaissance Medallion是历史收益最高的基金
         id: 'inst-private-fund',
         name: { zh: '私募基金', en: 'Private Funds' },
-        description: { zh: '面向合格投资者的私募', en: 'Private placement for qualified investors' },
+        description: {
+            zh: '面向合格投资者的私募投资，包括对冲基金和PE，Bridgewater管理规模超1500亿美元',
+            en: 'Private investment for qualified investors, including hedge funds and PE; Bridgewater manages $150B+'
+        },
         domain: 'institutions', category: 'fund', icon: '🔒',
-        tags: ['private-equity', 'hedge-fund'],
-        level: 2, parentId: 'inst-fund'
+        tags: ['private-equity', 'hedge-fund', 'bridgewater', 'renaissance', 'kkr', 'blackstone'],
+        level: 2, parentId: 'inst-fund',
+        details: {
+            zh: '对冲基金代表：Bridgewater(全天候策略)、Renaissance(量化之王Medallion年化66%)、Two Sigma。PE代表：Blackstone、KKR、Carlyle',
+            en: 'Hedge funds: Bridgewater (All Weather), Renaissance (Medallion 66% annual), Two Sigma. PE: Blackstone, KKR, Carlyle'
+        }
     },
     {
+        // 华尔街说明: CalPERS是全美最大公共养老金，其投资决策影响整个市场
         id: 'inst-pension',
         name: { zh: '养老金/退休基金', en: 'Pension Funds' },
-        description: { zh: '退休养老金投资管理', en: 'Retirement fund management' },
+        description: {
+            zh: '管理退休养老金的长期投资机构，CalPERS(加州公务员养老金)管理规模超4500亿美元',
+            en: 'Long-term investors managing retirement funds; CalPERS manages $450B+, influencing market-wide decisions'
+        },
         domain: 'institutions', category: 'fund', icon: '👴',
-        tags: ['pension', 'retirement'],
-        level: 2, parentId: 'inst-fund'
+        tags: ['pension', 'retirement', 'calpers', 'gpif', 'long-term'],
+        level: 2, parentId: 'inst-fund',
+        details: {
+            zh: '全球Top养老金：日本GPIF($1.7T全球最大)、挪威GPFG、荷兰ABP、CalPERS。养老金是ESG投资最重要的推动力量',
+            en: 'Global Top Pensions: Japan GPIF ($1.7T, largest), Norway GPFG, Dutch ABP, CalPERS. Pensions drive ESG investing'
+        }
     },
     {
+        // 华尔街说明: 挪威主权基金是全球最大，持有全球约1.5%上市公司股份
         id: 'inst-sovereign-fund',
         name: { zh: '主权财富基金', en: 'Sovereign Wealth Funds' },
-        description: { zh: '国家外汇储备投资', en: 'State investment funds' },
+        description: {
+            zh: '国家管理的投资基金，挪威GPFG规模超1.4万亿美元，持有全球约1.5%上市公司股份',
+            en: 'State-owned investment funds; Norway\'s GPFG exceeds $1.4T, owning ~1.5% of all listed companies globally'
+        },
         domain: 'institutions', category: 'fund', icon: '🌍',
-        tags: ['swf', 'sovereign'],
-        level: 2, parentId: 'inst-fund'
+        tags: ['swf', 'sovereign', 'gpfg', 'gic', 'cic', 'adia'],
+        level: 2, parentId: 'inst-fund',
+        details: {
+            zh: '主要SWF：挪威GPFG(石油收入)、中投CIC(外汇储备)、阿布扎比ADIA(石油)、新加坡GIC/淡马锡。SWF通常追求长期稳定回报',
+            en: 'Major SWFs: Norway GPFG (oil), China CIC (FX reserves), Abu Dhabi ADIA (oil), Singapore GIC/Temasek. SWFs seek long-term stable returns'
+        }
     },
 
     // === 保险机构 ===
@@ -372,6 +436,75 @@ export const institutionEntities: Entity[] = [
         domain: 'institutions', category: 'emerging', icon: '💻',
         tags: ['fintech', 'digital'],
         level: 1
+    },
+
+    // === 市场基础设施机构 (P0新增) ===
+    {
+        // 华尔街说明: 做市商是市场流动性的核心来源，通过持续提供买卖报价赚取价差
+        // 代表机构: Citadel Securities, Virtu Financial, Jane Street
+        id: 'inst-market-maker',
+        name: { zh: '做市商', en: 'Market Makers' },
+        description: {
+            zh: '持续提供买卖双边报价的金融机构，通过买卖价差(Bid-Ask Spread)获利，是市场流动性的核心来源',
+            en: 'Institutions providing continuous two-sided quotes, profiting from bid-ask spreads, core liquidity providers in markets'
+        },
+        domain: 'institutions', category: 'trading', icon: '📊',
+        tags: ['market-maker', 'liquidity', 'spread', 'citadel', 'virtu'],
+        level: 1,
+        details: {
+            zh: '做市商承担库存风险，在市场波动时可能遭受损失。高频做市商(HFT)利用技术优势实现毫秒级报价更新',
+            en: 'Market makers bear inventory risk and may suffer losses during volatility. HFT market makers use technology for millisecond quote updates'
+        }
+    },
+    {
+        // 华尔街说明: 主经纪商是Archegos事件的核心角色，为对冲基金提供融资融券、托管等一站式服务
+        id: 'inst-prime-broker',
+        name: { zh: '主经纪商', en: 'Prime Brokers' },
+        description: {
+            zh: '为对冲基金提供融资融券、证券借贷、托管清算等一站式服务的投行部门，Archegos爆仓事件的核心角色',
+            en: 'Investment bank divisions providing financing, securities lending, custody to hedge funds; central to Archegos collapse'
+        },
+        domain: 'institutions', category: 'investment', icon: '🏦',
+        tags: ['prime-broker', 'hedge-fund', 'margin', 'leverage', 'archegos'],
+        level: 2, parentId: 'inst-investment-bank',
+        details: {
+            zh: '主经纪商向对冲基金提供杠杆，收取融资利息和交易佣金。2021年Archegos违约导致Credit Suisse等主经纪商损失超100亿美元',
+            en: 'Prime brokers provide leverage to hedge funds, earning financing interest and commissions. Archegos default in 2021 caused $10B+ losses to Credit Suisse and others'
+        }
+    },
+    {
+        // 华尔街说明: 托管行是资产安全的"保险箱"，负责证券保管和资金结算
+        // 代表机构: BNY Mellon, State Street, Northern Trust
+        id: 'inst-custodian',
+        name: { zh: '托管行', en: 'Custodians' },
+        description: {
+            zh: '为机构投资者保管证券资产、处理交易结算的专业银行，确保资产安全隔离',
+            en: 'Banks safeguarding securities and processing settlements for institutional investors, ensuring asset segregation'
+        },
+        domain: 'institutions', category: 'infrastructure', icon: '🔐',
+        tags: ['custodian', 'safekeeping', 'settlement', 'bny-mellon', 'state-street'],
+        level: 1,
+        details: {
+            zh: '托管资产规模通常以万亿美元计。BNY Mellon和State Street是全球最大的托管行，合计托管资产超过80万亿美元',
+            en: 'Custody assets typically measured in trillions. BNY Mellon and State Street are largest global custodians with $80T+ combined'
+        }
+    },
+    {
+        // 华尔街说明: 指数公司决定哪些股票被纳入指数，影响数万亿美元被动资金流向
+        // 代表机构: MSCI, S&P Dow Jones Indices, FTSE Russell
+        id: 'inst-index-provider',
+        name: { zh: '指数公司', en: 'Index Providers' },
+        description: {
+            zh: '设计和维护股票指数的机构，决定指数成分股纳入/剔除，影响数万亿美元被动资金流向',
+            en: 'Institutions designing and maintaining stock indices, determining inclusion/exclusion, influencing trillions in passive flows'
+        },
+        domain: 'institutions', category: 'service', icon: '📈',
+        tags: ['index', 'msci', 'sp-dji', 'ftse-russell', 'passive'],
+        level: 1,
+        details: {
+            zh: 'MSCI新兴市场指数纳入/剔除决定可导致单日数十亿美元资金流动。被动投资占比提升使指数公司影响力日益增强',
+            en: 'MSCI EM index inclusion/exclusion can trigger billions in single-day flows. Rising passive investing increases index provider influence'
+        }
     }
 ];
 
@@ -450,5 +583,23 @@ export const institutionRelationships: Relationship[] = [
     { id: 'ir-44', source: 'inst-regulator', target: 'inst-rating', type: 'regulates', strength: 2, bidirectional: false },
 
     // 金融科技与监管机构关系(沙盒监管)
-    { id: 'ir-45', source: 'inst-regulator', target: 'inst-fintech', type: 'regulates', strength: 2, bidirectional: false }
+    { id: 'ir-45', source: 'inst-regulator', target: 'inst-fintech', type: 'regulates', strength: 2, bidirectional: false },
+
+    // === 市场基础设施机构关系 (P0新增) ===
+    // 做市商为交易所提供流动性
+    { id: 'ir-46', source: 'inst-market-maker', target: 'inst-exchange', type: 'cooperates_with', strength: 3, bidirectional: true },
+    // 做市商之间竞争
+    { id: 'ir-47', source: 'inst-market-maker', target: 'inst-broker', type: 'competes_with', strength: 2, bidirectional: true },
+    // 主经纪商属于投行部门
+    { id: 'ir-48', source: 'inst-investment-bank', target: 'inst-prime-broker', type: 'provides', strength: 3, bidirectional: false },
+    // 主经纪商服务私募基金
+    { id: 'ir-49', source: 'inst-prime-broker', target: 'inst-private-fund', type: 'provides', strength: 3, bidirectional: false },
+    // 托管行与交易所的清算合作
+    { id: 'ir-50', source: 'inst-custodian', target: 'inst-clearing', type: 'cooperates_with', strength: 3, bidirectional: true },
+    // 托管行服务基金公司
+    { id: 'ir-51', source: 'inst-custodian', target: 'inst-fund', type: 'provides', strength: 3, bidirectional: false },
+    // 指数公司与交易所合作
+    { id: 'ir-52', source: 'inst-index-provider', target: 'inst-exchange', type: 'cooperates_with', strength: 2, bidirectional: true },
+    // 监管机构监管做市商
+    { id: 'ir-53', source: 'inst-regulator', target: 'inst-market-maker', type: 'regulates', strength: 3, bidirectional: false }
 ];

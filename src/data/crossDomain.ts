@@ -521,5 +521,109 @@ export const crossDomainRelationships: Relationship[] = [
             zh: '收益率曲线倒挂(短期利率高于长期)是历史上最可靠的衰退预警信号，领先时间6-18个月',
             en: 'Yield curve inversion (short rates > long rates) is the most reliable recession predictor, leading by 6-18 months'
         }
+    },
+
+    // === P0新增：市场基础设施跨域关系 ===
+    {
+        id: 'cd-mm-equity', source: 'inst-market-maker', target: 'market-equity', type: 'provides', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '做市商持续提供买卖双边报价，为股票市场提供流动性，确保投资者能够随时交易',
+            en: 'Market makers provide continuous two-sided quotes, ensuring investors can trade anytime in equity markets'
+        }
+    },
+    {
+        id: 'cd-mm-options', source: 'inst-market-maker', target: 'market-options', type: 'provides', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '期权市场高度依赖做市商，做市商通过Delta对冲管理风险，同时赚取买卖价差',
+            en: 'Options markets heavily rely on market makers who manage risk via Delta hedging while earning bid-ask spreads'
+        }
+    },
+    {
+        id: 'cd-pb-trs', source: 'inst-prime-broker', target: 'instr-trs', type: 'provides', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '主经纪商通过TRS向对冲基金提供杠杆敞口，Archegos事件中主经纪商未能有效管理TRS对手方风险',
+            en: 'Prime brokers provide leveraged exposure via TRS to hedge funds; Archegos event showed PB failure to manage TRS counterparty risk'
+        }
+    },
+    {
+        id: 'cd-custodian-fund', source: 'inst-custodian', target: 'inst-fund', type: 'provides', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '托管行为基金公司保管资产、处理交易结算，确保客户资产与公司自有财产隔离',
+            en: 'Custodians safeguard fund assets and process settlements, ensuring client asset segregation from company property'
+        }
+    },
+    {
+        id: 'cd-index-etf', source: 'inst-index-provider', target: 'instr-etf', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '指数公司决定ETF跟踪的基准指数，成分股调整会引发ETF自动买卖对应股票',
+            en: 'Index providers determine benchmark indices ETFs track; constituent changes trigger automatic ETF trading'
+        }
+    },
+
+    // === P0新增：CLO/CDO危机传导关系 ===
+    {
+        id: 'cd-clo-crisis', source: 'instr-clo', target: 'macro-crisis', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '2008年CDO大规模违约触发全球金融危机，证券化产品的不透明性导致风险被严重低估',
+            en: '2008 CDO defaults triggered global financial crisis; securitization opacity led to severely underestimated risks'
+        }
+    },
+    {
+        id: 'cd-clo-rating', source: 'inst-rating', target: 'instr-clo', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '评级机构对CDO分层结构的乐观评级是2008年危机的重要推手，AAA评级掩盖了底层资产的风险',
+            en: 'Rating agencies\' optimistic CDO tranche ratings contributed to 2008 crisis; AAA ratings masked underlying asset risks'
+        }
+    },
+    {
+        id: 'cd-clo-bank', source: 'inst-investment-bank', target: 'instr-clo', type: 'issues', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '投资银行是CDO/CLO的主要发行方和分销商，通过证券化赚取承销费用',
+            en: 'Investment banks are primary CDO/CLO issuers and distributors, earning underwriting fees through securitization'
+        }
+    },
+
+    // === P0新增：五大风险类型跨域关系 ===
+    {
+        id: 'cd-market-risk-equity', source: 'macro-market-risk', target: 'market-equity', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '市场风险直接体现在股票价格波动中，VaR模型用于量化股票投资组合的潜在损失',
+            en: 'Market risk manifests directly in equity price volatility; VaR models quantify potential losses in stock portfolios'
+        }
+    },
+    {
+        id: 'cd-credit-risk-bond', source: 'macro-credit-risk', target: 'market-bond-corp', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '信用风险是企业债定价的核心因素，信用利差反映市场对违约风险的定价',
+            en: 'Credit risk is core to corporate bond pricing; credit spreads reflect market pricing of default risk'
+        }
+    },
+    {
+        id: 'cd-liquidity-risk-mm', source: 'macro-liquidity-risk', target: 'inst-market-maker', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '流动性枯竭时做市商扩大买卖价差或撤离市场，加剧流动性危机的恶性循环',
+            en: 'During liquidity crises, market makers widen spreads or withdraw, exacerbating the liquidity spiral'
+        }
+    },
+    {
+        id: 'cd-counterparty-cds', source: 'macro-counterparty-risk', target: 'instr-cds', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: 'CDS是转移交易对手风险的核心工具，但CDS卖方本身也面临对手方风险，如AIG事件所示',
+            en: 'CDS is the core tool for transferring counterparty risk, but CDS sellers also face counterparty risk, as shown by AIG'
+        }
+    },
+    {
+        id: 'cd-counterparty-swap', source: 'macro-counterparty-risk', target: 'instr-swaps', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '场外互换交易的双边性质使其高度暴露于交易对手风险，CVA调整是定价的重要组成部分',
+            en: 'Bilateral nature of OTC swaps exposes them to counterparty risk; CVA adjustment is a key pricing component'
+        }
+    },
+    {
+        id: 'cd-operational-fintech', source: 'macro-operational-risk', target: 'inst-fintech', type: 'influences', strength: 2, bidirectional: false,
+        explanation: {
+            zh: '金融科技公司高度依赖技术系统，网络安全和系统故障是其主要操作风险来源',
+            en: 'FinTech companies rely heavily on technology systems; cybersecurity and system failures are key operational risks'
+        }
     }
 ];
