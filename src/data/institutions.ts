@@ -505,6 +505,168 @@ export const institutionEntities: Entity[] = [
             zh: 'MSCI新兴市场指数纳入/剔除决定可导致单日数十亿美元资金流动。被动投资占比提升使指数公司影响力日益增强',
             en: 'MSCI EM index inclusion/exclusion can trigger billions in single-day flows. Rising passive investing increases index provider influence'
         }
+    },
+
+    // ========================================
+    // L3 具体机构实体
+    // ========================================
+
+    // === 顶级投行 ===
+    {
+        id: 'inst-goldman',
+        name: { zh: '高盛集团', en: 'Goldman Sachs' },
+        description: {
+            zh: '全球最具影响力的投行之一，在并购咨询、交易业务领域处于领先地位，被誉为"华尔街之王"',
+            en: 'One of the most influential investment banks; leader in M&A advisory and trading, known as "King of Wall Street"'
+        },
+        domain: 'institutions', category: 'investment', icon: '🏆',
+        tags: ['goldman', 'bulge-bracket', 'gs', 'trading'],
+        level: 3, parentId: 'inst-investment-bank',
+        details: {
+            zh: '成立于1869年，2008年转型为银行控股公司。核心业务：投行(IBD)、交易(FICC/Equities)、资管(GSAM)。CEO Solomon领导转型',
+            en: 'Founded 1869, became bank holding in 2008. Core: IBD, Trading (FICC/Equities), GSAM. CEO Solomon leading transformation'
+        }
+    },
+    {
+        id: 'inst-jpmorgan',
+        name: { zh: '摩根大通', en: 'JP Morgan' },
+        description: {
+            zh: '全球最大的综合性银行之一，横跨投行、商业银行、资管三大领域，CEO Jamie Dimon是全球金融界最有影响力的银行家',
+            en: 'One of largest universal banks spanning IB, commercial banking, and asset management; CEO Jamie Dimon is most influential banker globally'
+        },
+        domain: 'institutions', category: 'investment', icon: '🏛️',
+        tags: ['jpmorgan', 'jpm', 'dimon', 'universal-bank'],
+        level: 3, parentId: 'inst-investment-bank',
+        details: {
+            zh: '总资产超4万亿美元。2023年收购First Republic银行。投行业务排名常年全球第一。JPM是道琼斯工业指数成分股',
+            en: 'Total assets $4T+. Acquired First Republic in 2023. Investment banking consistently #1 globally. Dow Jones component'
+        }
+    },
+    {
+        id: 'inst-morgan-stanley',
+        name: { zh: '摩根士丹利', en: 'Morgan Stanley' },
+        description: {
+            zh: '全球顶级投行之一，财富管理规模行业领先，核心竞争力在于股票和并购业务',
+            en: 'Top global investment bank with industry-leading wealth management; core strengths in equities and M&A'
+        },
+        domain: 'institutions', category: 'investment', icon: '💎',
+        tags: ['morgan-stanley', 'ms', 'wealth'],
+        level: 3, parentId: 'inst-investment-bank',
+        details: {
+            zh: '收购E*TRADE和Eaton Vance后财富管理规模大幅提升。与高盛是仅存的两家独立大型投行',
+            en: 'Wealth management expanded after E*TRADE and Eaton Vance acquisitions. One of two remaining independent major investment banks with Goldman'
+        }
+    },
+
+    // === 顶级资管 ===
+    {
+        id: 'inst-blackrock',
+        name: { zh: '贝莱德', en: 'BlackRock' },
+        description: {
+            zh: '全球最大的资产管理公司，管理资产超过10万亿美元，旗下iShares是全球最大ETF品牌',
+            en: 'World\'s largest asset manager with $10T+ AUM; iShares is the largest ETF brand globally'
+        },
+        domain: 'institutions', category: 'fund', icon: '⬛',
+        tags: ['blackrock', 'ishares', 'aladdin', 'passive'],
+        level: 3, parentId: 'inst-fund',
+        details: {
+            zh: '创始人Larry Fink倡导ESG投资。Aladdin是其核心风控平台，被众多机构使用。iShares覆盖全球主要ETF市场',
+            en: 'Founder Larry Fink champions ESG investing. Aladdin is core risk platform used by many institutions. iShares dominates global ETF markets'
+        }
+    },
+    {
+        id: 'inst-vanguard',
+        name: { zh: '先锋集团', en: 'Vanguard' },
+        description: {
+            zh: '全球第二大资管公司，指数基金的先驱，创始人John Bogle被誉为"指数基金之父"',
+            en: 'Second largest asset manager; index fund pioneer, founder John Bogle known as "Father of Index Funds"'
+        },
+        domain: 'institutions', category: 'fund', icon: '🚢',
+        tags: ['vanguard', 'bogle', 'index', 'low-cost'],
+        level: 3, parentId: 'inst-fund',
+        details: {
+            zh: '1976年推出首只指数共同基金。独特的互助结构使基金持有人同时是公司所有者。费率降至0.03%以下',
+            en: '1976 launched first index mutual fund. Unique mutual structure makes fund holders the company owners. Fees below 0.03%'
+        }
+    },
+
+    // === 顶级对冲基金 ===
+    {
+        id: 'inst-bridgewater',
+        name: { zh: '桥水基金', en: 'Bridgewater' },
+        description: {
+            zh: '全球最大对冲基金，创始人Ray Dalio发明"全天候策略"，管理规模超1500亿美元',
+            en: 'World\'s largest hedge fund; founder Ray Dalio invented "All Weather" strategy, AUM $150B+'
+        },
+        domain: 'institutions', category: 'fund', icon: '🌊',
+        tags: ['bridgewater', 'dalio', 'all-weather', 'macro'],
+        level: 3, parentId: 'inst-private-fund',
+        details: {
+            zh: 'Ray Dalio著有《原则》，倡导极度透明文化。全天候策略：四象限配置应对经济周期(增长/通胀×高低)',
+            en: 'Ray Dalio wrote "Principles", advocates radical transparency. All Weather: 4-quadrant allocation for economic cycles (growth/inflation × high/low)'
+        }
+    },
+    {
+        id: 'inst-renaissance',
+        name: { zh: '文艺复兴科技', en: 'Renaissance Technologies' },
+        description: {
+            zh: '最成功的量化对冲基金，Medallion基金年化收益率超过60%，创始人Jim Simons被誉为"量化之神"',
+            en: 'Most successful quant hedge fund; Medallion fund 60%+ annual returns, founder Jim Simons known as "Quant God"'
+        },
+        domain: 'institutions', category: 'fund', icon: '🧮',
+        tags: ['renaissance', 'simons', 'medallion', 'quant'],
+        level: 3, parentId: 'inst-private-fund',
+        details: {
+            zh: 'Medallion基金仅对内部员工开放，1988年来年化收益66%(扣费前)。Jim Simons为前数学家，专注统计套利',
+            en: 'Medallion fund internal only; 66% annual returns since 1988 (pre-fee). Jim Simons was mathematician, focus on statistical arbitrage'
+        }
+    },
+    {
+        id: 'inst-citadel',
+        name: { zh: '城堡投资', en: 'Citadel' },
+        description: {
+            zh: '全球顶级对冲基金和做市商，创始人Ken Griffin同时拥有独立的做市商Citadel Securities',
+            en: 'Top global hedge fund and market maker; founder Ken Griffin also owns separate market maker Citadel Securities'
+        },
+        domain: 'institutions', category: 'fund', icon: '🏰',
+        tags: ['citadel', 'griffin', 'market-making', 'multi-strategy'],
+        level: 3, parentId: 'inst-private-fund',
+        details: {
+            zh: '2022年收益160亿美元创对冲基金历史纪录。Citadel Securities是全球最大股票做市商，处理约25%美股交易量',
+            en: '2022 $16B profit broke hedge fund records. Citadel Securities is largest equities market maker, handles ~25% of US stock volume'
+        }
+    },
+
+    // === 顶级券商 ===
+    {
+        id: 'inst-ibkr',
+        name: { zh: '盈透证券', en: 'Interactive Brokers' },
+        description: {
+            zh: '全球专业交易者首选经纪商，以超低佣金、全球市场接入和强大的交易平台著称',
+            en: 'Professional traders\' preferred broker; known for ultra-low commissions, global market access, and powerful trading platform'
+        },
+        domain: 'institutions', category: 'securities', icon: '📊',
+        tags: ['ibkr', 'professional', 'global', 'tws'],
+        level: 3, parentId: 'inst-broker',
+        details: {
+            zh: '创始人Thomas Peterffy被誉为"电子交易之父"。TWS交易平台功能强大。保证金利率业内最低',
+            en: 'Founder Thomas Peterffy known as "Father of Electronic Trading". TWS platform is industry-leading. Lowest margin rates'
+        }
+    },
+    {
+        id: 'inst-schwab',
+        name: { zh: '嘉信理财', en: 'Charles Schwab' },
+        description: {
+            zh: '美国最大零售经纪商(与TD Ameritrade合并后)，以低成本和优质服务著称',
+            en: 'Largest US retail broker (after TD Ameritrade merger); known for low costs and quality service'
+        },
+        domain: 'institutions', category: 'securities', icon: '🔵',
+        tags: ['schwab', 'td-ameritrade', 'retail', 'ria'],
+        level: 3, parentId: 'inst-broker',
+        details: {
+            zh: '2020年收购TD Ameritrade，成为全美最大零售券商。管理资产超8万亿美元。零佣金先驱之一',
+            en: '2020 TD Ameritrade acquisition created largest US retail broker. $8T+ assets. Pioneer of zero-commission trading'
+        }
     }
 ];
 
@@ -601,5 +763,25 @@ export const institutionRelationships: Relationship[] = [
     // 指数公司与交易所合作
     { id: 'ir-52', source: 'inst-index-provider', target: 'inst-exchange', type: 'cooperates_with', strength: 2, bidirectional: true },
     // 监管机构监管做市商
-    { id: 'ir-53', source: 'inst-regulator', target: 'inst-market-maker', type: 'regulates', strength: 3, bidirectional: false }
+    { id: 'ir-53', source: 'inst-regulator', target: 'inst-market-maker', type: 'regulates', strength: 3, bidirectional: false },
+
+    // === L3 具体机构关系 ===
+    // 投行L3
+    { id: 'ir-54', source: 'inst-investment-bank', target: 'inst-goldman', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-55', source: 'inst-investment-bank', target: 'inst-jpmorgan', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-56', source: 'inst-investment-bank', target: 'inst-morgan-stanley', type: 'provides', strength: 3, bidirectional: false },
+    // 资管L3
+    { id: 'ir-57', source: 'inst-fund', target: 'inst-blackrock', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-58', source: 'inst-fund', target: 'inst-vanguard', type: 'provides', strength: 3, bidirectional: false },
+    // 对冲基金L3
+    { id: 'ir-59', source: 'inst-private-fund', target: 'inst-bridgewater', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-60', source: 'inst-private-fund', target: 'inst-renaissance', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-61', source: 'inst-private-fund', target: 'inst-citadel', type: 'provides', strength: 3, bidirectional: false },
+    // 券商L3
+    { id: 'ir-62', source: 'inst-broker', target: 'inst-ibkr', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'ir-63', source: 'inst-broker', target: 'inst-schwab', type: 'provides', strength: 3, bidirectional: false },
+    // 竞争关系
+    { id: 'ir-64', source: 'inst-goldman', target: 'inst-jpmorgan', type: 'competes_with', strength: 3, bidirectional: true },
+    { id: 'ir-65', source: 'inst-blackrock', target: 'inst-vanguard', type: 'competes_with', strength: 3, bidirectional: true },
+    { id: 'ir-66', source: 'inst-ibkr', target: 'inst-schwab', type: 'competes_with', strength: 2, bidirectional: true }
 ];
