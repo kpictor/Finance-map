@@ -9,7 +9,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '央行调控货币供应和利率', en: 'Central bank money supply and rate control' },
         domain: 'macro', category: 'policy', icon: '💰',
         tags: ['monetary', 'central-bank'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '美联储的双重使命:稳定物价+充分就业。中国央行目标更多:M2增速、汇率、金融风险',
+            en: 'Fed dual mandate: price stability + full employment. PBOC has more targets: M2 growth, FX rate, financial risk'
+        }
     },
     {
         id: 'macro-interest-rate',
@@ -17,7 +21,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '基准利率调整', en: 'Benchmark rate adjustments' },
         domain: 'macro', category: 'monetary', icon: '📊',
         tags: ['interest-rate', 'benchmark'],
-        level: 2, parentId: 'macro-monetary'
+        level: 2, parentId: 'macro-monetary',
+        details: {
+            zh: '美联储FFR(Federal Funds Rate)是全球利率基准，影响各国货币政策方向',
+            en: 'Fed Funds Rate (FFR) is global benchmark, influences monetary policy direction worldwide'
+        }
     },
     {
         id: 'macro-reserve-req',
@@ -25,7 +33,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '银行存款准备金要求', en: 'Bank deposit reserve requirements' },
         domain: 'macro', category: 'monetary', icon: '🏦',
         tags: ['rrr', 'reserves'],
-        level: 2, parentId: 'macro-monetary'
+        level: 2, parentId: 'macro-monetary',
+        details: {
+            zh: '中国准备金率约7-8%，每降准0.5%释放约5000亿流动性。美国已取消准备金要求',
+            en: 'China RRR ~7-8%, each 0.5% cut releases ~500B yuan. US has eliminated reserve requirements'
+        }
     },
     {
         id: 'macro-open-market',
@@ -33,7 +45,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '央行买卖证券', en: 'Central bank securities trading' },
         domain: 'macro', category: 'monetary', icon: '🔄',
         tags: ['omo', 'liquidity'],
-        level: 2, parentId: 'macro-monetary'
+        level: 2, parentId: 'macro-monetary',
+        details: {
+            zh: '中国每日通过逆回购(7天/14天)调节短期流动性。美联储买卖国债影响市场利率',
+            en: 'China daily adjusts liquidity via reverse repo (7d/14d). Fed buys/sells Treasuries to influence rates'
+        }
     },
     {
         id: 'macro-qe',
@@ -41,7 +57,11 @@ export const macroEntities: Entity[] = [
         description: { zh: '非常规货币政策，央行大规模购买资产', en: 'Unconventional monetary policy, central bank large-scale asset purchases' },
         domain: 'macro', category: 'monetary', icon: '💵',
         tags: ['qe', 'unconventional'],
-        level: 2, parentId: 'macro-monetary'
+        level: 2, parentId: 'macro-monetary',
+        details: {
+            zh: '2008-2022美联储资产负债表从$0.9T膨胀到$9T。QT(Quantitative Tightening)为反向操作',
+            en: 'Fed balance sheet grew from $0.9T to $9T (2008-2022). QT (Quantitative Tightening) is the reverse'
+        }
     },
     {
         // 华尔街说明: MLF是中国人民银行的核心政策工具，影响LPR定价
