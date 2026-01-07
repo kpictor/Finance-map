@@ -93,10 +93,32 @@ function AppContent() {
             <span>{language === 'zh' ? '点线 = 影响关系' : 'Dotted = Influences'}</span>
           </div>
 
+          {/* 层级说明 */}
+          <div className="legend-divider" />
+          <h4>{language === 'zh' ? '节点层级' : 'Node Levels'}</h4>
+          <div className="legend-item level-item">
+            <span className="legend-node-l1" />
+            <span>{language === 'zh' ? 'L1 核心概念' : 'L1 Core Concept'}</span>
+          </div>
+          <div className="legend-item level-item">
+            <span className="legend-node-l2" />
+            <span>{language === 'zh' ? 'L2 细分类别' : 'L2 Subcategory'}</span>
+          </div>
+          <div className="legend-item level-item">
+            <span className="legend-node-l3" />
+            <span>{language === 'zh' ? 'L3 具体实例' : 'L3 Instance'}</span>
+          </div>
+          <div className="legend-hint">
+            {language === 'zh' ? '💡 节点越大层级越高' : '💡 Larger nodes = higher level'}
+          </div>
+
           {/* 操作说明 */}
           <div className="legend-divider" />
           <div className="legend-instructions">
             <span>{language === 'zh' ? '🖱️ 滚轮缩放 · 拖拽平移' : '🖱️ Scroll zoom · Drag pan'}</span>
+          </div>
+          <div className="legend-instructions">
+            <span>{language === 'zh' ? '👆 点击节点查看详情' : '👆 Click node for details'}</span>
           </div>
         </div>
 

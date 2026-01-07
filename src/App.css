@@ -207,6 +207,42 @@ body {
   line-height: 1.4;
 }
 
+/* 层级图例节点样式 */
+.level-item {
+  align-items: center;
+}
+
+.legend-node-l1 {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  flex-shrink: 0;
+}
+
+.legend-node-l2 {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  flex-shrink: 0;
+}
+
+.legend-node-l3 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981, #3b82f6);
+  flex-shrink: 0;
+}
+
+.legend-hint {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
 /* 控制按钮 */
 .graph-controls {
   position: absolute;

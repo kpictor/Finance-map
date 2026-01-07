@@ -4,6 +4,7 @@ import type { Entity, Relationship } from '../types';
 export const marketEntities: Entity[] = [
     // === 一级市场 (Primary Market) - 证券发行市场 ===
     {
+        // 华尔街说明: 一级市场是资本形成的源头，投行在其中扮演承销商角色
         id: 'market-primary',
         name: { zh: '一级市场', en: 'Primary Market' },
         description: {
@@ -12,18 +13,27 @@ export const marketEntities: Entity[] = [
         },
         domain: 'markets', category: 'fundamental', icon: '🎯',
         tags: ['primary', 'issuance', 'IPO', '发行'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '一级市场运作流程：发行人→承销商(投行)→路演(Roadshow)→定价→配售→上市。承销方式分为包销(Underwriting)和代销(Best Efforts)',
+            en: 'Primary market flow: Issuer → Underwriter (IB) → Roadshow → Pricing → Allocation → Listing. Methods: Underwriting (firm commitment) vs Best Efforts'
+        }
     },
     {
+        // 华尔街说明: 2021年全球IPO市场规模创历史新高，SPAC热潮推动了大量上市
         id: 'market-ipo',
         name: { zh: 'IPO市场', en: 'IPO Market' },
         description: {
-            zh: '首次公开发行股票的市场，私有企业通过IPO变成公众公司',
-            en: 'Initial Public Offering market where private companies go public'
+            zh: '首次公开发行股票的市场，私有企业通过IPO变成公众公司。2021年全球IPO筹资额创历史新高',
+            en: 'Initial Public Offering market where private companies go public. 2021 saw record global IPO fundraising'
         },
         domain: 'markets', category: 'primary-equity', icon: '🎉',
-        tags: ['ipo', 'listing', '上市'],
-        level: 2, parentId: 'market-primary'
+        tags: ['ipo', 'listing', '上市', 'spac'],
+        level: 2, parentId: 'market-primary',
+        details: {
+            zh: '2021年IPO热潮：全球IPO筹资超6000亿美元，SPAC(特殊目的收购公司)贡献约1/4。2022年后市场急剧降温，回归价值理性',
+            en: '2021 IPO boom: Global IPO raised $600B+, SPACs contributed ~25%. Market cooled significantly in 2022, returning to value focus'
+        }
     },
     {
         id: 'market-bond-issuance',
@@ -34,7 +44,11 @@ export const marketEntities: Entity[] = [
         },
         domain: 'markets', category: 'primary-bond', icon: '📜',
         tags: ['bond-issuance', '债券发行'],
-        level: 2, parentId: 'market-primary'
+        level: 2, parentId: 'market-primary',
+        details: {
+            zh: '全球债券市场规模超130万亿美元，美国国债是最大单一品种。债券发行需信用评级，投资级(BBB-以上)与高收益级(BB+以下)差异显著',
+            en: 'Global bond market exceeds $130T, US Treasuries the largest segment. Bond issuance requires credit ratings; IG (BBB- and above) vs HY (BB+ and below)'
+        }
     },
     {
         id: 'market-private-placement',
@@ -45,11 +59,16 @@ export const marketEntities: Entity[] = [
         },
         domain: 'markets', category: 'primary-private', icon: '🔒',
         tags: ['private-placement', '定增', '私募'],
-        level: 2, parentId: 'market-primary'
+        level: 2, parentId: 'market-primary',
+        details: {
+            zh: '私募优势：发行成本低、披露要求少、灵活性高。缺点：流动性差。美国Reg D(私募豁免)每年融资规模超2万亿美元',
+            en: 'Private placement benefits: lower costs, less disclosure, flexible. Drawback: illiquid. US Reg D (private exemption) enables $2T+ annual fundraising'
+        }
     },
 
     // === 二级市场 (Secondary Market) - 证券交易市场 ===
     {
+        // 华尔街说明: 二级市场提供流动性，使投资者能随时买卖，这是一级市场能正常运作的前提
         id: 'market-secondary',
         name: { zh: '二级市场', en: 'Secondary Market' },
         description: {
@@ -58,17 +77,29 @@ export const marketEntities: Entity[] = [
         },
         domain: 'markets', category: 'fundamental', icon: '🔄',
         tags: ['secondary', 'trading', '交易'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '二级市场的流动性是一级市场能正常运作的前提。没有流动性，投资者不会愿意认购新发证券',
+            en: 'Secondary market liquidity is prerequisite for primary market functioning. Without liquidity, investors won\'t subscribe to new issues'
+        }
     },
 
     // === 股票市场 (属于二级市场) ===
     {
+        // 华尔街说明: 全球股市总市值超100万亿美元，美股占比超40%
         id: 'market-equity',
         name: { zh: '股票市场', en: 'Equity Markets' },
-        description: { zh: '股票交易的市场', en: 'Markets for trading equity securities' },
+        description: {
+            zh: '股票交易的市场，全球股市总市值超100万亿美元，美国股市占比约40%',
+            en: 'Markets for trading equity securities; global market cap exceeds $100 trillion, US markets account for ~40%'
+        },
         domain: 'markets', category: 'secondary-equity', icon: '📈',
-        tags: ['stock', 'equity'],
-        level: 2, parentId: 'market-secondary'
+        tags: ['stock', 'equity', 'nyse', 'nasdaq'],
+        level: 2, parentId: 'market-secondary',
+        details: {
+            zh: '全球前三大股票交易所：NYSE($25T+市值)、NASDAQ($21T+)、上交所/深交所(A股$10T+)。交易时段差异让全球股市24小时联动',
+            en: 'Top 3 exchanges: NYSE ($25T+ cap), NASDAQ ($21T+), Shanghai/Shenzhen ($10T+). Time zone differences enable 24-hour global trading'
+        }
     },
     {
         id: 'market-equity-main',
@@ -105,12 +136,20 @@ export const marketEntities: Entity[] = [
 
     // === 债券市场 (属于二级市场) ===
     {
+        // 华尔街说明: 债券市场规模远超股票市场，但流动性较差
         id: 'market-bond',
         name: { zh: '债券市场', en: 'Bond Markets' },
-        description: { zh: '债券交易的市场', en: 'Markets for trading debt securities' },
+        description: {
+            zh: '债券交易的市场，全球规模超130万亿美元，远超股票市场',
+            en: 'Markets for trading debt securities; global size exceeds $130 trillion, larger than equity markets'
+        },
         domain: 'markets', category: 'secondary-bond', icon: '📜',
-        tags: ['bond', 'debt'],
-        level: 2, parentId: 'market-secondary'
+        tags: ['bond', 'debt', 'fixed-income'],
+        level: 2, parentId: 'market-secondary',
+        details: {
+            zh: '债券市场特点：以OTC交易为主、流动性低于股票、机构投资者为主。中国银行间债市规模远超交易所债市',
+            en: 'Bond market characteristics: primarily OTC, less liquid than equities, dominated by institutional investors'
+        }
     },
     {
         id: 'market-bond-gov',
