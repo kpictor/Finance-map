@@ -868,5 +868,22 @@ export const instrumentRelationships: Relationship[] = [
     // CLO/CDO由MBS/ABS衍生
     { id: 'inr-71', source: 'instr-mbs', target: 'instr-clo', type: 'provides', strength: 3, bidirectional: false },
     // CDS为CDO提供信用保护
-    { id: 'inr-72', source: 'instr-cds', target: 'instr-clo', type: 'derives_from', strength: 3, bidirectional: false }
+    { id: 'inr-72', source: 'instr-cds', target: 'instr-clo', type: 'derives_from', strength: 3, bidirectional: false },
+
+    // === 修复：缺少的层级关系 ===
+    // 国库券属于债券子类
+    { id: 'inr-73', source: 'instr-bond', target: 'instr-tbill', type: 'provides', strength: 3, bidirectional: false },
+    // 大额存单属于债券子类
+    { id: 'inr-74', source: 'instr-bond', target: 'instr-cd', type: 'provides', strength: 3, bidirectional: false },
+    // CFD与期货关联
+    { id: 'inr-75', source: 'instr-futures', target: 'instr-cfd', type: 'provides', strength: 2, bidirectional: false },
+    // ETF包含各类基金子类
+    { id: 'inr-76', source: 'instr-etf', target: 'instr-index-fund', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'inr-77', source: 'instr-etf', target: 'instr-money-fund', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'inr-78', source: 'instr-etf', target: 'instr-reit', type: 'provides', strength: 2, bidirectional: false },
+    { id: 'inr-79', source: 'instr-etf', target: 'instr-mutual-fund', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'inr-80', source: 'instr-etf', target: 'instr-bond-fund', type: 'provides', strength: 3, bidirectional: false },
+    { id: 'inr-81', source: 'instr-etf', target: 'instr-sector-fund', type: 'provides', strength: 3, bidirectional: false },
+    // 奇异期权属于结构化产品
+    { id: 'inr-82', source: 'instr-structured', target: 'instr-exotic-options', type: 'provides', strength: 3, bidirectional: false }
 ];
