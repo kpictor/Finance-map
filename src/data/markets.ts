@@ -449,7 +449,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '纳斯达克交易所全部上市公司综合指数', en: 'Index of all NASDAQ listed companies' },
         domain: 'markets', category: 'index', icon: '💻',
         tags: ['nasdaq', 'tech', 'composite'],
-        level: 2, parentId: 'market-equity'
+        level: 2, parentId: 'market-equity',
+        details: {
+            zh: '含3000+股票，以科技股为主。NASDAQ 100(QQQ)是追踪最大100只的子集',
+            en: 'Contains 3000+ stocks, tech-heavy. NASDAQ 100 (QQQ) tracks largest 100'
+        }
     },
     {
         id: 'market-index-csi300',
@@ -457,7 +461,11 @@ export const marketEntities: Entity[] = [
         description: { zh: '沪深两市300只大盘股指数，A股核心基准', en: 'Index of 300 large-cap A-shares, core China equity benchmark' },
         domain: 'markets', category: 'index', icon: '🇨🇳',
         tags: ['csi300', 'china', 'a-share'],
-        level: 2, parentId: 'market-equity'
+        level: 2, parentId: 'market-equity',
+        details: {
+            zh: 'A股核心指数，沪深300ETF是最大A股ETF。股指期货以此为标的',
+            en: 'Core A-share index, CSI300 ETF is largest A-share ETF. Index futures based on this'
+        }
     },
     {
         id: 'market-index-csi500',

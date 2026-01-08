@@ -325,7 +325,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '金融市场监督管理', en: 'Financial market supervision' },
         domain: 'institutions', category: 'regulatory', icon: '⚖️',
         tags: ['regulator', 'supervision'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '中国"一行一局一会"监管体系。美国分业监管(SEC/CFTC/Fed)。英国统一监管(FCA)',
+            en: 'China: "One Bank, One Bureau, One Commission". US: sectoral (SEC/CFTC/Fed). UK: unified (FCA)'
+        }
     },
     {
         id: 'inst-csrc',
@@ -441,7 +445,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '中国第二大证券交易所，创业板所在地', en: 'Second largest in China, home to ChiNext' },
         domain: 'institutions', category: 'exchange', icon: '🇨🇳',
         tags: ['szse', 'china', 'chinext'],
-        level: 2, parentId: 'inst-exchange'
+        level: 2, parentId: 'inst-exchange',
+        details: {
+            zh: '创业板(“中国纳斯达克”)登记于深交所。科技与成长型企业为主',
+            en: 'ChiNext ("China NASDAQ") listed on SZSE. Mainly tech and growth companies'
+        }
     },
     {
         id: 'inst-hkex',
@@ -449,7 +457,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '亚洲领先的交易所，连接中国与国际市场', en: 'Asia\'s leading exchange connecting China with global markets' },
         domain: 'institutions', category: 'exchange', icon: '🇭🇰',
         tags: ['hkex', 'hong-kong', 'stock-connect'],
-        level: 2, parentId: 'inst-exchange'
+        level: 2, parentId: 'inst-exchange',
+        details: {
+            zh: '沪港通/深港通连接内地资金。中概股IPO首选地',
+            en: 'Stock Connect links mainland capital. Top choice for Chinese company IPOs'
+        }
     },
     {
         id: 'inst-tse',
@@ -457,7 +469,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '日本最大证券交易所，亚洲第二大', en: 'Japan\'s largest stock exchange, second in Asia' },
         domain: 'institutions', category: 'exchange', icon: '🇯🇵',
         tags: ['tse', 'japan', 'nikkei'],
-        level: 2, parentId: 'inst-exchange'
+        level: 2, parentId: 'inst-exchange',
+        details: {
+            zh: '日经225指数和TOPIX是主要基准。2022年整合为三大板块',
+            en: 'Nikkei 225 and TOPIX are main benchmarks. Reorganized into 3 segments in 2022'
+        }
     },
     {
         id: 'inst-lse',
@@ -465,7 +481,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '欧洲最大证券交易所之一，全球金融中心', en: 'One of Europe\'s largest exchanges, global financial hub' },
         domain: 'institutions', category: 'exchange', icon: '🇬🇧',
         tags: ['lse', 'uk', 'ftse'],
-        level: 2, parentId: 'inst-exchange'
+        level: 2, parentId: 'inst-exchange',
+        details: {
+            zh: 'FTSE 100是主要指数。AIM板块服务中小企业',
+            en: 'FTSE 100 is main index. AIM segment serves smaller companies'
+        }
     },
     {
         id: 'inst-cme',
@@ -473,7 +493,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '全球最大的衍生品交易所，期货期权交易中心', en: 'World\'s largest derivatives exchange for futures and options' },
         domain: 'institutions', category: 'exchange', icon: '📊',
         tags: ['cme', 'futures', 'derivatives', 'usa'],
-        level: 2, parentId: 'inst-exchange'
+        level: 2, parentId: 'inst-exchange',
+        details: {
+            zh: '产品线:股指/利率/外汇/商品。E-mini S&P 500是最活跃的股指期货',
+            en: 'Products: equity index/rates/FX/commodities. E-mini S&P 500 most active equity index futures'
+        }
     },
     {
         id: 'inst-ice',
@@ -481,7 +505,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '运营商品、金融和股权期货交易所', en: 'Operates commodity, financial, and equity futures exchanges' },
         domain: 'institutions', category: 'exchange', icon: '🌐',
         tags: ['ice', 'commodities', 'nyse-parent'],
-        level: 2, parentId: 'inst-exchange'
+        level: 2, parentId: 'inst-exchange',
+        details: {
+            zh: 'ICE旗下NYSE。布伦特原油期货在ICE交易',
+            en: 'ICE owns NYSE. Brent crude oil futures trade on ICE'
+        }
     },
     {
         // 华尔街说明: 北交所2021年设立，服务创新型中小企业，专精特新"小巨人"
@@ -493,7 +521,11 @@ export const institutionEntities: Entity[] = [
         },
         domain: 'institutions', category: 'exchange', icon: '🇨🇳',
         tags: ['bse', 'china', 'sme', 'innovation'],
-        level: 2, parentId: 'inst-exchange'
+        level: 2, parentId: 'inst-exchange',
+        details: {
+            zh: '由新三板精选层升级而来。上市门槛低于科创板/创业板',
+            en: 'Upgraded from NEEQ Select. Lower listing bar than STAR/ChiNext'
+        }
     },
     {
         // 华尔街说明: CBOE是期权交易的发源地，VIX指数的发布者
@@ -505,7 +537,11 @@ export const institutionEntities: Entity[] = [
         },
         domain: 'institutions', category: 'exchange', icon: '📊',
         tags: ['cboe', 'options', 'vix', 'usa'],
-        level: 2, parentId: 'inst-exchange'
+        level: 2, parentId: 'inst-exchange',
+        details: {
+            zh: 'SPX期权是全球流动性最好的指数期权。VIX"恐惧指数"由CBOE发布',
+            en: 'SPX options most liquid index options globally. VIX "fear index" published by CBOE'
+        }
     },
 
     // === 其他金融机构 ===
@@ -515,7 +551,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '信用评级服务', en: 'Credit rating services' },
         domain: 'institutions', category: 'service', icon: '⭐',
         tags: ['rating', 'credit'],
-        level: 1
+        level: 1,
+        details: {
+            zh: '三大评级机构:S&P/Moody\'s/Fitch，被称为"列缺头"。2008年后因过高评级受诉诃挑战',
+            en: 'Big Three: S&P/Moody\'s/Fitch, called "oligopoly". Post-2008 faced litigation for over-rating'
+        }
     },
     {
         id: 'inst-fintech',
