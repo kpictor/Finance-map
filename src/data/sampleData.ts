@@ -5,6 +5,7 @@ import { instrumentEntities, instrumentRelationships } from './instruments';
 import { macroEntities, macroRelationships } from './macro';
 import { crossDomainRelationships } from './crossDomain';
 import { phase1Relationships } from './phase1Relationships';
+import { phase2Relationships } from './phase2Relationships';
 
 // 整合所有领域数据
 // Integrate all domain data
@@ -21,7 +22,8 @@ export const sampleData: GraphData = {
         ...instrumentRelationships,
         ...macroRelationships,
         ...crossDomainRelationships,
-        ...phase1Relationships
+        ...phase1Relationships,
+        ...phase2Relationships
     ]
 };
 
