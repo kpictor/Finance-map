@@ -554,7 +554,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'derivatives', icon: '📊',
         tags: ['volatility', 'vix', 'variance'],
         riskLevel: 'L4',
-        level: 1
+        level: 1,
+        details: {
+            zh: '波动率产品允许交易市场恐慌程度。VIX称为"恐惧指数"，是最著名的波动率指标',
+            en: 'Volatility products allow trading market fear. VIX called "fear index", most famous volatility measure'
+        }
     },
     {
         id: 'instr-vix-futures',
@@ -563,7 +567,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'derivatives', icon: '📈',
         tags: ['vix', 'futures', 'volatility'],
         riskLevel: 'L4',
-        level: 2, parentId: 'instr-volatility'
+        level: 2, parentId: 'instr-volatility',
+        details: {
+            zh: 'VIX期货曲线通常向上倾斜(contango)，导致用其无脱ETF长期严重腐蚀',
+            en: 'VIX futures curve usually in contango, causing severe long-term decay in VIX ETFs'
+        }
     },
     {
         id: 'instr-vix-options',
@@ -572,7 +580,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'derivatives', icon: '🎯',
         tags: ['vix', 'options', 'volatility'],
         riskLevel: 'L4',
-        level: 2, parentId: 'instr-volatility'
+        level: 2, parentId: 'instr-volatility',
+        details: {
+            zh: 'VIX期权用于尾部风险对冲。市场恢复时IV缩小，购Call可能仍然亏损',
+            en: 'VIX options used for tail risk hedging. IV crush when market recovers may cause losses even on calls'
+        }
     },
 
     // === 商品 ===
@@ -583,7 +595,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'commodities', icon: '🛢️',
         tags: ['commodity', 'physical'],
         riskLevel: 'L3',
-        level: 1
+        level: 1,
+        details: {
+            zh: '商品分为硬商品(能源/金属)和软商品(农产品)。期货交易为主',
+            en: 'Commodities divided into hard (energy/metals) and soft (agriculture). Mainly traded via futures'
+        }
     },
     {
         id: 'instr-precious-metals',
@@ -592,7 +608,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'commodities', icon: '🥇',
         tags: ['gold', 'silver', 'platinum'],
         riskLevel: 'L3',
-        level: 2, parentId: 'instr-commodity'
+        level: 2, parentId: 'instr-commodity',
+        details: {
+            zh: 'GLD是最大黄金ETF($60B+)。黄金与实际利率负相关',
+            en: 'GLD is largest gold ETF ($60B+). Gold negatively correlated with real rates'
+        }
     },
     {
         id: 'instr-energy',
@@ -601,7 +621,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'commodities', icon: '⛽',
         tags: ['oil', 'natural-gas', 'energy'],
         riskLevel: 'L3',
-        level: 2, parentId: 'instr-commodity'
+        level: 2, parentId: 'instr-commodity',
+        details: {
+            zh: 'WTI/布伦特是两大原油基准。2020年WTI曾跌CME负油价',
+            en: 'WTI/Brent are two major crude benchmarks. WTI went negative in 2020'
+        }
     },
     {
         id: 'instr-agriculture',
@@ -610,7 +634,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'commodities', icon: '🌾',
         tags: ['agriculture', 'grains', 'softs'],
         riskLevel: 'L3',
-        level: 2, parentId: 'instr-commodity'
+        level: 2, parentId: 'instr-commodity',
+        details: {
+            zh: '大豆/玉米/小麦称为"三大谷物"。天气和地缘政治是主要影响因素',
+            en: 'Soybeans/corn/wheat are "big three grains". Weather and geopolitics are key drivers'
+        }
     },
 
     // === 预测市场 ===
@@ -641,7 +669,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'crypto', icon: '📊',
         tags: ['crypto', 'futures', 'btc'],
         riskLevel: 'L4',
-        level: 2, parentId: 'instr-crypto'
+        level: 2, parentId: 'instr-crypto',
+        details: {
+            zh: 'CME BTC期货是机构主要入场方式。加密期货杆杆可达100x+',
+            en: 'CME BTC futures main institutional entry. Crypto futures leverage can reach 100x+'
+        }
     },
 
     // === 基金产品 ===
