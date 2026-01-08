@@ -35,8 +35,8 @@ export const institutionEntities: Entity[] = [
         tags: ['fed', 'usa', 'fomc'],
         level: 2, parentId: 'inst-central-bank',
         details: {
-            zh: 'FOMC每6周开会决定利率。点阵图预测未来利率路径',
-            en: 'FOMC meets every 6 weeks for rates. Dot plot predicts future rate path'
+            zh: 'FOMC每年召开8次利率会议。点阵图预测未来利率路径',
+            en: 'FOMC holds 8 scheduled meetings per year. Dot plot predicts future rate path'
         }
     },
     {
@@ -47,8 +47,8 @@ export const institutionEntities: Entity[] = [
         tags: ['ecb', 'euro', 'europe'],
         level: 2, parentId: 'inst-central-bank',
         details: {
-            zh: 'ECB管理欧元区20国货币政策。曾实施负利率和TPPI购债计划',
-            en: 'ECB manages monetary policy for 20 eurozone countries. Used negative rates and TPPI bond buying'
+            zh: 'ECB管理欧元区20国货币政策。曾实施负利率和PEPP/APP购债计划',
+            en: 'ECB manages monetary policy for 20 eurozone countries. Used negative rates and PEPP/APP bond buying'
         }
     },
     {
@@ -192,15 +192,15 @@ export const institutionEntities: Entity[] = [
         id: 'inst-fund',
         name: { zh: '基金公司', en: 'Fund Companies' },
         description: {
-            zh: '管理各类投资基金的专业机构，全球最大资管公司BlackRock管理资产超过10万亿美元',
-            en: 'Professional institutions managing investment funds; BlackRock, the largest, manages over $10 trillion'
+            zh: '管理各类投资基金的专业机构，全球最大资管公司BlackRock管理资产超过11.5万亿美元',
+            en: 'Professional institutions managing investment funds; BlackRock, the largest, manages over $11.5 trillion'
         },
         domain: 'institutions', category: 'investment', icon: '💼',
         tags: ['fund', 'asset-management', 'blackrock', 'vanguard', 'fidelity'],
         level: 1,
         details: {
-            zh: '全球Top5资管公司：BlackRock($10T+)、Vanguard($8T+)、UBS($4T+)、State Street($4T+)、Fidelity($4T+)',
-            en: 'Global Top 5 Asset Managers: BlackRock($10T+), Vanguard($8T+), UBS($4T+), State Street($4T+), Fidelity($4T+)'
+            zh: '全球Top5资管公司：BlackRock($11.5T+)、Vanguard($9T+)、UBS($5T+)、State Street($4T+)、Fidelity($4.5T+)',
+            en: 'Global Top 5 Asset Managers: BlackRock($11.5T+), Vanguard($9T+), UBS($5T+), State Street($4T+), Fidelity($4.5T+)'
         }
     },
     {
@@ -224,8 +224,8 @@ export const institutionEntities: Entity[] = [
         id: 'inst-private-fund',
         name: { zh: '私募基金', en: 'Private Funds' },
         description: {
-            zh: '面向合格投资者的私募投资，包括对冲基金和PE，Bridgewater管理规模超1500亿美元',
-            en: 'Private investment for qualified investors, including hedge funds and PE; Bridgewater manages $150B+'
+            zh: '面向合格投资者的私募投资，包括对冲基金和PE，Bridgewater管理规模约1200亿美元',
+            en: 'Private investment for qualified investors, including hedge funds and PE; Bridgewater manages ~$120B'
         },
         domain: 'institutions', category: 'fund', icon: '🔒',
         tags: ['private-equity', 'hedge-fund', 'bridgewater', 'renaissance', 'kkr', 'blackstone'],
@@ -240,8 +240,8 @@ export const institutionEntities: Entity[] = [
         id: 'inst-pension',
         name: { zh: '养老金/退休基金', en: 'Pension Funds' },
         description: {
-            zh: '管理退休养老金的长期投资机构，CalPERS(加州公务员养老金)管理规模超4500亿美元',
-            en: 'Long-term investors managing retirement funds; CalPERS manages $450B+, influencing market-wide decisions'
+            zh: '管理退休养老金的长期投资机构，CalPERS(加州公务员养老金)管理规模超5000亿美元',
+            en: 'Long-term investors managing retirement funds; CalPERS manages $500B+, influencing market-wide decisions'
         },
         domain: 'institutions', category: 'fund', icon: '👴',
         tags: ['pension', 'retirement', 'calpers', 'gpif', 'long-term'],
@@ -256,8 +256,8 @@ export const institutionEntities: Entity[] = [
         id: 'inst-sovereign-fund',
         name: { zh: '主权财富基金', en: 'Sovereign Wealth Funds' },
         description: {
-            zh: '国家管理的投资基金，挪威GPFG规模超1.4万亿美元，持有全球约1.5%上市公司股份',
-            en: 'State-owned investment funds; Norway\'s GPFG exceeds $1.4T, owning ~1.5% of all listed companies globally'
+            zh: '国家管理的投资基金，挪威GPFG规模超1.7万亿美元，持有全球约1.5%上市公司股份',
+            en: 'State-owned investment funds; Norway\'s GPFG exceeds $1.7T, owning ~1.5% of all listed companies globally'
         },
         domain: 'institutions', category: 'fund', icon: '🌍',
         tags: ['swf', 'sovereign', 'gpfg', 'gic', 'cic', 'adia'],
@@ -277,8 +277,8 @@ export const institutionEntities: Entity[] = [
         tags: ['insurance', 'risk'],
         level: 1,
         details: {
-            zh: '全球最大保险公司:平安/安联(Allianz)/友邦(AIG)/保诚(Prudential)。保险资金是长期投资的重要来源',
-            en: 'Largest insurers: Ping An/Allianz/AIG/Prudential. Insurance funds are major long-term investment sources'
+            zh: '全球最大保险公司:平安/安联(Allianz)/友邦(AIA)/保诚(Prudential)。保险资金是长期投资的重要来源',
+            en: 'Largest insurers: Ping An/Allianz/AIA/Prudential. Insurance funds are major long-term investment sources'
         }
     },
     {
@@ -289,7 +289,7 @@ export const institutionEntities: Entity[] = [
         tags: ['life', 'health'],
         level: 2, parentId: 'inst-insurance',
         details: {
-            zh: '中国国寿/平安寿险/新华保险。寿险备付金是最大的机构投资者之一，偶好长久期債券',
+            zh: '中国国寿/平安寿险/新华保险。寿险备付金是最大的机构投资者之一，偏好长久期債券',
             en: 'China Life/Ping An Life/New China Life. Life insurance reserves are among largest institutional investors, favor long-term bonds'
         }
     },
@@ -553,7 +553,7 @@ export const institutionEntities: Entity[] = [
         tags: ['rating', 'credit'],
         level: 1,
         details: {
-            zh: '三大评级机构:S&P/Moody\'s/Fitch，被称为"列缺头"。2008年后因过高评级受诉诃挑战',
+            zh: '三大评级机构:S&P/Moody\'s/Fitch，被称为"寡头"。2008年后因过高评级受诉讼挑战',
             en: 'Big Three: S&P/Moody\'s/Fitch, called "oligopoly". Post-2008 faced litigation for over-rating'
         }
     },

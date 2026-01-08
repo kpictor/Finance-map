@@ -46,8 +46,8 @@ export const marketEntities: Entity[] = [
         tags: ['bond-issuance', '债券发行'],
         level: 2, parentId: 'market-primary',
         details: {
-            zh: '全球债券市场规模超130万亿美元，美国国债是最大单一品种。债券发行需信用评级，投资级(BBB-以上)与高收益级(BB+以下)差异显著',
-            en: 'Global bond market exceeds $130T, US Treasuries the largest segment. Bond issuance requires credit ratings; IG (BBB- and above) vs HY (BB+ and below)'
+            zh: '全球债券市场规模超140万亿美元，美国国债是最大单一品种。债券发行需信用评级，投资级(BBB-以上)与高收益级(BB+以下)差异显著',
+            en: 'Global bond market exceeds $140T, US Treasuries the largest segment. Bond issuance requires credit ratings; IG (BBB- and above) vs HY (BB+ and below)'
         }
     },
     {

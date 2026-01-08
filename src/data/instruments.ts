@@ -35,7 +35,7 @@ export const instrumentEntities: Entity[] = [
         liquidity: 'high',
         investorType: 'retail',
         details: {
-            zh: '普通股=拜托经营权+剩余求偿权。股东是真正的所有者，享受公司增长红利',
+            zh: '普通股=委托经营权+剩余求偿权。股东是真正的所有者，享受公司增长红利',
             en: 'Common stock = entrustment + residual claim. Shareholders are true owners, share in company growth'
         }
     },
@@ -74,7 +74,7 @@ export const instrumentEntities: Entity[] = [
     {
         id: 'instr-warrant',
         name: { zh: '权证', en: 'Warrants' },
-        description: { zh: '由发行人发行的认购或认沽权利证书，具有杆杆效应，到期无价值则归零', en: 'Issuer-issued rights with leverage, may expire worthless' },
+        description: { zh: '由发行人发行的认购或认沽权利证书，具有杠杆效应，到期无价值则归零', en: 'Issuer-issued rights with leverage, may expire worthless' },
         domain: 'instruments', category: 'equity', icon: '📝',
         tags: ['warrant', 'call-warrant', 'put-warrant'],
         riskLevel: 'L4',
@@ -518,7 +518,7 @@ export const instrumentEntities: Entity[] = [
         riskLevel: 'L4',
         level: 2, parentId: 'instr-futures',
         details: {
-            zh: 'CFD在美国被禁止，但在欧洲/亚洲广泛使用。杆杆可达30-500倍',
+            zh: 'CFD在美国被禁止，但在欧洲/亚洲广泛使用。杠杆可达30-500倍',
             en: 'CFDs banned in US but widely used in Europe/Asia. Leverage can reach 30-500x'
         }
     },
@@ -723,7 +723,7 @@ export const instrumentEntities: Entity[] = [
         riskLevel: 'L4',
         level: 2, parentId: 'instr-crypto',
         details: {
-            zh: 'CME BTC期货是机构主要入场方式。加密期货杆杆可达100x+',
+            zh: 'CME BTC期货是机构主要入场方式。加密期货杠杆可达100x+',
             en: 'CME BTC futures main institutional entry. Crypto futures leverage can reach 100x+'
         }
     },

@@ -35,8 +35,8 @@ export const macroEntities: Entity[] = [
         tags: ['rrr', 'reserves'],
         level: 2, parentId: 'macro-monetary',
         details: {
-            zh: '中国准备金率约7-8%，每降准0.5%释放约5000亿流动性。美国已取消准备金要求',
-            en: 'China RRR ~7-8%, each 0.5% cut releases ~500B yuan. US has eliminated reserve requirements'
+            zh: '中国大型银行准备金率约6.5%，中小银行5%。每降准0.5%释放纥5000亿流动性。美国已取消准备金要求',
+            en: 'China RRR ~6.5% (large banks)/5% (small banks). Each 0.5% cut releases ~500B yuan. US has eliminated reserve requirements'
         }
     },
     {
@@ -121,8 +121,8 @@ export const macroEntities: Entity[] = [
         tags: ['fiscal', 'government'],
         level: 1,
         details: {
-            zh: '美国政府债务约$34万亿(超过GDP)，利息支出成为负担。中国地方政府债务+隐性债务关注度高',
-            en: 'US gov debt ~$34T (exceeds GDP), interest a burden. China local + hidden debt is concern'
+            zh: '美国政府债务约$36万亿(超过GDP)，利息支出成为负担。中国地方政府债务+隐性债务关注度高',
+            en: 'US gov debt ~$36T (exceeds GDP), interest a burden. China local + hidden debt is concern'
         }
     },
     {
@@ -145,8 +145,8 @@ export const macroEntities: Entity[] = [
         tags: ['spending', 'investment'],
         level: 2, parentId: 'macro-fiscal',
         details: {
-            zh: '美国必要支出(mandatory):Medicare/SS/利息大头。中国基建投资是经济别动器',
-            en: 'US mandatory: Medicare/SS/Interest dominate. China infrastructure investment is economic stimulus tool'
+            zh: '美国强制性支出(mandatory):Medicare/社保(Social Security)/利息占大头。中国基建投资是经济刺激器',
+            en: 'US mandatory: Medicare/Social Security/Interest dominate. China infrastructure investment is economic stimulus tool'
         }
     },
     {
@@ -233,8 +233,8 @@ export const macroEntities: Entity[] = [
         tags: ['cycle', 'business-cycle'],
         level: 1,
         details: {
-            zh: '库兹涅茨周期(3-5年)/朱格拉周期(7-11年)/康波周期(50-60年)',
-            en: 'Kitchin (3-5yr), Juglar (7-11yr), Kondratieff (50-60yr) cycles'
+            zh: '基钦周期(Kitchin, 3-5年)/朱格拉周期(7-11年)/库兹涅茨周期(15-25年)/康波周期(50-60年)',
+            en: 'Kitchin (3-5yr), Juglar (7-11yr), Kuznets (15-25yr), Kondratieff (50-60yr) cycles'
         }
     },
     {
@@ -245,8 +245,8 @@ export const macroEntities: Entity[] = [
         tags: ['recession', 'downturn'],
         level: 2, parentId: 'macro-cycles',
         details: {
-            zh: 'NBER定义:连续两季度GDP负增长。美国历史上衰退平均持续11个月',
-            en: 'NBER definition: two consecutive quarters of negative GDP. US recessions average 11 months'
+            zh: 'NBER通过多指标综合判定衰退(并非"连续两季度负GDP"的简单标准)。美国历史上衰退平均持续11个月',
+            en: 'NBER uses multi-factor analysis to determine recession (NOT the "two consecutive quarters" rule). US recessions average 11 months'
         }
     },
     {
