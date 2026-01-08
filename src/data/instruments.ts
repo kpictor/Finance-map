@@ -745,8 +745,8 @@ export const instrumentEntities: Entity[] = [
         liquidity: 'high',
         investorType: 'retail',
         details: {
-            zh: 'Top ETF：SPY(标普500)、QQQ(纳斯达克100)、IWM(罗素2000)、VOO(Vanguard标普500)。费率竞争已降至0.03%以下',
-            en: 'Top ETFs: SPY (S&P 500), QQQ (Nasdaq 100), IWM (Russell 2000), VOO (Vanguard S&P 500). Fee competition has driven costs below 0.03%'
+            zh: 'NAV(净值)=基金总资产-负债/份额数。ETF价格围绕NAV波动,套利机制保持一致。Top ETF：SPY/QQQ/VOO,费率低至0.03%',
+            en: 'NAV = (Total Assets - Liabilities) / Shares. ETF prices oscillate around NAV, arbitrage maintains alignment. Top ETFs: SPY/QQQ/VOO, fees as low as 0.03%'
         }
     },
     {

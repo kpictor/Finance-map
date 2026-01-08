@@ -75,8 +75,8 @@ export const macroEntities: Entity[] = [
         tags: ['mlf', 'slf', 'lpr', 'pboc'],
         level: 2, parentId: 'macro-monetary',
         details: {
-            zh: 'MLF利率调整直接影响LPR(贷款市场报价利率)，进而影响房贷和企业贷款利率',
-            en: 'MLF rate adjustments directly affect LPR, which then influences mortgage and corporate loan rates'
+            zh: 'LPR分两档:1年期LPR(企业短贷/消费贷基准)、5年期以上LPR(房贷基准)。降息时常"非对称"调整',
+            en: 'LPR has 2 tenors: 1Y LPR (corporate/consumer loans), 5Y+ LPR (mortgage benchmark). Rate cuts often asymmetric'
         }
     },
     {
@@ -109,6 +109,38 @@ export const macroEntities: Entity[] = [
         details: {
             zh: '2年期与10年期美债利差(2s10s)倒挂历史上预测了每一次美国衰退，领先时间6-18个月',
             en: '2s10s Treasury spread inversion has predicted every US recession, with 6-18 month lead time'
+        }
+    },
+    {
+        // 华尔街说明: 杜邦分析是ROE分解的经典框架
+        id: 'macro-dupont',
+        name: { zh: '杜邦分析', en: 'DuPont Analysis' },
+        description: {
+            zh: 'ROE分解为净利润率×资产周转率×权益乘数三因子',
+            en: 'ROE decomposition into Net Margin × Asset Turnover × Equity Multiplier'
+        },
+        domain: 'macro', category: 'theory', icon: '📊',
+        tags: ['dupont', 'roe', 'margin', 'turnover', 'leverage'],
+        level: 1,
+        details: {
+            zh: 'ROE = 净利润率 × 资产周转率 × 权益乘数。银行靠高杠杆、零售靠高周转、科技靠高利润率',
+            en: 'ROE = Net Margin × Asset Turnover × Equity Multiplier. Banks: high leverage; Retail: high turnover; Tech: high margin'
+        }
+    },
+    {
+        // 华尔街说明: 套息交易是外汇/利率市场的核心策略，2024年日元加息触发全球平仓
+        id: 'macro-carry-trade',
+        name: { zh: '套息交易', en: 'Carry Trade' },
+        description: {
+            zh: '借入低息货币投资高息资产，赚取利差的交易策略',
+            en: 'Trading strategy borrowing low-yield currency to invest in high-yield assets, earning interest differential'
+        },
+        domain: 'macro', category: 'theory', icon: '💱',
+        tags: ['carry', 'yen', 'interest-rate', 'currency', 'unwind'],
+        level: 1,
+        details: {
+            zh: '经典案例:借日元(0利率)买澳元资产(5%+)。2024年日元加息触发全球carry unwind，市场剧烈波动',
+            en: 'Classic: borrow JPY (0%) to buy AUD assets (5%+). 2024 BOJ hike triggered global carry unwind, causing market turmoil'
         }
     },
 
@@ -335,6 +367,22 @@ export const macroEntities: Entity[] = [
         details: {
             zh: '重大危机:1929大萧条/1997亚洲/2008次贷/2020疫情。每次危机后监管加强',
             en: 'Major crises: 1929 Depression, 1997 Asian, 2008 Subprime, 2020 COVID. Regulation strengthens post-crisis'
+        }
+    },
+    {
+        // 华尔街说明: 交易对手风险是衍生品市场的核心风险，2008年雷曼破产导致全球CDS交易对手风险爆发
+        id: 'macro-counterparty-risk',
+        name: { zh: '交易对手风险', en: 'Counterparty Risk' },
+        description: {
+            zh: '交易对方违约导致的损失风险，2008年雷曼破产引发全球CDS交易对手风险危机',
+            en: 'Risk of loss from counterparty default; Lehman collapse in 2008 triggered global CDS counterparty crisis'
+        },
+        domain: 'macro', category: 'risk', icon: '🤝',
+        tags: ['counterparty', 'default', 'ccp', 'lehman', 'cds'],
+        level: 2, parentId: 'macro-risk',
+        details: {
+            zh: '应对措施:中央清算对手方(CCP)制度强制OTC衍生品集中清算。ISDA主协议是衍生品合同标准',
+            en: 'Response: Central Counterparty (CCP) clearing mandated for OTC derivatives. ISDA Master Agreement is contract standard'
         }
     },
 
