@@ -9,7 +9,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '国家货币政策制定执行机构', en: 'National monetary policy authority' },
         domain: 'institutions', category: 'regulatory', icon: '🏛️',
         tags: ['central-bank', 'monetary'],
-        level: 1  // 顶级概念
+        level: 1,
+        details: {
+            zh: '央行独立性是现代货币政策基石。美联储决策影响全球资产价格',
+            en: 'Central bank independence is foundation of modern monetary policy. Fed decisions impact global asset prices'
+        }
     },
     {
         id: 'inst-pboc',
@@ -17,7 +21,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '中国的中央银行', en: 'People\'s Bank of China' },
         domain: 'institutions', category: 'central-bank', icon: '🇨🇳',
         tags: ['pboc', 'china'],
-        level: 2, parentId: 'inst-central-bank'
+        level: 2, parentId: 'inst-central-bank',
+        details: {
+            zh: 'PBOC通过MLF/LPR引导利率。与美联储不同，缺乏独立性',
+            en: 'PBOC guides rates via MLF/LPR. Unlike Fed, lacks independence'
+        }
     },
     {
         id: 'inst-fed',
@@ -25,7 +33,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '美国中央银行系统', en: 'US Federal Reserve System' },
         domain: 'institutions', category: 'central-bank', icon: '🇺🇸',
         tags: ['fed', 'usa', 'fomc'],
-        level: 2, parentId: 'inst-central-bank'
+        level: 2, parentId: 'inst-central-bank',
+        details: {
+            zh: 'FOMC每6周开会决定利率。点阵图预测未来利率路径',
+            en: 'FOMC meets every 6 weeks for rates. Dot plot predicts future rate path'
+        }
     },
     {
         id: 'inst-ecb',
@@ -33,7 +45,11 @@ export const institutionEntities: Entity[] = [
         description: { zh: '欧元区货币政策机构', en: 'European Central Bank' },
         domain: 'institutions', category: 'central-bank', icon: '🇪🇺',
         tags: ['ecb', 'euro', 'europe'],
-        level: 2, parentId: 'inst-central-bank'
+        level: 2, parentId: 'inst-central-bank',
+        details: {
+            zh: 'ECB管理欧元区20国货币政策。曾实施负利率和TPPI购债计划',
+            en: 'ECB manages monetary policy for 20 eurozone countries. Used negative rates and TPPI bond buying'
+        }
     },
     {
         // 华尔街说明: 日本央行是负利率政策的先驱，也是YCC（收益率曲线控制）的首创者
@@ -45,7 +61,11 @@ export const institutionEntities: Entity[] = [
         },
         domain: 'institutions', category: 'central-bank', icon: '🇯🇵',
         tags: ['boj', 'japan', 'ycc', 'nirp'],
-        level: 2, parentId: 'inst-central-bank'
+        level: 2, parentId: 'inst-central-bank',
+        details: {
+            zh: 'BOJ持有日本半ETF、大量JGB。YCC将十年期国债收益率盯住在特定水平',
+            en: 'BOJ owns half of Japan ETFs, massive JGBs. YCC pins 10-year yields at target level'
+        }
     },
     {
         // 华尔街说明: 英格兰银行是全球最古老的央行之一，1694年成立
@@ -57,7 +77,11 @@ export const institutionEntities: Entity[] = [
         },
         domain: 'institutions', category: 'central-bank', icon: '🇬🇧',
         tags: ['boe', 'uk', 'pound'],
-        level: 2, parentId: 'inst-central-bank'
+        level: 2, parentId: 'inst-central-bank',
+        details: {
+            zh: '1992年“黑色星期三”索罗斯狙击英镑，BOE被迫退出ERM',
+            en: '1992 "Black Wednesday" Soros attacked sterling, BOE forced to exit ERM'
+        }
     },
 
     // === 商业银行体系 ===

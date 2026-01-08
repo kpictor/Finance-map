@@ -478,7 +478,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'derivatives', icon: '📊',
         tags: ['options', 'stock-options', 'equity'],
         riskLevel: 'L3',
-        level: 2, parentId: 'instr-options'
+        level: 2, parentId: 'instr-options',
+        details: {
+            zh: '美股期权标准100股，主要在CBOE交易。Reddit/WSB的meme股期权热潮',
+            en: 'US options standard 100 shares, mainly trade on CBOE. Reddit/WSB meme stock options frenzy'
+        }
     },
     {
         id: 'instr-index-options',
@@ -487,7 +491,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'derivatives', icon: '📈',
         tags: ['options', 'index', 'spx'],
         riskLevel: 'L3',
-        level: 2, parentId: 'instr-options'
+        level: 2, parentId: 'instr-options',
+        details: {
+            zh: 'SPX期权是最大指数期权，现金结算。中国50ETF期权是A股最活跃期权',
+            en: 'SPX options largest index options, cash-settled. China 50ETF options most active in A-shares'
+        }
     },
     {
         id: 'instr-cfd',
@@ -496,7 +504,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'derivatives', icon: '📉',
         tags: ['cfd', 'leverage', 'margin'],
         riskLevel: 'L4',
-        level: 2, parentId: 'instr-futures'
+        level: 2, parentId: 'instr-futures',
+        details: {
+            zh: 'CFD在美国被禁止，但在欧洲/亚洲广泛使用。杆杆可达30-500倍',
+            en: 'CFDs banned in US but widely used in Europe/Asia. Leverage can reach 30-500x'
+        }
     },
     {
         id: 'instr-single-stock-futures',
@@ -505,7 +517,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'derivatives', icon: '📊',
         tags: ['ssf', 'equity-futures'],
         riskLevel: 'L3',
-        level: 2, parentId: 'instr-futures'
+        level: 2, parentId: 'instr-futures',
+        details: {
+            zh: '个股期货在美国不流行，但在印度/南非等市场活跃。杠杆通常为5-10倍',
+            en: 'SSF not popular in US but active in India/South Africa. Leverage typically 5-10x'
+        }
     },
 
     // === 外汇工具 ===
@@ -516,7 +532,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'forex', icon: '💱',
         tags: ['forex', 'fx', 'currency'],
         riskLevel: 'L3',
-        level: 1
+        level: 1,
+        details: {
+            zh: '全球最大金融市场，日均交易$7.5万亿。EUR/USD是最大货币对',
+            en: 'Largest financial market, $7.5T daily. EUR/USD is largest currency pair'
+        }
     },
     {
         id: 'instr-spot-fx',
@@ -525,7 +545,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'forex', icon: '⚡',
         tags: ['spot', 'immediate', 'fx'],
         riskLevel: 'L2',
-        level: 2, parentId: 'instr-forex'
+        level: 2, parentId: 'instr-forex',
+        details: {
+            zh: '零售外汇平台如OANDA/IG提供即期交易。点差(spread)是主要成本',
+            en: 'Retail platforms like OANDA/IG offer spot trading. Spread is main cost'
+        }
     },
     {
         id: 'instr-fx-forwards',
@@ -534,7 +558,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'forex', icon: '📅',
         tags: ['forward', 'fx', 'hedge'],
         riskLevel: 'L3',
-        level: 2, parentId: 'instr-forex'
+        level: 2, parentId: 'instr-forex',
+        details: {
+            zh: '企业常用远期合约锁定未来汇率，对冲汇率风险',
+            en: 'Companies use forwards to lock in future rates, hedging FX risk'
+        }
     },
     {
         id: 'instr-fx-options',
@@ -543,7 +571,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'forex', icon: '🎯',
         tags: ['options', 'fx', 'currency'],
         riskLevel: 'L4',
-        level: 2, parentId: 'instr-forex'
+        level: 2, parentId: 'instr-forex',
+        details: {
+            zh: '外汇期权以OTC交易为主，银行间市场规模巨大',
+            en: 'FX options mainly OTC, interbank market is massive'
+        }
     },
 
     // === 波动率产品 ===
@@ -649,7 +681,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'alternatives', icon: '🔮',
         tags: ['forecast', 'prediction', 'events'],
         riskLevel: 'L4',
-        level: 2, parentId: 'instr-crypto'
+        level: 2, parentId: 'instr-crypto',
+        details: {
+            zh: 'Polymarket是最大预测市场平台。CFTC允许的事件合约在美国合法',
+            en: 'Polymarket is largest prediction market. CFTC-allowed event contracts are legal in US'
+        }
     },
 
     // === 加密货币 ===
@@ -660,7 +696,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'crypto', icon: '₿',
         tags: ['crypto', 'bitcoin', 'ethereum'],
         riskLevel: 'L3',
-        level: 1
+        level: 1,
+        details: {
+            zh: 'BTC占加密市值~50%，ETH~20%。2024年现货BTC ETF获批是里程碑',
+            en: 'BTC ~50% of crypto cap, ETH ~20%. 2024 spot BTC ETF approval was milestone'
+        }
     },
     {
         id: 'instr-crypto-futures',
@@ -818,7 +858,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'derivatives', icon: '🎰',
         tags: ['exotic', 'barrier', 'asian', 'options'],
         riskLevel: 'L4',
-        level: 2, parentId: 'instr-structured'
+        level: 2, parentId: 'instr-structured',
+        details: {
+            zh: '主要类型:障碍期权(Barrier)/亚式期权(Asian)/回望期权(Lookback)。OTC交易为主',
+            en: 'Main types: Barrier/Asian/Lookback options. Mainly OTC traded'
+        }
     },
     {
         id: 'instr-snowball',
@@ -827,7 +871,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'structured', icon: '❄️',
         tags: ['snowball', 'autocallable', 'barrier', 'knock-in', 'knock-out'],
         riskLevel: 'L4',
-        level: 2, parentId: 'instr-structured'
+        level: 2, parentId: 'instr-structured',
+        details: {
+            zh: '票息通常15-20%，但敲入后亏损可达50%+。2022年雪球集中敲入引发市场关注',
+            en: 'Coupons ~15-20%, but knock-in losses can exceed 50%. 2022 mass knock-ins raised concerns'
+        }
     },
     {
         id: 'instr-phoenix',
@@ -836,7 +884,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'structured', icon: '🦅',
         tags: ['phoenix', 'autocallable', 'coupon'],
         riskLevel: 'L4',
-        level: 2, parentId: 'instr-structured'
+        level: 2, parentId: 'instr-structured',
+        details: {
+            zh: '凤凰每月派息，雪球按存续期派息。风险结构与雪球类似',
+            en: 'Phoenix pays monthly, snowball pays at survival. Risk structure similar to snowball'
+        }
     },
     {
         id: 'instr-sharkfin',
@@ -845,7 +897,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'structured', icon: '🦈',
         tags: ['sharkfin', 'barrier', 'capped'],
         riskLevel: 'L4',
-        level: 2, parentId: 'instr-structured'
+        level: 2, parentId: 'instr-structured',
+        details: {
+            zh: '向上鲨鱼鳍:涨突破障碍后收益消失。适合温和上涨预期',
+            en: 'Up sharkfin: gains vanish when barrier breached. Suits mild bullish outlook'
+        }
     },
     {
         id: 'instr-income-cert',
@@ -854,7 +910,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'structured', icon: '📋',
         tags: ['certificate', 'securities', 'linked'],
         riskLevel: 'L4',
-        level: 2, parentId: 'instr-structured'
+        level: 2, parentId: 'instr-structured',
+        details: {
+            zh: '中国券商收益凭证分为保证型/非保证型。非保证型类似雪球结构',
+            en: 'China income certs: guaranteed vs non-guaranteed. Non-guaranteed similar to snowball'
+        }
     },
     {
         id: 'instr-fcn',
@@ -863,7 +923,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'structured', icon: '💳',
         tags: ['fcn', 'coupon', 'linked-note'],
         riskLevel: 'L4',
-        level: 2, parentId: 'instr-structured'
+        level: 2, parentId: 'instr-structured',
+        details: {
+            zh: 'FCN=固定票息+售出看跌期权。到期若标的跌破行权价则收到股票',
+            en: 'FCN = fixed coupon + sold put. If underlying below strike at maturity, receive stock'
+        }
     },
     {
         id: 'instr-dcn',
@@ -872,7 +936,11 @@ export const instrumentEntities: Entity[] = [
         domain: 'instruments', category: 'structured', icon: '🏷️',
         tags: ['dcn', 'discount', 'capped'],
         riskLevel: 'L4',
-        level: 2, parentId: 'instr-structured'
+        level: 2, parentId: 'instr-structured',
+        details: {
+            zh: 'DCN=折价买入+卖出看涨期权。购买价=市价-期权费，收益封顶',
+            en: 'DCN = discount purchase + sold call. Buy price = market - premium, capped upside'
+        }
     },
 
     // === 另类投资 ===
