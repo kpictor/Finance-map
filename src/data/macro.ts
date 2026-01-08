@@ -369,22 +369,6 @@ export const macroEntities: Entity[] = [
             en: 'Major crises: 1929 Depression, 1997 Asian, 2008 Subprime, 2020 COVID. Regulation strengthens post-crisis'
         }
     },
-    {
-        // 华尔街说明: 交易对手风险是衍生品市场的核心风险，2008年雷曼破产导致全球CDS交易对手风险爆发
-        id: 'macro-counterparty-risk',
-        name: { zh: '交易对手风险', en: 'Counterparty Risk' },
-        description: {
-            zh: '交易对方违约导致的损失风险，2008年雷曼破产引发全球CDS交易对手风险危机',
-            en: 'Risk of loss from counterparty default; Lehman collapse in 2008 triggered global CDS counterparty crisis'
-        },
-        domain: 'macro', category: 'risk', icon: '🤝',
-        tags: ['counterparty', 'default', 'ccp', 'lehman', 'cds'],
-        level: 2, parentId: 'macro-risk',
-        details: {
-            zh: '应对措施:中央清算对手方(CCP)制度强制OTC衍生品集中清算。ISDA主协议是衍生品合同标准',
-            en: 'Response: Central Counterparty (CCP) clearing mandated for OTC derivatives. ISDA Master Agreement is contract standard'
-        }
-    },
 
     // === 五大风险类型 (P0新增) ===
     {

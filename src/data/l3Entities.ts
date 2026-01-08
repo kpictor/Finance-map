@@ -1,46 +1,11 @@
 import type { Entity, Relationship } from '../types';
 
-// L3实体：全球知名金融机构具体实例
-// L3 Entities: Specific well-known global financial institutions
+// L3实体：全球知名金融机构具体实例（仅包含institutions.ts中未定义的新实体）
+// L3 Entities: Additional specific global financial institutions (not already in institutions.ts)
 
 export const l3Entities: Entity[] = [
-    // === 全球系统重要性银行 (G-SIBs) ===
-    {
-        id: 'inst-jpmorgan',
-        name: { zh: '摩根大通', en: 'JPMorgan Chase' },
-        description: { zh: '全球最大银行，资产规模超3.7万亿美元', en: 'World\'s largest bank by assets ($3.7T+)' },
-        domain: 'institutions', category: 'investment-bank', icon: '🏦',
-        tags: ['jpmorgan', 'jpm', 'gsib', 'usa'],
-        level: 3, parentId: 'inst-investment-bank',
-        details: {
-            zh: 'Jamie Dimon领导逾18年。2023年收购First Republic。投行/资管/零售银行全能冠军',
-            en: 'Led by Jamie Dimon for 18+ years. Acquired First Republic in 2023. Dominates IB/AM/retail banking'
-        }
-    },
-    {
-        id: 'inst-goldman',
-        name: { zh: '高盛', en: 'Goldman Sachs' },
-        description: { zh: '华尔街顶级投行，交易和投行业务领先', en: 'Premier Wall Street investment bank, leading in trading and IB' },
-        domain: 'institutions', category: 'investment-bank', icon: '🏛️',
-        tags: ['goldman', 'gs', 'gsib', 'usa'],
-        level: 3, parentId: 'inst-investment-bank',
-        details: {
-            zh: '华尔街最具声望投行。校招竞争最激烈。Marcus消费金融转型遇挫',
-            en: 'Most prestigious Wall Street bank. Most competitive campus recruiting. Marcus consumer pivot struggled'
-        }
-    },
-    {
-        id: 'inst-morgan-stanley',
-        name: { zh: '摩根士丹利', en: 'Morgan Stanley' },
-        description: { zh: '财富管理与投行巨头', en: 'Wealth management and investment bank giant' },
-        domain: 'institutions', category: 'investment-bank', icon: '🏛️',
-        tags: ['morganstanley', 'ms', 'gsib', 'usa'],
-        level: 3, parentId: 'inst-investment-bank',
-        details: {
-            zh: '收购E*TRADE和Eaton Vance后，财富管理AUM超6万亿美元',
-            en: 'Post E*TRADE and Eaton Vance acquisitions, wealth management AUM exceeds $6T'
-        }
-    },
+    // === 全球系统重要性银行 (G-SIBs) - 补充 ===
+    // 注：jpmorgan, goldman, morgan-stanley 已在institutions.ts中定义
     {
         id: 'inst-bofa',
         name: { zh: '美国银行', en: 'Bank of America' },
@@ -164,31 +129,8 @@ export const l3Entities: Entity[] = [
         }
     },
 
-    // === 全球顶级资管公司 ===
-    {
-        id: 'inst-blackrock',
-        name: { zh: '贝莱德', en: 'BlackRock' },
-        description: { zh: '全球最大资产管理公司，AUM超11.5万亿美元', en: 'World\'s largest asset manager, $11.5T+ AUM' },
-        domain: 'institutions', category: 'fund', icon: '⬛',
-        tags: ['blackrock', 'blk', 'etf', 'ishares'],
-        level: 3, parentId: 'inst-fund',
-        details: {
-            zh: 'iShares是全球最大ETF发行商。Aladdin风控系统被众多机构使用',
-            en: 'iShares is world\'s largest ETF issuer. Aladdin risk system used by many institutions'
-        }
-    },
-    {
-        id: 'inst-vanguard',
-        name: { zh: '先锋领航', en: 'Vanguard' },
-        description: { zh: '指数基金鼻祖，投资者持有的共同制公司', en: 'Pioneer of index funds, investor-owned mutual company' },
-        domain: 'institutions', category: 'fund', icon: '🚢',
-        tags: ['vanguard', 'index', 'passive'],
-        level: 3, parentId: 'inst-fund',
-        details: {
-            zh: 'John Bogle创立，发明第一只指数基金。费率战争领导者，平均费率仅0.08%',
-            en: 'Founded by John Bogle, invented first index fund. Fee war leader, average expense ratio just 0.08%'
-        }
-    },
+    // === 全球顶级资管公司 - 补充 ===
+    // 注：blackrock, vanguard 已在institutions.ts中定义
     {
         id: 'inst-fidelity',
         name: { zh: '富达投资', en: 'Fidelity' },
@@ -214,43 +156,8 @@ export const l3Entities: Entity[] = [
         }
     },
 
-    // === 顶级对冲基金 ===
-    {
-        id: 'inst-bridgewater',
-        name: { zh: '桥水基金', en: 'Bridgewater Associates' },
-        description: { zh: '全球最大对冲基金', en: 'World\'s largest hedge fund' },
-        domain: 'institutions', category: 'hedge-fund', icon: '🌉',
-        tags: ['bridgewater', 'dalio', 'macro'],
-        level: 3, parentId: 'inst-private-fund',
-        details: {
-            zh: 'Ray Dalio创立。Pure Alpha策略专注全球宏观。以"极度透明"文化著称',
-            en: 'Founded by Ray Dalio. Pure Alpha focuses on global macro. Known for "radical transparency" culture'
-        }
-    },
-    {
-        id: 'inst-citadel',
-        name: { zh: 'Citadel', en: 'Citadel' },
-        description: { zh: '顶级多策略对冲基金', en: 'Top multi-strategy hedge fund' },
-        domain: 'institutions', category: 'hedge-fund', icon: '🏰',
-        tags: ['citadel', 'griffin', 'multi-strategy'],
-        level: 3, parentId: 'inst-private-fund',
-        details: {
-            zh: 'Ken Griffin创立。Citadel Securities是最大做市商之一。2022年回报38.1%',
-            en: 'Founded by Ken Griffin. Citadel Securities is top market maker. 38.1% return in 2022'
-        }
-    },
-    {
-        id: 'inst-renaissance',
-        name: { zh: '文艺复兴科技', en: 'Renaissance Technologies' },
-        description: { zh: '量化投资传奇，Medallion基金年化66%', en: 'Quant legend, Medallion fund 66% annualized' },
-        domain: 'institutions', category: 'hedge-fund', icon: '🔢',
-        tags: ['renaissance', 'rentec', 'quant', 'medallion'],
-        level: 3, parentId: 'inst-private-fund',
-        details: {
-            zh: 'Jim Simons创立。Medallion(内部基金)1988-2018年扣费后年化39%，史上最佳',
-            en: 'Founded by Jim Simons. Medallion (internal fund) 39% net annualized 1988-2018, best ever'
-        }
-    },
+    // === 顶级对冲基金 - 补充 ===
+    // 注：bridgewater, citadel, renaissance 已在institutions.ts中定义
     {
         id: 'inst-two-sigma',
         name: { zh: 'Two Sigma', en: 'Two Sigma' },
@@ -379,8 +286,104 @@ export const l3Entities: Entity[] = [
 
 // L3实体关系 - 完整业务关系链
 export const l3Relationships: Relationship[] = [
+    // === 层级关系（Parent -> Child）===
+    // G-SIBs 商业银行
+    {
+        id: 'l3-cb-bofa', source: 'inst-commercial-bank', target: 'inst-bofa', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '美国银行是大型商业银行', en: 'Bank of America is a major commercial bank' }
+    },
+    {
+        id: 'l3-cb-citi', source: 'inst-commercial-bank', target: 'inst-citi', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '花旗是全球性商业银行', en: 'Citigroup is a global commercial bank' }
+    },
+    {
+        id: 'l3-cb-hsbc', source: 'inst-commercial-bank', target: 'inst-hsbc', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '汇丰是亚洲领先商业银行', en: 'HSBC is a leading Asia-focused commercial bank' }
+    },
+    {
+        id: 'l3-cb-icbc', source: 'inst-commercial-bank', target: 'inst-icbc', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '工行是中国最大国有商业银行', en: 'ICBC is China\'s largest state-owned commercial bank' }
+    },
+    {
+        id: 'l3-cb-ccb', source: 'inst-commercial-bank', target: 'inst-ccb', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '建行是中国四大银行之一', en: 'CCB is one of China\'s Big Four banks' }
+    },
+    {
+        id: 'l3-cb-boc', source: 'inst-commercial-bank', target: 'inst-boc', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '中行是中国四大银行之一', en: 'BOC is one of China\'s Big Four banks' }
+    },
+    // G-SIBs 投行类
+    {
+        id: 'l3-ib-ubs', source: 'inst-investment-bank', target: 'inst-ubs', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '瑞银是全球顶级投行', en: 'UBS is a top global investment bank' }
+    },
+    {
+        id: 'l3-ib-deutsche', source: 'inst-investment-bank', target: 'inst-deutsche', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '德银是欧洲大型投行', en: 'Deutsche Bank is a major European investment bank' }
+    },
+    {
+        id: 'l3-ib-barclays', source: 'inst-investment-bank', target: 'inst-barclays', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '巴克莱是英国领先投行', en: 'Barclays is UK\'s leading investment bank' }
+    },
+    // 证券公司
+    {
+        id: 'l3-sec-citic', source: 'inst-securities', target: 'inst-citic', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '中信证券是中国最大券商', en: 'CITIC Securities is China\'s largest broker' }
+    },
+    // 资管公司
+    {
+        id: 'l3-fund-fidelity', source: 'inst-fund', target: 'inst-fidelity', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '富达是顶级主动管理基金公司', en: 'Fidelity is a top active fund manager' }
+    },
+    {
+        id: 'l3-fund-pimco', source: 'inst-fund', target: 'inst-pimco', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: 'PIMCO是债券基金领导者', en: 'PIMCO is a bond fund leader' }
+    },
+    // 对冲基金/私募
+    {
+        id: 'l3-pf-twosigma', source: 'inst-private-fund', target: 'inst-two-sigma', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: 'Two Sigma是量化对冲基金', en: 'Two Sigma is a quant hedge fund' }
+    },
+    {
+        id: 'l3-pf-deshaw', source: 'inst-private-fund', target: 'inst-deshaw', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: 'D.E. Shaw是量化先驱', en: 'D.E. Shaw is a quant pioneer' }
+    },
+    {
+        id: 'l3-pf-blackstone', source: 'inst-private-fund', target: 'inst-blackstone', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '黑石是全球最大另类资管公司', en: 'Blackstone is largest alternative asset manager' }
+    },
+    {
+        id: 'l3-pf-kkr', source: 'inst-private-fund', target: 'inst-kkr', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: 'KKR是PE行业先驱', en: 'KKR is a PE industry pioneer' }
+    },
+    {
+        id: 'l3-pf-carlyle', source: 'inst-private-fund', target: 'inst-carlyle', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '凯雷是全球化PE巨头', en: 'Carlyle is a global PE giant' }
+    },
+    {
+        id: 'l3-pf-sequoia', source: 'inst-private-fund', target: 'inst-sequoia', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '红杉是顶级VC', en: 'Sequoia is a top VC' }
+    },
+    {
+        id: 'l3-pf-a16z', source: 'inst-private-fund', target: 'inst-a16z', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: 'a16z是科技VC新锐', en: 'a16z is a rising tech VC' }
+    },
+    // 保险公司
+    {
+        id: 'l3-ins-berkshire', source: 'inst-insurance', target: 'inst-berkshire', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '伯克希尔是保险+投资巨头', en: 'Berkshire is an insurance + investment giant' }
+    },
+    {
+        id: 'l3-ins-pingan', source: 'inst-insurance', target: 'inst-pingan', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '平安是中国最大保险公司', en: 'Ping An is China\'s largest insurer' }
+    },
+    {
+        id: 'l3-ins-allianz', source: 'inst-insurance', target: 'inst-allianz', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '安联是欧洲最大保险公司', en: 'Allianz is Europe\'s largest insurer' }
+    },
+
     // === G-SIBs 业务关系 ===
-    // JPMorgan
+    // JPMorgan (已在institutions.ts定义)
     {
         id: 'l3-jpm-equity', source: 'inst-jpmorgan', target: 'market-equity', type: 'trades', strength: 3, bidirectional: true,
         explanation: { zh: 'JPM是全球最大股票交易商之一', en: 'JPM is one of the largest global equity traders' }
@@ -398,7 +401,7 @@ export const l3Relationships: Relationship[] = [
         explanation: { zh: 'JPM是全球最大外汇交易银行', en: 'JPM is world\'s largest FX trading bank' }
     },
 
-    // Goldman Sachs
+    // Goldman Sachs (已在institutions.ts定义)
     {
         id: 'l3-gs-equity', source: 'inst-goldman', target: 'market-equity', type: 'trades', strength: 3, bidirectional: true,
         explanation: { zh: '高盛是顶级股票做市商和交易商', en: 'Goldman is top equity market maker and trader' }
@@ -412,7 +415,7 @@ export const l3Relationships: Relationship[] = [
         explanation: { zh: '高盛是硅谷科技公司首选IPO承销商', en: 'Goldman is preferred IPO underwriter for Silicon Valley tech' }
     },
 
-    // Morgan Stanley
+    // Morgan Stanley (已在institutions.ts定义)
     {
         id: 'l3-ms-wealth', source: 'inst-morgan-stanley', target: 'instr-stock', type: 'invests', strength: 3, bidirectional: false,
         explanation: { zh: '摩根士丹利财富管理部门管理$6T+客户资产', en: 'MS wealth management manages $6T+ client assets' }

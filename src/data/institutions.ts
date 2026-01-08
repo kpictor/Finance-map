@@ -185,22 +185,6 @@ export const institutionEntities: Entity[] = [
             en: 'Major brokers: IBKR (professionals), Schwab/TD Ameritrade (largest after merger), Fidelity, E*TRADE (Morgan Stanley), Robinhood (zero-commission pioneer)'
         }
     },
-    {
-        // 华尔街说明: 做市商是市场流动性的核心，赚取买卖价差，承担库存风险
-        id: 'inst-market-maker',
-        name: { zh: '做市商', en: 'Market Makers' },
-        description: {
-            zh: '提供买卖双边报价的流动性提供者，赚取买卖价差(bid-ask spread)，承担库存风险',
-            en: 'Liquidity providers offering two-sided quotes, earning bid-ask spread while bearing inventory risk'
-        },
-        domain: 'institutions', category: 'securities', icon: '⚖️',
-        tags: ['market-maker', 'liquidity', 'citadel', 'virtu', 'hft', 'bid-ask'],
-        level: 2, parentId: 'inst-securities',
-        details: {
-            zh: 'Citadel Securities/Virtu是最大电子做市商，处理约40%美股成交量。做市商用HFT高频交易技术，毫秒级响应',
-            en: 'Citadel Securities/Virtu are largest electronic MMs, handling ~40% US equity volume. MMs use HFT technology for millisecond response'
-        }
-    },
 
     // === 资产管理 ===
     {

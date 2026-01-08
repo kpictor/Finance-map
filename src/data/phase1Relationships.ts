@@ -18,14 +18,14 @@ export const phase1Relationships: Relationship[] = [
         }
     },
     {
-        id: 'cd-uses-corp-fx-forward', source: 'inst-commercial-bank', target: 'instr-fx-forward', type: 'uses', strength: 2, bidirectional: false,
+        id: 'cd-uses-corp-fx-forward', source: 'inst-commercial-bank', target: 'instr-fx-forwards', type: 'uses', strength: 2, bidirectional: false,
         explanation: {
             zh: '企业通过银行使用外汇远期锁定汇率，对冲跨境贸易的汇率风险',
             en: 'Corporates use FX forwards via banks to lock exchange rates, hedging cross-border trade FX risk'
         }
     },
     {
-        id: 'cd-uses-carry-forex', source: 'macro-carry-trade', target: 'instr-fx-spot', type: 'uses', strength: 3, bidirectional: false,
+        id: 'cd-uses-carry-forex', source: 'macro-carry-trade', target: 'market-forex', type: 'uses', strength: 3, bidirectional: false,
         explanation: {
             zh: '套息交易策略主要通过即期外汇市场建立货币头寸',
             en: 'Carry trade strategies primarily establish currency positions through spot FX market'

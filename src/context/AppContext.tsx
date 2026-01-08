@@ -244,6 +244,7 @@ export function AppProvider({ children }: AppProviderProps) {
 }
 
 // Hook 用于消费上下文
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAppContext(): AppContextType {
     const context = useContext(AppContext);
     if (!context) {

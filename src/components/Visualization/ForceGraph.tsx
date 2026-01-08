@@ -71,9 +71,13 @@ export const ForceGraph: React.FC<ForceGraphProps> = ({
     const onEntityClickRef = useRef(onEntityClick);
     const onEntityHoverRef = useRef(onEntityHover);
     const onEntityDoubleClickRef = useRef(onEntityDoubleClick);
-    onEntityClickRef.current = onEntityClick;
-    onEntityHoverRef.current = onEntityHover;
-    onEntityDoubleClickRef.current = onEntityDoubleClick;
+
+    // Update refs in useEffect to avoid render-time ref access
+    useEffect(() => {
+        onEntityClickRef.current = onEntityClick;
+        onEntityHoverRef.current = onEntityHover;
+        onEntityDoubleClickRef.current = onEntityDoubleClick;
+    }, [onEntityClick, onEntityHover, onEntityDoubleClick]);
 
     // 使用 useDimensions hook 处理尺寸监听
     const dimensions = useDimensions(containerRef, { minWidth: 800, minHeight: 500 });
@@ -325,14 +329,18 @@ export const ForceGraph: React.FC<ForceGraphProps> = ({
             });
 
             node.selectAll('.node-circle')
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 .attr('opacity', (d: any) => connectedIds.has(d.id) ? 1 : 0.15);
 
             node.selectAll('.node-label')
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 .attr('opacity', (d: any) => connectedIds.has(d.id) ? 1 : 0.15);
 
             node.selectAll('.node-icon')
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 .attr('opacity', (d: any) => connectedIds.has(d.id) ? 1 : 0.15);
 
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             link.attr('stroke-opacity', (d: any) => {
                 const srcId = typeof d.source === 'string' ? d.source : d.source.id;
                 const tgtId = typeof d.target === 'string' ? d.target : d.target.id;
@@ -343,7 +351,6 @@ export const ForceGraph: React.FC<ForceGraphProps> = ({
         return () => {
             simulation.stop();
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [entities, relationships, dimensions, language, selectedEntity]);
 
     return (

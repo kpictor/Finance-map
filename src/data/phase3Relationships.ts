@@ -39,7 +39,7 @@ export const phase3Relationships: Relationship[] = [
         }
     },
     {
-        id: 'p3-vix-spx', source: 'market-index-sp500', target: 'instr-vix', type: 'provides', strength: 3, bidirectional: false,
+        id: 'p3-vix-spx', source: 'market-index-sp500', target: 'instr-vix-futures', type: 'provides', strength: 3, bidirectional: false,
         explanation: {
             zh: 'VIX(恐慌指数)由标普500期权隐含波动率计算得出',
             en: 'VIX (fear index) is calculated from S&P 500 options implied volatility'
@@ -287,7 +287,7 @@ export const phase3Relationships: Relationship[] = [
         }
     },
     {
-        id: 'p3-mm-low-risk', source: 'instr-money-market', target: 'instr-gov-bond', type: 'invests', strength: 3, bidirectional: false,
+        id: 'p3-mm-low-risk', source: 'instr-money-fund', target: 'instr-gov-bond', type: 'invests', strength: 3, bidirectional: false,
         explanation: {
             zh: '货币基金主要投资于国债、回购等短期高流动性资产',
             en: 'Money market funds mainly invest in T-bills, repos, and other short-term high-liquidity assets'

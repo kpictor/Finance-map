@@ -11,14 +11,14 @@ export const phase2Relationships: Relationship[] = [
         }
     },
     {
-        id: 'p2-inflation-commodity', source: 'macro-cpi', target: 'market-commodity', type: 'influences', strength: 3, bidirectional: false,
+        id: 'p2-inflation-commodity', source: 'macro-cpi', target: 'market-commodities', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
             zh: '通胀上升时商品作为实物资产价格上涨，商品是重要的通胀对冲工具',
             en: 'Commodities rise with inflation as real assets, serving as important inflation hedges'
         }
     },
     {
-        id: 'p2-recession-gold', source: 'macro-recession', target: 'instr-gold', type: 'influences', strength: 3, bidirectional: false,
+        id: 'p2-recession-gold', source: 'macro-recession', target: 'instr-commodity', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
             zh: '经济衰退时黄金作为避险资产需求上升，与风险资产呈负相关',
             en: 'Gold demand rises during recessions as safe haven, negatively correlated with risk assets'
