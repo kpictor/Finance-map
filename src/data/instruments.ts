@@ -382,7 +382,11 @@ export const instrumentEntities: Entity[] = [
         level: 1,
         tradingVenue: 'otc',
         liquidity: 'medium',
-        investorType: 'qualified'
+        investorType: 'qualified',
+        details: {
+            zh: '主要类型:IRS(利率互换,最大)/CDS(信用)/TRS(总收益)。2008年后强制清算',
+            en: 'Main types: IRS (largest), CDS (credit), TRS (total return). Post-2008 mandatory clearing'
+        }
     },
     {
         // 华尔街说明: IRS是名义本金规模最大的衍生品，全球超过400万亿美元
@@ -457,7 +461,11 @@ export const instrumentEntities: Entity[] = [
         level: 1,
         tradingVenue: 'otc',
         liquidity: 'low',
-        investorType: 'professional'
+        investorType: 'professional',
+        details: {
+            zh: '远期与期货的区别:远期非标准/OTC/无保证金/到期结算。主要用于外汇和利率对冲',
+            en: 'Forward vs futures: forwards are OTC/non-standard/no margin/settle at maturity. Mainly for FX and rate hedging'
+        }
     },
     {
         id: 'instr-options-futures',
@@ -469,7 +477,11 @@ export const instrumentEntities: Entity[] = [
         level: 2, parentId: 'instr-options',
         tradingVenue: 'exchange',
         liquidity: 'medium',
-        investorType: 'professional'
+        investorType: 'professional',
+        details: {
+            zh: '双重杠杆:期权杠杆+期货杠杆。CME谷物/能源期权流动性好',
+            en: 'Double leverage: options + futures leverage. CME grain/energy options are liquid'
+        }
     },
     {
         id: 'instr-equity-options',

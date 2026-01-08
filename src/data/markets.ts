@@ -489,7 +489,11 @@ export const marketEntities: Entity[] = [
         },
         domain: 'markets', category: 'index', icon: '🇨🇳',
         tags: ['csi1000', 'china', 'small-cap', 'snowball'],
-        level: 2, parentId: 'market-equity'
+        level: 2, parentId: 'market-equity',
+        details: {
+            zh: '雪球结构常挂钩中证1000，波动大=票息高但敲入风险也大',
+            en: 'Snowballs often linked to CSI1000, high volatility = higher coupon but greater knock-in risk'
+        }
     },
     {
         id: 'market-index-hsi',
