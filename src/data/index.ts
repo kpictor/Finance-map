@@ -7,3 +7,4 @@ export { crossDomainRelationships } from './crossDomain';
 export { phase1Relationships } from './phase1Relationships';
 export { phase2Relationships } from './phase2Relationships';
 export { phase3Relationships } from './phase3Relationships';
+export { l3Entities, l3Relationships } from './l3Entities';

@@ -7,6 +7,7 @@ import { crossDomainRelationships } from './crossDomain';
 import { phase1Relationships } from './phase1Relationships';
 import { phase2Relationships } from './phase2Relationships';
 import { phase3Relationships } from './phase3Relationships';
+import { l3Entities, l3Relationships } from './l3Entities';
 
 // 整合所有领域数据
 // Integrate all domain data
@@ -15,7 +16,8 @@ export const sampleData: GraphData = {
         ...marketEntities,
         ...institutionEntities,
         ...instrumentEntities,
-        ...macroEntities
+        ...macroEntities,
+        ...l3Entities
     ],
     relationships: [
         ...marketRelationships,
@@ -25,7 +27,8 @@ export const sampleData: GraphData = {
         ...crossDomainRelationships,
         ...phase1Relationships,
         ...phase2Relationships,
-        ...phase3Relationships
+        ...phase3Relationships,
+        ...l3Relationships
     ]
 };
 
