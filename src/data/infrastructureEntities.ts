@@ -762,21 +762,49 @@ export const crossBorderRelationships: Relationship[] = [
         explanation: { zh: 'Smart Beta策略主要通过ETF形式实现', en: 'Smart Beta strategies are primarily implemented via ETFs' }
     },
 
-    // --- 上海黄金交易所关系 ---
+    // --- 上海黄金交易所关系 (关系矩阵分析) ---
+    // provides: SGE提供什么？
     {
         id: 'cb-60', source: 'inst-sge', target: 'market-precious-metals', type: 'provides', strength: 3, bidirectional: false,
         explanation: { zh: '上海黄金交易所是亚洲最大的贵金属现货交易场所', en: 'SGE is Asia largest spot precious metals trading venue' }
     },
+    // depends_on: SGE依赖谁？
     {
         id: 'cb-61', source: 'inst-sge', target: 'inst-pboc', type: 'depends_on', strength: 3, bidirectional: false,
         explanation: { zh: '上海黄金交易所由中国人民银行设立并监管', en: 'SGE was established and is supervised by PBOC' }
     },
+    // influences: SGE影响谁？
     {
         id: 'cb-62', source: 'inst-sge', target: 'infra-cnh', type: 'influences', strength: 2, bidirectional: false,
         explanation: { zh: '上海金定价推动黄金人民币计价，促进人民币国际化', en: 'Shanghai Gold Fix promotes RMB-denominated gold pricing, supporting RMB internationalization' }
     },
+    // trades: SGE交易什么？
     {
         id: 'cb-63', source: 'inst-sge', target: 'instr-precious-metals', type: 'trades', strength: 3, bidirectional: true,
         explanation: { zh: '上海黄金交易所提供黄金、白银等贵金属交易', en: 'SGE provides gold, silver and other precious metals trading' }
+    },
+    // competes_with: SGE与谁竞争？
+    {
+        id: 'cb-64', source: 'inst-sge', target: 'inst-cme', type: 'competes_with', strength: 2, bidirectional: true,
+        explanation: { zh: 'SGE与CME旗下COMEX竞争全球黄金定价权', en: 'SGE competes with CME/COMEX for global gold pricing power' }
+    },
+    {
+        id: 'cb-65', source: 'inst-sge', target: 'inst-ice', type: 'competes_with', strength: 2, bidirectional: true,
+        explanation: { zh: 'SGE与ICE竞争全球商品交易份额', en: 'SGE competes with ICE for global commodities trading share' }
+    },
+    // cooperates_with: SGE与谁合作？
+    {
+        id: 'cb-66', source: 'inst-sge', target: 'inst-commercial-bank', type: 'cooperates_with', strength: 3, bidirectional: true,
+        explanation: { zh: '商业银行是SGE主要会员，参与黄金交易清算', en: 'Commercial banks are major SGE members, participating in gold trading and clearing' }
+    },
+    // uses: 谁使用SGE？
+    {
+        id: 'cb-67', source: 'instr-etf', target: 'inst-sge', type: 'uses', strength: 2, bidirectional: false,
+        explanation: { zh: '黄金ETF使用SGE现货价格作为基准', en: 'Gold ETFs use SGE spot prices as benchmarks' }
+    },
+    // regulates: 谁监管SGE？
+    {
+        id: 'cb-68', source: 'inst-pboc', target: 'inst-sge', type: 'regulates', strength: 3, bidirectional: false,
+        explanation: { zh: '中国人民银行是SGE的监管机构', en: 'PBOC is the regulatory authority for SGE' }
     }
 ];

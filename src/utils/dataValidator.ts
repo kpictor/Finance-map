@@ -472,6 +472,114 @@ function validateGraphStructure(
 }
 
 // ========================================
+// LAYER 6: 关系密度检查 (Relationship Density)
+// 确保每个实体有足够的关系连接
+// ========================================
+
+// 按层级的最低关系数要求
+const MIN_RELATIONSHIPS_BY_LEVEL: Record<EntityLevel, number> = {
+    1: 5,  // L1 顶级概念至少5条关系
+    2: 3,  // L2 二级分类至少3条关系
+    3: 2   // L3 具体实例至少2条关系
+};
+
+function validateRelationshipDensity(
+    entities: Entity[],
+    relationships: Relationship[]
+): ValidationError[] {
+    const errors: ValidationError[] = [];
+
+    // 计算每个实体的关系数
+    const relationCount = new Map<string, number>();
+    for (const rel of relationships) {
+        relationCount.set(rel.source, (relationCount.get(rel.source) || 0) + 1);
+        relationCount.set(rel.target, (relationCount.get(rel.target) || 0) + 1);
+    }
+
+    // 检查是否满足最低要求
+    for (const entity of entities) {
+        const count = relationCount.get(entity.id) || 0;
+        const level = entity.level || 1;
+        const minRequired = MIN_RELATIONSHIPS_BY_LEVEL[level as EntityLevel];
+
+        if (count < minRequired) {
+            errors.push({
+                layer: 5, // 归类到图结构层
+                severity: 'warning',
+                code: 'LOW_RELATIONSHIP_DENSITY',
+                message: `实体 ${entity.id}(${entity.name.zh}) 只有 ${count} 条关系，L${level} 需要至少 ${minRequired} 条`,
+                entityId: entity.id,
+                details: { currentCount: count, minRequired, level }
+            });
+        }
+    }
+
+    return errors;
+}
+
+// ========================================
+// LAYER 7: 关系类型平衡检查 (Relationship Type Balance)
+// 确保关系类型分布合理
+// ========================================
+
+const RELATIONSHIP_TYPE_THRESHOLDS = {
+    maxSingleTypePercentage: 0.40,  // 单一类型不超过40%
+    minTypePercentage: 0.02         // 每种类型至少2%
+};
+
+function validateRelationshipBalance(
+    relationships: Relationship[]
+): ValidationError[] {
+    const errors: ValidationError[] = [];
+    const total = relationships.length;
+
+    if (total === 0) return errors;
+
+    // 统计各类型数量
+    const typeCounts: Partial<Record<RelationType, number>> = {};
+    for (const rel of relationships) {
+        typeCounts[rel.type] = (typeCounts[rel.type] || 0) + 1;
+    }
+
+    // 检查单一类型是否过度使用
+    for (const [type, count] of Object.entries(typeCounts)) {
+        const percentage = count / total;
+        if (percentage > RELATIONSHIP_TYPE_THRESHOLDS.maxSingleTypePercentage) {
+            errors.push({
+                layer: 5,
+                severity: 'warning',
+                code: 'RELATIONSHIP_TYPE_OVERUSED',
+                message: `关系类型 "${type}" 占比过高 (${(percentage * 100).toFixed(1)}%，阈值 ${RELATIONSHIP_TYPE_THRESHOLDS.maxSingleTypePercentage * 100}%)`,
+                details: { type, count, percentage: (percentage * 100).toFixed(1) + '%' }
+            });
+        }
+    }
+
+    // 检查是否有类型使用过少
+    const allRelationTypes: RelationType[] = [
+        'regulates', 'issues', 'trades', 'invests', 'influences',
+        'depends_on', 'derives_from', 'competes_with', 'cooperates_with',
+        'provides', 'uses'
+    ];
+
+    for (const type of allRelationTypes) {
+        const count = typeCounts[type] || 0;
+        const percentage = count / total;
+        if (percentage < RELATIONSHIP_TYPE_THRESHOLDS.minTypePercentage) {
+            errors.push({
+                layer: 5,
+                severity: 'warning',
+                code: 'RELATIONSHIP_TYPE_UNDERUSED',
+                message: `关系类型 "${type}" 使用不足 (${(percentage * 100).toFixed(1)}%，建议至少 ${RELATIONSHIP_TYPE_THRESHOLDS.minTypePercentage * 100}%)`,
+                details: { type, count, percentage: (percentage * 100).toFixed(1) + '%' }
+            });
+        }
+    }
+
+    return errors;
+}
+
+// ========================================
 // 主验证函数
 // ========================================
 
@@ -487,6 +595,8 @@ export function validateGraphData(
     allErrors.push(...validateDomainSemantics(entities));
     allErrors.push(...validateRelationshipConstraints(entities, relationships));
     allErrors.push(...validateGraphStructure(entities, relationships));
+    allErrors.push(...validateRelationshipDensity(entities, relationships));
+    allErrors.push(...validateRelationshipBalance(relationships));
 
     // 分类错误和警告
     const errors = allErrors.filter(e => e.severity === 'error');

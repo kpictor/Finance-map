@@ -16,207 +16,176 @@
 | 宏观经济 | `macro` | 货币政策、财政政策、经济指标、经济周期等 |
 
 ### 三层层级 (Entity Levels)
-| 层级 | 说明 | 示例 |
-|------|------|------|
-| L1 | 顶级概念 | 股票市场、中央银行、期货 |
-| L2 | 二级分类 | A股、沪深300、国债 |
-| L3 | 具体实例 | 工商银行、标普500、比特币 |
+| 层级 | 最低关系数 | 说明 | 示例 |
+|------|-----------|------|------|
+| L1 | 5 条 | 顶级概念 | 股票市场、中央银行、期货 |
+| L2 | 3 条 | 二级分类 | A股、沪深300、国债 |
+| L3 | 2 条 | 具体实例 | 工商银行、标普500、比特币 |
 
 ### 11 种关系类型 (Relationship Types)
 ```typescript
 type RelationType =
-  | 'regulates'        // 监管
-  | 'issues'           // 发行
-  | 'trades'           // 交易
-  | 'invests'          // 投资
-  | 'influences'       // 影响
-  | 'depends_on'       // 依赖
-  | 'derives_from'     // 衍生
-  | 'competes_with'    // 竞争
-  | 'cooperates_with'  // 合作
-  | 'provides'         // 提供
-  | 'uses';            // 使用
+  | 'regulates'        // 监管 (监管机构→被监管者)
+  | 'issues'           // 发行 (机构→工具)
+  | 'trades'           // 交易 (机构→市场/工具)
+  | 'invests'          // 投资 (机构→工具/市场)
+  | 'influences'       // 影响 (通用)
+  | 'depends_on'       // 依赖 (B依赖A才能运作)
+  | 'derives_from'     // 衍生 (衍生品→标的)
+  | 'competes_with'    // 竞争 (同类实体)
+  | 'cooperates_with'  // 合作 (业务协作)
+  | 'provides'         // 提供 (提供服务/产品)
+  | 'uses';            // 使用 (使用他人服务)
 ```
+
+> ⚠️ **警告**：`provides` 不应超过 40%，每种类型至少占 2%
 
 ---
 
 ## 🔧 开发环境设置
 
 ```bash
-# 1. 克隆仓库
+# 克隆并安装
 git clone https://github.com/kpictor/Finance-map.git
-cd Finance-map
+cd Finance-map && npm install
 
-# 2. 安装依赖
-npm install
-
-# 3. 启动开发服务器
+# 启动开发服务器
 npm run dev
 
-# 4. 运行数据验证（重要！）
+# 运行数据验证 (重要！)
 npm run validate
 
-# 5. 构建生产版本
+# 构建（自动验证）
 npm run build
 ```
 
 ---
 
-## 📁 项目结构
+## 🚨 新实体添加工作流（6 阶段）
+
+### 阶段 1：概念评估 (Gate)
+
+| 问题 | 必须回答 |
+|------|----------|
+| 是金融体系构成要素还是观察工具？ | 只添加构成要素 |
+| 是否已被现有实体覆盖？ | 避免重复 |
+| 应该是什么层级 (L1/L2/L3)？ | 决定关系密度要求 |
+| 属于哪个领域？ | 4 选 1 |
+| 父节点是什么？ | L2/L3 必填 |
+
+---
+
+### 阶段 2：关系矩阵分析 ⚡（核心）
+
+**对于每个新实体 X，必须系统遍历全部 11 种关系类型：**
+
+| 关系类型 | X 作为 Source（X→?）| X 作为 Target（?→X）|
+|----------|---------------------|---------------------|
+| regulates | X 监管谁？ | 谁监管 X？ |
+| issues | X 发行什么？ | 谁发行 X？ |
+| trades | X 交易什么？ | 谁交易 X？ |
+| invests | X 投资什么？ | 谁投资 X？ |
+| influences | X 影响谁？ | 谁影响 X？ |
+| depends_on | X 依赖谁？ | 谁依赖 X？ |
+| derives_from | X 从何衍生？ | 什么从 X 衍生？ |
+| competes_with | X 与谁竞争？ | （双向）|
+| cooperates_with | X 与谁合作？ | （双向）|
+| provides | X 提供什么？ | 谁提供给 X？ |
+| uses | X 使用什么？ | 谁使用 X？ |
+
+> **每个格子都必须显式回答**（即使答案是"无"）
+
+---
+
+### 阶段 3：涟漪效应分析
+
+检查现有相关实体是否需要连接到新实体：
 
 ```
-src/
-├── components/           # React 组件
-│   ├── Layout/          # 头部、布局
-│   ├── Visualization/   # D3.js 力导向图
-│   └── EntityPanel/     # 实体详情面板
-├── data/                # 📊 核心数据文件
-│   ├── markets.ts       # 金融市场实体
-│   ├── institutions.ts  # 金融机构实体
-│   ├── instruments.ts   # 金融工具实体
-│   ├── macro.ts         # 宏观经济实体
-│   ├── crossDomain.ts   # 跨领域关系
-│   ├── infrastructureEntities.ts  # 基础设施+P2扩展
-│   ├── l3Entities.ts    # L3具体机构
-│   ├── sampleData.ts    # 数据聚合
-│   └── index.ts         # 数据导出
-├── utils/               # 工具函数
-│   ├── dataValidator.ts # ⚡ 5层数据验证器
-│   └── runValidation.ts # 验证运行脚本
-├── types/               # TypeScript 类型
-│   └── index.ts         # Entity, Relationship 等定义
-└── i18n/                # 国际化
+对于新实体 X 所在类别的每个现有实体 Y：
+  - Y 与 X 是否有竞争/合作关系？
+  - Y 是否使用/依赖 X（或反之）？
 ```
 
 ---
 
-## 📝 添加新实体的流程
+### 阶段 4：密度检查
 
-### 步骤 1：确定放置位置
-- **市场**相关 → `markets.ts`
-- **机构**相关 → `institutions.ts`
-- **工具**相关 → `instruments.ts`
-- **宏观**相关 → `macro.ts`
-- **基础设施/新类别** → `infrastructureEntities.ts`
+| 层级 | 最低关系数 |
+|------|-----------|
+| L1 | ≥ 5 |
+| L2 | ≥ 3 |
+| L3 | ≥ 2 |
 
-### 步骤 2：创建实体
-```typescript
-{
-    id: 'unique-id',           // 格式: domain-subcategory-name
-    name: { zh: '中文名', en: 'English Name' },
-    description: { zh: '描述', en: 'Description' },
-    domain: 'institutions',    // 必须是四大领域之一
-    category: 'category-name', // 分类
-    icon: '🏦',               // Emoji 图标
-    tags: ['tag1', 'tag2'],   // 用于搜索
-    level: 1,                 // 1/2/3
-    parentId: 'parent-id',    // 如果是L2/L3则必填
-    details: { zh: '详细说明', en: 'Details' }
-}
-```
+---
 
-### 步骤 3：添加关系
-```typescript
-{
-    id: 'rel-unique',
-    source: 'entity-a-id',
-    target: 'entity-b-id',
-    type: 'influences',        // 11种类型之一
-    strength: 3,               // 1=弱, 2=中, 3=强
-    bidirectional: false,
-    explanation: {
-        zh: '为什么存在这个关系',
-        en: 'Why this relationship exists'
-    }
-}
-```
+### 阶段 5：类型平衡检查
 
-### 步骤 4：导出数据
-在 `sampleData.ts` 中添加导入和展开。
+- 单一关系类型不超过 **40%**
+- 每种类型至少占 **2%**
 
-### 步骤 5：运行验证 ⚡
+---
+
+### 阶段 6：验证与提交
+
 ```bash
 npm run validate
+git add . && git commit -m "feat: add XXX with full relationship matrix"
+git push
 ```
 
 ---
 
-## ⚡ 数据验证系统
+## ⚡ 数据验证系统（7 层）
 
-### 5层验证架构
 | 层级 | 名称 | 验证内容 |
 |------|------|----------|
 | L1 | 引用完整性 | ID唯一性、关系引用有效性 |
-| L2 | 层级一致性 | 子节点层级 > 父节点层级、无循环引用 |
-| L3 | 领域语义 | 子父领域一致性、必需字段完整性 |
+| L2 | 层级一致性 | 子节点层级 > 父节点层级 |
+| L3 | 领域语义 | 子父领域一致性 |
 | L4 | 关系约束 | 关系类型语义规则 |
-| L5 | 图结构 | 孤立节点检测、每领域至少有L1 |
+| L5 | 图结构 | 孤立节点检测 |
+| **L6** | **关系密度** | **L1≥5, L2≥3, L3≥2** |
+| **L7** | **关系平衡** | **单类型≤40%, 每类型≥2%** |
 
-### 验证命令
-```bash
-# 单独验证
-npm run validate
+---
 
-# 构建时自动验证（验证失败=构建失败）
-npm run build
+## 📋 新增实体检查清单模板
+
+```markdown
+# 新增实体：[实体名称]
+
+## 阶段 1：概念评估
+- [ ] 是金融体系构成要素
+- [ ] 未被现有实体覆盖
+- [ ] 层级：L___
+- [ ] 领域：_________
+- [ ] 父节点：_________
+
+## 阶段 2：关系矩阵
+| 关系类型 | X→? | ?→X |
+|----------|-----|-----|
+| regulates | | |
+| issues | | |
+| trades | | |
+| invests | | |
+| influences | | |
+| depends_on | | |
+| derives_from | | |
+| competes_with | | |
+| cooperates_with | | |
+| provides | | |
+| uses | | |
+
+## 阶段 3：涟漪效应
+需检查的现有实体：
+- [ ] _________
+- [ ] _________
+
+## 阶段 4-6：验证
+- [ ] 关系数 ≥ 最低要求
+- [ ] npm run validate 通过
 ```
-
-### 错误 vs 警告
-- **❌ 错误**: 必须修复，否则构建失败
-- **⚠️ 警告**: 软性提示，不阻塞构建
-
----
-
-## 📋 层级规则
-
-> **关键规则**: 子节点层级必须 **严格大于** 父节点层级
-
-| 父节点层级 | 子节点层级 | 状态 |
-|------------|------------|------|
-| L1 | L2 | ✅ 正确 |
-| L2 | L3 | ✅ 正确 |
-| L1 | L3 | ✅ 正确 |
-| L2 | L2 | ⚠️ 警告 |
-| L2 | L1 | ❌ 错误 |
-
----
-
-## 🔄 Git 工作流
-
-```bash
-# 1. 创建功能分支
-git checkout -b feature/add-xxx-entities
-
-# 2. 添加实体和关系
-
-# 3. 验证数据
-npm run validate
-
-# 4. 提交
-git add .
-git commit -m "feat: add XXX entities and relationships"
-
-# 5. 推送
-git push origin feature/add-xxx-entities
-
-# 6. 创建 Pull Request
-```
-
----
-
-## 🎯 扩展建议
-
-基于第一性原理分析，以下是优先级建议：
-
-### 已完成 ✅
-- P0: 跨境资本流动、支付清算系统、危机传导机制
-- P1: Bloomberg 等金融信息基础设施
-- P2: ESG 投资、Smart Beta 因子
-
-### 待扩展
-- 更多 L3 具体机构（具体的银行、基金公司等）
-- DeFi 细分领域
-- 新兴市场区域金融体系
 
 ---
 
