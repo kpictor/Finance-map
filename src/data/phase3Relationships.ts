@@ -39,7 +39,7 @@ export const phase3Relationships: Relationship[] = [
         }
     },
     {
-        id: 'p3-vix-spx', source: 'market-index-sp500', target: 'instr-vix-futures', type: 'provides', strength: 3, bidirectional: false,
+        id: 'p3-vix-spx', source: 'market-index-sp500', target: 'instr-vix-futures', type: 'benchmarks', strength: 3, bidirectional: false,
         explanation: {
             zh: 'VIX(恐慌指数)由标普500期权隐含波动率计算得出',
             en: 'VIX (fear index) is calculated from S&P 500 options implied volatility'
@@ -76,21 +76,21 @@ export const phase3Relationships: Relationship[] = [
 
     // === markets域: 一级→二级市场流动 ===
     {
-        id: 'p3-primary-secondary', source: 'market-primary', target: 'market-secondary', type: 'provides', strength: 3, bidirectional: false,
+        id: 'p3-primary-secondary', source: 'market-primary', target: 'market-secondary', type: 'enables', strength: 3, bidirectional: false,
         explanation: {
             zh: '一级市场发行的证券进入二级市场流通，为投资者提供退出渠道',
             en: 'Securities issued in primary market enter secondary market for trading, providing exit for investors'
         }
     },
     {
-        id: 'p3-ipo-equity', source: 'market-ipo', target: 'market-equity', type: 'provides', strength: 3, bidirectional: false,
+        id: 'p3-ipo-equity', source: 'market-ipo', target: 'market-equity', type: 'enables', strength: 3, bidirectional: false,
         explanation: {
             zh: 'IPO是股票进入二级市场的最主要入口',
             en: 'IPO is the main entry point for stocks into secondary market'
         }
     },
     {
-        id: 'p3-bond-issue-trade', source: 'market-bond-issuance', target: 'market-bond', type: 'provides', strength: 3, bidirectional: false,
+        id: 'p3-bond-issue-trade', source: 'market-bond-issuance', target: 'market-bond', type: 'enables', strength: 3, bidirectional: false,
         explanation: {
             zh: '债券发行后进入二级债券市场交易',
             en: 'Bonds enter secondary bond market for trading after issuance'

@@ -25,7 +25,7 @@ export const crossDomainRelationships: Relationship[] = [
         }
     },
     {
-        id: 'cd-4', source: 'inst-fed', target: 'macro-interest-rate', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-4', source: 'inst-fed', target: 'macro-interest-rate', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
             zh: '美联储通过FOMC会议决定联邦基金利率目标，这是全球最重要的基准利率之一',
             en: 'The Fed determines the federal funds rate target through FOMC meetings, one of the most important global benchmark rates'
@@ -108,7 +108,7 @@ export const crossDomainRelationships: Relationship[] = [
         }
     },
     {
-        id: 'cd-18', source: 'inst-fund', target: 'instr-etf', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-18', source: 'inst-fund', target: 'instr-etf', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '基金公司创建和管理ETF产品，通过授权参与者机制维持ETF价格与净值的一致性',
             en: 'Fund companies create and manage ETF products, maintaining price-NAV alignment through authorized participant mechanisms'
@@ -147,7 +147,7 @@ export const crossDomainRelationships: Relationship[] = [
         }
     },
     {
-        id: 'cd-28', source: 'inst-exchange', target: 'market-equity', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-28', source: 'inst-exchange', target: 'market-equity', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '交易所提供标准化的交易场所、撮合系统和清算服务，确保交易安全高效',
             en: 'Exchanges provide standardized trading venues, matching systems, and clearing services for safe and efficient trading'
@@ -186,7 +186,7 @@ export const crossDomainRelationships: Relationship[] = [
 
     // === 宏观与市场/机构的关系 ===
     {
-        id: 'cd-45', source: 'inst-central-bank', target: 'macro-monetary', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-45', source: 'inst-central-bank', target: 'macro-monetary', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
             zh: '中央银行是货币政策的制定者和执行者，通过各种政策工具调控经济',
             en: 'Central banks formulate and implement monetary policy, regulating the economy through various policy tools'
@@ -338,7 +338,7 @@ export const crossDomainRelationships: Relationship[] = [
         }
     },
     {
-        id: 'cd-77', source: 'inst-fund', target: 'instr-mutual-fund', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-77', source: 'inst-fund', target: 'instr-mutual-fund', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '基金公司创建和管理共同基金产品，为投资者提供专业化资产管理',
             en: 'Fund companies create and manage mutual funds, providing professional asset management for investors'
@@ -405,28 +405,28 @@ export const crossDomainRelationships: Relationship[] = [
 
     // === 交易所与市场/指数关联 ===
     {
-        id: 'cd-87', source: 'inst-nyse', target: 'market-index-djia', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-87', source: 'inst-nyse', target: 'market-index-djia', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '道琼斯工业指数成分股主要在纽约证交所上市交易',
             en: 'Dow Jones Industrial Average components are primarily listed and traded on NYSE'
         }
     },
     {
-        id: 'cd-88', source: 'inst-nasdaq', target: 'market-index-nasdaq', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-88', source: 'inst-nasdaq', target: 'market-index-nasdaq', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '纳斯达克综合指数反映纳斯达克交易所全部上市公司的整体表现',
             en: 'NASDAQ Composite reflects overall performance of all NASDAQ-listed companies'
         }
     },
     {
-        id: 'cd-89', source: 'inst-sse', target: 'market-index-csi300', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-89', source: 'inst-sse', target: 'market-index-csi300', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '沪深300指数包含上海证交所大部分大盘股，是A股核心基准',
             en: 'CSI 300 includes most SSE large-caps, serving as core A-share benchmark'
         }
     },
     {
-        id: 'cd-90', source: 'inst-hkex', target: 'market-index-hsi', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-90', source: 'inst-hkex', target: 'market-index-hsi', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '恒生指数由香港交易所设计和维护，反映港股核心表现',
             en: 'Hang Seng Index is designed and maintained by HKEX, reflecting core HK stock performance'
@@ -502,7 +502,7 @@ export const crossDomainRelationships: Relationship[] = [
         }
     },
     {
-        id: 'cd-cboe-vix', source: 'inst-cboe', target: 'market-index-vix', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-cboe-vix', source: 'inst-cboe', target: 'market-index-vix', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: 'CBOE(芝加哥期权交易所)是VIX恐慌指数的发布方和计算维护者',
             en: 'CBOE publishes and maintains the VIX volatility index calculation methodology'
@@ -525,28 +525,28 @@ export const crossDomainRelationships: Relationship[] = [
 
     // === P0新增：市场基础设施跨域关系 ===
     {
-        id: 'cd-mm-equity', source: 'inst-market-maker', target: 'market-equity', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-mm-equity', source: 'inst-market-maker', target: 'market-equity', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '做市商持续提供买卖双边报价，为股票市场提供流动性，确保投资者能够随时交易',
             en: 'Market makers provide continuous two-sided quotes, ensuring investors can trade anytime in equity markets'
         }
     },
     {
-        id: 'cd-mm-options', source: 'inst-market-maker', target: 'market-options', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-mm-options', source: 'inst-market-maker', target: 'market-options', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '期权市场高度依赖做市商，做市商通过Delta对冲管理风险，同时赚取买卖价差',
             en: 'Options markets heavily rely on market makers who manage risk via Delta hedging while earning bid-ask spreads'
         }
     },
     {
-        id: 'cd-pb-trs', source: 'inst-prime-broker', target: 'instr-trs', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-pb-trs', source: 'inst-prime-broker', target: 'instr-trs', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '主经纪商通过TRS向对冲基金提供杠杆敞口，Archegos事件中主经纪商未能有效管理TRS对手方风险',
             en: 'Prime brokers provide leveraged exposure via TRS to hedge funds; Archegos event showed PB failure to manage TRS counterparty risk'
         }
     },
     {
-        id: 'cd-custodian-fund', source: 'inst-custodian', target: 'inst-fund', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-custodian-fund', source: 'inst-custodian', target: 'inst-fund', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '托管行为基金公司保管资产、处理交易结算，确保客户资产与公司自有财产隔离',
             en: 'Custodians safeguard fund assets and process settlements, ensuring client asset segregation from company property'

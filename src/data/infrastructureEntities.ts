@@ -674,15 +674,15 @@ export const crossBorderRelationships: Relationship[] = [
         explanation: { zh: '深港通连接深交所和港交所', en: 'Shenzhen-HK Connect links SZSE and HKEX' }
     },
     {
-        id: 'cb-8', source: 'infra-stock-connect', target: 'market-equity', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cb-8', source: 'infra-stock-connect', target: 'market-equity', type: 'enables', strength: 3, bidirectional: false,
         explanation: { zh: '沪深港通为境内外投资者提供股票市场双向准入', en: 'Stock Connect provides two-way equity market access' }
     },
     {
-        id: 'cb-9', source: 'infra-bond-connect', target: 'market-bond', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cb-9', source: 'infra-bond-connect', target: 'market-bond', type: 'enables', strength: 3, bidirectional: false,
         explanation: { zh: '债券通为外资进入中国债券市场提供便利渠道', en: 'Bond Connect provides easy access to China bond market' }
     },
     {
-        id: 'cb-10', source: 'infra-qfii', target: 'market-equity', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cb-10', source: 'infra-qfii', target: 'market-equity', type: 'enables', strength: 3, bidirectional: false,
         explanation: { zh: 'QFII机构可投资A股市场', en: 'QFII institutions can invest in A-share market' }
     },
     {
@@ -697,7 +697,7 @@ export const crossBorderRelationships: Relationship[] = [
 
     // --- 美元体系与宏观/机构关系 ---
     {
-        id: 'cb-15', source: 'inst-fed', target: 'infra-usd-system', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cb-15', source: 'inst-fed', target: 'infra-usd-system', type: 'enables', strength: 3, bidirectional: false,
         explanation: { zh: '美联储是美元体系的中枢，其政策决定全球美元流动性', en: 'Fed is USD system hub; its policy determines global dollar liquidity' }
     },
     {
@@ -719,7 +719,7 @@ export const crossBorderRelationships: Relationship[] = [
 
     // --- 支付系统与机构关系 ---
     {
-        id: 'cb-24', source: 'infra-swift', target: 'inst-commercial-bank', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cb-24', source: 'infra-swift', target: 'inst-commercial-bank', type: 'enables', strength: 3, bidirectional: false,
         explanation: { zh: 'SWIFT是全球银行间通信的基础设施', en: 'SWIFT is infrastructure for global interbank communication' }
     },
     {
@@ -836,7 +836,7 @@ export const crossBorderRelationships: Relationship[] = [
     // --- 上海黄金交易所关系 (关系矩阵分析) ---
     // provides: SGE提供什么？
     {
-        id: 'cb-60', source: 'inst-sge', target: 'market-precious-metals', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cb-60', source: 'inst-sge', target: 'market-precious-metals', type: 'hosts', strength: 3, bidirectional: false,
         explanation: { zh: '上海黄金交易所是亚洲最大的贵金属现货交易场所', en: 'SGE is Asia largest spot precious metals trading venue' }
     },
     // depends_on: SGE依赖谁？
@@ -883,7 +883,7 @@ export const crossBorderRelationships: Relationship[] = [
 
     // --- LME (伦敦金属交易所) 关系 ---
     {
-        id: 'cb-69', source: 'inst-lme', target: 'market-commodities', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cb-69', source: 'inst-lme', target: 'market-commodities', type: 'hosts', strength: 3, bidirectional: false,
         explanation: { zh: 'LME是全球最大的基本金属期货交易场所', en: 'LME is the world largest base metals futures trading venue' }
     },
     {
@@ -901,7 +901,7 @@ export const crossBorderRelationships: Relationship[] = [
 
     // --- LBMA (伦敦金银市场协会) 关系 ---
     {
-        id: 'cb-73', source: 'inst-lbma', target: 'market-precious-metals', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cb-73', source: 'inst-lbma', target: 'market-precious-metals', type: 'hosts', strength: 3, bidirectional: false,
         explanation: { zh: 'LBMA是全球黄金OTC市场的核心基础设施', en: 'LBMA is the core infrastructure for global gold OTC market' }
     },
     {
@@ -919,7 +919,7 @@ export const crossBorderRelationships: Relationship[] = [
 
     // --- TOCOM (东京商品交易所) 关系 ---
     {
-        id: 'cb-77', source: 'inst-tocom', target: 'market-commodities', type: 'provides', strength: 2, bidirectional: false,
+        id: 'cb-77', source: 'inst-tocom', target: 'market-commodities', type: 'hosts', strength: 2, bidirectional: false,
         explanation: { zh: 'TOCOM是日本最大商品期货交易所', en: 'TOCOM is Japan largest commodity futures exchange' }
     },
     {
@@ -937,7 +937,7 @@ export const crossBorderRelationships: Relationship[] = [
         explanation: { zh: 'COMEX是CME集团旗下的贵金属交易所', en: 'COMEX is a precious metals exchange under CME Group' }
     },
     {
-        id: 'cb-81', source: 'inst-comex', target: 'market-precious-metals', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cb-81', source: 'inst-comex', target: 'market-precious-metals', type: 'hosts', strength: 3, bidirectional: false,
         explanation: { zh: 'COMEX是全球最大的黄金期货交易所', en: 'COMEX is the world largest gold futures exchange' }
     },
     {
