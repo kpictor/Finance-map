@@ -9,6 +9,7 @@ import { phase2Relationships } from './phase2Relationships';
 import { phase3Relationships } from './phase3Relationships';
 import { phase4L1FixRelationships } from './phase4L1Fix';
 import { phase5L2FixRelationships } from './phase5L2Fix';
+import { phase6L2FixRelationships } from './phase6L2Fix';
 import { l3Entities, l3Relationships } from './l3Entities';
 import { crossBorderEntities, crossBorderRelationships } from './infrastructureEntities';
 
@@ -34,6 +35,7 @@ export const sampleData: GraphData = {
         ...phase3Relationships,
         ...phase4L1FixRelationships,
         ...phase5L2FixRelationships,
+        ...phase6L2FixRelationships,
         ...l3Relationships,
         ...crossBorderRelationships
     ]
