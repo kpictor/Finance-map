@@ -7,7 +7,7 @@ import type { Entity, Relationship } from '../types';
 
 // === 跨境资本流动实体 ===
 export const crossBorderEntities: Entity[] = [
-    // --- 跨境投资渠道 ---
+    // --- 跨境投资渠道 (L1 - 金融基础设施领域) ---
     {
         id: 'infra-cross-border',
         name: { zh: '跨境投资渠道', en: 'Cross-border Investment Channels' },
@@ -15,7 +15,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '连接境内外资本市场的投资通道，是资本账户开放的重要基础设施',
             en: 'Investment channels connecting domestic and overseas capital markets, key infrastructure for capital account opening'
         },
-        domain: 'institutions', category: 'infrastructure', icon: '🌐',
+        domain: 'infrastructure', category: 'capital-flow', icon: '🌐',
         tags: ['cross-border', 'capital-flows', 'connect'],
         level: 1,
         details: {
@@ -30,7 +30,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '沪港通(2014)和深港通(2016)，连接A股与港股的互联互通机制',
             en: 'Shanghai-HK (2014) and Shenzhen-HK (2016) Connect linking A-shares and HK stocks'
         },
-        domain: 'institutions', category: 'cross-border', icon: '🔗',
+        domain: 'infrastructure', category: 'cross-border', icon: '🔗',
         tags: ['stock-connect', 'northbound', 'southbound', 'hkex'],
         level: 2, parentId: 'infra-cross-border',
         details: {
@@ -45,7 +45,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '合格境外/人民币合格境外机构投资者，外资进入A股的传统通道',
             en: 'Qualified Foreign/RMB Qualified Foreign Institutional Investors, traditional channel for foreign access to A-shares'
         },
-        domain: 'institutions', category: 'cross-border', icon: '🏛️',
+        domain: 'infrastructure', category: 'cross-border', icon: '🏛️',
         tags: ['qfii', 'rqfii', 'institutional'],
         level: 2, parentId: 'infra-cross-border',
         details: {
@@ -60,7 +60,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '境外投资者通过香港进入中国银行间债券市场的渠道(2017年启动)',
             en: 'Channel for overseas investors to access China interbank bond market via Hong Kong (launched 2017)'
         },
-        domain: 'institutions', category: 'cross-border', icon: '📜',
+        domain: 'infrastructure', category: 'cross-border', icon: '📜',
         tags: ['bond-connect', 'cibm', 'fixed-income'],
         level: 2, parentId: 'infra-cross-border',
         details: {
@@ -75,7 +75,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '合格境内机构投资者，中国居民投资海外市场的官方渠道',
             en: 'Qualified Domestic Institutional Investors, official channel for Chinese residents to invest overseas'
         },
-        domain: 'institutions', category: 'cross-border', icon: '✈️',
+        domain: 'infrastructure', category: 'cross-border', icon: '✈️',
         tags: ['qdii', 'outbound', 'overseas'],
         level: 2, parentId: 'infra-cross-border',
         details: {
@@ -154,7 +154,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '金融交易结算的"管道"基础设施，确保资金和证券安全转移',
             en: 'Plumbing infrastructure for financial transaction settlement, ensuring safe transfer of funds and securities'
         },
-        domain: 'institutions', category: 'infrastructure', icon: '🔧',
+        domain: 'infrastructure', category: 'infrastructure', icon: '🔧',
         tags: ['payment', 'clearing', 'settlement', 'plumbing'],
         level: 1,
         details: {
@@ -169,7 +169,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '环球银行金融电信协会，全球银行间报文传输网络',
             en: 'Society for Worldwide Interbank Financial Telecommunication, global bank messaging network'
         },
-        domain: 'institutions', category: 'payment', icon: '📧',
+        domain: 'infrastructure', category: 'payment', icon: '📧',
         tags: ['swift', 'messaging', 'sanctions'],
         level: 2, parentId: 'infra-payment-system',
         details: {
@@ -184,7 +184,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '人民币跨境支付系统，中国版SWIFT替代方案',
             en: 'Cross-border Interbank Payment System, China alternative to SWIFT'
         },
-        domain: 'institutions', category: 'payment', icon: '🇨🇳',
+        domain: 'infrastructure', category: 'payment', icon: '🇨🇳',
         tags: ['cips', 'rmb', 'china', 'cross-border'],
         level: 2, parentId: 'infra-payment-system',
         details: {
@@ -199,7 +199,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '美联储运营的实时全额结算系统，美国国内大额支付核心',
             en: 'Fed-operated real-time gross settlement system, core of US domestic large-value payments'
         },
-        domain: 'institutions', category: 'payment', icon: '🇺🇸',
+        domain: 'infrastructure', category: 'payment', icon: '🇺🇸',
         tags: ['fedwire', 'rtgs', 'fed', 'usa'],
         level: 2, parentId: 'infra-payment-system',
         details: {
@@ -214,7 +214,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '存托信托清算公司，美国证券市场中央清算机构',
             en: 'Depository Trust & Clearing Corporation, central clearinghouse for US securities'
         },
-        domain: 'institutions', category: 'clearing', icon: '🏛️',
+        domain: 'infrastructure', category: 'clearing', icon: '🏛️',
         tags: ['dtcc', 'clearing', 'settlement', 'usa'],
         level: 2, parentId: 'infra-payment-system',
         details: {
@@ -229,7 +229,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '欧洲最大证券结算系统，也是国际债券主要结算平台',
             en: 'Europe largest securities settlement, also major platform for international bonds'
         },
-        domain: 'institutions', category: 'clearing', icon: '🇪🇺',
+        domain: 'infrastructure', category: 'clearing', icon: '🇪🇺',
         tags: ['euroclear', 'csds', 'europe', 'bonds'],
         level: 2, parentId: 'infra-payment-system',
         details: {
@@ -244,7 +244,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '中国证券登记结算有限公司，A股唯一中央证券存管机构',
             en: 'China Securities Depository and Clearing Corp, sole CSD for A-shares'
         },
-        domain: 'institutions', category: 'clearing', icon: '🇨🇳',
+        domain: 'infrastructure', category: 'clearing', icon: '🇨🇳',
         tags: ['csdcc', 'china', 'a-share', 'csd'],
         level: 2, parentId: 'infra-payment-system',
         details: {
@@ -353,7 +353,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '提供金融市场数据、分析工具和信息终端的专业机构',
             en: 'Professional institutions providing financial market data, analytics and information terminals'
         },
-        domain: 'institutions', category: 'infrastructure', icon: '📊',
+        domain: 'infrastructure', category: 'infrastructure', icon: '📊',
         tags: ['data', 'terminal', 'analytics', 'information'],
         level: 1,
         details: {
@@ -368,7 +368,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '全球最大金融数据和媒体公司，Bloomberg Terminal是机构投资者首选',
             en: 'World\'s largest financial data and media company; Bloomberg Terminal is institutional investor choice'
         },
-        domain: 'institutions', category: 'data-provider', icon: '📺',
+        domain: 'infrastructure', category: 'data-provider', icon: '📺',
         tags: ['bloomberg', 'terminal', 'news', 'data'],
         level: 2, parentId: 'infra-data-provider',
         details: {
@@ -383,7 +383,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '原汤森路透金融数据部门，现属伦敦证交所集团',
             en: 'Former Thomson Reuters financial data division, now part of LSEG'
         },
-        domain: 'institutions', category: 'data-provider', icon: '📈',
+        domain: 'infrastructure', category: 'data-provider', icon: '📈',
         tags: ['refinitiv', 'reuters', 'eikon', 'lseg'],
         level: 2, parentId: 'infra-data-provider',
         details: {
@@ -398,7 +398,7 @@ export const crossBorderEntities: Entity[] = [
             zh: '中国最大金融数据服务商，中国版Bloomberg',
             en: 'China\'s largest financial data provider, China\'s Bloomberg equivalent'
         },
-        domain: 'institutions', category: 'data-provider', icon: '🇨🇳',
+        domain: 'infrastructure', category: 'data-provider', icon: '🇨🇳',
         tags: ['wind', 'china', 'data', 'terminal'],
         level: 2, parentId: 'infra-data-provider',
         details: {

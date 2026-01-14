@@ -10,8 +10,8 @@ export interface LocalizedText {
   en: string;
 }
 
-// 四大领域
-export type Domain = 'markets' | 'institutions' | 'instruments' | 'macro';
+// 五大领域 (5-Domain Model)
+export type Domain = 'markets' | 'institutions' | 'instruments' | 'macro' | 'infrastructure';
 
 // 领域配置
 export const DomainConfig: Record<Domain, {
@@ -38,6 +38,11 @@ export const DomainConfig: Record<Domain, {
     name: { zh: '宏观经济', en: 'Macroeconomics' },
     color: '#8b5cf6',  // purple
     icon: '🌐'
+  },
+  infrastructure: {
+    name: { zh: '金融基础设施', en: 'Financial Infrastructure' },
+    color: '#ec4899',  // pink
+    icon: '🔧'
   }
 };
 
@@ -266,8 +271,16 @@ export type RelationType =
   | 'derives_from'     // 衍生
   | 'competes_with'    // 竞争
   | 'cooperates_with'  // 合作
-  | 'provides'         // 提供
-  | 'uses';            // 使用
+  | 'provides'         // 提供（已废弃，用 hosts/offers/enables 替代）
+  | 'uses'             // 使用
+  // === 新增关系类型 (v2.0) ===
+  | 'hosts'            // 提供场所（交易所→市场）
+  | 'offers'           // 提供产品（基金→投资者）
+  | 'enables'          // 提供基础设施（SWIFT→支付）
+  | 'clears'           // 清算（清算所→交易）
+  | 'settles'          // 结算（托管行→证券）
+  | 'lists'            // 上市（交易所→证券）
+  | 'benchmarks';      // 定价基准（LIBOR→利率产品）
 
 // 关系类型配置（含颜色和图标）
 export const RelationTypeConfig: Record<RelationType, {
@@ -334,13 +347,56 @@ export const RelationTypeConfig: Record<RelationType, {
     name: { zh: '包含', en: 'Includes' },
     color: '#94a3b8',  // gray
     icon: '📁',
-    description: { zh: '层级包含关系', en: 'Hierarchical containment' }
+    description: { zh: '层级包含关系（已废弃，请用 hosts/offers/enables）', en: 'Hierarchical containment (deprecated, use hosts/offers/enables)' }
   },
   uses: {
     name: { zh: '使用', en: 'Uses' },
     color: '#78716c',  // stone
     icon: '🔧',
     description: { zh: '作为工具或服务使用', en: 'Used as tool or service' }
+  },
+  // === 新增关系类型配置 ===
+  hosts: {
+    name: { zh: '托管/场所', en: 'Hosts' },
+    color: '#0ea5e9',  // sky
+    icon: '🏢',
+    description: { zh: '提供交易场所（交易所→市场）', en: 'Provides trading venue (exchange → market)' }
+  },
+  offers: {
+    name: { zh: '提供产品', en: 'Offers' },
+    color: '#22c55e',  // green
+    icon: '🎁',
+    description: { zh: '向客户提供产品/服务（基金→投资者）', en: 'Offers products/services to clients (fund → investor)' }
+  },
+  enables: {
+    name: { zh: '赋能', en: 'Enables' },
+    color: '#a855f7',  // purple
+    icon: '⚡',
+    description: { zh: '提供基础设施能力（SWIFT→支付）', en: 'Provides infrastructure capability (SWIFT → payment)' }
+  },
+  clears: {
+    name: { zh: '清算', en: 'Clears' },
+    color: '#14b8a6',  // teal
+    icon: '🔄',
+    description: { zh: '作为中央对手方清算交易', en: 'Clears transactions as central counterparty' }
+  },
+  settles: {
+    name: { zh: '结算', en: 'Settles' },
+    color: '#8b5cf6',  // violet
+    icon: '✅',
+    description: { zh: '完成证券和资金的最终交割', en: 'Completes final delivery of securities and funds' }
+  },
+  lists: {
+    name: { zh: '上市', en: 'Lists' },
+    color: '#f59e0b',  // amber
+    icon: '📋',
+    description: { zh: '证券在交易所上市交易', en: 'Securities listed for trading on exchange' }
+  },
+  benchmarks: {
+    name: { zh: '定价基准', en: 'Benchmarks' },
+    color: '#ec4899',  // pink
+    icon: '📏',
+    description: { zh: '作为其他产品的定价参考', en: 'Serves as pricing reference for other products' }
   }
 };
 

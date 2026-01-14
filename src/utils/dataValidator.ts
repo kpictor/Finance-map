@@ -325,10 +325,41 @@ const RELATIONSHIP_SEMANTIC_RULES: Record<RelationType, {
         description: '合作关系：实体间合作'
     },
     provides: {
-        description: '提供关系：一方向另一方提供服务/产品'
+        description: '提供关系：已废弃，请使用 hosts/offers/enables'
     },
     uses: {
         description: '使用关系：一方使用另一方的服务/产品'
+    },
+    // === 新增关系类型语义规则 (v2.0) ===
+    hosts: {
+        validSourceDomains: ['institutions', 'infrastructure'],
+        validTargetDomains: ['markets'],
+        description: '托管/场所关系：交易所提供市场交易场所'
+    },
+    offers: {
+        validSourceDomains: ['institutions', 'infrastructure'],
+        description: '提供产品关系：机构向客户提供产品/服务'
+    },
+    enables: {
+        validSourceDomains: ['infrastructure'],
+        description: '赋能关系：基础设施提供能力支撑'
+    },
+    clears: {
+        validSourceDomains: ['institutions', 'infrastructure'],
+        description: '清算关系：清算机构作为中央对手方'
+    },
+    settles: {
+        validSourceDomains: ['institutions', 'infrastructure'],
+        description: '结算关系：完成证券和资金最终交割'
+    },
+    lists: {
+        validSourceDomains: ['institutions'],
+        validTargetDomains: ['instruments'],
+        description: '上市关系：交易所上市证券'
+    },
+    benchmarks: {
+        validSourceDomains: ['instruments', 'macro'],
+        description: '定价基准关系：作为其他产品的定价参考'
     }
 };
 
@@ -449,7 +480,8 @@ function validateGraphStructure(
         markets: 0,
         institutions: 0,
         instruments: 0,
-        macro: 0
+        macro: 0,
+        infrastructure: 0
     };
     for (const entity of entities) {
         if (entity.level === 1) {
@@ -560,7 +592,9 @@ function validateRelationshipBalance(
     const allRelationTypes: RelationType[] = [
         'regulates', 'issues', 'trades', 'invests', 'influences',
         'depends_on', 'derives_from', 'competes_with', 'cooperates_with',
-        'provides', 'uses'
+        'provides', 'uses',
+        // 新增关系类型 (v2.0)
+        'hosts', 'offers', 'enables', 'clears', 'settles', 'lists', 'benchmarks'
     ];
 
     for (const type of allRelationTypes) {
@@ -617,7 +651,7 @@ export function validateGraphData(
     const warnings = allErrors.filter(e => e.severity === 'warning');
 
     // 计算统计信息
-    const entitiesByDomain: Record<Domain, number> = { markets: 0, institutions: 0, instruments: 0, macro: 0 };
+    const entitiesByDomain: Record<Domain, number> = { markets: 0, institutions: 0, instruments: 0, macro: 0, infrastructure: 0 };
     const entitiesByLevel: Record<EntityLevel, number> = { 1: 0, 2: 0, 3: 0 };
     const relationshipsByType: Partial<Record<RelationType, number>> = {};
 
