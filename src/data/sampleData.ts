@@ -8,6 +8,7 @@ import { phase1Relationships } from './phase1Relationships';
 import { phase2Relationships } from './phase2Relationships';
 import { phase3Relationships } from './phase3Relationships';
 import { l3Entities, l3Relationships } from './l3Entities';
+import { crossBorderEntities, crossBorderRelationships } from './infrastructureEntities';
 
 // 整合所有领域数据
 // Integrate all domain data
@@ -17,7 +18,8 @@ export const sampleData: GraphData = {
         ...institutionEntities,
         ...instrumentEntities,
         ...macroEntities,
-        ...l3Entities
+        ...l3Entities,
+        ...crossBorderEntities
     ],
     relationships: [
         ...marketRelationships,
@@ -28,7 +30,8 @@ export const sampleData: GraphData = {
         ...phase1Relationships,
         ...phase2Relationships,
         ...phase3Relationships,
-        ...l3Relationships
+        ...l3Relationships,
+        ...crossBorderRelationships
     ]
 };
 
@@ -40,6 +43,7 @@ console.log(`Financial System Map Data:
   - Institutions: ${institutionEntities.length} entities
   - Instruments: ${instrumentEntities.length} entities  
   - Macro: ${macroEntities.length} entities
+  - Infrastructure: ${crossBorderEntities.length} entities
 `);
 
 export default sampleData;

@@ -425,7 +425,7 @@ export const marketEntities: Entity[] = [
         description: { zh: '美国500家大型上市公司指数，全球最重要的股市基准', en: 'Index of 500 large US companies, most important global equity benchmark' },
         domain: 'markets', category: 'index', icon: '🇺🇸',
         tags: ['sp500', 'usa', 'benchmark'],
-        level: 2, parentId: 'market-equity',
+        level: 3, parentId: 'market-equity',
         details: {
             zh: 'SPY是全球最大ETF($500B+)。标普500医疗/金融/IT占比最高',
             en: 'SPY is world\'s largest ETF ($500B+). S&P 500 healthcare/financials/IT have highest weightings'
@@ -437,7 +437,7 @@ export const marketEntities: Entity[] = [
         description: { zh: '美国30家蓝筹股价格加权指数', en: 'Price-weighted index of 30 US blue-chip stocks' },
         domain: 'markets', category: 'index', icon: '🏭',
         tags: ['djia', 'dow', 'blue-chip'],
-        level: 2, parentId: 'market-equity',
+        level: 3, parentId: 'market-equity',
         details: {
             zh: '1896年创建，历史最悠久的股指。价格加权而非市值加权，主流度不如标普500',
             en: 'Created 1896, oldest major stock index. Price-weighted not cap-weighted, less mainstream than S&P 500'
@@ -449,7 +449,7 @@ export const marketEntities: Entity[] = [
         description: { zh: '纳斯达克交易所全部上市公司综合指数', en: 'Index of all NASDAQ listed companies' },
         domain: 'markets', category: 'index', icon: '💻',
         tags: ['nasdaq', 'tech', 'composite'],
-        level: 2, parentId: 'market-equity',
+        level: 3, parentId: 'market-equity',
         details: {
             zh: '含3000+股票，以科技股为主。NASDAQ 100(QQQ)是追踪最大100只的子集',
             en: 'Contains 3000+ stocks, tech-heavy. NASDAQ 100 (QQQ) tracks largest 100'
@@ -461,7 +461,7 @@ export const marketEntities: Entity[] = [
         description: { zh: '沪深两市300只大盘股指数，A股核心基准', en: 'Index of 300 large-cap A-shares, core China equity benchmark' },
         domain: 'markets', category: 'index', icon: '🇨🇳',
         tags: ['csi300', 'china', 'a-share'],
-        level: 2, parentId: 'market-equity',
+        level: 3, parentId: 'market-equity',
         details: {
             zh: 'A股核心指数，沪深300ETF是最大A股ETF。股指期货以此为标的',
             en: 'Core A-share index, CSI300 ETF is largest A-share ETF. Index futures based on this'
@@ -473,7 +473,7 @@ export const marketEntities: Entity[] = [
         description: { zh: '沪深两市500只中盘股指数', en: 'Index of 500 mid-cap A-shares' },
         domain: 'markets', category: 'index', icon: '🇨🇳',
         tags: ['csi500', 'china', 'mid-cap'],
-        level: 2, parentId: 'market-equity',
+        level: 3, parentId: 'market-equity',
         details: {
             zh: '剥离沪深300后的中定股，成长性较强但波动也大',
             en: 'Mid-caps after excluding CSI300, higher growth but more volatile'
@@ -489,7 +489,7 @@ export const marketEntities: Entity[] = [
         },
         domain: 'markets', category: 'index', icon: '🇨🇳',
         tags: ['csi1000', 'china', 'small-cap', 'snowball'],
-        level: 2, parentId: 'market-equity',
+        level: 3, parentId: 'market-equity',
         details: {
             zh: '雪球结构常挂钩中证1000，波动大=票息高但敲入风险也大',
             en: 'Snowballs often linked to CSI1000, high volatility = higher coupon but greater knock-in risk'
@@ -501,7 +501,7 @@ export const marketEntities: Entity[] = [
         description: { zh: '香港50只大型股票指数', en: 'Index of 50 largest Hong Kong stocks' },
         domain: 'markets', category: 'index', icon: '🇭🇰',
         tags: ['hsi', 'hong-kong', 'blue-chip'],
-        level: 2, parentId: 'market-equity',
+        level: 3, parentId: 'market-equity',
         details: {
             zh: '恒生科技指数包含中概科技股。北水南下通过港股通流入',
             en: 'Hang Seng Tech includes Chinese tech. Northbound flows via Stock Connect'
@@ -513,7 +513,7 @@ export const marketEntities: Entity[] = [
         description: { zh: '东京证交所225只大型股票指数', en: 'Index of 225 largest Tokyo Stock Exchange stocks' },
         domain: 'markets', category: 'index', icon: '🇯🇵',
         tags: ['nikkei', 'japan', 'tse'],
-        level: 2, parentId: 'market-equity',
+        level: 3, parentId: 'market-equity',
         details: {
             zh: '日经在1989年达到历史高点38915点，"失开的三十年"后2024年终于突破',
             en: 'Nikkei hit all-time high 38915 in 1989. Finally broke through in 2024 after "lost 30 years"'
@@ -525,7 +525,7 @@ export const marketEntities: Entity[] = [
         description: { zh: '伦敦证交所100只大型股票指数', en: 'Index of 100 largest London Stock Exchange stocks' },
         domain: 'markets', category: 'index', icon: '🇬🇧',
         tags: ['ftse', 'uk', 'lse'],
-        level: 2, parentId: 'market-equity',
+        level: 3, parentId: 'market-equity',
         details: {
             zh: '"富时"读作"Footsie"。能源/金融/健康行业权重较高',
             en: '"Footsie" pronunciation. Energy/financials/healthcare have high weightings'

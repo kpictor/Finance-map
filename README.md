@@ -18,10 +18,10 @@ An interactive financial system knowledge graph to help understand complex relat
 | 领域 | Domain | 实体数 | Entities |
 |------|--------|--------|----------|
 | 金融市场 | Financial Markets | 41 | Stock Markets, Bond Markets, Forex, Derivatives, Commodities, Crypto, Major Indices |
-| 金融机构 | Financial Institutions | 41 | Central Banks, Commercial Banks, Investment Banks, Funds, Insurance, Exchanges, Regulators |
-| 金融工具 | Financial Instruments | 59 | Stocks, Bonds, Options, Futures, Swaps (IRS/CDS/TRS), ETFs, Structured Products (Snowball/Phoenix) |
-| 宏观经济 | Macroeconomics | 26 | Monetary Policy, Fiscal Policy, Indicators, Cycles, Merrill Clock, Yield Curve |
-| **总计** | **Total** | **167** | **229+ relationships** |
+| 金融机构 | Financial Institutions | 93 | Central Banks, Commercial Banks, Investment Banks, Funds, Insurance, Exchanges, Regulators, Data Providers, Payment Systems |
+| 金融工具 | Financial Instruments | 71 | Stocks, Bonds, Options, Futures, Swaps (IRS/CDS/TRS), ETFs, Structured Products, ESG, Smart Beta |
+| 宏观经济 | Macroeconomics | 43 | Monetary Policy, Fiscal Policy, Indicators, Cycles, Capital Flows, Crisis Mechanisms |
+| **总计** | **Total** | **248** | **537+ relationships** |
 
 ## 🎯 风险等级 / Risk Levels
 
@@ -84,6 +84,12 @@ src/
 4. **探索关系** - 在详情面板中点击相关实体继续探索
 5. **搜索实体** - 使用顶部搜索栏快速定位
 6. **切换语言** - 点击 "中/EN" 按钮切换语言
+
+## 🤝 贡献 / Contributing
+
+请参阅 [CONTRIBUTING.md](./CONTRIBUTING.md) 了解完整的开发流程和数据验证系统。
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for the complete development workflow and data validation system.
 
 ## 📄 License
 
