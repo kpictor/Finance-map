@@ -27,18 +27,29 @@
 type RelationType =
   | 'regulates'        // 监管 (监管机构→被监管者)
   | 'issues'           // 发行 (机构→工具)
-  | 'trades'           // 交易 (机构→市场/工具)
+  | 'trades'           // 交易 (机构↔市场/工具)
   | 'invests'          // 投资 (机构→工具/市场)
-  | 'influences'       // 影响 (通用)
+  | 'influences'       // 影响 (宏观层面间接影响)
   | 'depends_on'       // 依赖 (B依赖A才能运作)
   | 'derives_from'     // 衍生 (衍生品→标的)
-  | 'competes_with'    // 竞争 (同类实体)
-  | 'cooperates_with'  // 合作 (业务协作)
-  | 'provides'         // 提供 (提供服务/产品)
+  | 'competes_with'    // 竞争 (同类实体，双向)
+  | 'cooperates_with'  // 合作 (业务协作，双向)
+  | 'provides'         // 提供 ⚠️ 限制使用
   | 'uses';            // 使用 (使用他人服务)
 ```
 
-> ⚠️ **警告**：`provides` 不应超过 40%，每种类型至少占 2%
+> ⚠️ **关系类型使用规则**
+> - `provides` **不应超过 25%**（当前过度使用）
+> - 优先使用精确类型而非 `provides`
+> - 每种类型至少占 2%
+
+### 🔮 未来架构：5 领域模型
+
+当前 4 领域 + 未来新增 `infrastructure`：
+```typescript
+type Domain = 'markets' | 'institutions' | 'instruments' | 'macro' 
+            | 'infrastructure';  // 未来新增：支付系统/数据服务/清算等
+```
 
 ---
 

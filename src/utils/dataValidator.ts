@@ -523,8 +523,9 @@ function validateRelationshipDensity(
 // ========================================
 
 const RELATIONSHIP_TYPE_THRESHOLDS = {
-    maxSingleTypePercentage: 0.40,  // 单一类型不超过40%
-    minTypePercentage: 0.02         // 每种类型至少2%
+    maxSingleTypePercentage: 0.30,  // 单一类型不超过30%
+    minTypePercentage: 0.02,        // 每种类型至少2%
+    providesMaxPercentage: 0.25     // provides 类型专项限制：不超过25%
 };
 
 function validateRelationshipBalance(
@@ -574,6 +575,19 @@ function validateRelationshipBalance(
                 details: { type, count, percentage: (percentage * 100).toFixed(1) + '%' }
             });
         }
+    }
+
+    // 专项检查：provides 类型过度使用（核心问题）
+    const providesCount = typeCounts['provides'] || 0;
+    const providesPct = providesCount / total;
+    if (providesPct > RELATIONSHIP_TYPE_THRESHOLDS.providesMaxPercentage) {
+        errors.push({
+            layer: 5,
+            severity: 'warning',
+            code: 'PROVIDES_OVERUSED',
+            message: `⚠️ "provides" 类型严重过度使用 (${(providesPct * 100).toFixed(1)}%，目标 ≤${RELATIONSHIP_TYPE_THRESHOLDS.providesMaxPercentage * 100}%)。建议拆分为更精确的关系类型：hosts/offers/enables`,
+            details: { count: providesCount, percentage: (providesPct * 100).toFixed(1) + '%', targetMax: '25%' }
+        });
     }
 
     return errors;
