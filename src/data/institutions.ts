@@ -666,8 +666,8 @@ export const institutionEntities: Entity[] = [
         tags: ['jpmorgan', 'jpm', 'dimon', 'universal-bank'],
         level: 3, parentId: 'inst-investment-bank',
         details: {
-            zh: '总资产超4万亿美元。2023年收购First Republic银行。投行业务排名常年全球第一。JPM是道琼斯工业指数成分股',
-            en: 'Total assets $4T+. Acquired First Republic in 2023. Investment banking consistently #1 globally. Dow Jones component'
+            zh: '与摩根士丹利同源自J.P. Morgan & Co.，1933年格拉斯-斯蒂格尔法案拆分后继承商业银行业务。2000年与Chase Manhattan合并。总资产超4万亿美元，投行业务排名常年全球第一',
+            en: 'Shares origin with Morgan Stanley from J.P. Morgan & Co.; inherited commercial banking after 1933 Glass-Steagall split. Merged with Chase Manhattan in 2000. Total assets $4T+, investment banking consistently #1 globally'
         }
     },
     {
@@ -681,8 +681,8 @@ export const institutionEntities: Entity[] = [
         tags: ['morgan-stanley', 'ms', 'wealth'],
         level: 3, parentId: 'inst-investment-bank',
         details: {
-            zh: '收购E*TRADE和Eaton Vance后财富管理规模大幅提升。与高盛是仅存的两家独立大型投行',
-            en: 'Wealth management expanded after E*TRADE and Eaton Vance acquisitions. One of two remaining independent major investment banks with Goldman'
+            zh: '1935年从J.P. Morgan & Co.拆分独立的投行。收购E*TRADE和Eaton Vance后财富管理规模大幅提升。与高盛是仅存的两家独立大型投行',
+            en: 'Spun off from J.P. Morgan & Co. in 1935 as investment bank. Wealth management expanded after E*TRADE and Eaton Vance acquisitions. One of two remaining independent major investment banks with Goldman'
         }
     },
 

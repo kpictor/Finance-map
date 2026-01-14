@@ -561,6 +561,23 @@ export const crossBorderEntities: Entity[] = [
             zh: '低波动异象(Low Volatility Anomaly)是金融学经典谜题。可能由机构杠杆约束导致',
             en: 'Low Volatility Anomaly is a classic finance puzzle. May be caused by institutional leverage constraints'
         }
+    },
+
+    // --- 交易所：上海黄金交易所 ---
+    {
+        id: 'inst-sge',
+        name: { zh: '上海黄金交易所', en: 'Shanghai Gold Exchange (SGE)' },
+        description: {
+            zh: '亚洲最大、全球第三大贵金属交易所，中国黄金定价权的核心基础设施',
+            en: 'Asia largest and world 3rd largest precious metals exchange, core infrastructure for China gold pricing'
+        },
+        domain: 'institutions', category: 'exchange', icon: '🥇',
+        tags: ['sge', 'gold', 'china', 'precious-metals', 'exchange'],
+        level: 3, parentId: 'inst-exchange',
+        details: {
+            zh: '2002年成立，由中国人民银行监管。上海金(SHAU)是人民币计价黄金基准。实物黄金交割量全球第一，推动黄金人民币定价权',
+            en: 'Founded 2002, supervised by PBOC. Shanghai Gold Fix (SHAU) is RMB-denominated gold benchmark. World #1 in physical gold delivery, advancing RMB gold pricing power'
+        }
     }
 ];
 
@@ -743,5 +760,23 @@ export const crossBorderRelationships: Relationship[] = [
     {
         id: 'cb-59', source: 'instr-smart-beta', target: 'instr-etf', type: 'uses', strength: 3, bidirectional: false,
         explanation: { zh: 'Smart Beta策略主要通过ETF形式实现', en: 'Smart Beta strategies are primarily implemented via ETFs' }
+    },
+
+    // --- 上海黄金交易所关系 ---
+    {
+        id: 'cb-60', source: 'inst-sge', target: 'market-precious-metals', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: '上海黄金交易所是亚洲最大的贵金属现货交易场所', en: 'SGE is Asia largest spot precious metals trading venue' }
+    },
+    {
+        id: 'cb-61', source: 'inst-sge', target: 'inst-pboc', type: 'depends_on', strength: 3, bidirectional: false,
+        explanation: { zh: '上海黄金交易所由中国人民银行设立并监管', en: 'SGE was established and is supervised by PBOC' }
+    },
+    {
+        id: 'cb-62', source: 'inst-sge', target: 'infra-cnh', type: 'influences', strength: 2, bidirectional: false,
+        explanation: { zh: '上海金定价推动黄金人民币计价，促进人民币国际化', en: 'Shanghai Gold Fix promotes RMB-denominated gold pricing, supporting RMB internationalization' }
+    },
+    {
+        id: 'cb-63', source: 'inst-sge', target: 'instr-precious-metals', type: 'trades', strength: 3, bidirectional: true,
+        explanation: { zh: '上海黄金交易所提供黄金、白银等贵金属交易', en: 'SGE provides gold, silver and other precious metals trading' }
     }
 ];
