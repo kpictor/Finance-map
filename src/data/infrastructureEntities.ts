@@ -563,7 +563,10 @@ export const crossBorderEntities: Entity[] = [
         }
     },
 
-    // --- 交易所：上海黄金交易所 ---
+    // === 全球贵金属交易所生态系统 (Ecosystem Completion) ===
+    // 当添加一个实体时，应同时添加其同类生态系统中的其他重要实体
+
+    // --- 上海黄金交易所 (亚洲) ---
     {
         id: 'inst-sge',
         name: { zh: '上海黄金交易所', en: 'Shanghai Gold Exchange (SGE)' },
@@ -572,11 +575,79 @@ export const crossBorderEntities: Entity[] = [
             en: 'Asia largest and world 3rd largest precious metals exchange, core infrastructure for China gold pricing'
         },
         domain: 'institutions', category: 'exchange', icon: '🥇',
-        tags: ['sge', 'gold', 'china', 'precious-metals', 'exchange'],
+        tags: ['sge', 'gold', 'china', 'precious-metals', 'exchange', 'asia'],
         level: 3, parentId: 'inst-exchange',
         details: {
-            zh: '2002年成立，由中国人民银行监管。上海金(SHAU)是人民币计价黄金基准。实物黄金交割量全球第一，推动黄金人民币定价权',
-            en: 'Founded 2002, supervised by PBOC. Shanghai Gold Fix (SHAU) is RMB-denominated gold benchmark. World #1 in physical gold delivery, advancing RMB gold pricing power'
+            zh: '2002年成立，由中国人民银行监管。上海金(SHAU)是人民币计价黄金基准。实物黄金交割量全球第一',
+            en: 'Founded 2002, supervised by PBOC. Shanghai Gold Fix (SHAU) is RMB-denominated gold benchmark. World #1 in physical gold delivery'
+        }
+    },
+
+    // --- 伦敦金属交易所 (欧洲) ---
+    {
+        id: 'inst-lme',
+        name: { zh: '伦敦金属交易所', en: 'London Metal Exchange (LME)' },
+        description: {
+            zh: '全球最大的基本金属期货交易所，有色金属全球定价中心',
+            en: 'World largest base metals futures exchange, global pricing center for non-ferrous metals'
+        },
+        domain: 'institutions', category: 'exchange', icon: '🔩',
+        tags: ['lme', 'metals', 'london', 'futures', 'europe'],
+        level: 3, parentId: 'inst-exchange',
+        details: {
+            zh: '1877年成立。铜铝锌铅镍锡六大金属定价基准。2012年被港交所收购',
+            en: 'Founded 1877. Benchmark for copper, aluminum, zinc, lead, nickel, tin. Acquired by HKEX in 2012'
+        }
+    },
+
+    // --- 伦敦金银市场协会 (黄金定价) ---
+    {
+        id: 'inst-lbma',
+        name: { zh: '伦敦金银市场协会', en: 'LBMA (London Bullion Market Association)' },
+        description: {
+            zh: '全球黄金白银OTC市场的核心，伦敦金定价(London Gold Fix)的主导者',
+            en: 'Core of global gold/silver OTC market, authority behind London Gold Fix'
+        },
+        domain: 'institutions', category: 'exchange', icon: '🏅',
+        tags: ['lbma', 'gold', 'silver', 'london', 'otc', 'benchmark'],
+        level: 3, parentId: 'inst-exchange',
+        details: {
+            zh: '伦敦金价(LBMA Gold Price)是全球最重要的黄金基准之一。LBMA认证是黄金精炼商的金标准',
+            en: 'LBMA Gold Price is one of most important global gold benchmarks. LBMA certification is gold standard for refiners'
+        }
+    },
+
+    // --- 东京商品交易所 (亚太) ---
+    {
+        id: 'inst-tocom',
+        name: { zh: '东京商品交易所', en: 'TOCOM (Tokyo Commodity Exchange)' },
+        description: {
+            zh: '日本最大商品期货交易所，亚太地区重要的贵金属和能源衍生品市场',
+            en: 'Japan largest commodity futures exchange, key Asia-Pacific precious metals and energy derivatives market'
+        },
+        domain: 'institutions', category: 'exchange', icon: '🇯🇵',
+        tags: ['tocom', 'japan', 'commodities', 'gold', 'oil', 'asia'],
+        level: 3, parentId: 'inst-exchange',
+        details: {
+            zh: '2020年与大阪交易所合并为JPX商品衍生品市场。黄金期货以日元计价',
+            en: 'Merged with Osaka Exchange in 2020 into JPX commodity derivatives. Gold futures denominated in JPY'
+        }
+    },
+
+    // --- 纽约商品交易所 (COMEX) ---
+    {
+        id: 'inst-comex',
+        name: { zh: '纽约商品交易所', en: 'COMEX (Commodity Exchange)' },
+        description: {
+            zh: 'CME集团旗下贵金属期货交易所，全球黄金期货定价基准',
+            en: 'CME Group precious metals futures exchange, global gold futures pricing benchmark'
+        },
+        domain: 'institutions', category: 'exchange', icon: '🗽',
+        tags: ['comex', 'gold', 'silver', 'futures', 'cme', 'usa'],
+        level: 3, parentId: 'inst-cme',
+        details: {
+            zh: 'COMEX黄金期货(GC)是全球流动性最好的黄金衍生品。1974年起交易黄金期货',
+            en: 'COMEX gold futures (GC) are most liquid gold derivatives globally. Trading gold futures since 1974'
         }
     }
 ];
@@ -806,5 +877,93 @@ export const crossBorderRelationships: Relationship[] = [
     {
         id: 'cb-68', source: 'inst-pboc', target: 'inst-sge', type: 'regulates', strength: 3, bidirectional: false,
         explanation: { zh: '中国人民银行是SGE的监管机构', en: 'PBOC is the regulatory authority for SGE' }
+    },
+
+    // === 全球贵金属交易所生态系统关系 (Ecosystem Relationships) ===
+
+    // --- LME (伦敦金属交易所) 关系 ---
+    {
+        id: 'cb-69', source: 'inst-lme', target: 'market-commodities', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: 'LME是全球最大的基本金属期货交易场所', en: 'LME is the world largest base metals futures trading venue' }
+    },
+    {
+        id: 'cb-70', source: 'inst-lme', target: 'inst-hkex', type: 'depends_on', strength: 3, bidirectional: false,
+        explanation: { zh: 'LME于2012年被香港交易所收购', en: 'LME was acquired by HKEX in 2012' }
+    },
+    {
+        id: 'cb-71', source: 'inst-lme', target: 'inst-sge', type: 'competes_with', strength: 2, bidirectional: true,
+        explanation: { zh: 'LME与SGE竞争亚洲金属定价影响力', en: 'LME competes with SGE for Asian metals pricing influence' }
+    },
+    {
+        id: 'cb-72', source: 'inst-lme', target: 'instr-futures', type: 'trades', strength: 3, bidirectional: true,
+        explanation: { zh: 'LME是金属期货交易的核心场所', en: 'LME is the core venue for metals futures trading' }
+    },
+
+    // --- LBMA (伦敦金银市场协会) 关系 ---
+    {
+        id: 'cb-73', source: 'inst-lbma', target: 'market-precious-metals', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: 'LBMA是全球黄金OTC市场的核心基础设施', en: 'LBMA is the core infrastructure for global gold OTC market' }
+    },
+    {
+        id: 'cb-74', source: 'inst-lbma', target: 'inst-sge', type: 'competes_with', strength: 3, bidirectional: true,
+        explanation: { zh: 'LBMA与SGE竞争全球黄金定价权：伦敦金 vs 上海金', en: 'LBMA competes with SGE for global gold pricing: London Gold Fix vs Shanghai Gold Fix' }
+    },
+    {
+        id: 'cb-75', source: 'inst-lbma', target: 'instr-precious-metals', type: 'trades', strength: 3, bidirectional: true,
+        explanation: { zh: 'LBMA提供黄金白银OTC交易', en: 'LBMA provides gold and silver OTC trading' }
+    },
+    {
+        id: 'cb-76', source: 'inst-lbma', target: 'inst-commercial-bank', type: 'cooperates_with', strength: 3, bidirectional: true,
+        explanation: { zh: '主要商业银行是LBMA做市商成员', en: 'Major commercial banks are LBMA market maker members' }
+    },
+
+    // --- TOCOM (东京商品交易所) 关系 ---
+    {
+        id: 'cb-77', source: 'inst-tocom', target: 'market-commodities', type: 'provides', strength: 2, bidirectional: false,
+        explanation: { zh: 'TOCOM是日本最大商品期货交易所', en: 'TOCOM is Japan largest commodity futures exchange' }
+    },
+    {
+        id: 'cb-78', source: 'inst-tocom', target: 'inst-sge', type: 'competes_with', strength: 2, bidirectional: true,
+        explanation: { zh: 'TOCOM与SGE竞争亚太贵金属交易份额', en: 'TOCOM competes with SGE for Asia-Pacific precious metals trading' }
+    },
+    {
+        id: 'cb-79', source: 'inst-tocom', target: 'instr-precious-metals', type: 'trades', strength: 2, bidirectional: true,
+        explanation: { zh: 'TOCOM提供日元计价的黄金期货', en: 'TOCOM provides JPY-denominated gold futures' }
+    },
+
+    // --- COMEX (纽约商品交易所) 关系 ---
+    {
+        id: 'cb-80', source: 'inst-comex', target: 'inst-cme', type: 'depends_on', strength: 3, bidirectional: false,
+        explanation: { zh: 'COMEX是CME集团旗下的贵金属交易所', en: 'COMEX is a precious metals exchange under CME Group' }
+    },
+    {
+        id: 'cb-81', source: 'inst-comex', target: 'market-precious-metals', type: 'provides', strength: 3, bidirectional: false,
+        explanation: { zh: 'COMEX是全球最大的黄金期货交易所', en: 'COMEX is the world largest gold futures exchange' }
+    },
+    {
+        id: 'cb-82', source: 'inst-comex', target: 'inst-sge', type: 'competes_with', strength: 3, bidirectional: true,
+        explanation: { zh: 'COMEX与SGE是全球黄金定价两大基准', en: 'COMEX and SGE are the two major global gold pricing benchmarks' }
+    },
+    {
+        id: 'cb-83', source: 'inst-comex', target: 'inst-lbma', type: 'cooperates_with', strength: 3, bidirectional: true,
+        explanation: { zh: 'COMEX期货价格与LBMA现货价格形成套利关系', en: 'COMEX futures and LBMA spot prices form arbitrage relationship' }
+    },
+    {
+        id: 'cb-84', source: 'inst-comex', target: 'instr-futures', type: 'trades', strength: 3, bidirectional: true,
+        explanation: { zh: 'COMEX是黄金期货(GC)的主要交易场所', en: 'COMEX is the primary venue for gold futures (GC) trading' }
+    },
+    {
+        id: 'cb-85', source: 'instr-etf', target: 'inst-comex', type: 'uses', strength: 3, bidirectional: false,
+        explanation: { zh: '黄金ETF使用COMEX价格作为NAV计算基准', en: 'Gold ETFs use COMEX prices for NAV calculation' }
+    },
+
+    // --- 更新SGE竞争关系 ---
+    {
+        id: 'cb-86', source: 'inst-sge', target: 'inst-lbma', type: 'competes_with', strength: 3, bidirectional: true,
+        explanation: { zh: 'SGE上海金与LBMA伦敦金竞争全球黄金定价权', en: 'SGE Shanghai Gold Fix competes with LBMA London Gold Fix for global pricing power' }
+    },
+    {
+        id: 'cb-87', source: 'inst-sge', target: 'inst-comex', type: 'competes_with', strength: 3, bidirectional: true,
+        explanation: { zh: 'SGE与COMEX竞争黄金交易量和定价影响力', en: 'SGE competes with COMEX for gold trading volume and pricing influence' }
     }
 ];
