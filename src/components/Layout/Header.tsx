@@ -15,7 +15,7 @@ export const Header: React.FC = () => {
         setSearchQuery
     } = useAppContext();
 
-    const domains: Domain[] = ['markets', 'institutions', 'instruments', 'macro'];
+    const domains: Domain[] = ['markets', 'institutions', 'instruments', 'macro', 'infrastructure'];
 
     return (
         <header className="app-header">

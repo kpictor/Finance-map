@@ -135,6 +135,42 @@ body {
   flex-shrink: 0;
 }
 
+.legend-line {
+  width: 20px;
+  height: 3px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legend-line-solid {
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.legend-line-dashed {
+  width: 20px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg,
+      #fff 0px,
+      #fff 4px,
+      transparent 4px,
+      transparent 8px);
+  flex-shrink: 0;
+}
+
+.legend-line-dotted {
+  width: 20px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg,
+      #fff 0px,
+      #fff 2px,
+      transparent 2px,
+      transparent 4px);
+  flex-shrink: 0;
+}
+
 .legend-icon {
   font-size: 14px;
   width: 20px;
@@ -161,6 +197,50 @@ body {
   gap: var(--spacing-md);
   font-size: 12px;
   color: var(--color-text-muted);
+}
+
+/* 操作说明（图例底部） */
+.legend-instructions {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  padding: var(--spacing-xs) 0;
+  line-height: 1.4;
+}
+
+/* 层级图例节点样式 */
+.level-item {
+  align-items: center;
+}
+
+.legend-node-l1 {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  flex-shrink: 0;
+}
+
+.legend-node-l2 {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  flex-shrink: 0;
+}
+
+.legend-node-l3 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981, #3b82f6);
+  flex-shrink: 0;
+}
+
+.legend-hint {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  opacity: 0.8;
+  margin-top: 4px;
 }
 
 /* 控制按钮 */

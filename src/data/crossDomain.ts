@@ -25,7 +25,7 @@ export const crossDomainRelationships: Relationship[] = [
         }
     },
     {
-        id: 'cd-4', source: 'inst-fed', target: 'macro-interest-rate', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-4', source: 'inst-fed', target: 'macro-interest-rate', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
             zh: '美联储通过FOMC会议决定联邦基金利率目标，这是全球最重要的基准利率之一',
             en: 'The Fed determines the federal funds rate target through FOMC meetings, one of the most important global benchmark rates'
@@ -108,7 +108,7 @@ export const crossDomainRelationships: Relationship[] = [
         }
     },
     {
-        id: 'cd-18', source: 'inst-fund', target: 'instr-etf', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-18', source: 'inst-fund', target: 'instr-etf', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '基金公司创建和管理ETF产品，通过授权参与者机制维持ETF价格与净值的一致性',
             en: 'Fund companies create and manage ETF products, maintaining price-NAV alignment through authorized participant mechanisms'
@@ -147,7 +147,7 @@ export const crossDomainRelationships: Relationship[] = [
         }
     },
     {
-        id: 'cd-28', source: 'inst-exchange', target: 'market-equity', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-28', source: 'inst-exchange', target: 'market-equity', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '交易所提供标准化的交易场所、撮合系统和清算服务，确保交易安全高效',
             en: 'Exchanges provide standardized trading venues, matching systems, and clearing services for safe and efficient trading'
@@ -186,7 +186,7 @@ export const crossDomainRelationships: Relationship[] = [
 
     // === 宏观与市场/机构的关系 ===
     {
-        id: 'cd-45', source: 'inst-central-bank', target: 'macro-monetary', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-45', source: 'inst-central-bank', target: 'macro-monetary', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
             zh: '中央银行是货币政策的制定者和执行者，通过各种政策工具调控经济',
             en: 'Central banks formulate and implement monetary policy, regulating the economy through various policy tools'
@@ -286,10 +286,11 @@ export const crossDomainRelationships: Relationship[] = [
         }
     },
     {
-        id: 'cd-70', source: 'macro-volatility', target: 'instr-snowball', type: 'influences', strength: 3, bidirectional: false,
+        // 修复: macro-volatility不存在，用VIX恐慌指数代表市场波动率
+        id: 'cd-70', source: 'market-index-vix', target: 'instr-snowball', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
-            zh: '市场波动率是结构化产品定价的核心因子，高波动率环境下雪球票息更高但风险也更大',
-            en: 'Market volatility is the core pricing factor for structured products; higher volatility means higher coupons but greater risk'
+            zh: 'VIX恐慌指数反映市场波动率预期，高VIX环境下雪球票息更高但敲入风险也更大',
+            en: 'VIX measures expected market volatility; higher VIX means higher snowball coupons but greater knock-in risk'
         }
     },
     {
@@ -337,7 +338,7 @@ export const crossDomainRelationships: Relationship[] = [
         }
     },
     {
-        id: 'cd-77', source: 'inst-fund', target: 'instr-mutual-fund', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-77', source: 'inst-fund', target: 'instr-mutual-fund', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '基金公司创建和管理共同基金产品，为投资者提供专业化资产管理',
             en: 'Fund companies create and manage mutual funds, providing professional asset management for investors'
@@ -404,189 +405,225 @@ export const crossDomainRelationships: Relationship[] = [
 
     // === 交易所与市场/指数关联 ===
     {
-        id: 'cd-87', source: 'inst-nyse', target: 'market-index-djia', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-87', source: 'inst-nyse', target: 'market-index-djia', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '道琼斯工业指数成分股主要在纽约证交所上市交易',
             en: 'Dow Jones Industrial Average components are primarily listed and traded on NYSE'
         }
     },
     {
-        id: 'cd-88', source: 'inst-nasdaq', target: 'market-index-nasdaq', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-88', source: 'inst-nasdaq', target: 'market-index-nasdaq', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '纳斯达克综合指数反映纳斯达克交易所全部上市公司的整体表现',
             en: 'NASDAQ Composite reflects overall performance of all NASDAQ-listed companies'
         }
     },
     {
-        id: 'cd-89', source: 'inst-sse', target: 'market-index-csi300', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-89', source: 'inst-sse', target: 'market-index-csi300', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '沪深300指数包含上海证交所大部分大盘股，是A股核心基准',
             en: 'CSI 300 includes most SSE large-caps, serving as core A-share benchmark'
         }
     },
     {
-        id: 'cd-90', source: 'inst-hkex', target: 'market-index-hsi', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-90', source: 'inst-hkex', target: 'market-index-hsi', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
             zh: '恒生指数由香港交易所设计和维护，反映港股核心表现',
             en: 'Hang Seng Index is designed and maintained by HKEX, reflecting core HK stock performance'
         }
     },
 
-    // === 新增跨域关系 ===
-    // 资产管理公司与金融工具
+    // === 美林投资时钟与资产配置 ===
     {
-        id: 'cd-91', source: 'inst-blackrock', target: 'instr-etf', type: 'issues', strength: 3, bidirectional: false,
+        id: 'cd-merrill-1', source: 'macro-merrill-clock', target: 'market-equity', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
-            zh: '贝莱德旗下iShares是全球最大的ETF发行商，管理数千只ETF产品',
-            en: 'BlackRock\'s iShares is the world\'s largest ETF issuer, managing thousands of ETF products'
+            zh: '美林时钟-复苏期(高增长低通胀)：股票是表现最好的资产类别',
+            en: 'Merrill Clock - Recovery (High Growth, Low Inflation): Stocks are the best performing asset class'
         }
     },
     {
-        id: 'cd-92', source: 'inst-vanguard', target: 'instr-index-fund', type: 'issues', strength: 3, bidirectional: false,
+        id: 'cd-merrill-2', source: 'macro-merrill-clock', target: 'market-commodities', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
-            zh: '先锋集团是指数基金的先驱，提供低成本被动投资产品',
-            en: 'Vanguard pioneered index funds, offering low-cost passive investment products'
+            zh: '美林时钟-过热期(高增长高通胀)：大宗商品是最佳抗通胀资产',
+            en: 'Merrill Clock - Overheat (High Growth, High Inflation): Commodities are the best inflation hedge'
         }
     },
     {
-        id: 'cd-93', source: 'inst-bridgewater', target: 'macro-cycles', type: 'influences', strength: 2, bidirectional: false,
+        id: 'cd-merrill-3', source: 'macro-merrill-clock', target: 'market-money', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
-            zh: '桥水的全天候策略基于对经济周期的深入研究，影响宏观投资理念',
-            en: 'Bridgewater\'s All Weather strategy is based on deep economic cycle research, influencing macro investing'
+            zh: '美林时钟-滞涨期(低增长高通胀)：现金为王，防守型资产占优',
+            en: 'Merrill Clock - Stagflation (Low Growth, High Inflation): Cash is king, defensive assets prevail'
         }
     },
     {
-        id: 'cd-94', source: 'inst-renaissance', target: 'market-equity', type: 'trades', strength: 3, bidirectional: true,
+        id: 'cd-merrill-4', source: 'macro-merrill-clock', target: 'market-bond', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
-            zh: '文艺复兴科技通过量化策略在股票市场进行高频交易',
-            en: 'Renaissance Technologies trades equities using quantitative strategies at high frequency'
+            zh: '美林时钟-衰退期(低增长低通胀)：债券受益于降息预期，表现最优',
+            en: 'Merrill Clock - Recession (Low Growth, Low Inflation): Bonds outperform due to rate cut expectations'
+        }
+    },
+
+    // === 美联储全球影响 ===
+    {
+        id: 'cd-fed-global-1', source: 'inst-fed', target: 'macro-capital-flows', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '美联储加息会导致全球资本回流美国，引发新兴市场资本外流风险',
+            en: 'Fed rate hikes drive global capital back to the US, risking capital flight from emerging markets'
         }
     },
     {
-        id: 'cd-95', source: 'inst-citadel', target: 'market-equity', type: 'trades', strength: 3, bidirectional: true,
+        id: 'cd-fed-global-2', source: 'inst-fed', target: 'market-forex', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
-            zh: '城堡证券是美国最大的股票做市商之一，为市场提供流动性',
-            en: 'Citadel Securities is one of the largest US equity market makers, providing liquidity'
+            zh: '美元是全球储备货币，美联储政策直接决定美元强弱，进而冲击全球汇市',
+            en: 'USD is the global reserve currency; Fed policy dictates dollar strength, impacting global forex markets'
+        }
+    },
+
+    // === 审查补充：缺失的监管关系 ===
+    {
+        id: 'cd-sec-nyse', source: 'inst-sec', target: 'inst-nyse', type: 'regulates', strength: 3, bidirectional: false,
+        explanation: {
+            zh: 'SEC作为美国证券监管机构，对纽约证券交易所行使监管职责，确保市场公平透明',
+            en: 'SEC as US securities regulator oversees NYSE operations, ensuring market fairness and transparency'
         }
     },
     {
-        id: 'cd-96', source: 'inst-goldman', target: 'instr-stock', type: 'issues', strength: 3, bidirectional: false,
+        id: 'cd-csrc-sse', source: 'inst-csrc', target: 'inst-sse', type: 'regulates', strength: 3, bidirectional: false,
         explanation: {
-            zh: '高盛是全球顶级IPO承销商，帮助企业在资本市场筹集资金',
-            en: 'Goldman Sachs is a top IPO underwriter, helping companies raise capital'
+            zh: '中国证监会监管上海证券交易所的交易规则制定、上市审核和市场秩序维护',
+            en: 'CSRC regulates SSE trading rules, listing approvals, and market order maintenance'
         }
     },
     {
-        id: 'cd-97', source: 'inst-jpmorgan', target: 'market-bond', type: 'trades', strength: 3, bidirectional: true,
+        id: 'cd-csrc-szse', source: 'inst-csrc', target: 'inst-szse', type: 'regulates', strength: 3, bidirectional: false,
         explanation: {
-            zh: '摩根大通是全球最大的债券交易商之一，提供一级和二级市场服务',
-            en: 'JPMorgan is a top global bond dealer, providing primary and secondary market services'
+            zh: '中国证监会监管深圳证券交易所，包括创业板的发行审核和持续监管',
+            en: 'CSRC regulates SZSE including ChiNext listing reviews and ongoing supervision'
         }
     },
     {
-        id: 'cd-98', source: 'inst-moodys', target: 'instr-bond', type: 'influences', strength: 3, bidirectional: false,
+        id: 'cd-cboe-vix', source: 'inst-cboe', target: 'market-index-vix', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
-            zh: '穆迪评级直接影响债券定价，评级下调会导致债券价格下跌',
-            en: 'Moody\'s ratings directly affect bond pricing; downgrades cause price declines'
+            zh: 'CBOE(芝加哥期权交易所)是VIX恐慌指数的发布方和计算维护者',
+            en: 'CBOE publishes and maintains the VIX volatility index calculation methodology'
         }
     },
     {
-        id: 'cd-99', source: 'inst-sp', target: 'market-index-sp500', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-csi1000-snowball', source: 'market-index-csi1000', target: 'instr-snowball', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
-            zh: '标普全球是标普500指数的创建者和维护者',
-            en: 'S&P Global is the creator and maintainer of the S&P 500 Index'
+            zh: '中证1000是雪球产品最常挂钩的标的指数之一，其波动直接影响雪球的敲入敲出和票息',
+            en: 'CSI 1000 is a common underlying for snowball products; its volatility directly affects knock-in/out triggers and coupons'
         }
     },
     {
-        id: 'cd-100', source: 'inst-cboe', target: 'market-index-vix', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-yield-recession', source: 'macro-yield-curve', target: 'macro-recession', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
-            zh: 'CBOE创建并计算VIX恐慌指数，是市场波动率的核心指标',
-            en: 'CBOE created and calculates the VIX, the core measure of market volatility'
+            zh: '收益率曲线倒挂(短期利率高于长期)是历史上最可靠的衰退预警信号，领先时间6-18个月',
+            en: 'Yield curve inversion (short rates > long rates) is the most reliable recession predictor, leading by 6-18 months'
+        }
+    },
+
+    // === P0新增：市场基础设施跨域关系 ===
+    {
+        id: 'cd-mm-equity', source: 'inst-market-maker', target: 'market-equity', type: 'hosts', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '做市商持续提供买卖双边报价，为股票市场提供流动性，确保投资者能够随时交易',
+            en: 'Market makers provide continuous two-sided quotes, ensuring investors can trade anytime in equity markets'
         }
     },
     {
-        id: 'cd-101', source: 'inst-cboe', target: 'market-options', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-mm-options', source: 'inst-market-maker', target: 'market-options', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
-            zh: 'CBOE是全球最大的期权交易所，提供股票期权和指数期权交易',
-            en: 'CBOE is the world\'s largest options exchange, offering equity and index options'
+            zh: '期权市场高度依赖做市商，做市商通过Delta对冲管理风险，同时赚取买卖价差',
+            en: 'Options markets heavily rely on market makers who manage risk via Delta hedging while earning bid-ask spreads'
         }
     },
     {
-        id: 'cd-102', source: 'inst-berkshire', target: 'instr-stock', type: 'invests', strength: 3, bidirectional: false,
+        id: 'cd-pb-trs', source: 'inst-prime-broker', target: 'instr-trs', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
-            zh: '伯克希尔是全球最成功的价值投资公司，持有大量蓝筹股',
-            en: 'Berkshire is one of the most successful value investors, holding major blue-chip stocks'
+            zh: '主经纪商通过TRS向对冲基金提供杠杆敞口，Archegos事件中主经纪商未能有效管理TRS对手方风险',
+            en: 'Prime brokers provide leveraged exposure via TRS to hedge funds; Archegos event showed PB failure to manage TRS counterparty risk'
         }
     },
     {
-        id: 'cd-103', source: 'inst-berkshire', target: 'inst-insurance', type: 'invests', strength: 3, bidirectional: false,
+        id: 'cd-custodian-fund', source: 'inst-custodian', target: 'inst-fund', type: 'hosts', strength: 3, bidirectional: false,
         explanation: {
-            zh: '伯克希尔通过保险业务获得浮存金，是其投资模式的核心',
-            en: 'Berkshire acquires float through insurance operations, core to its investment model'
+            zh: '托管行为基金公司保管资产、处理交易结算，确保客户资产与公司自有财产隔离',
+            en: 'Custodians safeguard fund assets and process settlements, ensuring client asset segregation from company property'
         }
     },
     {
-        id: 'cd-104', source: 'inst-icbc', target: 'instr-gov-bond', type: 'invests', strength: 3, bidirectional: false,
+        id: 'cd-index-etf', source: 'inst-index-provider', target: 'instr-etf', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
-            zh: '工商银行是中国国债市场最大的持有者之一',
-            en: 'ICBC is one of the largest holders in China\'s government bond market'
+            zh: '指数公司决定ETF跟踪的基准指数，成分股调整会引发ETF自动买卖对应股票',
+            en: 'Index providers determine benchmark indices ETFs track; constituent changes trigger automatic ETF trading'
+        }
+    },
+
+    // === P0新增：CLO/CDO危机传导关系 ===
+    {
+        id: 'cd-clo-crisis', source: 'instr-clo', target: 'macro-crisis', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '2008年CDO大规模违约触发全球金融危机，证券化产品的不透明性导致风险被严重低估',
+            en: '2008 CDO defaults triggered global financial crisis; securitization opacity led to severely underestimated risks'
         }
     },
     {
-        id: 'cd-105', source: 'inst-dtcc', target: 'market-equity', type: 'provides', strength: 3, bidirectional: false,
+        id: 'cd-clo-rating', source: 'inst-rating', target: 'instr-clo', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
-            zh: 'DTCC为美国股票市场提供清算和结算基础设施',
-            en: 'DTCC provides clearing and settlement infrastructure for US equity markets'
+            zh: '评级机构对CDO分层结构的乐观评级是2008年危机的重要推手，AAA评级掩盖了底层资产的风险',
+            en: 'Rating agencies\' optimistic CDO tranche ratings contributed to 2008 crisis; AAA ratings masked underlying asset risks'
         }
     },
     {
-        id: 'cd-106', source: 'inst-fidelity', target: 'instr-mutual-fund', type: 'issues', strength: 3, bidirectional: false,
+        id: 'cd-clo-bank', source: 'inst-investment-bank', target: 'instr-clo', type: 'issues', strength: 3, bidirectional: false,
         explanation: {
-            zh: '富达是全球最大的主动管理共同基金提供商之一',
-            en: 'Fidelity is one of the largest active mutual fund providers globally'
+            zh: '投资银行是CDO/CLO的主要发行方和分销商，通过证券化赚取承销费用',
+            en: 'Investment banks are primary CDO/CLO issuers and distributors, earning underwriting fees through securitization'
+        }
+    },
+
+    // === P0新增：五大风险类型跨域关系 ===
+    {
+        id: 'cd-market-risk-equity', source: 'macro-market-risk', target: 'market-equity', type: 'influences', strength: 3, bidirectional: false,
+        explanation: {
+            zh: '市场风险直接体现在股票价格波动中，VaR模型用于量化股票投资组合的潜在损失',
+            en: 'Market risk manifests directly in equity price volatility; VaR models quantify potential losses in stock portfolios'
         }
     },
     {
-        id: 'cd-107', source: 'inst-two-sigma', target: 'market-derivatives', type: 'trades', strength: 3, bidirectional: true,
+        id: 'cd-credit-risk-bond', source: 'macro-credit-risk', target: 'market-bond-corp', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
-            zh: '两西格马使用AI和大数据在衍生品市场进行量化交易',
-            en: 'Two Sigma uses AI and big data for quantitative trading in derivatives markets'
+            zh: '信用风险是企业债定价的核心因素，信用利差反映市场对违约风险的定价',
+            en: 'Credit risk is core to corporate bond pricing; credit spreads reflect market pricing of default risk'
         }
     },
     {
-        id: 'cd-108', source: 'inst-citic', target: 'instr-structured', type: 'issues', strength: 3, bidirectional: false,
+        id: 'cd-liquidity-risk-mm', source: 'macro-liquidity-risk', target: 'inst-market-maker', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
-            zh: '中信证券是中国结构化产品的主要发行商，包括雪球期权',
-            en: 'CITIC Securities is a major issuer of structured products in China, including snowball options'
+            zh: '流动性枯竭时做市商扩大买卖价差或撤离市场，加剧流动性危机的恶性循环',
+            en: 'During liquidity crises, market makers widen spreads or withdraw, exacerbating the liquidity spiral'
         }
     },
     {
-        id: 'cd-109', source: 'inst-morgan-stanley', target: 'market-forex', type: 'trades', strength: 3, bidirectional: true,
+        id: 'cd-counterparty-cds', source: 'macro-counterparty-risk', target: 'instr-cds', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
-            zh: '摩根士丹利是全球顶级外汇交易商，为机构客户提供流动性',
-            en: 'Morgan Stanley is a top global FX dealer, providing liquidity to institutional clients'
+            zh: 'CDS是转移交易对手风险的核心工具，但CDS卖方本身也面临对手方风险，如AIG事件所示',
+            en: 'CDS is the core tool for transferring counterparty risk, but CDS sellers also face counterparty risk, as shown by AIG'
         }
     },
     {
-        id: 'cd-110', source: 'inst-cme', target: 'instr-futures', type: 'trades', strength: 3, bidirectional: true,
+        id: 'cd-counterparty-swap', source: 'macro-counterparty-risk', target: 'instr-swaps', type: 'influences', strength: 3, bidirectional: false,
         explanation: {
-            zh: 'CME是全球最大的期货交易所，交易股指、利率、商品等期货',
-            en: 'CME is the world\'s largest futures exchange, trading equity, rate, and commodity futures'
+            zh: '场外互换交易的双边性质使其高度暴露于交易对手风险，CVA调整是定价的重要组成部分',
+            en: 'Bilateral nature of OTC swaps exposes them to counterparty risk; CVA adjustment is a key pricing component'
         }
     },
     {
-        id: 'cd-111', source: 'macro-interest-rate', target: 'inst-jpmorgan', type: 'influences', strength: 2, bidirectional: false,
+        id: 'cd-operational-fintech', source: 'macro-operational-risk', target: 'inst-fintech', type: 'influences', strength: 2, bidirectional: false,
         explanation: {
-            zh: '利率变动直接影响银行的净息差和盈利能力',
-            en: 'Interest rate changes directly affect bank net interest margins and profitability'
-        }
-    },
-    {
-        id: 'cd-112', source: 'macro-crisis', target: 'inst-goldman', type: 'influences', strength: 3, bidirectional: false,
-        explanation: {
-            zh: '金融危机时投资银行面临交易损失、流动性风险和信誉危机',
-            en: 'Investment banks face trading losses, liquidity risks, and reputational damage during crises'
+            zh: '金融科技公司高度依赖技术系统，网络安全和系统故障是其主要操作风险来源',
+            en: 'FinTech companies rely heavily on technology systems; cybersecurity and system failures are key operational risks'
         }
     }
 ];
-

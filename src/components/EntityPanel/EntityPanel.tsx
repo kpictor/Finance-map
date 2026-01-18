@@ -1,5 +1,5 @@
 import type { Entity, Language, Relationship } from '../../types';
-import { DomainConfig, RelationTypeNames, RiskLevelConfig } from '../../types';
+import { DomainConfig, RelationTypeNames, RiskLevelConfig, TradingVenueConfig, LiquidityLevelConfig, InvestorTypeConfig } from '../../types';
 import { useTranslation } from 'react-i18next';
 import './EntityPanel.css';
 
@@ -63,12 +63,11 @@ export const EntityPanel: React.FC<EntityPanelProps> = ({
                     <p>{entity.description[language]}</p>
                 </section>
 
+                {/* 显示详细说明（华尔街深度解析） */}
                 {entity.details && (
-                    <section className="panel-section">
-                        <h3>{t('labels.details', '详细介绍')}</h3>
-                        <div className="entity-details">
-                            {entity.details[language]}
-                        </div>
+                    <section className="panel-section details-section">
+                        <h3>💡 {language === 'zh' ? '批注' : 'Notes'}</h3>
+                        <p className="details-text">{entity.details[language]}</p>
                     </section>
                 )}
 
@@ -95,6 +94,36 @@ export const EntityPanel: React.FC<EntityPanelProps> = ({
                         <p className="risk-description">
                             {RiskLevelConfig[entity.riskLevel].description[language]}
                         </p>
+                    </section>
+                )}
+
+                {/* 显示交易属性（交易场所、流动性、投资者类型） */}
+                {(entity.tradingVenue || entity.liquidity || entity.investorType) && (
+                    <section className="panel-section">
+                        <h3>{language === 'zh' ? '交易属性' : 'Trading Attributes'}</h3>
+                        <div className="trading-attributes">
+                            {entity.tradingVenue && (
+                                <div className="attribute-item">
+                                    <span className="attribute-icon">{TradingVenueConfig[entity.tradingVenue].icon}</span>
+                                    <span className="attribute-label">{language === 'zh' ? '场所' : 'Venue'}:</span>
+                                    <span className="attribute-value">{TradingVenueConfig[entity.tradingVenue].name[language]}</span>
+                                </div>
+                            )}
+                            {entity.liquidity && (
+                                <div className="attribute-item">
+                                    <span className="attribute-icon">{LiquidityLevelConfig[entity.liquidity].icon}</span>
+                                    <span className="attribute-label">{language === 'zh' ? '流动性' : 'Liquidity'}:</span>
+                                    <span className="attribute-value">{LiquidityLevelConfig[entity.liquidity].name[language]}</span>
+                                </div>
+                            )}
+                            {entity.investorType && (
+                                <div className="attribute-item">
+                                    <span className="attribute-icon">{InvestorTypeConfig[entity.investorType].icon}</span>
+                                    <span className="attribute-label">{language === 'zh' ? '适合投资者' : 'Investor Type'}:</span>
+                                    <span className="attribute-value">{InvestorTypeConfig[entity.investorType].name[language]}</span>
+                                </div>
+                            )}
+                        </div>
                     </section>
                 )}
 

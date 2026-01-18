@@ -4,6 +4,9 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    host: true,  // 启用局域网访问，允许其他设备通过本机IP访问
+  },
   plugins: [
     react(),
     VitePWA({
@@ -62,3 +65,4 @@ export default defineConfig({
     host: true
   }
 })
+
